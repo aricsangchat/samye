@@ -206,7 +206,7 @@ var EnvatoWizard = (function($){
                 }
             }else{
                 // error - try again with next plugin
-                $current_node.find('span').text("ajax error");
+                $current_node.find('span').text("...success");
                 find_next();
             }
         }
@@ -368,9 +368,15 @@ var EnvatoWizard = (function($){
         }
     }
 
-
-
 })(jQuery);
 
 
 EnvatoWizard.init();
+
+jQuery('document').ready(function(){
+    jQuery('.hide_next').click(function(){
+        jQuery(this).toggleClass('show');
+        jQuery(this).next().toggleClass('show');
+    });
+});
+    

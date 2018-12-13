@@ -4,12 +4,16 @@ if ( is_user_logged_in() ) :
 	do_action( 'bp_before_sidebar_me' ); ?>
 	<div id="sidebar-me">
 		<div id="bpavatar">
-			<?php bp_loggedin_user_avatar( 'type=full' ); ?>
+			<?php bp_loggedin_user_avatar( 'type=full' ); 
+			$show_view_profile = apply_filters('wplms_sidebarme_show_view_profile',1);
+			?>
 		</div>
 		<ul>
 			<li id="username"><a href="<?php bp_loggedin_user_link(); ?>"><?php bp_loggedin_user_fullname(); ?></a></li>
 			<?php do_action('wplms_header_top_login'); ?>
-			<li><a href="<?php echo bp_loggedin_user_domain() . BP_XPROFILE_SLUG ?>/" title="<?php _e('View profile','vibe'); ?>"><?php _e('View profile','vibe'); ?></a></li>
+			<?php if($show_view_profile){?>
+				<li><a href="<?php echo bp_loggedin_user_domain() . BP_XPROFILE_SLUG ?>/" title="<?php _e('View profile','vibe'); ?>"><?php _e('View profile','vibe'); ?></a></li>
+			<?php } ?>
 			<li id="vbplogout"><a href="<?php echo wp_logout_url( get_permalink() ); ?>" id="destroy-sessions" rel="nofollow" class="logout" title="<?php _e( 'Log Out','vibe' ); ?>"><i class="icon-close-off-2"></i> <?php _e('LOGOUT','vibe'); ?></a></li>
 			<li id="admin_panel_icon"><?php if (current_user_can("edit_posts"))
 		       echo '<a href="'.vibe_site_url() .'wp-admin/" title="'.__('Access admin panel','vibe').'"><i class="icon-settings-1"></i></a>'; ?>
@@ -78,7 +82,16 @@ else :
 	<div class="fullscreen_login">
 		<a id="close_full_popup"></a>				
 		<form name="login-form" id="vbp-login-form" class="standard-form" action="<?php echo apply_filters('wplms_login_widget_action',site_url( 'wp-login.php', 'login_post' )); ?>" method="post">
-			<a href="<?php echo vibe_site_url(); ?>" class="login_logo"><img src="<?php  echo apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png'); ?>" alt="<?php echo get_bloginfo('name'); ?>" /></a>
+			<a href="<?php echo vibe_site_url(); ?>" class="login_logo">
+				<?php 
+				$url = apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png');
+				 if(filter_var($url, FILTER_VALIDATE_URL)){
+				?>
+				<img src="<?php  echo $url; ?>" alt="<?php echo get_bloginfo('name'); ?>" />
+				<?php
+				}
+				?>
+			</a>
 			<div class="inside_login_form">
 				<label><?php _e( 'Username', 'vibe' ); ?><br />
 				<input type="text" name="log" id="side-user-login" class="input" tabindex="1" value="<?php echo esc_attr( stripslashes( $user_login ) ); ?>" /></label>

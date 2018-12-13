@@ -34,7 +34,8 @@ if(isset($capability)){
 
 }
 ?>
-<section id="memberstitle">
+<section id="title">
+	<?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
              <div class="col-md-9 col-sm-8">

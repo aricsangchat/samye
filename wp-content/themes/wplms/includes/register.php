@@ -39,6 +39,7 @@ class WPLMS_Register{
         add_action('after_setup_theme',array($this,'remove_admin_bar'));
         // WP Admin access
         add_action('current_screen',array($this,'wp_admin_access'));
+        add_filter('wplms_front_end_course_extras',array($this,'hide_edit_in_admin'));
         //Remove WooCommerce Styling
         add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
@@ -178,6 +179,26 @@ class WPLMS_Register{
           exit;
         }
     }
+
+    function hide_edit_in_admin($args){
+        $val = vibe_get_option('wp_admin_access');
+        $cap = apply_filters('wplms_admin_access_capabilities',array(1=>array('edit_posts'),2=>array('manage_options')));
+        $flag = 1;
+        if(!empty($val) && !empty($cap[$val])){
+          foreach($cap[$val] as $value){
+              if(!current_user_can($value)){ 
+                  $flag=0;
+                  break;
+                }
+            }
+        }
+
+        if(empty($flag)){
+          unset($args[0]);
+        }
+
+        return $args;
+    }
     /*============================================*/
     /*=========  REGISTER ADMIN SCRIPTS  =========*/
     /*============================================*/
@@ -261,6 +282,7 @@ class WPLMS_Register{
                   $font_string .= $key.':'.$str.'|';
                 }
               }
+              $font_string = substr($font_string, 0, -1);
             }
 
             if(isset($font_subsets) && is_array($font_subsets)){
@@ -345,6 +367,7 @@ class WPLMS_Register{
           'wplms_woocommerce_validate' => __( 'Please fill in all the required fields (indicated by *)','vibe' ),
           'open_menu'=>__('Open/Close Menu','vibe'),
           'invalid_mail'=>__('Invalid email entered !','vibe'),
+          'signon_security'=>wp_create_nonce('wplms_signon'),
           );
           wp_localize_script('wplms','wplms',$wplms_strings);
         }

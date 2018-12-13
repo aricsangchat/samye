@@ -16,7 +16,6 @@ vibe_include_template("profile/top$profile_layout.php");
 <div id="item-body">
 
 	<?php do_action( 'bp_before_member_body' ); ?>
-
 	<div class="item-list-tabs no-ajax" id="subnav">
 		<ul>
 
@@ -27,6 +26,7 @@ vibe_include_template("profile/top$profile_layout.php");
 		</ul>
 	</div><!-- .item-list-tabs -->
 	<?php do_action('wplms_after_single_item_list_tabs'); ?>
+	<?php do_action('bp_before_member_settings_template'); ?>
 	<h3><?php _e( 'Delete Account', 'vibe' ); ?></h3>
 
 	<div id="message" class="info">

@@ -36,9 +36,9 @@ if(have_posts()):while(have_posts()):the_post();
 <?php
   $protocol = is_ssl() ? 'https' : 'http';
   $google_apikey_contact = vibe_get_option('google_apikey_contact');
-  $src = '//maps.googleapis.com/maps/api/js?sensor=true';
+  $src = '//maps.googleapis.com/maps/api/js';
   if(!empty($google_apikey_contact)){
-    $src = '//maps.googleapis.com/maps/api/js?key='.$google_apikey_contact.'&sensor=true';
+    $src = '//maps.googleapis.com/maps/api/js?key='.$google_apikey_contact;
   }
   
 ?>

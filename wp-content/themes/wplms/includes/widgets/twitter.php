@@ -414,4 +414,4 @@ protected function really_simple_twitter_messages($options) {
 } // class ReallySimpleTwitterWidget
 
 // register ReallySimpleTwitterWidget widget
-add_action('widgets_init', create_function('', 'return register_widget("ReallySimpleTwitterWidget");'));
+add_action('widgets_init', function(){ return register_widget("ReallySimpleTwitterWidget");});

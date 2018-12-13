@@ -6,6 +6,7 @@ $curauth = $wp_query->get_queried_object();
 
 ?>
 <section id="title">
+	<?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
         	<div class="col-md-3">
@@ -41,15 +42,19 @@ $curauth = $wp_query->get_queried_object();
             		<label><?php _e('# Students in Courses','vibe'); ?></label></li>
             		<li><?php $reviews = vibe_get_instructor_average_rating($curauth->data->ID); 
             		echo '<div class="star-rating">';
-					for($i=1;$i<=5;$i++){
-						if($reviews >= 1){
-							echo  '<span class="fa fa-star"></span>';
-						}elseif(($reviews < 1 ) && ($reviews >= 0.4 ) ){
-							echo  '<span class="fa fa-star-half-o"></span>';
-						}else{
-							echo  '<span class="fa fa-star-o"></span>';
+            		if(function_exists('bp_course_display_rating')){
+                     	echo bp_course_display_rating($reviews);
+                  	}else{
+						for($i=1;$i<=5;$i++){
+							if($reviews >= 1){
+								echo  '<span class="fa fa-star"></span>';
+							}elseif(($reviews < 1 ) && ($reviews >= 0.4 ) ){
+								echo  '<span class="fa fa-star-half-o"></span>';
+							}else{
+								echo  '<span class="fa fa-star-o"></span>';
+							}
+							$reviews--;
 						}
-						$reviews--;
 					}
 					echo '</div><label>'.__('Average Rating','vibe').'</label>';
             		?></li>

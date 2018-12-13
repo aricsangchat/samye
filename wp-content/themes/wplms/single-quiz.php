@@ -10,6 +10,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 ?>
 <section id="title">
+    <?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="col-md-9 col-sm-9">
@@ -24,7 +25,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             if(is_user_logged_in()){
                 if(isset($quiztaken) && $quiztaken){
                     if($quiztaken > time()){
-                        echo apply_filters('wplms_continue_quiz_button','<a class="button create-group-button full begin_quiz" data-quiz="'.get_the_ID().'"> '.__('Continue Quiz','vibe').'</a>',get_the_ID());
+                        echo apply_filters('wplms_continue_quiz_button','<a class="button create-group-button full begin_quiz continue" data-quiz="'.get_the_ID().'"> '.__('Continue Quiz','vibe').'</a>',get_the_ID());
                             wp_nonce_field('start_quiz','start_quiz');
                     }else{ 
 

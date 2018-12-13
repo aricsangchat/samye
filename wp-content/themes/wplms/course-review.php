@@ -66,16 +66,20 @@ if($post->comment_status == 'open'){
           <h2><?php echo (($average_rating)?$average_rating:__('N.A','vibe')); ?></h2>
           <?php
           echo '<div class="modern-star-rating">';
-              for($i=1;$i<=5;$i++){
-                if($average_rating >= 1){
-                  echo '<span class="fa fa-star"></span>';
-                }elseif(($average_rating < 1 ) && ($average_rating >= 0.3 ) ){
-                  echo '<span class="fa fa-star-half-o"></span>';
-                }else{
-                  echo '<span class="fa fa-star-o"></span>';
+                  if(function_exists('bp_course_display_rating')){
+                     echo bp_course_display_rating($average_rating);
+                  }else{
+                    for($i=1;$i<=5;$i++){
+                      if($average_rating >= 1){
+                        echo '<span class="fa fa-star"></span>';
+                      }elseif(($average_rating < 1 ) && ($average_rating >= 0.3 ) ){
+                        echo '<span class="fa fa-star-half-o"></span>';
+                      }else{
+                        echo '<span class="fa fa-star-o"></span>';
+                      }
+                      $average_rating--;
+                    }
                 }
-                $average_rating--;
-              }
               echo '</div>';
               echo '<span>'.$count.' '.__('ratings','vibe').'</span>';
           ?>

@@ -9,7 +9,7 @@ define('THEME_FULL_NAME','WPLMS');
 define('VIBE_PATH',get_theme_root().'/wplms');
 if ( !defined( 'VIBE_URL' ) )
 	define('VIBE_URL',get_template_directory_uri());
-define('WPLMS_VERSION','2.7.2');
+define('WPLMS_VERSION','3.8');
 
 
 if ( !defined( 'BP_AVATAR_THUMB_WIDTH' ) )
@@ -29,11 +29,12 @@ define( 'BP_DEFAULT_COMPONENT', 'profile' );
 
 if(function_exists('vibe_get_option')){
 	$username = vibe_get_option('username');
-	$apikey  = vibe_get_option('apikey');
+	//$apikey  = vibe_get_option('apikey');
 	// Auto Update
-	if(isset($username) && isset($apikey)){ 
+	if(isset($username)){  
 	  require_once(VIBE_PATH."/options/validation/theme-update/class-theme-update.php");
-	  VibeThemeUpdate::init($username,$apikey);
+	  //VibeThemeUpdate::init($username,$apikey);
+	  VibeThemeUpdate::init();
 	}
 }
 
@@ -77,4 +78,32 @@ function wplms_define_constants(){
  		define( 'BP_COURSE_STATS_SLUG', 'course-stats' );
 
 }
-?>
+
+
+
+add_action('current_screen',function(){
+	$screen = get_current_screen();
+	if($screen->base != 'toplevel_page_wplms_options')
+		return;
+	
+	$request_uri = explode('&access_token', $_SERVER['REQUEST_URI']);
+	$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$request_uri[0]";
+
+	
+	if(!empty($_GET['access_token']) && !empty($_GET['expires']) && !empty($_GET['refresh_token'])){
+		
+		if(esc_attr($_GET['security']) == vibe_get_option('security')){
+			
+			update_option('envato_token',array(
+				'refresh_token'=>esc_attr($_GET['refresh_token']),
+				'access_token'=>esc_attr($_GET['access_token']),
+				'expires'=>esc_attr($_GET['expires']),
+			));
+
+			wp_redirect($actual_link);
+		}else{
+			wp_die('Security mismatch');
+		}
+		
+	}
+});

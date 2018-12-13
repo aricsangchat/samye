@@ -52,6 +52,7 @@ jQuery(document).ready(function($) {
         event.stopPropagation();
     });
     
+    
 
     $('#logo img').each(function(){
         $(this).attr('width',$(this).width());
@@ -276,6 +277,9 @@ jQuery(document).ready(function($){
           }  
       }
       if(next){
+        if(next.find('.wpb_wrapper').length){
+          next = next.find('.wpb_wrapper:first');
+        }
         next.css('padding-top',headerheight+'px');
         next.addClass('light');
       }
@@ -308,75 +312,82 @@ jQuery(document).ready(function($){
       }
     }
   });
-  $(window).scroll(function(event){
-    var st = $(this).scrollTop();
-    
-    if($('#headertop').hasClass('fix')){
-      var headerheight=$('header').height();
-      if(st > headerheight){
-        $('#headertop').addClass('fixed');
-      }else{
-        $('#headertop').removeClass('fixed');
-      }
+
+  var vibe_header_fix = function(){
+          $(window).scroll(function(event){
+            var st = $(this).scrollTop();
+            
+            if($('#headertop').hasClass('fix')){
+              var headerheight=$('header').height();
+              if(st > headerheight){
+                $('#headertop').addClass('fixed');
+              }else{
+                $('#headertop').removeClass('fixed');
+              }
+            }
+
+            if($('header.sleek').hasClass('fix') || $('header.generic').hasClass('fix')){
+
+              var header = $('header.fix');
+              var headerheight=parseInt($('header.fix').height());
+              var next = '';
+              //if(header.hasClass('transparent'))
+                headerheight = headerheight + 30;
+              
+              if($('body').hasClass('page-template-contact-php')){
+                next = '';
+              }else if($('body').hasClass('bp-user') && ( $('body').hasClass('p2') || $('body').hasClass('p3') || $('body').hasClass('p4'))){
+                next = $('#item-header');
+              }else if($('body').is('.groups, .single-item') && ( $('body').hasClass('g2') || $('body').hasClass('g3'))){
+                next = $('#item-header');
+              }else if(($('body').hasClass('single-course') && ( $('body').hasClass('c2') || $('body').hasClass('c3') || $('body').hasClass('c5')) ) || ($('body').hasClass('single-course') && $('body').hasClass('modern-theme') && !$('body').hasClass('c4'))){
+                next = $('#item-header');
+              }else{
+                next = header.next();
+                if(!next.is(":visible")){
+                  next = header.next().next();
+                }  
+              }
+              if(next.find('.wpb_wrapper').length){
+                next = next.find('.wpb_wrapper:first');
+              }
+              if(st > headerheight){
+                $('header.fix').addClass('fixed');
+                if(header.hasClass('fixed')){
+                  if(next){
+                    next.css('padding-top',headerheight+'px');
+                  }
+                }
+              }else{
+                $('header.fix').removeClass('fixed');
+                if(!header.hasClass('transparent') && !header.hasClass('generic')){  // case for sleek
+                  if(next)
+                    next.css('padding-top','');
+                }
+              }
+
+
+            } // End sleek has class fix
+
+            if($('header.standard,header.mooc').hasClass('fix')){
+              var header = $(this);
+              var headerheight=$('header.fix').height();
+              if(st > headerheight){
+                $('header.fix').addClass('fixed');
+              }else{
+                $('header.fix').removeClass('fixed');
+              }
+            }
+
+            if(st > windowheight){
+              $('#scrolltop').addClass('fix');
+            }else{
+              $('#scrolltop').removeClass('fix');
+            }
+          }); // End scroll event 
     }
 
-    if($('header.sleek').hasClass('fix') || $('header.generic').hasClass('fix')){
-
-      var header = $('header.fix');
-      var headerheight=parseInt($('header.fix').height());
-      var next = '';
-      //if(header.hasClass('transparent'))
-        headerheight = headerheight + 30;
-      
-      if($('body').hasClass('page-template-contact-php')){
-        next = '';
-      }else if($('body').hasClass('bp-user') && ( $('body').hasClass('p2') || $('body').hasClass('p3') || $('body').hasClass('p4'))){
-        next = $('#item-header');
-      }else if($('body').is('.groups, .single-item') && ( $('body').hasClass('g2') || $('body').hasClass('g3'))){
-        next = $('#item-header');
-      }else if(($('body').hasClass('single-course') && ( $('body').hasClass('c2') || $('body').hasClass('c3') || $('body').hasClass('c5')) ) || ($('body').hasClass('single-course') && $('body').hasClass('modern-theme') && !$('body').hasClass('c4'))){
-        next = $('#item-header');
-      }else{
-        next = header.next();
-        if(!next.is(":visible")){
-          next = header.next().next();
-        }  
-      }
-
-      if(st > headerheight){
-        $('header.fix').addClass('fixed');
-        if(header.hasClass('fixed')){
-          if(next){
-            next.css('padding-top',headerheight+'px');
-          }
-        }
-      }else{
-        $('header.fix').removeClass('fixed');
-        if(!header.hasClass('transparent') && !header.hasClass('generic')){  // case for sleek
-          if(next)
-            next.css('padding-top','');
-        }
-      }
-
-
-    } // End sleek has class fix
-
-    if($('header.standard,header.mooc').hasClass('fix')){
-      var header = $(this);
-      var headerheight=$('header.fix').height();
-      if(st > headerheight){
-        $('header.fix').addClass('fixed');
-      }else{
-        $('header.fix').removeClass('fixed');
-      }
-    }
-
-    if(st > windowheight){
-      $('#scrolltop').addClass('fix');
-    }else{
-      $('#scrolltop').removeClass('fix');
-    }
-  }); // End scroll event 
+    vibe_header_fix();
 
     $('.twitter_carousel').each(function(){
       var $this = $(this);
@@ -395,7 +406,7 @@ jQuery(document).ready(function($){
   });
 
   if(!$('body').hasClass('modern-theme')){ 
-    $('.bp-user.p2 #object-nav,.bp-user.p3 #object-nav,.bp-user.p4 #object-nav,.single-items.groups #object-nav,.single-course.c2 #object-nav,.single-course.c3 #object-nav,.single-course.c4 #object-nav,.single-course.c5 #object-nav').each(function(){
+    $('.bp-user.p2 #object-nav,.bp-user.p3 #object-nav,.bp-user.p4 #object-nav,.single-items.groups #object-nav,.single-course.c2 #object-nav,.single-course.c3 #object-nav,.single-course.c4 #object-nav,.single-course.c5 #object-nav, .single-course.c6 #object-nav').each(function(){
       $(this).find('ul').flexMenu({
         'linkText' : wplms.more, 
         'linkTitle' : wplms.view_more,
@@ -426,6 +437,9 @@ jQuery(document).ready(function($){
   }); 
 
 });// END ready
+
+
+
 
 //* To be Removed in next update
 
@@ -704,6 +718,23 @@ jQuery(document).ready(function($){
     /* === AJAX REGISTRATIONS === */
     if($('#vbp-login-form').find('#wplms_forgot_password_form').length){
         
+        if( (typeof wplms === "object") && (wplms !== null) ){
+          $.ajax({
+              type: "POST",
+              url: ajaxurl,
+              data: { action: 'wplms_get_signon_security', 
+                    },
+              cache: false,
+              success: function (security) {
+                if(wplms.hasOwnProperty('signon_security')){
+                  wplms.signon_security = security;
+                }
+                
+              }
+          });
+        }
+        
+
         $('#sidebar-wp-submit').on('click',function(event){
           event.preventDefault();
           var $this = $(this)
@@ -738,7 +769,8 @@ jQuery(document).ready(function($){
             url: ajaxurl,
             dataType:'json',
             data: { action: 'wplms_signon', 
-                    security: $this.attr('data-security'),
+                    security: wplms.signon_security,
+                    redirect_to:document.URL,
                     data : JSON.stringify(data)
                   },
             cache: false,
@@ -844,6 +876,51 @@ jQuery(document).ready(function($){
     $('body').delegate('.input','keyup',function(){if($(this).hasClass('error')){$(this).removeClass('error');}});
     $('body').delegate('.message_wrap .message > span','click',function(){$(this).parent().parent().remove();});
 });
+
+$('.course_packages_menu_before_title .burger_menu_wrapper').click(function(){
+  $(this).find('.burger_menu').toggleClass('open');
+  $('body').toggleClass('course_packages_menu_show');
+}); 
+$('.packaged_up_down').click(function(){
+  $('.upload_course_content_header').toggleClass('hide_title');
+});
+
+/* Course header 5 */
+
+$( window ).resize(function() {
+    $(window).unbind('scroll');
+    course5_sideblock();
+});
+
+var course5_sideblock = function(){
+    $('.course_header5_sideblock').each(function(){
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        if(w > 992){
+           
+            var cwidth = $(this).parent().width();
+            var ctop = $('.pusher > .fix').height();;
+          
+            var endheight = $('.pusher > footer').offset().top - $(this).height();  
+            $(this).css('width',cwidth+'px');
+            var $this = $(this);
+            $(window).scroll(function(event){
+                var st = $(this).scrollTop();
+                if( st < endheight){
+                   
+                    $this.css('transform','translateY('+st+'px)');
+                    
+                }else{
+                    
+                }
+            });
+          
+        }else{
+            $(this).css('width','');
+        }
+      
+    });
+};
+course5_sideblock();
 
 
 

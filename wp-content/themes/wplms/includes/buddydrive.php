@@ -506,7 +506,6 @@ class WPLMS_BuddyDrive{
 	}
 }
 
-if ( in_array( 'buddydrive/buddydrive.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-	WPLMS_BuddyDrive::init(); 
+if ( in_array( 'buddydrive/buddydrive.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )  || (function_exists('is_plugin_active') && is_plugin_active('buddydrive/buddydrive.php'))) {
+    WPLMS_BuddyDrive::init(); 
 }
-

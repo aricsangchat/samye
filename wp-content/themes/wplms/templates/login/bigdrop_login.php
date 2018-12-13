@@ -4,12 +4,16 @@
 		do_action( 'bp_before_sidebar_me' ); ?>
 		<div id="sidebar-me">
 			<div id="bpavatar">
-				<?php bp_loggedin_user_avatar( 'type=full' ); ?>
+				<?php bp_loggedin_user_avatar( 'type=full' ); 
+        $show_view_profile = apply_filters('wplms_sidebarme_show_view_profile',1);
+        ?>
 			</div>
 			<ul>
 				<li id="username"><a href="<?php bp_loggedin_user_link(); ?>"><?php bp_loggedin_user_fullname(); ?></a></li>
 				<?php do_action('wplms_header_top_login'); ?>
-        <li><a href="<?php echo bp_loggedin_user_domain() . BP_XPROFILE_SLUG ?>/" title="<?php _e('View profile','vibe'); ?>"><?php _e('View profile','vibe'); ?></a></li>
+        <?php if($show_view_profile){?>
+          <li><a href="<?php echo bp_loggedin_user_domain() . BP_XPROFILE_SLUG ?>/" title="<?php _e('View profile','vibe'); ?>"><?php _e('View profile','vibe'); ?></a></li>
+        <?php } ?>
 				<li id="vbplogout"><a href="<?php echo wp_logout_url( get_permalink() ); ?>" id="destroy-sessions" rel="nofollow" class="logout" title="<?php _e( 'Log Out','vibe' ); ?>"><i class="icon-close-off-2"></i> <?php _e('LOGOUT','vibe'); ?></a></li>
 				<li id="admin_panel_icon"><?php if (current_user_can("edit_posts"))
 			       echo '<a href="'.vibe_site_url() .'wp-admin/" title="'.__('Access admin panel','vibe').'"><i class="icon-settings-1"></i></a>'; ?>

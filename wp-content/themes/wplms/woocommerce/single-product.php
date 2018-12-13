@@ -17,7 +17,9 @@ get_header( vibe_get_header() ); ?>
 <?php
 $header = vibe_get_customizer('header_style');
 if($header == 'transparent' || $header == 'generic'){
-    echo '<section id="title"></section>';
+    echo '<section id="title">';
+    do_action('wplms_before_title'); 
+    echo '</section>';
 }
 ?>
 <section class="main">

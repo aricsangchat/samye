@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPLMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-25 14:30+0530\n"
-"PO-Revision-Date: 2017-03-25 14:30+0530\n"
-"Last-Translator: vibethemes@gmail.com <vibethemes@gmail.com>\n"
+"POT-Creation-Date: 2017-05-01 12:12+0530\n"
+"PO-Revision-Date: 2017-05-01 12:12+0530\n"
+"Last-Translator: Vibethemes <vibethemes@gmail.com>\n"
 "Language-Team: VibeThemes <vibethemeS@gmail.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.0.1\n"
 "X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
 "__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
 "_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
@@ -213,7 +213,7 @@ msgstr ""
 #: includes/notes-discussions.php:374 includes/notes-discussions.php:377
 #: includes/notes-discussions.php:728 includes/notes-discussions.php:732
 #: includes/notes-discussions.php:748 includes/notes-discussions.php:753
-#: single-unit.php:150 templates/course/start/default.php:259
+#: single-unit.php:111 templates/course/start/default.php:259
 msgid "Reply"
 msgstr "回复"
 
@@ -251,7 +251,7 @@ msgstr "标记为喜爱"
 # @ vibe
 #: activity/entry.php:105 includes/notes-discussions.php:407
 #: includes/widgets/custom_widgets.php:545
-#: includes/widgets/custom_widgets.php:591 single-unit.php:170
+#: includes/widgets/custom_widgets.php:591 single-unit.php:131
 #: templates/course/start/default.php:279
 msgid "Post"
 msgstr "发布"
@@ -331,7 +331,7 @@ msgstr "邮箱"
 #: answer-options.php:27 answer-select.php:27 answer-sort.php:27
 #: answer-text.php:26 assignment-textarea.php:23 assignment-upload.php:30
 #: comments.php:27 course-review.php:34
-#: members/single/profile/profile-wp.php:33 single.php:115
+#: members/single/profile/profile-wp.php:33 single.php:126 single.php:152
 msgid "Website"
 msgstr "网址"
 
@@ -418,6 +418,577 @@ msgstr "全部活动自"
 msgid "View all posts in %s"
 msgstr "查看来自 %s 的全部文章"
 
+# @ pmpro
+#: assets/js/old_files/wplms-minified.js:28
+#, fuzzy
+msgid "state = "
+msgstr "省"
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "Server abort: "
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "cannot access response document: "
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "isXml="
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "requeing onLoad callback, DOM not available"
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "error caught: "
+msgstr ""
+
+# @ vibe
+#: assets/js/old_files/wplms-minified.js:28
+#, fuzzy
+msgid "upload aborted"
+msgstr "上传字体"
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "aborting upload... "
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "ajaxSubmit: skipping submit process - no element selected"
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "ajaxSubmit: submit vetoed via form-pre-serialize trigger"
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "ajaxSubmit: submit aborted via beforeSerialize callback"
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "ajaxSubmit: submit aborted via beforeSubmit callback"
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "ajaxSubmit: submit vetoed via form-submit-validate trigger"
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "DOM not ready, queuing ajaxForm"
+msgstr ""
+
+#: assets/js/old_files/wplms-minified.js:28
+msgid "terminating; zero elements found by selector"
+msgstr ""
+
+#: assets/js/wplms.min.js:1
+msgid "#"
+msgstr ""
+
+#: assets/js/wplms.min.js:1
+msgid "[data-ride=\"carousel\"]"
+msgstr ""
+
+#: assets/js/wplms.min.js:1
+msgid "[data-toggle=\"collapse\"][href=\"#"
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "[data-spy=\"scroll\"]"
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "[data-spy=\"affix\"]"
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "<ol class=\""
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "."
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "<li><a href=\"#\">"
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "<ul class=\""
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "<div class=\""
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid ":not(.clone)"
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "li.flexMenu-viewMore.active"
+msgstr ""
+
+#: assets/js/wplms.min.js:2
+msgid "<ul class=\"flexMenu-popup\" style=\"display:none;"
+msgstr ""
+
+#: assets/js/wplms.min.js:2 assets/js/wplms.min.js:3
+msgid "object"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "bg"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "wrap"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "container"
+msgstr ""
+
+# @ vibe
+#: assets/js/wplms.min.js:3
+#, fuzzy
+msgid "content"
+msgstr "内容："
+
+# @ vibe
+#: assets/js/wplms.min.js:3
+#, fuzzy
+msgid "preloader"
+msgstr "顶部"
+
+#: assets/js/wplms.min.js:3
+msgid "body, html"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "html"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "<img>"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "<div>"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "<img class=\"mfp-img\" />"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "<ul class=\"select2-results__options\" role=\"tree\"></ul>"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid ""
+"<li role=\"treeitem\" aria-live=\"assertive\" class=\"select2-results__option"
+"\"></li>"
+msgstr ""
+
+#: assets/js/wplms.min.js:3
+msgid "<ul></ul>"
+msgstr ""
+
+#: assets/js/wplms.min.js:4
+msgid ""
+"<span class=\"select2-selection\" role=\"combobox\"  aria-haspopup=\"true\" "
+"aria-expanded=\"false\"></span>"
+msgstr ""
+
+#: assets/js/wplms.min.js:4
+msgid ".select2.select2-container--open"
+msgstr ""
+
+#: assets/js/wplms.min.js:4 assets/js/wplms.min.js:5
+msgid "<span></span>"
+msgstr ""
+
+#: assets/js/wplms.min.js:4
+msgid ""
+"<li class=\"select2-selection__choice\"><span class=\"select2-"
+"selection__choice__remove\" role=\"presentation\">&times;</span></li>"
+msgstr ""
+
+#: assets/js/wplms.min.js:4
+msgid "<span class=\"select2-selection__clear\">&times;</span>"
+msgstr ""
+
+#: assets/js/wplms.min.js:4
+msgid ""
+"<li class=\"select2-search select2-search--inline\"><input class=\"select2-"
+"search__field\" type=\"search\" tabindex=\"-1\" autocomplete=\"off\" "
+"autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role="
+"\"textbox\" aria-autocomplete=\"list\" /></li>"
+msgstr ""
+
+#: assets/js/wplms.min.js:4
+msgid ""
+"<span class=\"select2-dropdown\"><span class=\"select2-results\"></span></"
+"span>"
+msgstr ""
+
+#: assets/js/wplms.min.js:4
+msgid ""
+"<span class=\"select2-search select2-search--dropdown\"><input class="
+"\"select2-search__field\" type=\"search\" tabindex=\"-1\" autocomplete=\"off"
+"\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" role="
+"\"textbox\" /></span>"
+msgstr ""
+
+#: assets/js/wplms.min.js:4
+msgid ""
+"<li class=\"select2-results__option select2-results__option--load-more\"role="
+"\"treeitem\" aria-disabled=\"true\"></li>"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "compat/inputData"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid ""
+"<span class=\"select2 select2-container\"><span class=\"selection\"></"
+"span><span class=\"dropdown-wrapper\" aria-hidden=\"true\"></span></span>"
+msgstr ""
+
+#: assets/js/wplms.min.js:5 assets/js/wplms.min.js:6
+msgid "body"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid ".pagesidebar .sidemenu li.menu-item-has-children"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid ".global #trigger"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid ".global"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#logo img"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid ".global #login_trigger"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#close_menu_sidebar"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "nav .menu-item"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "section#content .vibe_editor"
+msgstr ""
+
+#: assets/js/wplms.min.js:5 assets/js/wplms.min.js:6
+msgid "#vibe_bp_login"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#new_searchicon,#mobile_searchicon"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#close_full_popup"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#searchdiv span"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#searchdiv"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#headernotification"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid ".commentratingbox"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#widget-tabs a"
+msgstr ""
+
+#: assets/js/wplms.min.js:5
+msgid "#footernotification"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".close"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "body,html"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".tip"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".nav-tabs li:first a"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".course_description"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".full_desc"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#more_desc"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#signup_password, #account_password"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "label[for=\"signup_password\"]"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".chosen,select[multiple]"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "header.sleek"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "header"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "header:first"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#item-header"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#title"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#mooc_searchform"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "body #content,body.activity-permalink.single .activity"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#footerbottom"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".main,body.activity-permalink.single .activity"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#headertop"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "header.generic"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "header.fix"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "header.standard,header.mooc"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#scrolltop"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".twitter_carousel"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ""
+".bp-user.p2 #object-nav,.bp-user.p3 #object-nav,.bp-user.p4 #object-nav,."
+"single-items.groups #object-nav,.single-course.c2 #object-nav,.single-course."
+"c3 #object-nav,.single-course.c4 #object-nav,.single-course.c5 #object-nav"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".certifications"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".vbpcart"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".woocart"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".v_parallax_block"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "section.stripe"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".payment_methods.methods >li"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#prev_results a"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".prev_quiz_results"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#filtercontainer"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".filters a"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".inmenu"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "footer"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".scrollmenu"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "html, body"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".animate"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".minmax"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".repeatablelist"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".add_repeatable"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".print_results"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".quiz_result"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#login_modern_trigger"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#login-modal-overlay"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#login-modal"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#close-modal"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".action_control"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#content .unit_wrap"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#vbp-login-form"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#sidebar-wp-submit"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#wplms_forgot_password_form"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".vbpforgot"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".inside_login_form"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".md-content h3,.md-content .vbpregister"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid ".back_to_login"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#vbp-login-form .active"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#wplms_custom_registration_form"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#vbp-login-form .vbpregister"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "#vbp_forgot_password"
+msgstr ""
+
+#: assets/js/wplms.min.js:6
+msgid "a"
+msgstr ""
+
 # @ vibe
 #: assignment-textarea.php:29
 msgid "Answer Assignment"
@@ -429,7 +1000,7 @@ msgid "Assignment submitted !"
 msgstr "作业已提交！"
 
 # @ vibe
-#: assignment-upload.php:39 includes/init.php:576
+#: assignment-upload.php:39 includes/init.php:579
 msgid "Submit Assignment"
 msgstr "提交作业"
 
@@ -493,7 +1064,7 @@ msgstr ""
 
 # @ vibe
 #: bbpress/loop-forums.php:21 forums/forums-loop.php:40
-#: members/single/activity.php:28 single.php:109
+#: members/single/activity.php:28 single.php:120 single.php:146
 #: templates/directory/activity/index.php:125
 #: templates/directory/activity/indexd2.php:121
 #: templates/directory/activity/indexd3.php:52
@@ -554,17 +1125,17 @@ msgid "INVALID CERTIFICATE CODE"
 msgstr "无效的证书代码"
 
 # @ vibe
-#: certificate.php:51
+#: certificate.php:58
 msgid "CERTIFICATE OF COMPLETION"
 msgstr "毕业证书"
 
 # @ vibe
-#: certificate.php:53
+#: certificate.php:60
 msgid "Awarded to"
 msgstr "奖励给"
 
 # @ vibe
-#: certificate.php:63
+#: certificate.php:70
 msgid "for successful completion of course"
 msgstr "因成功完成课程"
 
@@ -591,7 +1162,7 @@ msgstr ""
 
 # @ vibe
 #: content-blog1.php:23 content-blog2.php:30 content-blog3.php:28
-#: content-default.php:28
+#: content-default.php:58
 msgid "Read More"
 msgstr "阅读更多"
 
@@ -687,7 +1258,7 @@ msgid "Stats"
 msgstr ""
 
 # @ vibe
-#: course/single/admin.php:65 course/single/members.php:32
+#: course/single/admin.php:65 course/single/members.php:41
 msgid "Total number of Students in course"
 msgstr "课程中的学生总数"
 
@@ -716,12 +1287,12 @@ msgstr "从课程中删除用户"
 msgid "No Students found."
 msgstr "未找到学生。"
 
-#: course/single/admin.php:147
+#: course/single/admin.php:147 course/single/members.php:95
 #, php-format
 msgid "Viewing page %d of %d "
 msgstr ""
 
-#: course/single/admin.php:148
+#: course/single/admin.php:148 course/single/members.php:96
 msgctxt "pagination number course admin"
 msgid "1"
 msgstr ""
@@ -780,8 +1351,28 @@ msgstr "阅读更多"
 msgid "LESS"
 msgstr "更少"
 
+#: course/single/members.php:44
+msgctxt "course-members-select"
+msgid "Filter by Status"
+msgstr ""
+
+#: course/single/members.php:47
+msgctxt "course-members-select"
+msgid "Recently joined"
+msgstr ""
+
+#: course/single/members.php:48
+msgctxt "course-members-select"
+msgid "Alphabetical"
+msgstr ""
+
+#: course/single/members.php:49
+msgctxt "course-members-select"
+msgid "Top scorers"
+msgstr ""
+
 # @ vibe
-#: course/single/members.php:70
+#: course/single/members.php:112
 msgctxt "No members notification in course - members"
 msgid "No members found in this course."
 msgstr ""
@@ -857,7 +1448,7 @@ msgstr "无法访问页面：缺少 Email 变量"
 # @ vibe
 #: eventon/single-ajde_events.php:85 includes/notes-discussions.php:146
 #: includes/notes-discussions.php:338 includes/notes-discussions.php:711
-#: single-ajde_events-template.php:79 single-unit.php:147
+#: single-ajde_events-template.php:79 single-unit.php:108
 #: templates/course/start/default.php:256
 msgid "Edit"
 msgstr "编辑"
@@ -918,7 +1509,7 @@ msgid "My Topics <span>%s</span>"
 msgstr "我的话题 <span>%s</span>"
 
 # @ vibe
-#: forums/index.php:63 groups/single/forum.php:36 includes/actions.php:338
+#: forums/index.php:63 groups/single/forum.php:36 includes/actions.php:435
 #: members/single/blogs.php:19 members/single/forums.php:17
 #: members/single/friends.php:20 members/single/groups.php:20
 #: templates/directory/blogs/index.php:102
@@ -1024,10 +1615,10 @@ msgstr "发布话题"
 
 # @ vibe
 # @ pmpro
-#: forums/index.php:137 includes/func.php:202
+#: forums/index.php:137 includes/func.php:199
 #: includes/menu/edit_custom_walker.php:298
 #: paid-memberships-pro/pages/billing.php:331
-#: setup/installer/envato_setup.php:1203
+#: setup/installer/envato_setup.php:1205
 msgid "Cancel"
 msgstr "取消"
 
@@ -1311,7 +1902,7 @@ msgstr "全部"
 
 # @ vibe
 #: groups/single/activity.php:36 members/single/activity.php:22
-#: setup/installer/envato_setup.php:665
+#: setup/installer/envato_setup.php:667
 #: templates/directory/activity/index.php:121
 #: templates/directory/activity/indexd2.php:117
 #: templates/directory/activity/indexd3.php:48
@@ -1359,7 +1950,7 @@ msgstr "通过邮件对群组成员发送变更通知"
 #: groups/single/admin.php:37 groups/single/admin.php:122
 #: groups/single/forum/edit.php:60 groups/single/forum/edit.php:76
 #: members/single/profile/edit.php:105 members/single/settings/general.php:54
-#: members/single/settings/notifications.php:42
+#: members/single/settings/notifications.php:43
 msgid "Save Changes"
 msgstr "保存修改"
 
@@ -1594,50 +2185,55 @@ msgid "Send Invites"
 msgstr "发送邀请"
 
 # @ vibe
-#: header-center.php:83 header-mooc.php:86 header-sleek.php:77
-#: header-transparent.php:92 templates/login/pop_login.php:84
+#: header-center.php:67 header-mooc.php:69 header-sleek.php:62
+#: header-transparent.php:76 templates/login/pop_login.php:84
 msgid "LOGIN"
 msgstr ""
 
 # @ vibe
-#: header-generic.php:61 header-standard.php:60 header-standardcenter.php:59
-#: header.php:56 templates/login/modern.php:83
+#: header-generic.php:45 header-standard.php:43 header-standardcenter.php:42
+#: header.php:40 templates/login/modern.php:83
 msgid "Login"
 msgstr "登录"
 
-#: header-generic.php:64 header-standard.php:66 header-standardcenter.php:64
-#: header.php:61 includes/widgets/custom_bp_widgets.php:123
+#: header-generic.php:48 header-standard.php:49 header-standardcenter.php:47
+#: header.php:45 includes/widgets/custom_bp_widgets.php:123
 #: templates/login/bigdrop_login.php:105 templates/login/default_login.php:99
 #: templates/login/full_login.php:101 templates/login/pop_login.php:104
 msgid "Create an account"
 msgstr "创建一个账户"
 
-#: header-generic.php:64 header-standard.php:66 header-standardcenter.php:64
-#: header.php:61 includes/widgets/custom_bp_widgets.php:123
+#: header-generic.php:48 header-standard.php:49 header-standardcenter.php:47
+#: header.php:45 includes/widgets/custom_bp_widgets.php:123
 #: templates/login/bigdrop_login.php:105 templates/login/default_login.php:99
 #: templates/login/full_login.php:101 templates/login/pop_login.php:104
 msgid "Sign Up"
 msgstr "注册"
 
-#: header-generic.php:64 header-standard.php:66 header-standardcenter.php:64
-#: header.php:61 includes/widgets/custom_bp_widgets.php:123
+#: header-generic.php:48 header-standard.php:49 header-standardcenter.php:47
+#: header.php:45 includes/widgets/custom_bp_widgets.php:123
 #, php-format
 msgid "<a href=\"%s\" class=\"vbpregister\" title=\""
 msgstr "<a href=\"%s\" class=\"vbpregister\" title=\""
 
+#: includes/actions.php:226
+msgctxt "captcha mismatch"
+msgid "Captcha validation failed"
+msgstr ""
+
 # @ vibe
-#: includes/actions.php:288
+#: includes/actions.php:385
 msgctxt "vibe"
 msgid "Hide Timeline"
 msgstr ""
 
-#: includes/actions.php:292
+#: includes/actions.php:389
 msgctxt "vibe"
 msgid "Go fullscreen"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:342 templates/directory/course/index.php:94
+#: includes/actions.php:439 templates/directory/course/index.php:94
 #: templates/directory/course/indexd2.php:83
 #: templates/directory/course/indexd3.php:70
 #: templates/directory/course/indexd4.php:64
@@ -1646,256 +2242,256 @@ msgid "Select Order"
 msgstr "选择排列方式"
 
 # @ vibe
-#: includes/actions.php:346
+#: includes/actions.php:443
 msgid "Draft courses"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:347
+#: includes/actions.php:444
 msgid "Submitted for Approval"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:348
+#: includes/actions.php:445
 msgid "Published Courses"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:352
+#: includes/actions.php:449
 msgctxt "Course Status filter in Profile My courses section"
 msgid "Pursuing courses"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:353
+#: includes/actions.php:450
 msgctxt "Course Status filter in Profile My courses section"
 msgid "Finished Courses"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:354
+#: includes/actions.php:451
 msgctxt "Course Status filter in Profile My courses section"
 msgid "Active courses"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:355
+#: includes/actions.php:452
 msgctxt "Course Status filter in Profile My courses section"
 msgid "Expired courses"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:359
+#: includes/actions.php:456
 msgctxt "filter in Profile My courses section"
 msgid "Newly Published"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:360
+#: includes/actions.php:457
 msgctxt "filter in Profile My courses section"
 msgid "Alphabetical"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:361
+#: includes/actions.php:458
 msgctxt "filter in Profile My courses section"
 msgid "Start Date"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:494
+#: includes/actions.php:591
 msgid "Become an Instructor"
 msgstr "成为教师"
 
-#: includes/actions.php:554
+#: includes/actions.php:651
 msgid "UNITS"
 msgstr "单元"
 
-#: includes/actions.php:556
+#: includes/actions.php:653
 msgid "QUESTIONS"
 msgstr "问题"
 
-#: includes/actions.php:559
+#: includes/actions.php:656
 #, php-format
 msgid "DIRECT ACCESS TO %s IS NOT ALLOWED"
 msgstr "不允许直接访问 %s"
 
 # @ vibe
-#: includes/actions.php:618 includes/notes-discussions.php:120
+#: includes/actions.php:715 includes/notes-discussions.php:120
 #: includes/notes-discussions.php:419 includes/notes-discussions.php:437
 #: includes/notes-discussions.php:482 includes/notes-discussions.php:579
 #: includes/notes-discussions.php:600 includes/notes-discussions.php:623
 #: includes/notes-discussions.php:647 includes/notes-discussions.php:670
-#: includes/notes-discussions.php:693 setup/installer/envato_setup.php:369
+#: includes/notes-discussions.php:693 setup/installer/envato_setup.php:371
 msgid "Security check Failed. Contact Administrator."
 msgstr "安全检查失败。请联络管理员。"
 
 # @ vibe
-#: includes/actions.php:698
+#: includes/actions.php:798
 msgid "COURSE : "
 msgstr "课程："
 
 # @ vibe
-#: includes/actions.php:743
+#: includes/actions.php:843
 msgid "Your account is now active!"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:831 includes/actions.php:844 includes/actions.php:866
+#: includes/actions.php:931 includes/actions.php:944 includes/actions.php:966
 msgid "My Orders"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:863 includes/actions.php:919
+#: includes/actions.php:963 includes/actions.php:1019
 msgid "Edit Account Details"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:957 includes/actions.php:970
+#: includes/actions.php:1058 includes/actions.php:1071
 msgid "My Memberships"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:1017 includes/actions.php:1098
+#: includes/actions.php:1118 includes/actions.php:1199
 msgid "Display Order"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:1021 includes/actions.php:1102 includes/filters.php:355
+#: includes/actions.php:1122 includes/actions.php:1203 includes/filters.php:356
 msgid "Thumbnail"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:1025 includes/actions.php:1107
+#: includes/actions.php:1126 includes/actions.php:1208
 msgid "Upload/Add image"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:1026 includes/actions.php:1108
+#: includes/actions.php:1127 includes/actions.php:1209
 msgid "Remove image"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:1045 includes/actions.php:1132
+#: includes/actions.php:1146 includes/actions.php:1233
 msgid "Choose an image"
 msgstr ""
 
-#: includes/actions.php:1047 includes/actions.php:1134
+#: includes/actions.php:1148 includes/actions.php:1235
 msgid "Use image"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:1341
+#: includes/actions.php:1442
 msgid "Related Courses"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:1404 templates/course/start/default.php:122
+#: includes/actions.php:1505 templates/course/start/default.php:122
 msgid "Course Curriculum Not Set"
 msgstr "课程体系未设置"
 
 # @ vibe
-#: includes/actions.php:1535
+#: includes/actions.php:1636
 msgid "Unit"
 msgstr ""
 
-#: includes/actions.php:1556 includes/actions.php:1607
+#: includes/actions.php:1657 includes/actions.php:1708
 #, php-format
 msgid "Next %s will be available in %s"
 msgstr ""
 
-#: includes/actions.php:1613 includes/actions.php:1620
+#: includes/actions.php:1714 includes/actions.php:1721
 #, php-format
 msgid "Requested %s can not be accessed."
 msgstr ""
 
-#: includes/actions.php:1675
+#: includes/actions.php:1776
 msgctxt "ajax signon message"
 msgid "Missing data."
 msgstr ""
 
-#: includes/actions.php:1682
+#: includes/actions.php:1783
 msgctxt "ajax signon message"
 msgid "Missing security."
 msgstr ""
 
-#: includes/actions.php:1692
+#: includes/actions.php:1793
 msgctxt "ajax signon message"
 msgid "Invalid username/email."
 msgstr ""
 
-#: includes/actions.php:1738
+#: includes/actions.php:1839
 msgctxt "ajax signon message"
 msgid "Invalid password."
 msgstr ""
 
-#: includes/actions.php:1777 includes/actions.php:1788
+#: includes/actions.php:1878 includes/actions.php:1889
 msgctxt "back to login in login panel"
 msgid "back to login"
 msgstr ""
 
-#: includes/actions.php:1790
+#: includes/actions.php:1891
 msgctxt "fotgot password email placeholder"
 msgid "Enter registered email id"
 msgstr ""
 
-#: includes/actions.php:1791
+#: includes/actions.php:1892
 msgctxt "forgot password form submit label"
 msgid "Get reset password link"
 msgstr ""
 
-#: includes/actions.php:1801
+#: includes/actions.php:1902
 msgctxt "forgot password email message"
 msgid "Missing email."
 msgstr ""
 
-#: includes/actions.php:1806
+#: includes/actions.php:1907
 msgctxt "forgot password email message"
 msgid "Missing security."
 msgstr ""
 
-#: includes/actions.php:1811
+#: includes/actions.php:1912
 msgctxt "forgot password email message"
 msgid "No registered user found with this mail id !"
 msgstr ""
 
-#: includes/actions.php:1827
+#: includes/actions.php:1928
 msgid "Password reset is not allowed for this user"
 msgstr ""
 
-#: includes/actions.php:1830
+#: includes/actions.php:1931
 msgid "Password reset is not allowed."
 msgstr ""
 
-#: includes/actions.php:1860
+#: includes/actions.php:1961
 msgid "The e-mail could not be sent."
 msgstr ""
 
-#: includes/actions.php:1860
+#: includes/actions.php:1961
 msgid "Possible reason: your host may have disabled the mail() function."
 msgstr ""
 
-#: includes/actions.php:1862
+#: includes/actions.php:1963
 msgctxt "forgot password mail message"
 msgid "Please check your email for password recovery !"
 msgstr ""
 
 # @ vibe
-#: includes/actions.php:1872
+#: includes/actions.php:1973
 msgid "Hit enter to search..."
 msgstr "回车进行搜索..."
 
-#: includes/actions.php:1897
+#: includes/actions.php:1998
 msgctxt "custom tabs for tabbed layout"
 msgid "home"
 msgstr ""
 
-#: includes/actions.php:1898
+#: includes/actions.php:1999
 msgctxt "custom tabs for tabbed layout"
 msgid "curriculum"
 msgstr ""
 
-#: includes/actions.php:1903
+#: includes/actions.php:2004
 msgctxt "custom tabs for tabbed layout"
 msgid "reviews"
 msgstr ""
@@ -2022,13 +2618,13 @@ msgstr ""
 # @ vibe
 #: includes/customizer/config.php:44 includes/customizer/config.php:125
 #: includes/customizer/config.php:141
-#: includes/widgets/custom_bp_widgets.php:438 vibe-options.php:606
-#: vibe-options.php:1113
+#: includes/widgets/custom_bp_widgets.php:438 vibe-options.php:615
+#: vibe-options.php:1122
 msgid "Default"
 msgstr ""
 
 # @ vibe
-#: includes/customizer/config.php:45 vibe-options.php:1010
+#: includes/customizer/config.php:45 vibe-options.php:1019
 msgid "Minimal"
 msgstr "最小"
 
@@ -2111,7 +2707,7 @@ msgid "Single Sidebar Footer"
 msgstr ""
 
 # @ vibe
-#: includes/customizer/config.php:541 vibe-options.php:974
+#: includes/customizer/config.php:541 vibe-options.php:983
 msgid "Footer Bottom"
 msgstr "底部下方"
 
@@ -2171,43 +2767,43 @@ msgid "Since: "
 msgstr ""
 
 # @ vibe
-#: includes/extras.php:361 includes/func.php:1700
+#: includes/extras.php:361 includes/func.php:1701
 msgid "ID"
 msgstr "ID"
 
 # @ vibe
-#: includes/filters.php:332
+#: includes/filters.php:333
 msgid "Image"
 msgstr ""
 
 # @ vibe
-#: includes/filters.php:333 includes/widgets/custom_widgets.php:318
+#: includes/filters.php:334 includes/widgets/custom_widgets.php:318
 msgid "Order"
 msgstr "订购"
 
-#: includes/filters.php:452
+#: includes/filters.php:453
 msgid "Upload Title Background"
 msgstr ""
 
-#: includes/filters.php:453
+#: includes/filters.php:454
 msgid "Upload a background image for title"
 msgstr ""
 
 # @ vibe
-#: includes/filters.php:454
+#: includes/filters.php:455
 msgid "Upload title image."
 msgstr ""
 
-#: includes/filters.php:465
+#: includes/filters.php:466
 msgid "Title Background Image"
 msgstr ""
 
-#: includes/filters.php:466
+#: includes/filters.php:467
 msgid "Add title background image"
 msgstr ""
 
 # @ vibe
-#: includes/filters.php:491
+#: includes/filters.php:492
 #, php-format
 msgctxt "Directory Title format"
 msgid "%s Directory - %s"
@@ -2262,557 +2858,557 @@ msgid "Linkage"
 msgstr "链接"
 
 # @ vibe
-#: includes/func.php:148
+#: includes/func.php:146
 msgid "Discussion"
 msgstr "讨论"
 
 # @ vibe
-#: includes/func.php:156
+#: includes/func.php:154
 msgid "Manage"
 msgstr "管理"
 
 # @ vibe
-#: includes/func.php:193
+#: includes/func.php:190
 #, php-format
 msgid "Load more (<span>%s</span>)"
 msgstr "载入更多 (<span>%s</span>)"
 
 # @ vibe
-#: includes/func.php:198
+#: includes/func.php:195
 msgid "Ask Question"
 msgstr "提问"
 
 # @ vibe
-#: includes/func.php:201
+#: includes/func.php:198
 msgid "Post Question"
 msgstr "发布问题"
 
 # @ vibe
-#: includes/func.php:248 includes/widgets/twitter.php:312
+#: includes/func.php:245 includes/widgets/twitter.php:312
 #, php-format
 msgid "%s ago"
 msgstr "%s 之前"
 
 # @ vibe
-#: includes/func.php:253 includes/init.php:732 includes/ratings.php:270
+#: includes/func.php:250 includes/init.php:735 includes/ratings.php:270
 msgid "(Edit)"
 msgstr ""
 
 # @ vibe
-#: includes/func.php:258 includes/init.php:736 includes/ratings.php:274
+#: includes/func.php:255 includes/init.php:739 includes/ratings.php:274
 msgid "Your comment is awaiting moderation."
 msgstr "您的评论正在等待审核。"
 
-#: includes/func.php:262
+#: includes/func.php:259
 msgid "REPLY"
 msgstr "回复"
 
 # @ vibe
-#: includes/func.php:282
+#: includes/func.php:279
 msgid "SEATS LEFT"
 msgstr "剩余座位"
 
 # @ vibe
-#: includes/func.php:303 includes/func.php:352
+#: includes/func.php:300 includes/func.php:349
 msgid "COURSE STARTS IN "
 msgstr "课程开始日期"
 
 # @ vibe
-#: includes/func.php:320
+#: includes/func.php:317
 msgid "STARTS IN "
 msgstr "开始日期"
 
 # @ vibe
-#: includes/func.php:422
+#: includes/func.php:419
 msgid "UNLIMITED ACCESS"
 msgstr "无限制访问"
 
 # @ vibe
-#: includes/func.php:450
+#: includes/func.php:447
 msgid "UNLIMITED TIME"
 msgstr "无限制时间"
 
 # @ vibe
-#: includes/func.php:497
+#: includes/func.php:494
 msgid "FINISH ASSIGNMENT TO MARK UNIT COMPLETE"
 msgstr "完成作业以便标记单元完成"
 
 # @ vibe
-#: includes/func.php:520
+#: includes/func.php:517
 msgid "Finish Video/Audio to mark this unit complete"
 msgstr "完成视频/音频以便标记单元完成"
 
 # @ vibe
-#: includes/func.php:520 templates/course/start/default.php:173
+#: includes/func.php:517 templates/course/start/default.php:173
 msgid "Mark this Unit Complete"
 msgstr "标记本单元已完成"
 
 # @ vibe
-#: includes/func.php:620
+#: includes/func.php:617
 msgid "Setup Menus"
 msgstr "安装菜单"
 
 # @ vibe
-#: includes/func.php:678
+#: includes/func.php:675
 msgid "SOME ISSUE OCCURED WHILE REMOVING STUDENT FROM COURSES"
 msgstr "从课程中移除学生时遇到一些问题"
 
 # @ vibe
-#: includes/func.php:709 includes/pmpro-connect.php:162
+#: includes/func.php:706 includes/pmpro-connect.php:162
 msgid "TAKE THIS COURSE"
 msgstr "选课"
 
 # @ vibe
-#: includes/func.php:787 includes/func.php:1072
+#: includes/func.php:784 includes/func.php:1069
 msgid "Page"
 msgstr "页面"
 
 # @ vibe
-#: includes/func.php:787
+#: includes/func.php:784
 msgid "of"
 msgstr "之"
 
 # @ vibe
-#: includes/func.php:788
+#: includes/func.php:785
 msgid "First"
 msgstr "第一页"
 
 # @ vibe
-#: includes/func.php:789
+#: includes/func.php:786
 msgid "Previous"
 msgstr "上一页"
 
 # @ vibe
-#: includes/func.php:799
+#: includes/func.php:796
 msgid "Next"
 msgstr "下一页"
 
 # @ vibe
-#: includes/func.php:800
+#: includes/func.php:797
 msgid "Last"
 msgstr "最后一页"
 
 # @ vibe
-#: includes/func.php:855 single-sfwd-courses.php:51
+#: includes/func.php:852 single-sfwd-courses.php:51
 msgid "Home"
 msgstr "首页"
 
 # @ vibe
-#: includes/func.php:930
+#: includes/func.php:927
 msgid "Attachment"
 msgstr "附件"
 
 # @ vibe
-#: includes/func.php:1100 vibe-options.php:754
+#: includes/func.php:1097 vibe-options.php:763
 msgid "Seconds"
 msgstr "秒"
 
 # @ vibe
-#: includes/func.php:1101 vibe-options.php:755
+#: includes/func.php:1098 vibe-options.php:764
 msgid "Minutes"
 msgstr "分"
 
 # @ vibe
-#: includes/func.php:1102 vibe-options.php:756
+#: includes/func.php:1099 vibe-options.php:765
 msgid "Hours"
 msgstr "小时"
 
 # @ vibe
-#: includes/func.php:1103 vibe-options.php:757
+#: includes/func.php:1100 vibe-options.php:766
 msgid "Days"
 msgstr "天"
 
 # @ vibe
-#: includes/func.php:1104 vibe-options.php:758
+#: includes/func.php:1101 vibe-options.php:767
 msgid "Weeks"
 msgstr "周"
 
 # @ vibe
-#: includes/func.php:1105 vibe-options.php:759
+#: includes/func.php:1102 vibe-options.php:768
 msgid "Months"
 msgstr "月"
 
 # @ vibe
-#: includes/func.php:1106 vibe-options.php:760
+#: includes/func.php:1103 vibe-options.php:769
 msgid "Years"
 msgstr "年"
 
 # @ vibe
-#: includes/func.php:1224 includes/func.php:1241
+#: includes/func.php:1225 includes/func.php:1242
 msgid "Requires completion of course : "
 msgstr "要求完成课程："
 
 # @ vibe
-#: includes/func.php:1246
+#: includes/func.php:1247
 msgid "All seats in course are full "
 msgstr "课程已满座"
 
-#: includes/func.php:1249
+#: includes/func.php:1250
 msgid "Requested resource is not accessible "
 msgstr "请求的资源无法访问"
 
 # @ vibe
-#: includes/func.php:1252
+#: includes/func.php:1253
 msgid " LOGIN"
 msgstr "登录"
 
 # @ vibe
-#: includes/func.php:1252
+#: includes/func.php:1253
 msgid " REGISTER NOW"
 msgstr "现在注册"
 
 # @ vibe
-#: includes/func.php:1254
+#: includes/func.php:1255
 msgid "You must be logged in to take this course "
 msgstr "您必须登录后才能选课"
 
 # @ vibe
-#: includes/func.php:1265
+#: includes/func.php:1266
 msgid "Add Students to Course"
 msgstr "添加学生到课程中"
 
 # @ vibe
-#: includes/func.php:1274
+#: includes/func.php:1275
 msgid "Assign Badges/Certificates to Students"
 msgstr "给学生颁发徽章/证书"
 
 # @ vibe
-#: includes/func.php:1283
+#: includes/func.php:1284
 msgid "Extend Subscription"
 msgstr "延长订阅持续时间"
 
 # @ vibe
-#: includes/func.php:1292
+#: includes/func.php:1293
 msgid "Change Course Status"
 msgstr "修改课程状态"
 
-#: includes/func.php:1304
+#: includes/func.php:1305
 msgid "Security check failed !"
 msgstr "安全检查失败！"
 
-#: includes/func.php:1304
+#: includes/func.php:1305
 msgid "Security Error"
 msgstr "安全性错误"
 
 # @ vibe
-#: includes/func.php:1458
+#: includes/func.php:1459
 msgid "COURSE SUBSCRIBED FOR "
 msgstr "课程订阅给"
 
 # @ vibe
-#: includes/func.php:1460
+#: includes/func.php:1461
 msgid "SUBSCRIBED FOR FULL COURSE"
 msgstr "订阅完整课程"
 
 # @ vibe
-#: includes/func.php:1466
+#: includes/func.php:1467
 msgid "Courses Subscribed"
 msgstr "课程已订阅"
 
 # @ vibe
-#: includes/func.php:1468
+#: includes/func.php:1469
 msgid "COURSE"
 msgstr "课程"
 
 # @ vibe
-#: includes/func.php:1469
+#: includes/func.php:1470
 msgid "SUBSCRIPTION"
 msgstr "订阅"
 
 # @ vibe
-#: includes/func.php:1472
+#: includes/func.php:1473
 msgid "START COURSE"
 msgstr "开始课程"
 
 # @ vibe
-#: includes/func.php:1475
+#: includes/func.php:1476
 msgid "WAITING FOR ORDER CONFIRMATION TO START COURSE"
 msgstr "等待确认订单以开始课程"
 
 # @ vibe
-#: includes/func.php:1477
+#: includes/func.php:1478
 msgid "WAITING FOR ADMIN APPROVAL"
 msgstr "等待管理员审核"
 
 # @ vibe
-#: includes/func.php:1694
+#: includes/func.php:1695
 msgid "Download Stats"
 msgstr "下载统计"
 
 # @ vibe
-#: includes/func.php:1698
+#: includes/func.php:1699
 msgid "Date (Joining)"
 msgstr "日期 (加入)"
 
 # @ vibe
-#: includes/func.php:1699
+#: includes/func.php:1700
 msgid "Date (Finish)"
 msgstr "日期 (完成)"
 
 # @ vibe
-#: includes/func.php:1701
+#: includes/func.php:1702
 msgid "Student Name"
 msgstr "学生姓名"
 
 # @ vibe
-#: includes/func.php:1702
+#: includes/func.php:1703
 msgid "Units Status"
 msgstr "单元状态"
 
 # @ vibe
-#: includes/func.php:1703
+#: includes/func.php:1704
 msgid "Quiz scores"
 msgstr "测试成绩"
 
 # @ vibe
-#: includes/func.php:1704
+#: includes/func.php:1705
 msgid "Badge"
 msgstr "徽章"
 
 # @ vibe
-#: includes/func.php:1705
+#: includes/func.php:1706
 msgid "Certificate"
 msgstr "证书"
 
 # @ vibe
-#: includes/func.php:1706
+#: includes/func.php:1707
 msgid "Course Marks"
 msgstr "课程分数"
 
 # @ vibe
-#: includes/func.php:1713
+#: includes/func.php:1714
 msgid "All students"
 msgstr "全部学生"
 
 # @ vibe
-#: includes/func.php:1714
+#: includes/func.php:1715
 msgid "Students who finished the course"
 msgstr "完成课程的学生"
 
 # @ vibe
-#: includes/func.php:1715
+#: includes/func.php:1716
 msgid "Students pursuing the course"
 msgstr "继续课程的学生"
 
 # @ vibe
-#: includes/func.php:1716
+#: includes/func.php:1717
 msgid "Students who got a badge in the course"
 msgstr "获得徽章的学生"
 
 # @ vibe
-#: includes/func.php:1717
+#: includes/func.php:1718
 msgid "Students who got a certificate in the course"
 msgstr "获得证书的学生"
 
 # @ vibe
-#: includes/func.php:1720
+#: includes/func.php:1721
 msgid "Process Stats"
 msgstr "处理统计"
 
 # @ vibe
-#: includes/init.php:280
+#: includes/init.php:283
 #, php-format
 msgid "Page %s"
 msgstr "页面 %s"
 
 # @ vibe
-#: includes/init.php:294
+#: includes/init.php:297
 msgid ""
 "LearnDash Active. You may disable following plugins to avoid duplicate "
 "functionality in the setup"
 msgstr "LearnDash 激活中。您需要禁用以下插件以防设置时出现重复功能"
 
 # @ vibe
-#: includes/init.php:295
+#: includes/init.php:298
 msgid "Go to WP Admin -> Plugins -> Installed Plugins"
 msgstr "前往WP管理->插件->已安装的插件"
 
 # @ vibe
-#: includes/init.php:297
+#: includes/init.php:300
 msgid "Deactivate Vibe Custom Types"
 msgstr "停用 Vibe Custom Types"
 
 # @ vibe
-#: includes/init.php:298
+#: includes/init.php:301
 msgid "Deactivate Vibe Course Module"
 msgstr "停用 Vibe Course Module"
 
 # @ vibe
-#: includes/init.php:556
+#: includes/init.php:559
 msgid "Course Announcement"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:557
+#: includes/init.php:560
 msgid "Course News"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:558
+#: includes/init.php:561
 msgid "Course subscribed"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:559
+#: includes/init.php:562
 msgid "Course started"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:560
+#: includes/init.php:563
 msgid "Course submitted"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:561
+#: includes/init.php:564
 msgid "Course Evaluated"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:562
+#: includes/init.php:565
 msgid "Course Reset"
 msgstr ""
 
-#: includes/init.php:563
+#: includes/init.php:566
 msgid "Course Retake"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:564
+#: includes/init.php:567
 msgid "Student Badge"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:565
+#: includes/init.php:568
 msgid "Student Certificate"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:566
+#: includes/init.php:569
 msgid "Course reviewed"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:567
+#: includes/init.php:570
 msgid "Student Removed"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:568
+#: includes/init.php:571
 msgid "Course Code applied"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:569
+#: includes/init.php:572
 msgid "Course subscription renewed"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:570
+#: includes/init.php:573
 msgid "Unit Completed"
 msgstr ""
 
 # @ tgmpa
-#: includes/init.php:571
+#: includes/init.php:574
 msgid "Unit comment added"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:572 single-quiz.php:52
+#: includes/init.php:575 single-quiz.php:52
 #: templates/course/start/default.php:170
 msgid "Start Quiz"
 msgstr "开始测试"
 
-#: includes/init.php:573
+#: includes/init.php:576
 msgid "Submit Quiz"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:574
+#: includes/init.php:577
 msgid "Quiz evaluated"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:575
+#: includes/init.php:578
 msgid "Start Assignment"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:577
+#: includes/init.php:580
 msgid "Assignment Evaluated"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:670
+#: includes/init.php:673
 #, php-format
 msgid "%s posted an update in the course %s"
 msgstr ""
 
 # @ pmpro
-#: includes/init.php:685 includes/plugin-activation.php:2839
+#: includes/init.php:688 includes/plugin-activation.php:2839
 #: paid-memberships-pro/pages/billing.php:330
 msgid "Update"
 msgstr "更新"
 
-#: includes/init.php:686
+#: includes/init.php:689
 msgid "News"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:687
+#: includes/init.php:690
 msgid "Announcement"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:730 includes/ratings.php:268
+#: includes/init.php:733 includes/ratings.php:268
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
 # @ vibe
-#: includes/init.php:998
+#: includes/init.php:1001
 msgid "Setup Menus in Admin Panel"
 msgstr "在管理员面板安装菜单"
 
 # @ vibe
 # @ tgmpa
-#: includes/init.php:1283 includes/plugin-activation.php:334
+#: includes/init.php:1286 includes/plugin-activation.php:334
 msgid "Install Required Plugins"
 msgstr "安装需要的插件"
 
 # @ vibe
 # @ tgmpa
-#: includes/init.php:1284 includes/plugin-activation.php:335
+#: includes/init.php:1287 includes/plugin-activation.php:335
 msgid "Install Plugins"
 msgstr "安装插件"
 
 # @ vibe
 # @ tgmpa
-#: includes/init.php:1285 includes/plugin-activation.php:337
+#: includes/init.php:1288 includes/plugin-activation.php:337
 #, php-format
 msgid "Installing Plugin: %s"
 msgstr "安装插件：%s"
 
 # @ vibe
-#: includes/init.php:1286 includes/plugin-activation.php:340
+#: includes/init.php:1289 includes/plugin-activation.php:340
 msgid "Something went wrong with the plugin API."
 msgstr "插件 API 出现问题。"
 
 # @ vibe
-#: includes/init.php:1287 includes/plugin-activation.php:343
+#: includes/init.php:1290 includes/plugin-activation.php:343
 #, php-format
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
 msgstr[0] "这个主题需要以下插件：%1$s。"
 
 # @ vibe
-#: includes/init.php:1288 includes/plugin-activation.php:349
+#: includes/init.php:1291 includes/plugin-activation.php:349
 #, php-format
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] "这个主题推荐以下插件：%1$s。"
 
 # @ vibe
-#: includes/init.php:1289
+#: includes/init.php:1292
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to install the %s plugin. "
@@ -2826,21 +3422,21 @@ msgstr[0] ""
 "抱歉，您没有足够的权限安装 %s 插件。请联系站点的管理员来安装这些插件。"
 
 # @ vibe
-#: includes/init.php:1290 includes/plugin-activation.php:367
+#: includes/init.php:1293 includes/plugin-activation.php:367
 #, php-format
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
 msgstr[0] "下列必要的插件没有激活：%1$s。"
 
 # @ vibe
-#: includes/init.php:1291 includes/plugin-activation.php:373
+#: includes/init.php:1294 includes/plugin-activation.php:373
 #, php-format
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] "下列推荐的插件没有激活：%1$s。"
 
 # @ vibe
-#: includes/init.php:1292
+#: includes/init.php:1295
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to activate the %s "
@@ -2854,7 +3450,7 @@ msgstr[0] ""
 "抱歉，您没有足够的权限激活 %s 插件。请联系站点的管理员来激活这些插件。 "
 
 # @ vibe
-#: includes/init.php:1293 includes/plugin-activation.php:355
+#: includes/init.php:1296 includes/plugin-activation.php:355
 #, php-format
 msgid ""
 "The following plugin needs to be updated to its latest version to ensure "
@@ -2865,7 +3461,7 @@ msgid_plural ""
 msgstr[0] "下列插件需要更新到最新版以保证和本主题的最大兼容性：%1$s。"
 
 # @ vibe
-#: includes/init.php:1294
+#: includes/init.php:1297
 #, php-format
 msgid ""
 "Sorry, but you do not have the correct permissions to update the %s plugin. "
@@ -2878,32 +3474,32 @@ msgid_plural ""
 msgstr[0] "抱歉，您没有足够权限来升级 %s 插件。请联系管理员来更新这些插件。"
 
 # @ vibe
-#: includes/init.php:1295 includes/plugin-activation.php:378
+#: includes/init.php:1298 includes/plugin-activation.php:378
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] "开始安装插件"
 
 # @ vibe
-#: includes/init.php:1296
+#: includes/init.php:1299
 msgid "Activate installed plugin"
 msgid_plural "Activate installed plugins"
 msgstr[0] "激活已安装的插件"
 
 # @ vibe
 # @ tgmpa
-#: includes/init.php:1297 includes/plugin-activation.php:392
+#: includes/init.php:1300 includes/plugin-activation.php:392
 msgid "Return to Required Plugins Installer"
 msgstr "返回到必要插件的安装器"
 
 # @ vibe
 # @ tgmpa
-#: includes/init.php:1298 includes/plugin-activation.php:394
+#: includes/init.php:1301 includes/plugin-activation.php:394
 #: includes/plugin-activation.php:3275
 msgid "Plugin activated successfully."
 msgstr "成功激活插件"
 
 # @ vibe
-#: includes/init.php:1299
+#: includes/init.php:1302
 #, php-format
 msgid "All plugins installed and activated successfully. %s"
 msgstr "全部插件已成功安装并激活。%s"
@@ -3049,7 +3645,7 @@ msgstr "原始：%s"
 #: options/fields/multi_text/field_multi_text.php:39
 #: options/fields/multi_text/field_multi_text.php:48
 #: options/fields/pagebuilder_layouts/field_pagebuilder_layouts.php:44
-#: single-unit.php:153 single-unit.php:171
+#: single-unit.php:114 single-unit.php:132
 #: templates/course/start/default.php:262
 #: templates/course/start/default.php:280
 msgid "Remove"
@@ -3062,14 +3658,14 @@ msgstr "单元"
 
 # @ vibe
 #: includes/notes-discussions.php:150 includes/notes-discussions.php:342
-#: includes/notes-discussions.php:715 single-unit.php:148
+#: includes/notes-discussions.php:715 single-unit.php:109
 #: templates/course/start/default.php:257
 msgid "Make Public"
 msgstr "公开"
 
 # @ vibe
 #: includes/notes-discussions.php:154 includes/notes-discussions.php:346
-#: includes/notes-discussions.php:719 single-unit.php:149
+#: includes/notes-discussions.php:719 single-unit.php:110
 #: templates/course/start/default.php:258
 msgid "Make Private"
 msgstr "变成私有"
@@ -3078,7 +3674,7 @@ msgstr "变成私有"
 #: includes/notes-discussions.php:170 includes/notes-discussions.php:189
 #: includes/notes-discussions.php:362 includes/notes-discussions.php:381
 #: includes/notes-discussions.php:736 includes/notes-discussions.php:757
-#: single-unit.php:151 templates/course/start/default.php:260
+#: single-unit.php:112 templates/course/start/default.php:260
 msgid "Request Instructor reply"
 msgstr "要求教师回复"
 
@@ -3088,13 +3684,13 @@ msgid "No comments found"
 msgstr "未发现评论"
 
 # @ vibe
-#: includes/notes-discussions.php:399 single-unit.php:162
+#: includes/notes-discussions.php:399 single-unit.php:123
 #: templates/course/start/default.php:271
 msgid "YOU"
 msgstr "您"
 
 # @ vibe
-#: includes/notes-discussions.php:403 single-unit.php:166
+#: includes/notes-discussions.php:403 single-unit.php:127
 #: templates/course/start/default.php:275
 msgid "Add your Comment"
 msgstr "添加您的评论"
@@ -3945,7 +4541,7 @@ msgstr "进入管理员面板"
 # @ vibe
 #: includes/widgets/custom_bp_widgets.php:53
 #: includes/widgets/custom_widgets.php:51
-#: includes/widgets/custom_widgets.php:82 single.php:109
+#: includes/widgets/custom_widgets.php:82 single.php:120 single.php:146
 #: templates/login/bigdrop_login.php:23 templates/login/default_login.php:23
 #: templates/login/full_login.php:23 templates/login/modern.php:23
 #: templates/login/pop_login.php:23
@@ -4169,13 +4765,14 @@ msgstr "显示标签页"
 #: includes/widgets/custom_widgets.php:75 login-page.php:373
 #: registration/register.php:343 setup/welcome.php:384 setup/welcome.php:421
 #: setup/welcome.php:446 vibe-options.php:252 vibe-options.php:450
-#: vibe-options.php:588 vibe-options.php:597 vibe-options.php:642
-#: vibe-options.php:660 vibe-options.php:669 vibe-options.php:678
+#: vibe-options.php:588 vibe-options.php:597 vibe-options.php:606
+#: vibe-options.php:651 vibe-options.php:669 vibe-options.php:678
 #: vibe-options.php:687 vibe-options.php:696 vibe-options.php:705
-#: vibe-options.php:770 vibe-options.php:788 vibe-options.php:797
+#: vibe-options.php:714 vibe-options.php:779 vibe-options.php:797
 #: vibe-options.php:806 vibe-options.php:815 vibe-options.php:824
-#: vibe-options.php:851 vibe-options.php:1017 vibe-options.php:1090
-#: vibe-options.php:1163 vibe-options.php:1232 vibe-options.php:1241
+#: vibe-options.php:833 vibe-options.php:860 vibe-options.php:1026
+#: vibe-options.php:1099 vibe-options.php:1172 vibe-options.php:1241
+#: vibe-options.php:1250
 msgid "Yes"
 msgstr "是"
 
@@ -4183,13 +4780,14 @@ msgstr "是"
 #: includes/widgets/custom_widgets.php:76 login-page.php:374
 #: registration/register.php:344 setup/welcome.php:384 setup/welcome.php:421
 #: setup/welcome.php:446 vibe-options.php:252 vibe-options.php:450
-#: vibe-options.php:588 vibe-options.php:597 vibe-options.php:642
-#: vibe-options.php:660 vibe-options.php:669 vibe-options.php:678
+#: vibe-options.php:588 vibe-options.php:597 vibe-options.php:606
+#: vibe-options.php:651 vibe-options.php:669 vibe-options.php:678
 #: vibe-options.php:687 vibe-options.php:696 vibe-options.php:705
-#: vibe-options.php:770 vibe-options.php:788 vibe-options.php:797
+#: vibe-options.php:714 vibe-options.php:779 vibe-options.php:797
 #: vibe-options.php:806 vibe-options.php:815 vibe-options.php:824
-#: vibe-options.php:851 vibe-options.php:1017 vibe-options.php:1090
-#: vibe-options.php:1163 vibe-options.php:1232 vibe-options.php:1241
+#: vibe-options.php:833 vibe-options.php:860 vibe-options.php:1026
+#: vibe-options.php:1099 vibe-options.php:1172 vibe-options.php:1241
+#: vibe-options.php:1250
 msgid "No"
 msgstr "否"
 
@@ -4285,7 +4883,7 @@ msgstr "降序"
 
 # @ vibe
 #: includes/widgets/custom_widgets.php:324
-#: includes/widgets/custom_widgets.php:590 setup/installer/envato_setup.php:671
+#: includes/widgets/custom_widgets.php:590 setup/installer/envato_setup.php:673
 msgid "Style"
 msgstr "样式"
 
@@ -4369,7 +4967,7 @@ msgstr "标题"
 #: includes/widgets/custom_widgets.php:560 vibe-options.php:340
 #: vibe-options.php:357 vibe-options.php:366 vibe-options.php:391
 #: vibe-options.php:416 vibe-options.php:459 vibe-options.php:469
-#: vibe-options.php:478 vibe-options.php:714
+#: vibe-options.php:478 vibe-options.php:723
 msgid "All"
 msgstr "全部"
 
@@ -5215,17 +5813,17 @@ msgid "Yahoo Messenger"
 msgstr "Yahoo Messenger"
 
 # @ vibe
-#: members/single/settings/capabilities.php:31
+#: members/single/settings/capabilities.php:30
 msgid "Capabilities"
 msgstr "权限"
 
 # @ vibe
-#: members/single/settings/capabilities.php:39
+#: members/single/settings/capabilities.php:38
 msgid "This user is a spammer."
 msgstr "该用户是垃圾信息发送者。"
 
 # @ vibe
-#: members/single/settings/capabilities.php:43
+#: members/single/settings/capabilities.php:42
 msgid "Save"
 msgstr "保存"
 
@@ -5297,21 +5895,21 @@ msgid "Repeat New Password"
 msgstr "重复新密码"
 
 # @ vibe
-#: members/single/settings/notifications.php:30
+#: members/single/settings/notifications.php:31
 msgid "Email Notification"
 msgstr "邮件通知"
 
 # @ vibe
-#: members/single/settings/notifications.php:35
+#: members/single/settings/notifications.php:36
 msgid "Send an email notice when:"
 msgstr "对下列情况发送邮件通知："
 
 # @ buddypress
-#: members/single/settings/profile.php:41
+#: members/single/settings/profile.php:43
 msgid "Visibility"
 msgstr "可见性"
 
-#: members/single/settings/profile.php:68
+#: members/single/settings/profile.php:70
 msgid "Save Settings"
 msgstr "保存设置"
 
@@ -6234,13 +6832,14 @@ msgid "Tax"
 msgstr "税"
 
 # @ pmpro
-#: paid-memberships-pro/pages/invoice.php:82 woocommerce/cart/cart.php:128
+#: paid-memberships-pro/pages/invoice.php:82 woocommerce/cart/cart.php:289
 msgid "Coupon"
 msgstr "优惠券"
 
 # @ pmpro
 # @ vibe
-#: paid-memberships-pro/pages/invoice.php:84 woocommerce/cart/cart.php:30
+#: paid-memberships-pro/pages/invoice.php:84 woocommerce/cart/cart.php:34
+#: woocommerce/cart/cart.php:115 woocommerce/cart/cart.php:191
 msgid "Total"
 msgstr "总计"
 
@@ -6280,7 +6879,8 @@ msgid "Back to course"
 msgstr "返回到课程"
 
 # @ pmpro
-#: paid-memberships-pro/pages/levels.php:35 woocommerce/cart/cart.php:28
+#: paid-memberships-pro/pages/levels.php:35 woocommerce/cart/cart.php:32
+#: woocommerce/cart/cart.php:92 woocommerce/cart/cart.php:189
 msgid "Price"
 msgstr "价格"
 
@@ -6478,58 +7078,58 @@ msgid ""
 "course. "
 msgstr ""
 
-#: setup/installer/envato_setup.php:393 setup/installer/envato_setup.php:413
-#: setup/installer/envato_setup.php:425
+#: setup/installer/envato_setup.php:395 setup/installer/envato_setup.php:415
+#: setup/installer/envato_setup.php:427
 msgid "This is the MegaMenu sidebar"
 msgstr ""
 
-#: setup/installer/envato_setup.php:402
+#: setup/installer/envato_setup.php:404
 msgid "This is the MegaMenu2 sidebar"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:613 setup/installer/envato_setup.php:618
+#: setup/installer/envato_setup.php:615 setup/installer/envato_setup.php:620
 msgid "Setup Wizard"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:638
+#: setup/installer/envato_setup.php:640
 msgid "Introduction"
 msgstr ""
 
-#: setup/installer/envato_setup.php:645
+#: setup/installer/envato_setup.php:647
 msgid "Start"
 msgstr ""
 
 # @ tgmpa
-#: setup/installer/envato_setup.php:652
+#: setup/installer/envato_setup.php:654
 msgid "Plugins"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:659
+#: setup/installer/envato_setup.php:661
 msgid "Pages"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:677
+#: setup/installer/envato_setup.php:679
 msgid "Content"
 msgstr ""
 
-#: setup/installer/envato_setup.php:682
+#: setup/installer/envato_setup.php:684
 msgid "Design"
 msgstr ""
 
-#: setup/installer/envato_setup.php:687
+#: setup/installer/envato_setup.php:689
 msgid "Ready!"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:698
+#: setup/installer/envato_setup.php:700
 msgid "Select features for this site"
 msgstr ""
 
-#: setup/installer/envato_setup.php:700
+#: setup/installer/envato_setup.php:702
 msgid ""
 "Select the features you need for your site. The features here are pre-"
 "configured, so the next steps would be based on the selection you make here. "
@@ -6538,89 +7138,89 @@ msgid ""
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:747 setup/installer/envato_setup.php:883
+#: setup/installer/envato_setup.php:749 setup/installer/envato_setup.php:885
 #: setup/installer/envato_setup.php:1447 setup/installer/envato_setup.php:1666
-#: setup/installer/envato_setup.php:3320 setup/installer/envato_setup.php:3435
-#: setup/installer/envato_setup.php:3514
+#: setup/installer/envato_setup.php:3334 setup/installer/envato_setup.php:3449
+#: setup/installer/envato_setup.php:3528
 msgid "Continue"
 msgstr ""
 
-#: setup/installer/envato_setup.php:749 setup/installer/envato_setup.php:885
+#: setup/installer/envato_setup.php:751 setup/installer/envato_setup.php:887
 #: setup/installer/envato_setup.php:1449 setup/installer/envato_setup.php:1668
-#: setup/installer/envato_setup.php:3322 setup/installer/envato_setup.php:3437
-#: setup/installer/envato_setup.php:3530
+#: setup/installer/envato_setup.php:3336 setup/installer/envato_setup.php:3451
+#: setup/installer/envato_setup.php:3544 setup/installer/envato_setup.php:3554
 msgid "Skip this step"
 msgstr ""
 
-#: setup/installer/envato_setup.php:802
+#: setup/installer/envato_setup.php:804
 msgid "...verifying"
 msgstr ""
 
-#: setup/installer/envato_setup.php:844
+#: setup/installer/envato_setup.php:846
 msgid "Set required pages"
 msgstr ""
 
-#: setup/installer/envato_setup.php:845
+#: setup/installer/envato_setup.php:847
 msgid ""
 "Automatically configure and set required pages for WPLMS. There are "
 "important pages required for LMS to work properly. We recommend everyone "
 "using the LMS to setup these pages."
 msgstr ""
 
-#: setup/installer/envato_setup.php:1062
+#: setup/installer/envato_setup.php:1064
 msgid "Theme &rsaquo; Setup Wizard"
 msgstr ""
 
 # @ tgmpa
-#: setup/installer/envato_setup.php:1094
+#: setup/installer/envato_setup.php:1096
 msgid "Return to the WordPress Dashboard"
 msgstr ""
 
-#: setup/installer/envato_setup.php:1174
+#: setup/installer/envato_setup.php:1176
 #, php-format
 msgid "Welcome to the setup wizard for %s."
 msgstr ""
 
-#: setup/installer/envato_setup.php:1175
+#: setup/installer/envato_setup.php:1177
 msgid ""
 "It looks like you may have recently upgraded to this theme. Great! This "
 "setup wizard will help ensure all the default settings are correct. It will "
 "also show some information about your new website and support options."
 msgstr ""
 
-#: setup/installer/envato_setup.php:1178 setup/installer/envato_setup.php:1279
+#: setup/installer/envato_setup.php:1180 setup/installer/envato_setup.php:1279
 msgid "Let's Go!"
 msgstr ""
 
-#: setup/installer/envato_setup.php:1180 setup/installer/envato_setup.php:1281
+#: setup/installer/envato_setup.php:1182 setup/installer/envato_setup.php:1281
 msgid "Not right now"
 msgstr ""
 
-#: setup/installer/envato_setup.php:1185
+#: setup/installer/envato_setup.php:1187
 #, php-format
 msgid "Welcome to the setup wizard for %s Theme."
 msgstr ""
 
-#: setup/installer/envato_setup.php:1186
+#: setup/installer/envato_setup.php:1188
 msgid ""
 "It looks like you have already run the setup wizard. Below are some options: "
 msgstr ""
 
-#: setup/installer/envato_setup.php:1190
+#: setup/installer/envato_setup.php:1192
 msgid "Run Setup Wizard Again"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:1208
+#: setup/installer/envato_setup.php:1210
 msgid "WPLMS Setup Wizard"
 msgstr ""
 
-#: setup/installer/envato_setup.php:1210
+#: setup/installer/envato_setup.php:1212
 #, php-format
 msgid "Welcome to the setup wizard for WPLMS Theme. You're using %s theme."
 msgstr ""
 
-#: setup/installer/envato_setup.php:1211
+#: setup/installer/envato_setup.php:1213
 #, php-format
 msgid ""
 "Thank you for choosing the %s theme from ThemeForest. This quick setup "
@@ -6629,23 +7229,23 @@ msgid ""
 "about Help &amp; Support options. It should only take 5 minutes."
 msgstr ""
 
-#: setup/installer/envato_setup.php:1212
+#: setup/installer/envato_setup.php:1214
 msgid ""
 "No time right now? If you don't want to go through the wizard, you can skip "
 "and return to the WordPress dashboard. Come back anytime if you change your "
 "mind!"
 msgstr ""
 
-#: setup/installer/envato_setup.php:1214
+#: setup/installer/envato_setup.php:1216
 msgid "Configuration Check"
 msgstr ""
 
-#: setup/installer/envato_setup.php:1221
+#: setup/installer/envato_setup.php:1223
 msgid "PHP Memory allocation"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:1224 setup/welcome.php:413
+#: setup/installer/envato_setup.php:1226 setup/welcome.php:413
 #, php-format
 msgid ""
 "%s - We recommend setting memory to at least 128MB. See: <a href=\"%s"
@@ -6655,26 +7255,26 @@ msgstr ""
 "存</a>"
 
 # @ vibe
-#: setup/installer/envato_setup.php:1235 setup/welcome.php:428
+#: setup/installer/envato_setup.php:1237 setup/welcome.php:428
 msgid "WP Max Upload Size"
 msgstr "WP 最大上传大小"
 
 # @ vibe
-#: setup/installer/envato_setup.php:1239 setup/welcome.php:433
+#: setup/installer/envato_setup.php:1241 setup/welcome.php:433
 msgid "PHP Post Max Size"
 msgstr "PHP Post Max Size"
 
 # @ vibe
-#: setup/installer/envato_setup.php:1244 setup/welcome.php:437
+#: setup/installer/envato_setup.php:1246 setup/welcome.php:437
 msgid "PHP Time Limit"
 msgstr "PHP 时间限制"
 
 # @ vibe
-#: setup/installer/envato_setup.php:1247 setup/welcome.php:441
+#: setup/installer/envato_setup.php:1249 setup/welcome.php:441
 msgid "PHP Max Input Vars"
 msgstr "PHP Max Input Vars"
 
-#: setup/installer/envato_setup.php:1262
+#: setup/installer/envato_setup.php:1263
 msgctxt "installer label"
 msgid "File Permissions Check"
 msgstr ""
@@ -6790,7 +7390,7 @@ msgid "Installing options panel settings."
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:1575 vibe-options.php:888
+#: setup/installer/envato_setup.php:1575 vibe-options.php:897
 msgid "Customizer"
 msgstr "定制器"
 
@@ -6877,44 +7477,44 @@ msgid "Error"
 msgstr ""
 
 # @ wordpress-importer
-#: setup/installer/envato_setup.php:2689 setup/installer/envato_setup.php:3082
+#: setup/installer/envato_setup.php:2693 setup/installer/envato_setup.php:3094
 #: setup/vibe_importer/wordpress-importer.php:1004
 msgid "Remote server did not respond"
 msgstr "远程服务器无响应"
 
 # @ wordpress-importer
-#: setup/installer/envato_setup.php:2697
+#: setup/installer/envato_setup.php:2701
 msgid "Remote file is incorrect size"
 msgstr ""
 
 # @ wordpress-importer
-#: setup/installer/envato_setup.php:2703
+#: setup/installer/envato_setup.php:2707
 #: setup/vibe_importer/wordpress-importer.php:1023
 msgid "Zero size file downloaded"
 msgstr "下载的文件 0 大小"
 
 # @ wordpress-importer
-#: setup/installer/envato_setup.php:2709
+#: setup/installer/envato_setup.php:2713
 #: setup/vibe_importer/wordpress-importer.php:1029
 #, php-format
 msgid "Remote file is too large, limit is %s"
 msgstr "远程文件过大，限制为 %s"
 
 # @ vibe
-#: setup/installer/envato_setup.php:3291
+#: setup/installer/envato_setup.php:3304
 msgid "Site Style"
 msgstr ""
 
-#: setup/installer/envato_setup.php:3293
+#: setup/installer/envato_setup.php:3306
 msgid "Please choose your site style below."
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3351
+#: setup/installer/envato_setup.php:3365
 msgid "Design and Layouts"
 msgstr ""
 
-#: setup/installer/envato_setup.php:3353
+#: setup/installer/envato_setup.php:3367
 #, php-format
 msgid ""
 "Please add your logo below. For best results, the logo should be a "
@@ -6924,80 +7524,80 @@ msgid ""
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3381
+#: setup/installer/envato_setup.php:3395
 msgid "Upload New Logo"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3486
+#: setup/installer/envato_setup.php:3500
 msgid "Theme Updates"
 msgstr ""
 
-#: setup/installer/envato_setup.php:3519
+#: setup/installer/envato_setup.php:3533
 msgid ""
 "Please login using your ThemeForest account to enable Theme Updates. We "
 "update themes when a new feature is added or a bug is fixed. It is highly "
 "recommended to enable Theme Updates."
 msgstr ""
 
-#: setup/installer/envato_setup.php:3528
+#: setup/installer/envato_setup.php:3542
 msgid "Login with Envato"
 msgstr ""
 
-#: setup/installer/envato_setup.php:3580
+#: setup/installer/envato_setup.php:3596
 msgid "Your Website is Ready!"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3590
+#: setup/installer/envato_setup.php:3606
 msgid "Next Steps"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3594
+#: setup/installer/envato_setup.php:3610
 msgid "Follow @vibethemes on Twitter"
 msgstr ""
 
-#: setup/installer/envato_setup.php:3597
+#: setup/installer/envato_setup.php:3613
 msgid "View your new website!"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3602
+#: setup/installer/envato_setup.php:3618
 msgid "More Resources"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3605
+#: setup/installer/envato_setup.php:3621
 msgid "Read the Theme Documentation"
 msgstr ""
 
-#: setup/installer/envato_setup.php:3608
+#: setup/installer/envato_setup.php:3624
 msgid "Learn how to use WordPress"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3611
+#: setup/installer/envato_setup.php:3627
 msgid "Leave an Item Rating"
 msgstr ""
 
-#: setup/installer/envato_setup.php:3613
+#: setup/installer/envato_setup.php:3629
 msgid "Get Help and Support"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3673
+#: setup/installer/envato_setup.php:3689
 #, php-format
 msgid "Something went wrong while trying to retrieve oauth token: %s"
 msgstr ""
 
-#: setup/installer/envato_setup.php:3690
+#: setup/installer/envato_setup.php:3706
 #, php-format
 msgid "Login for %s updates"
 msgstr ""
 
 # @ vibe
-#: setup/installer/envato_setup.php:3697
+#: setup/installer/envato_setup.php:3713
 msgid "oAuth Login"
 msgstr ""
 
@@ -7850,8 +8450,8 @@ msgid "Check Quiz Results"
 msgstr "查看测试结果"
 
 # @ vibe
-#: single-quiz.php:42 single-unit.php:45 single-wplms-assignment.php:59
-#: single-wplms-assignment.php:64 single-wplms-assignment.php:67
+#: single-quiz.php:42 single-unit.php:45 single-wplms-assignment.php:63
+#: single-wplms-assignment.php:68 single-wplms-assignment.php:71
 msgid "Back to Course"
 msgstr "返回到课程"
 
@@ -7876,37 +8476,27 @@ msgid "Course Info"
 msgstr "课程信息"
 
 # @ vibe
-#: single-unit.php:119
-msgid "Attachments"
-msgstr "附件"
-
-# @ vibe
-#: single-unit.php:127
-msgid "Have Questions ? Ask in the Unit Forums"
-msgstr "有问题？可在单元论坛中提问"
-
-# @ vibe
-#: single-unit.php:131 templates/course/start/default.php:240
+#: single-unit.php:92 templates/course/start/default.php:240
 msgid "SEE ALL"
 msgstr "查看全部"
 
 # @ vibe
-#: single-unit.php:152 templates/course/start/default.php:261
+#: single-unit.php:113 templates/course/start/default.php:261
 msgid "Open in Popup"
 msgstr "在弹出窗口中打开"
 
 # @ vibe
-#: single-unit.php:159
+#: single-unit.php:120
 msgid "Add a note"
 msgstr "添加笔记"
 
 # @ vibe
-#: single-wplms-assignment.php:117
+#: single-wplms-assignment.php:121
 msgid "All Assignment Submissions"
 msgstr "提交的全部作业"
 
 # @ vibe
-#: single-wplms-assignment.php:140
+#: single-wplms-assignment.php:144
 msgid "Maximum Marks"
 msgstr "最高得分"
 
@@ -9040,15 +9630,15 @@ msgid ""
 msgstr "为公开群组设的加入群组以及为私有群组设的申请成员资格按钮"
 
 # @ vibe
-#: vibe-options.php:495 vibe-options.php:547 vibe-options.php:1041
-#: vibe-options.php:1081 vibe-options.php:1129 vibe-options.php:1145
-#: vibe-options.php:1154
+#: vibe-options.php:495 vibe-options.php:547 vibe-options.php:1050
+#: vibe-options.php:1090 vibe-options.php:1138 vibe-options.php:1154
+#: vibe-options.php:1163
 msgid "Disable"
 msgstr "停用"
 
 # @ vibe
-#: vibe-options.php:495 vibe-options.php:1041 vibe-options.php:1129
-#: vibe-options.php:1154
+#: vibe-options.php:495 vibe-options.php:1050 vibe-options.php:1138
+#: vibe-options.php:1163
 msgid "Enable"
 msgstr "启用"
 
@@ -9216,149 +9806,157 @@ msgstr ""
 msgid "Changes course tab style like that of udemy"
 msgstr ""
 
+#: vibe-options.php:602 vibe-options.php:603
+msgid "Disable right click in Course status page"
+msgstr ""
+
+#: vibe-options.php:604
+msgid "disable right click for content copy in course status page."
+msgstr ""
+
 # @ vibe
-#: vibe-options.php:602
+#: vibe-options.php:611
 msgid "Course status templates"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:603
+#: vibe-options.php:612
 msgid "Change course status page templates"
 msgstr ""
 
-#: vibe-options.php:604
+#: vibe-options.php:613
 #, php-format
 msgid "Course status page templates, %s tutorial %s"
 msgstr ""
 
-#: vibe-options.php:606
+#: vibe-options.php:615
 msgid "Full Screen"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:620
+#: vibe-options.php:629
 msgid "Admin Approval for Course"
 msgstr "管理员批准课程"
 
 # @ vibe
-#: vibe-options.php:621
+#: vibe-options.php:630
 msgid "Force instructors for Admin approval for new course"
 msgstr "强制要求新课程需要通过管理员的批准"
 
 # @ vibe
-#: vibe-options.php:622
+#: vibe-options.php:631
 msgid ""
 "Force Courses created by Instructors are first sent to Administrator for "
 "Approval."
 msgstr "要求教师创建课程时首先发送给管理员获得批准。"
 
 # @ vibe
-#: vibe-options.php:624
+#: vibe-options.php:633
 msgid "Yes, require approval"
 msgstr "是，需要批准"
 
 # @ vibe
-#: vibe-options.php:624
+#: vibe-options.php:633
 msgid "No, allow publish"
 msgstr "不，允许发布"
 
 # @ vibe
-#: vibe-options.php:629
+#: vibe-options.php:638
 msgid "Unit Locking"
 msgstr "锁定单元"
 
 # @ vibe
-#: vibe-options.php:630
+#: vibe-options.php:639
 msgid "Set access to next units based on previous unit status"
 msgstr "根据上一个单元的状态设置下一个单元的访问权限"
 
 # @ vibe
-#: vibe-options.php:631
+#: vibe-options.php:640
 msgid ""
 "Force users to complete previous units and quiz evalution before viewing the "
 "next units"
 msgstr "强制用户在浏览下一个单元前完成之前的单元和测验"
 
 # @ vibe
-#: vibe-options.php:633
+#: vibe-options.php:642
 msgid "Free Access"
 msgstr "自由访问"
 
 # @ vibe
-#: vibe-options.php:633
+#: vibe-options.php:642
 msgid "Force prev Unit/Quiz Complete"
 msgstr "强制完成上一个单元/测试"
 
 # @ vibe
-#: vibe-options.php:638
+#: vibe-options.php:647
 msgid "Unit Media Lock"
 msgstr "锁定单元媒体"
 
 # @ vibe
-#: vibe-options.php:639
+#: vibe-options.php:648
 msgid "Hide unit completion button unless the Media(Audio/Video) is complete"
 msgstr "在媒体 (音频/视频) 完成前隐藏单元完成按钮"
 
 # @ vibe
-#: vibe-options.php:640
+#: vibe-options.php:649
 msgid ""
 "Force users to view/listen the Media, Audio/Video in units before marking "
 "the unit as complete"
 msgstr "要求用户在观看完全部的视频/音频后才可以标识该课程学习完毕"
 
 # @ vibe
-#: vibe-options.php:647
+#: vibe-options.php:656
 msgid "Assignment Locking"
 msgstr "锁定作业"
 
 # @ vibe
-#: vibe-options.php:648
+#: vibe-options.php:657
 msgid "Force users to finish assignments to complete units"
 msgstr "强制用户在完成作业后才能完成单元"
 
 # @ vibe
-#: vibe-options.php:649
+#: vibe-options.php:658
 msgid ""
 "Mark complete button for a unit will appear only after student has finished "
 "the unit assignment"
 msgstr "只有在学生完成一个单元内的作业后才显示标记单元完成的按钮"
 
 # @ vibe
-#: vibe-options.php:651
+#: vibe-options.php:660
 msgid "Do not lock"
 msgstr "不锁定"
 
 # @ vibe
-#: vibe-options.php:651
+#: vibe-options.php:660
 msgid "Lock Unit Completion"
 msgstr "完成前锁定"
 
-#: vibe-options.php:656
+#: vibe-options.php:665
 msgid "Show Course Progressbar (always active)"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:657
+#: vibe-options.php:666
 msgid "Show course progress bar above course timeline"
 msgstr "在课程时间线上方显示课程进度条"
 
 # @ vibe
-#: vibe-options.php:658
+#: vibe-options.php:667
 msgid "Course Progress bar is shown in Course curriculum page"
 msgstr "课程进度条显示在课程体系页面"
 
 # @ vibe
-#: vibe-options.php:665
+#: vibe-options.php:674
 msgid "Instructors can Add Students"
 msgstr "教师可添加学生"
 
 # @ vibe
-#: vibe-options.php:666
+#: vibe-options.php:675
 msgid "Enable Instructors to be able to add students"
 msgstr "使得教师可以添加学生"
 
 # @ vibe
-#: vibe-options.php:667
+#: vibe-options.php:676
 msgid ""
 "A Bulk Action is added in Course -> Admin -> Members which enables "
 "Instructos to add students to the course"
@@ -9366,17 +9964,17 @@ msgstr ""
 "一个批量操作已添加到课程->管理->成员中，这使得教师可以将学生添加到课程中"
 
 # @ vibe
-#: vibe-options.php:674
+#: vibe-options.php:683
 msgid "Instructors can Manage Student Course status "
 msgstr "教师可以管理学生的课程状态"
 
 # @ vibe
-#: vibe-options.php:675
+#: vibe-options.php:684
 msgid "Enable Instructors to be change Students course status"
 msgstr "使得教师可以改变学生的课程状态"
 
 # @ vibe
-#: vibe-options.php:676
+#: vibe-options.php:685
 msgid ""
 "A Bulk Action is added in Course -> Admin -> Members which enables "
 "Instructos to manage students course status in the course"
@@ -9384,18 +9982,18 @@ msgstr ""
 "一个批量操作已添加到课程-》管理-》成员中，这使得教师可以管理学生的课程状态"
 
 # @ vibe
-#: vibe-options.php:683
+#: vibe-options.php:692
 msgid "Instructors can Assign/Remove Certificates & Badges"
 msgstr "教师可以颁发/移除证书 & 徽章"
 
 # @ vibe
-#: vibe-options.php:684
+#: vibe-options.php:693
 msgid ""
 "Enable Instructors to be able to assign Certificates & Badges to Students"
 msgstr "使得教师可以向学生颁发证书 & 徽章"
 
 # @ vibe
-#: vibe-options.php:685
+#: vibe-options.php:694
 msgid ""
 "A Bulk Action is added in Course -> Admin -> Members which enables "
 "Instructos to assign Certificates & Badges to Students for the course"
@@ -9403,17 +10001,17 @@ msgstr ""
 "一个批量操作已添加到课程->管理->成员中，这使得教师可以将证书或徽章授予学生"
 
 # @ vibe
-#: vibe-options.php:692
+#: vibe-options.php:701
 msgid "Instructors can Extend subscription"
 msgstr "教师可以延长订阅持续时间"
 
 # @ vibe
-#: vibe-options.php:693
+#: vibe-options.php:702
 msgid "Enable Instructors to extend subscriptions of Students"
 msgstr "使得教师可以延长学生的定义持续时间"
 
 # @ vibe
-#: vibe-options.php:694
+#: vibe-options.php:703
 msgid ""
 "A Bulk Action is added in Course -> Admin -> Members which enables "
 "Instructos to extend subscriptions of Students for the course"
@@ -9421,85 +10019,85 @@ msgstr ""
 "一个批量操作已添加到课程->管理->成员中，这使得教师可以延长学生的订阅持续时间"
 
 # @ vibe
-#: vibe-options.php:701
+#: vibe-options.php:710
 msgid "Force Instructor Content Privacy"
 msgstr "强制教师的内容隐私权"
 
 # @ vibe
-#: vibe-options.php:702
+#: vibe-options.php:711
 msgid "Select boxes show only instructor units/quizzes/questions"
 msgstr "仅显示教师自己的单元/测验/问题"
 
 # @ vibe
-#: vibe-options.php:703
+#: vibe-options.php:712
 msgid "Instructors can view titles but can not open content"
 msgstr "教师可以查看标题但无法打开内容"
 
 # @ vibe
-#: vibe-options.php:710
+#: vibe-options.php:719
 msgid "Leaderboard/Stats Visibility"
 msgstr "排行榜/统计可见性"
 
 # @ vibe
-#: vibe-options.php:711
+#: vibe-options.php:720
 msgid "Stats & Leaderboard visible to"
 msgstr "统计 & 排行榜对谁可见"
 
 # @ vibe
-#: vibe-options.php:712
+#: vibe-options.php:721
 msgid ""
 "Stats displaying average, maxmium, minimum and top 10 students for a module"
 msgstr "统计显示一个模块的平均分、最高分、最低分和前10名的学生"
 
 # @ vibe
-#: vibe-options.php:714
+#: vibe-options.php:723
 msgid "Students"
 msgstr "学生"
 
 # @ vibe
-#: vibe-options.php:714
+#: vibe-options.php:723
 msgid "All Instructors"
 msgstr "全部教师"
 
 # @ vibe
-#: vibe-options.php:714
+#: vibe-options.php:723
 msgid "Module Instructor & Administrators"
 msgstr "模块的教师 & 管理员"
 
 # @ vibe
-#: vibe-options.php:720
+#: vibe-options.php:729
 msgid "Become an Instructor Page"
 msgstr "成为教师页面"
 
 # @ vibe
-#: vibe-options.php:721
+#: vibe-options.php:730
 msgid "A Page with become a teacher form."
 msgstr "含有申请成为教师表格的页面。"
 
 # @ vibe
-#: vibe-options.php:726
+#: vibe-options.php:735
 msgid "Fallback Certificate Page"
 msgstr "备用证书的页面"
 
 # @ vibe
-#: vibe-options.php:727
+#: vibe-options.php:736
 msgid ""
 "A Page with certificate page template, Fallback to courses with no "
 "Certificate Templates."
 msgstr "使用证书模板的页面，作为没有证书模板的课程的备用。"
 
 # @ vibe
-#: vibe-options.php:732
+#: vibe-options.php:741
 msgid "Course default avatar"
 msgstr "课程默认头像"
 
 # @ vibe
-#: vibe-options.php:733
+#: vibe-options.php:742
 msgid "Default avatar for courses"
 msgstr "课程的默认头像"
 
 # @ vibe
-#: vibe-options.php:734
+#: vibe-options.php:743
 #, php-format
 msgid ""
 "This avatar is shown for courses which do not have any avatar. NOT ABLE TO "
@@ -9507,141 +10105,140 @@ msgid ""
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:740
+#: vibe-options.php:749
 msgid "Hide Courses from Directory"
 msgstr "从目录中隐藏课程"
 
 # @ vibe
-#: vibe-options.php:741
+#: vibe-options.php:750
 msgid "Hide courses from directory & pages, only accessible via direct link"
 msgstr "从目录 & 页面中隐藏课程，只能通过直接链接来访问"
 
 # @ vibe
-#: vibe-options.php:749
+#: vibe-options.php:758
 msgid "Course Duration parameter"
 msgstr "课程持续时间参数"
 
 # @ vibe
-#: vibe-options.php:750
+#: vibe-options.php:759
 msgid "Set course duration parameter"
 msgstr "设定课程持续时间参数"
 
 # @ vibe
-#: vibe-options.php:751
+#: vibe-options.php:760
 msgid "Course duration parameter for display purpose"
 msgstr "显示用的课程持续时间参数"
 
 # @ vibe
-#: vibe-options.php:753
+#: vibe-options.php:762
 msgid "Automatic"
 msgstr "自动"
 
 # @ vibe
-#: vibe-options.php:766
+#: vibe-options.php:775
 msgid "Finished Course Access"
 msgstr "查看已完成课程"
 
 # @ vibe
-#: vibe-options.php:767
+#: vibe-options.php:776
 msgid "Allow students to view Finished courses"
 msgstr "允许学生查看已完成的课程"
 
 # @ vibe
-#: vibe-options.php:768
+#: vibe-options.php:777
 msgid "Make finished courses secure area viewable to students"
 msgstr "让学生能够查看已完成课程的安全区域"
 
 # @ vibe
-#: vibe-options.php:775
+#: vibe-options.php:784
 msgid "Notes and Discussion styles"
 msgstr "笔记和讨论的样式"
 
 # @ vibe
-#: vibe-options.php:776
+#: vibe-options.php:785
 msgid "Set style for Notes & Discussion template"
 msgstr "为笔记 & 讨论模板设置样式"
 
 # @ vibe
-#: vibe-options.php:777
+#: vibe-options.php:786
 msgid "Display notes & Discussions"
 msgstr "显示笔记 & 讨论"
 
-#: vibe-options.php:779
+#: vibe-options.php:788
 msgid "Per paragraph in Unit"
 msgstr "单元中的每个段落"
 
 # @ vibe
-#: vibe-options.php:779
+#: vibe-options.php:788
 msgid "Per Unit"
 msgstr "每个单元"
 
 # @ vibe
-#: vibe-options.php:784
+#: vibe-options.php:793
 msgid "Display News"
 msgstr "显示最新消息"
 
 # @ vibe
-#: vibe-options.php:785
+#: vibe-options.php:794
 msgid "Display News section in courses"
 msgstr "课程中显示最新消息"
 
-# @ vibe
-#: vibe-options.php:786
-msgid "Display News section in courses, *requires WPLMS Dashboard plugin"
+#: vibe-options.php:795
+msgid "Display News section in courses."
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:793
+#: vibe-options.php:802
 msgid "Enable Levels"
 msgstr "启用级别"
 
 # @ vibe
-#: vibe-options.php:794
+#: vibe-options.php:803
 msgid "Enables Level taxonomy"
 msgstr "启用级别分类法"
 
-#: vibe-options.php:795
+#: vibe-options.php:804
 msgid "Enables Level taxonomy in Courses and search page "
 msgstr "在课程和搜索页面启用级别分类法"
 
-#: vibe-options.php:802
+#: vibe-options.php:811
 msgid "Enable Course Location"
 msgstr "启用课程地点"
 
-#: vibe-options.php:803
+#: vibe-options.php:812
 msgid "Location taxonomy for Courses"
 msgstr "课程的分类法条目"
 
-#: vibe-options.php:804
+#: vibe-options.php:813
 #, php-format
 msgid ""
 "Location taxonomy for Courses in Course filters and Search %s Tutorial %s"
 msgstr "课程过滤器和搜索中的课程分类法条目 %s 教程 %s"
 
 # @ vibe
-#: vibe-options.php:811
+#: vibe-options.php:820
 msgid "Enable Linkage"
 msgstr "启用链接"
 
 # @ vibe
-#: vibe-options.php:812
+#: vibe-options.php:821
 msgid "Connect Course, Units, Quiz, Questions with linkage taxonomy"
 msgstr "关联课程、单元、测试和问题到链接分类法"
 
 # @ vibe
-#: vibe-options.php:813
+#: vibe-options.php:822
 msgid "Shorten the list of units, quizzes, courses shown in dropdowns"
 msgstr "缩短下拉菜单中显示的单元、测试和课程的列表"
 
-#: vibe-options.php:820
+#: vibe-options.php:829
 msgid "Course Category/Level/Location redirect"
 msgstr "课程分类/级别/地点重定向"
 
-#: vibe-options.php:821
+#: vibe-options.php:830
 msgid "Redirect to Course directory"
 msgstr "重定向到课程目录"
 
-#: vibe-options.php:822
+#: vibe-options.php:831
 #, php-format
 msgid ""
 "User redirects to Directory with category activated when she selects course "
@@ -9649,198 +10246,198 @@ msgid ""
 msgstr "当用户选择课程分类时被重定向到激活了分类的目录 %s 参考教程 %s"
 
 # @ vibe
-#: vibe-options.php:830
+#: vibe-options.php:839
 msgid "Default course block style"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:831
+#: vibe-options.php:840
 msgid "Set a default block style for courses"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:832
+#: vibe-options.php:841
 msgid "default course block style"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:835 vibe-options.php:836 vibe-options.php:837
-#: vibe-options.php:838 vibe-options.php:839 vibe-options.php:840
-#: vibe-options.php:841 vibe-options.php:936 vibe-options.php:949
+#: vibe-options.php:844 vibe-options.php:845 vibe-options.php:846
+#: vibe-options.php:847 vibe-options.php:848 vibe-options.php:849
+#: vibe-options.php:850 vibe-options.php:945 vibe-options.php:958
 msgid "Four Columns"
 msgstr "4纵列"
 
-#: vibe-options.php:847
+#: vibe-options.php:856
 msgid "Show related courses at the end of single course"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:848
+#: vibe-options.php:857
 msgid "related courses by category, instructor & tags"
 msgstr ""
 
-#: vibe-options.php:849
+#: vibe-options.php:858
 msgid "Related courses are displayed based on category & instructor"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:859
+#: vibe-options.php:868
 msgid "Fonts Manager"
 msgstr "字体管理器"
 
 # @ vibe
-#: vibe-options.php:860
+#: vibe-options.php:869
 msgid ""
 "Manage Fonts to be used in the Site. Fonts selected here will be available "
 "in Theme customizer font family select options."
 msgstr ""
 "管理站点中使用的字体。在这里选择字体将会出现在主题定制器的字体簇选择项中。"
 
-#: vibe-options.php:865
+#: vibe-options.php:874
 msgid "Enter Google fonts API key"
 msgstr "输入 Google 字体 API Key"
 
-#: vibe-options.php:866
+#: vibe-options.php:875
 msgid "Required to fetch a list of Fonts from Google"
 msgstr "需要用来从 Google 获取一个字体列表"
 
 # @ vibe
-#: vibe-options.php:871
+#: vibe-options.php:880
 msgid "Select Fonts for Live Theme Editor "
 msgstr "为所见即所得的主题编辑器选择字体"
 
 # @ vibe
-#: vibe-options.php:872
+#: vibe-options.php:881
 msgid "Select Fonts and setup fonts in Live Editor"
 msgstr "选择字体并在所见即所得的编辑器中设置字体"
 
 # @ vibe
-#: vibe-options.php:873 vibe-options.php:911
+#: vibe-options.php:882 vibe-options.php:920
 msgid "Use these sample layouts in PageBuilder."
 msgstr "在页面生成工具中使用这些样本布局。"
 
 # @ vibe
-#: vibe-options.php:878
+#: vibe-options.php:887
 msgid "Custom Fonts (Enter CSS Font Family name)"
 msgstr "自定义字体 (输入 CSS 字体簇名称)"
 
 # @ vibe
-#: vibe-options.php:879
+#: vibe-options.php:888
 msgid " Custom Fonts are added to Theme Customizer Font List.. "
 msgstr "自定义字体已添加到主题定制器的字体列表中..."
 
 # @ vibe
-#: vibe-options.php:889
+#: vibe-options.php:898
 msgid "Import/Export customizer settings. Customize your theme using "
 msgstr "导入/导出定制器设置。用以下方式定制您的主题："
 
 # @ vibe
-#: vibe-options.php:889
+#: vibe-options.php:898
 msgid "WP Theme Customizer"
 msgstr "WP 主题定制器"
 
 # @ vibe
-#: vibe-options.php:894
+#: vibe-options.php:903
 msgid "Import/Export Customizer settings "
 msgstr "导入/导出定制器设置"
 
 # @ vibe
-#: vibe-options.php:895
+#: vibe-options.php:904
 msgid "Import/Export customizer settings"
 msgstr "导入/导出定制器设置"
 
 # @ vibe
-#: vibe-options.php:896
+#: vibe-options.php:905
 msgid ""
 "Use import/export functionality to import/export your customizer settings."
 msgstr "使用导入/导出功能来导入/导出您的定制器设置。"
 
 # @ vibe
-#: vibe-options.php:903
+#: vibe-options.php:912
 msgid "PageBuilder Manager"
 msgstr "页面生成工具管理器"
 
 # @ vibe
-#: vibe-options.php:904
+#: vibe-options.php:913
 msgid ""
 "Manage PageBuilder saved layouts and Import/Export pagebuilder Saved layouts"
 msgstr "管理以及导入/导出页面生成工具保存的布局"
 
 # @ vibe
-#: vibe-options.php:909
+#: vibe-options.php:918
 msgid "Manage Sample Layouts "
 msgstr "管理样本布局"
 
 # @ vibe
-#: vibe-options.php:910
+#: vibe-options.php:919
 msgid "Delete Sample Layouts"
 msgstr "删除样本布局"
 
 # @ vibe
-#: vibe-options.php:916
+#: vibe-options.php:925
 msgid "Import/Export Sample Layouts "
 msgstr "导入/导出样本布局"
 
 # @ vibe
-#: vibe-options.php:917
+#: vibe-options.php:926
 msgid "Import/Export existing Layouts"
 msgstr "导入/导出现有布局"
 
 # @ vibe
-#: vibe-options.php:918
+#: vibe-options.php:927
 msgid "Use import/export functionality to save your layouts."
 msgstr "使用导入/导出功能保存您的布局。"
 
 # @ vibe
-#: vibe-options.php:926
+#: vibe-options.php:935
 msgid "Footer "
 msgstr "底部"
 
 # @ vibe
-#: vibe-options.php:927
+#: vibe-options.php:936
 msgid "Setup footer settings"
 msgstr "进行底部设置"
 
 # @ vibe
-#: vibe-options.php:933
+#: vibe-options.php:942
 msgid "Top Footer Sidebar Columns"
 msgstr "底部上半部分的侧边栏列数"
 
 # @ vibe
-#: vibe-options.php:934 vibe-options.php:947
+#: vibe-options.php:943 vibe-options.php:956
 msgid "Footer Columns"
 msgstr "底部列数"
 
 # @ vibe
-#: vibe-options.php:937 vibe-options.php:950
+#: vibe-options.php:946 vibe-options.php:959
 msgid "Three Columns"
 msgstr "3纵列"
 
 # @ vibe
-#: vibe-options.php:938 vibe-options.php:951
+#: vibe-options.php:947 vibe-options.php:960
 msgid "Two Columns"
 msgstr "2纵列"
 
 # @ vibe
-#: vibe-options.php:939 vibe-options.php:952
+#: vibe-options.php:948 vibe-options.php:961
 msgid "One Columns"
 msgstr "单纵列"
 
 # @ vibe
-#: vibe-options.php:946
+#: vibe-options.php:955
 msgid "Bottom Footer Sidebar Columns"
 msgstr "底部下半部分的侧边栏列数"
 
 # @ vibe
-#: vibe-options.php:959
+#: vibe-options.php:968
 msgid "Upload Footer Logo"
 msgstr ""
 
-#: vibe-options.php:960
+#: vibe-options.php:969
 msgid "Displayed in footer"
 msgstr ""
 
-#: vibe-options.php:961
+#: vibe-options.php:970
 #, php-format
 msgid ""
 "This Logo is shown in footer bottom area. Defaults to logo. NOT ABLE TO "
@@ -9848,369 +10445,369 @@ msgid ""
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:967
+#: vibe-options.php:976
 msgid "Copyright Text"
 msgstr "版权信息"
 
 # @ vibe
-#: vibe-options.php:968
+#: vibe-options.php:977
 msgid "Enter copyrighted text"
 msgstr "输入版权文字"
 
 # @ vibe
-#: vibe-options.php:969
+#: vibe-options.php:978
 msgid "Also supports shotcodes."
 msgstr "同时支持短代码。"
 
 # @ vibe
-#: vibe-options.php:975
+#: vibe-options.php:984
 msgid "Select an option for FooterBottom"
 msgstr "为底部下方选择一个选项"
 
 # @ vibe
-#: vibe-options.php:976
+#: vibe-options.php:985
 msgid "Select Footer Bottom style, set Social icon links in Social tab"
 msgstr "选择底部下方样式，在社交标签页设置社交图标和链接。"
 
 # @ vibe
-#: vibe-options.php:978
+#: vibe-options.php:987
 msgid "Show Footer Menu"
 msgstr "显示底部菜单"
 
 # @ vibe
-#: vibe-options.php:978
+#: vibe-options.php:987
 msgid "Show Social Icons"
 msgstr "显示社交图标"
 
 # @ vibe
-#: vibe-options.php:984
+#: vibe-options.php:993
 msgid "Google Analytics Code"
 msgstr "Google Analytics 代码"
 
 # @ vibe
-#: vibe-options.php:985
+#: vibe-options.php:994
 msgid "Google Analytics account"
 msgstr "Google Analytics 账户"
 
 # @ vibe
-#: vibe-options.php:986
+#: vibe-options.php:995
 msgid "Please enter full code with javascript tags."
 msgstr "请输入带有 javascript 标签的完整代码。"
 
 # @ vibe
-#: vibe-options.php:994
+#: vibe-options.php:1003
 msgid "Social Information"
 msgstr "社交信息"
 
 # @ vibe
-#: vibe-options.php:995
+#: vibe-options.php:1004
 msgid "All Social media settings"
 msgstr "全部社交媒体设置"
 
 # @ vibe
-#: vibe-options.php:1001
+#: vibe-options.php:1010
 msgid "Add Social Media Icons "
 msgstr "添加社交媒体图标"
 
 # @ vibe
-#: vibe-options.php:1002
+#: vibe-options.php:1011
 msgid "Dynamically add social media icons"
 msgstr "动态增加社交媒体图标"
 
 # @ vibe
-#: vibe-options.php:1003
+#: vibe-options.php:1012
 msgid "Add your Full URL in social media."
 msgstr "添加您社交媒体的完整 URL。"
 
 # @ vibe
-#: vibe-options.php:1008
+#: vibe-options.php:1017
 msgid "Social Icons Type"
 msgstr "社交图标类型"
 
 # @ vibe
-#: vibe-options.php:1009
+#: vibe-options.php:1018
 msgid "Social Icons Theme"
 msgstr "社交图标主题"
 
 # @ vibe
-#: vibe-options.php:1010
+#: vibe-options.php:1019
 msgid "Round"
 msgstr "圆形"
 
 # @ vibe
-#: vibe-options.php:1010
+#: vibe-options.php:1019
 msgid "Square"
 msgstr "矩形"
 
 # @ vibe
-#: vibe-options.php:1010
+#: vibe-options.php:1019
 msgid "Round Colored"
 msgstr "带颜色的圆形"
 
 # @ vibe
-#: vibe-options.php:1010
+#: vibe-options.php:1019
 msgid "Square Colored"
 msgstr "带颜色的矩形"
 
 # @ vibe
-#: vibe-options.php:1016
+#: vibe-options.php:1025
 msgid "Show Tooltip on Social Icons"
 msgstr "在社交图标上显示提示框"
 
 # @ vibe
-#: vibe-options.php:1023
+#: vibe-options.php:1032
 msgid "Social Sharing buttons"
 msgstr "社交分享按钮"
 
 # @ vibe
-#: vibe-options.php:1024
+#: vibe-options.php:1033
 msgid "Show in-built sharing buttons in the theme"
 msgstr "显示主题中内置的分享按钮"
 
 # @ vibe
-#: vibe-options.php:1025
+#: vibe-options.php:1034
 msgid "Adds Social media sharing buttons in single Courses etc."
 msgstr "在课程中添加社交媒体的分享按钮"
 
 # @ vibe
-#: vibe-options.php:1032
+#: vibe-options.php:1041
 msgid "TinCan/xAPI"
 msgstr "TinCan/xAPI"
 
-#: vibe-options.php:1033
+#: vibe-options.php:1042
 msgid "TinCan and LRS settings for WPLMS"
 msgstr "为 WPLMS 进行 TinCan 和 LRS 设置"
 
 # @ vibe
-#: vibe-options.php:1038
+#: vibe-options.php:1047
 msgid "Enable TinCan recording"
 msgstr "启用 TinCan 记录"
 
 # @ vibe
-#: vibe-options.php:1039
+#: vibe-options.php:1048
 msgid "Record TinCan/XAPI statements in External LRS"
 msgstr "在外部 LRS 中记录 TinCan/XAPI 的记录文件"
 
 # @ vibe
-#: vibe-options.php:1040
+#: vibe-options.php:1049
 msgid ""
 "Store all activity in an External LRS, which other XAPI compatible LMSes can "
 "read."
 msgstr "在外部 LRS 中存储所有活动，以便其它兼容 XAPI 的学习管理系统可以读取。"
 
 # @ vibe
-#: vibe-options.php:1046
+#: vibe-options.php:1055
 msgid "TinCan API EndPoint"
 msgstr "TinCan API 端点"
 
 # @ vibe
-#: vibe-options.php:1047
+#: vibe-options.php:1056
 msgid "Add a TinCan API endpoint"
 msgstr "添加一个 TinCan API 端点"
 
 # @ vibe
-#: vibe-options.php:1048
+#: vibe-options.php:1057
 msgid "Add Endpoint to track details in external LRS."
 msgstr "添加用于追踪外部 LRS 详情的端点。"
 
 # @ vibe
-#: vibe-options.php:1054
+#: vibe-options.php:1063
 msgid "LRS User name"
 msgstr "LRS 用户名"
 
 # @ vibe
-#: vibe-options.php:1055 vibe-options.php:1063
+#: vibe-options.php:1064 vibe-options.php:1072
 msgid "TinCan compatible LRS authentication"
 msgstr "兼容 TinCan 的 LRS 认证"
 
 # @ vibe
-#: vibe-options.php:1056
+#: vibe-options.php:1065
 msgid "Enter Username for external LRS authentication."
 msgstr "输入用于外部 LRS 认证的用户名。"
 
 # @ vibe
-#: vibe-options.php:1062
+#: vibe-options.php:1071
 msgid "LRS Password"
 msgstr "LRS 密码"
 
 # @ vibe
-#: vibe-options.php:1064
+#: vibe-options.php:1073
 msgid "Enter Password for external LRS authentication."
 msgstr "输入用于外部 LRS 认证的密码。"
 
 # @ vibe
-#: vibe-options.php:1072
+#: vibe-options.php:1081
 msgid "Miscellaneous"
 msgstr "其他"
 
 # @ vibe
-#: vibe-options.php:1073
+#: vibe-options.php:1082
 msgid "Miscellaneous settings used in the theme."
 msgstr "在主题中使用的其他设置。"
 
 # @ vibe
-#: vibe-options.php:1078
+#: vibe-options.php:1087
 msgid "Page Loader"
 msgstr ""
 
-#: vibe-options.php:1079
+#: vibe-options.php:1088
 msgid "Add a Page loader on site, everything is hidden till the page loads"
 msgstr ""
 
-#: vibe-options.php:1080
+#: vibe-options.php:1089
 #, php-format
 msgid ""
 "A loading icon will be displayed to the user, till the whole page loads. %s"
 msgstr ""
 
-#: vibe-options.php:1081
+#: vibe-options.php:1090
 msgid "Enable, Style 1"
 msgstr ""
 
-#: vibe-options.php:1081
+#: vibe-options.php:1090
 msgid "Enable, Style 2"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:1087
+#: vibe-options.php:1096
 msgid "Site Lock"
 msgstr ""
 
-#: vibe-options.php:1088
+#: vibe-options.php:1097
 msgid "Lock entire site, only logged in users can view the site"
 msgstr ""
 
-#: vibe-options.php:1089
+#: vibe-options.php:1098
 #, php-format
 msgid ""
 "All the links require login. Only home page is accessible to non-logged in "
 "users. %s"
 msgstr ""
 
-#: vibe-options.php:1096
+#: vibe-options.php:1105
 msgid " Site lock Logo link page"
 msgstr ""
 
-#: vibe-options.php:1097
+#: vibe-options.php:1106
 msgid "Url on header logo and footer logo when site lock is enabled"
 msgstr ""
 
-#: vibe-options.php:1098
+#: vibe-options.php:1107
 msgid ""
 "Select page which you want to redirect users to when a user clicks on the "
 "site logo."
 msgstr ""
 
-#: vibe-options.php:1103
+#: vibe-options.php:1112
 msgid "Unique Security Key"
 msgstr "独有安全密钥"
 
-#: vibe-options.php:1104
+#: vibe-options.php:1113
 msgid "Security key for every site. Longer keys are good"
 msgstr "每个站点的安全密钥。越长越好"
 
-#: vibe-options.php:1105
+#: vibe-options.php:1114
 msgid "Unique key to avoid (logged in) users from bypassing the system."
 msgstr "防止已登录用户越过系统的独有密钥。"
 
-#: vibe-options.php:1111
+#: vibe-options.php:1120
 msgid "Default Archive style"
 msgstr ""
 
-#: vibe-options.php:1112
+#: vibe-options.php:1121
 msgid "Set the default archive style from default, blog1, blog 2, blog 3"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:1113
+#: vibe-options.php:1122
 msgid "Blog 1"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:1113
+#: vibe-options.php:1122
 msgid "Blog 2"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:1113
+#: vibe-options.php:1122
 msgid "Blog 3"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:1119
+#: vibe-options.php:1128
 msgid "Default Excerpt Length"
 msgstr "默认摘要长度"
 
 # @ vibe
-#: vibe-options.php:1120
+#: vibe-options.php:1129
 msgid "Excerpt length in number of Words."
 msgstr "按字数统计的摘要长度。"
 
 # @ vibe
-#: vibe-options.php:1126
+#: vibe-options.php:1135
 msgid "Comments in pages"
 msgstr ""
 
-#: vibe-options.php:1127
+#: vibe-options.php:1136
 msgid "Enable comments in Pages (Disabled by default)"
 msgstr ""
 
-#: vibe-options.php:1128
+#: vibe-options.php:1137
 msgid "Users can post comments in pages."
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:1135
+#: vibe-options.php:1144
 msgid "Default Instructor Commission"
 msgstr "默认的教师佣金"
 
 # @ vibe
-#: vibe-options.php:1136
+#: vibe-options.php:1145
 msgid "Insructor commission per sale of course/product (enter 0 to disable)"
 msgstr "每销售一份课程/商品的教师佣金 (输入0则为禁用)"
 
 # @ vibe
-#: vibe-options.php:1142
+#: vibe-options.php:1151
 msgid "Direct Checkout"
 msgstr "直接结帐"
 
 # @ vibe
-#: vibe-options.php:1143
+#: vibe-options.php:1152
 msgid "Requires WooCommerce installed"
 msgstr "需要安装 WooCommerce"
 
 # @ vibe
-#: vibe-options.php:1144
+#: vibe-options.php:1153
 msgid "User is redirected to the checkout page."
 msgstr "用户被重定向到结帐页面。"
 
 # @ vibe
-#: vibe-options.php:1145
+#: vibe-options.php:1154
 msgid "Skip Product & Cart page"
 msgstr "跳过商品 & 购物车页面"
 
 # @ vibe
-#: vibe-options.php:1145
+#: vibe-options.php:1154
 msgid "Skip Product page"
 msgstr "跳过商品页面"
 
 # @ vibe
-#: vibe-options.php:1145
+#: vibe-options.php:1154
 msgid "Skip Cart"
 msgstr "跳过购物车"
 
 # @ vibe
-#: vibe-options.php:1151
+#: vibe-options.php:1160
 msgid "Redirect to Course Page on Order completion"
 msgstr "订单完成后重定向到课程页面"
 
 # @ vibe
-#: vibe-options.php:1152
+#: vibe-options.php:1161
 msgid "Only if the order contains one product with one course"
 msgstr "仅当订单中只包含一个商品和一个课程时"
 
 # @ vibe
-#: vibe-options.php:1153
+#: vibe-options.php:1162
 msgid ""
 "If you're forcing the direct checkout, and your products have one course per "
 "product then switching this on would send users directly to the course page."
@@ -10219,17 +10816,17 @@ msgstr ""
 "送到课程页面。"
 
 # @ vibe
-#: vibe-options.php:1160
+#: vibe-options.php:1169
 msgid "Remove Extra Checkout Fields"
 msgstr "移除多余的结帐字段"
 
 # @ vibe
-#: vibe-options.php:1161
+#: vibe-options.php:1170
 msgid "Recommended if you're only selling courses/virtual products"
 msgstr "若您仅销售课程/虚拟商品则建议设置"
 
 # @ vibe
-#: vibe-options.php:1162
+#: vibe-options.php:1171
 msgid ""
 "Removes following fields in WooCommerce Checkout : Billing Company/Address,"
 "State/Town, Pincode, Phone etc."
@@ -10237,183 +10834,183 @@ msgstr ""
 "在 WooCommerce 结帐时移除以下字段：账单公司/地址、州/县、邮政编码和电话等。"
 
 # @ vibe
-#: vibe-options.php:1169
+#: vibe-options.php:1178
 msgid "Cache Duration"
 msgstr "缓存持续时间"
 
 # @ vibe
-#: vibe-options.php:1170
+#: vibe-options.php:1179
 msgid "in seconds (0 to disable)"
 msgstr "以秒计算 (0表示禁止)"
 
 # @ vibe
-#: vibe-options.php:1171
+#: vibe-options.php:1180
 msgid "Small cache duration could impact adversely. High for stable websites."
 msgstr "较小的缓存持续时间可能产生不利影响。稳定的网站应该用较高的值。"
 
-#: vibe-options.php:1177
+#: vibe-options.php:1186
 msgid "Google Captcha Public Key"
 msgstr ""
 
-#: vibe-options.php:1178
+#: vibe-options.php:1187
 msgid "Enter Google captcha public key"
 msgstr ""
 
-#: vibe-options.php:1178
+#: vibe-options.php:1187
 msgid "How to get an Public Key ?"
 msgstr ""
 
-#: vibe-options.php:1184
+#: vibe-options.php:1193
 msgid "Google Captcha Private Key"
 msgstr ""
 
-#: vibe-options.php:1185
+#: vibe-options.php:1194
 msgid "Enter Google captcha private key"
 msgstr ""
 
-#: vibe-options.php:1185
+#: vibe-options.php:1194
 msgid "How to get an Private Key ?"
 msgstr ""
 
-#: vibe-options.php:1191
+#: vibe-options.php:1200
 msgid "Google Maps API Key"
 msgstr ""
 
-#: vibe-options.php:1192
+#: vibe-options.php:1201
 msgid "Google Maps require an API key to function"
 msgstr ""
 
-#: vibe-options.php:1192
+#: vibe-options.php:1201
 msgid "How to get an API Key ?"
 msgstr ""
 
 # @ vibe
-#: vibe-options.php:1198
+#: vibe-options.php:1207
 msgid "Contact Page Latitude and Longitude values"
 msgstr "联系页面的经度和纬度值"
 
 # @ vibe
-#: vibe-options.php:1199
+#: vibe-options.php:1208
 msgid "Grab the latitude and Longitude values from ."
 msgstr "获取经度和纬度值"
 
 # @ vibe
-#: vibe-options.php:1199
+#: vibe-options.php:1208
 msgid "Link"
 msgstr "链接"
 
 # @ vibe
-#: vibe-options.php:1205
+#: vibe-options.php:1214
 msgid "Contact Page Map Style"
 msgstr "联系页面的地图风格"
 
 # @ vibe
-#: vibe-options.php:1206
+#: vibe-options.php:1215
 msgid "Select the map style on contact page."
 msgstr "选择联系页面中地图的风格。"
 
 # @ vibe
-#: vibe-options.php:1207
+#: vibe-options.php:1216
 msgid "Content area is the container in which all content is located."
 msgstr "内容区域是包含所有内容的容器。"
 
 # @ vibe
-#: vibe-options.php:1208
+#: vibe-options.php:1217
 msgid "Satellite View"
 msgstr "卫星图"
 
 # @ vibe
-#: vibe-options.php:1208
+#: vibe-options.php:1217
 msgid "Road map"
 msgstr "道路图"
 
 # @ vibe
-#: vibe-options.php:1214
+#: vibe-options.php:1223
 msgid "Google Map Zoom Level"
 msgstr "Google 地图放大级别"
 
 # @ vibe
-#: vibe-options.php:1215
+#: vibe-options.php:1224
 msgid "Enter the zoom level in Google maps"
 msgstr "输入 Google 地图的放大级别"
 
 # @ vibe
-#: vibe-options.php:1216
+#: vibe-options.php:1225
 msgid "Zoom Levels 0 - 19"
 msgstr "放大级别 0-19"
 
 # @ vibe
-#: vibe-options.php:1222
+#: vibe-options.php:1231
 msgid "Select 404 Page"
 msgstr "选择 404 页面"
 
 # @ vibe
-#: vibe-options.php:1223
+#: vibe-options.php:1232
 msgid "This page is shown when page not found on your site."
 msgstr "当页面未找到时显示此页。"
 
 # @ vibe
-#: vibe-options.php:1224
+#: vibe-options.php:1233
 msgid "User redirected to this page when page not found."
 msgstr "当页面未找到时用户被重定向到此页。"
 
 # @ vibe
-#: vibe-options.php:1229
+#: vibe-options.php:1238
 msgid "Disable XMLRPC/RSD/WLWManifest"
 msgstr "禁用 XMLRPC/RSD/WLWManifest"
 
 # @ vibe
-#: vibe-options.php:1230
+#: vibe-options.php:1239
 msgid "Remove security vulnerabilities"
 msgstr "移除安全漏洞"
 
 # @ vibe
-#: vibe-options.php:1231
+#: vibe-options.php:1240
 msgid "Removes vulnerabilities at expense of ability to login via remote apps."
 msgstr "以失去通过远程应用登录的能力为代价移除安全漏洞。"
 
-#: vibe-options.php:1238
+#: vibe-options.php:1247
 msgid "Disable Versions in Scripts/Styles"
 msgstr ""
 
-#: vibe-options.php:1239
+#: vibe-options.php:1248
 msgid "Helps in caching of resources"
 msgstr ""
 
-#: vibe-options.php:1240
+#: vibe-options.php:1249
 msgid "Improves page speed score"
 msgstr ""
 
-#: vibe-options.php:1247
+#: vibe-options.php:1256
 msgid "Custom CSS for WP Login Screen"
 msgstr "WP 登录界面的自定义 CSS"
 
 # @ vibe
-#: vibe-options.php:1248
+#: vibe-options.php:1257
 msgid "Add custom CSS"
 msgstr "添加自定义CSS"
 
-#: vibe-options.php:1249
+#: vibe-options.php:1258
 msgid "Custom CSS for WP Login screen."
 msgstr "WP 登录界面的自定义 CSS。"
 
 # @ vibe
-#: vibe-options.php:1254
+#: vibe-options.php:1263
 msgid "Author & Credits"
 msgstr "作者 & 荣誉"
 
 # @ vibe
-#: vibe-options.php:1255
+#: vibe-options.php:1264
 msgid "Credits and Author of the Website"
 msgstr "本网站作者信息"
 
 # @ vibe
-#: vibe-options.php:1256
+#: vibe-options.php:1265
 msgid "Changes the reference to Author {VibeThemes}"
 msgstr "改变作者参考信息 {VibeThemes}"
 
 # @ vibe
-#: vibe-options.php:1292
+#: vibe-options.php:1301
 msgid "Theme Information"
 msgstr "主题信息"
 
@@ -10435,35 +11032,50 @@ msgid "No products found which match your selection."
 msgstr "未找到与您选择相符的商品。"
 
 # @ vibe
-#: woocommerce/cart/cart.php:27
+#: woocommerce/cart/cart.php:31 woocommerce/cart/cart.php:74
+#: woocommerce/cart/cart.php:188
 msgid "Product"
 msgstr "商品"
 
-#: woocommerce/cart/cart.php:29
+#: woocommerce/cart/cart.php:33 woocommerce/cart/cart.php:98
+#: woocommerce/cart/cart.php:190
 msgid "Quantity"
 msgstr ""
 
 # @ vibe
-#: woocommerce/cart/cart.php:50
+#: woocommerce/cart/cart.php:55 woocommerce/cart/cart.php:211
 msgid "Remove this item"
 msgstr ""
 
-#: woocommerce/cart/cart.php:82
+#: woocommerce/cart/cart.php:87 woocommerce/cart/cart.php:243
 msgid "Available on backorder"
 msgstr ""
 
+# @ vibe
+#: woocommerce/cart/cart.php:133
+msgid "Coupon:"
+msgstr "优惠券："
+
 # @ pmpro
-#: woocommerce/cart/cart.php:128
+#: woocommerce/cart/cart.php:133 woocommerce/cart/cart.php:289
 msgid "Coupon code"
 msgstr ""
 
+#: woocommerce/cart/cart.php:133
+msgid "Apply coupon"
+msgstr ""
+
+#: woocommerce/cart/cart.php:138
+msgid "Update cart"
+msgstr ""
+
 # @ pmpro
-#: woocommerce/cart/cart.php:128
+#: woocommerce/cart/cart.php:289
 msgid "Apply Coupon"
 msgstr ""
 
 # @ pmpro
-#: woocommerce/cart/cart.php:134
+#: woocommerce/cart/cart.php:295
 msgid "Update Cart"
 msgstr ""
 
@@ -10472,25 +11084,13 @@ msgstr ""
 msgid "Courses Included"
 msgstr "已包含课程"
 
-# @ pmpro
-#, fuzzy
-#~ msgid "state = "
-#~ msgstr "省"
+# @ vibe
+#~ msgid "Attachments"
+#~ msgstr "附件"
 
 # @ vibe
-#, fuzzy
-#~ msgid "upload aborted"
-#~ msgstr "上传字体"
-
-# @ vibe
-#, fuzzy
-#~ msgid "content"
-#~ msgstr "内容："
-
-# @ vibe
-#, fuzzy
-#~ msgid "preloader"
-#~ msgstr "顶部"
+#~ msgid "Have Questions ? Ask in the Unit Forums"
+#~ msgstr "有问题？可在单元论坛中提问"
 
 #~ msgid ""
 #~ "There was issue in retaking this course for the user. Please contact "
@@ -11658,10 +12258,6 @@ msgstr "已包含课程"
 # @ vibe
 #~ msgid "Cart Subtotal"
 #~ msgstr "购物车小计"
-
-# @ vibe
-#~ msgid "Coupon:"
-#~ msgstr "优惠券："
 
 # @ vibe
 #~ msgid "Order Total"

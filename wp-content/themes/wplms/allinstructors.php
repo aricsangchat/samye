@@ -17,7 +17,7 @@ $args = apply_filters('wplms_allinstructors',array(
 $user_query = new WP_User_Query( $args );
 
 $args = apply_filters('wplms_alladmins',array(
-                'role' => 'administrator', // instructor
+                'role' => 'administrator', // admin
                 'number' => $no, 
                 'orderby' => 'post_count', 
                 'order' => 'DESC' 
@@ -48,6 +48,7 @@ $title=get_post_meta(get_the_ID(),'vibe_title',true);
 if(vibe_validate($title)){
 ?>
 <section id="title">
+    <?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="col-md-12">

@@ -20,7 +20,7 @@ if ( ! class_exists( 'WPLMS_Install' ) ) :
  */
 class WPLMS_Install {
 
-	public $version = '2.7.2';
+	public $version = WPLMS_VERSION;
 	/**
 	 * Hook in tabs.
 	 */

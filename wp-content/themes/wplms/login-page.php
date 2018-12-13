@@ -2,7 +2,7 @@
 /**
  * Template Name: Login Page (Site Lock)
  */
-
+global $bp;
 
 if(is_user_logged_in()){
     wp_redirect(bp_loggedin_user_domain());
@@ -11,10 +11,12 @@ if(is_user_logged_in()){
 
 get_header(vibe_get_header());
 
-
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 $id = vibe_get_bp_page_id('register');
+if(empty($id)){
+    $id = get_the_ID();
+}
 $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($id), 'full' );
 ?>
 <style>header,footer,#headertop,#footerbottom{display:none;}</style>
@@ -280,7 +282,17 @@ $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($id), 'full' );
                                          */
                                         do_action( 'bp_custom_profile_edit_fields' ); ?>
 
-                                        <p class="description"><?php bp_the_profile_field_description(); ?></p>
+                                        <?php
+                                         //now buddypress already show descption below the field since 2.9 
+                                        if(function_exists('version_compare') && !empty($bp->version) && !version_compare($bp->version, '2.9.0')){
+
+                                        }else{
+                                            ?>
+                                            <p class="description"><?php bp_the_profile_field_description(); ?></p> 
+                                            <?php
+                                        }
+                                        
+                                        ?>
 
                                     </div>
 

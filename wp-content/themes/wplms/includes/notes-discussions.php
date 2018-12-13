@@ -59,8 +59,7 @@ class vibe_notes_discussions{
             }else{
               $q = $wpdb->prepare("SELECT comment_id FROM {$wpdb->commentmeta} WHERE (meta_key LIKE %s OR meta_key LIKE %s)",'unit'.$args['post_id'].'_'.$args['user_id'],'unit'.$args['post_id'].'%public');  
             }
-            
-            
+
             $comment_ids = $wpdb->get_results($q,ARRAY_A);
             if(is_array($comment_ids)){
               $args['comment__in'] = array();
@@ -311,7 +310,6 @@ class vibe_notes_discussions{
 
   public function comments_loop($comments){
     // Comment Loop 
-    
 
           if ( $comments ) {
             echo '<ul class="notes_list">';
@@ -642,6 +640,8 @@ class vibe_notes_discussions{
 
   function wplms_instructor_reply_user_comment(){
     $id=$_POST['id'];
+    $course_id=$_POST['course_id'];
+
     $message=$_POST['message'];
     if ( !isset($_POST['security']) || !wp_verify_nonce($_POST['security'],'security') || !is_numeric($id)){
        _e('Security check Failed. Contact Administrator.','vibe');
@@ -654,7 +654,7 @@ class vibe_notes_discussions{
       if(!is_array($instructor_ids))
         $instructor_ids=array($instructor_ids);
 
-      $message .=' <a href="'.get_permalink($id).'">'.get_the_title($id).'</a>';
+      $message .=' <a href="'.get_permalink($id).'?id='.$course_id.'">'.get_the_title($id).'</a>';
       foreach($instructor_ids as $instructor_id){
 
         messages_new_message( array('sender_id' => $user_id, 'subject' => sprintf(__('Instructor reply requested for unit %s paragraph %s','vibe'),get_the_title($id),$_POST['section']), 'content' => $message,   'recipients' => $instructor_id ) );
@@ -766,9 +766,6 @@ class vibe_notes_discussions{
   }
 }
 
-
-
 new vibe_notes_discussions();
 
 /* ==== END NOTES & DISCUSSION =======*/
-

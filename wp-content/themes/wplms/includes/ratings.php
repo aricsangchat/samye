@@ -280,6 +280,9 @@ function wplms_course_reviews($comment, $args, $depth) {
               $commentrating = get_comment_meta( $comment->comment_ID, 'review_rating', true );
               echo '<h3>'.$commenttitle.'</h3>';
               echo '<div class="course-star-rating">';
+              if(function_exists('bp_course_display_rating')){
+                 echo bp_course_display_rating($commentrating);
+              }else{
                 for($i=1;$i<=5;$i++){
                   if($commentrating >= 1){
                     echo '<span class="fill"></span>';
@@ -290,8 +293,9 @@ function wplms_course_reviews($comment, $args, $depth) {
                   }
                   $commentrating--;
                 }
-                echo '</div>';
-                comment_text(); ?>
+              }
+              echo '</div>';
+              comment_text(); ?>
                </div>
             </div> 
          </div>

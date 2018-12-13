@@ -10,7 +10,8 @@
 			 */
 			do_action( 'bp_before_member_home_content' ); ?>
 
-				<div id="item-header" role="complementary">
+				<div id="item-header" class="<?php 
+						$image = bp_attachments_get_user_has_cover_image();echo (empty($image)?'':'cover_image')?>" role="complementary">
 					<?php
 						bp_get_template_part( 'members/single/member-header2' );
 					?>

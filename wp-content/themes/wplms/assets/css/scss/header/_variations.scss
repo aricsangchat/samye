@@ -46,15 +46,6 @@ header{
 			z-index:9999;
 			transform: translateY(40px); 
 	    }
-	    .smallimg{
-	    	position:relative;
-	    	padding-left:28px;
-	    	img{
-	    		position:absolute;
-	    		left:0;
-	    		margin-top:-4px;
-	    	}
-	    } 
 	}
 	&.sleek{
 	    &.transparent{
@@ -123,6 +114,55 @@ header{
 					}
 				}
 			}
+		}
+	}
+
+	&.univ {
+		.header_univ{
+		    .logo_container{
+		    	display: grid;
+    			margin-top: -48px;
+    			#logo{
+				    align-self: center;
+				    justify-self: center;
+    			}
+		    }
+		    .header_main{
+		    	.header_main_content{
+		    		display:grid;
+		    		grid-template-columns:240px 1fr;
+		    		nav{
+			    		float:none;
+		    		    grid-column: 2/3;
+			    		&>ul{
+		    			    display: grid;
+		    				grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );
+			    		}
+			    	}
+		    	}
+		    	
+		    }
+		    .header_top_main{
+	    	    display: grid;
+	    		grid-template-columns: 240px 1fr 200px;
+	    		ul.topmenu{
+	    			display: grid;
+				    grid-template-columns: repeat(auto-fit,minmax(20%,1fr));
+				    justify-items: center;
+				    grid-column: 2/3;
+				    justify-content: center;
+	    			li{
+	    				margin:0;
+	    				float:none;
+	    				padding:8px;
+	    			}
+	    			&:last-child{
+	    				justify-self:flex-end;
+					    grid-column: 3/4;
+					    display:block;
+	    			}
+	    		}
+		    }
 		}
 	}
 }
@@ -331,6 +371,13 @@ header{
 	}
 	#vibe_bp_login.default_login{
 		top:76px;
+	}
+	&.fixed{
+		&.app{
+			#header_logo{display:none;}
+			#header_alt_logo{display:block !important;}
+		}
+		
 	}
 }
 

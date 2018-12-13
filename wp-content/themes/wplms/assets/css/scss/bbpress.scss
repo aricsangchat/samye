@@ -104,6 +104,8 @@ div.bbp-template-notice, div.indicator-hint{
 		}
 	}
 }
+
+
 /*========================================================================*/
 /*   01. FORUMS
 /*========================================================================*/
@@ -391,3 +393,4 @@ div.bbp-template-notice, div.indicator-hint{
 /*   01. MISC.
 /*========================================================================*/
 .topic-edit.bbpress #content .bbp-breadcrumb {display:none;}
+#message-thread .message-content iframe.wp-embedded-content {position:relative !important;}

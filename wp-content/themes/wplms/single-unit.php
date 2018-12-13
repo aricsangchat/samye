@@ -7,6 +7,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 $id = get_the_ID();
 ?>
 <section id="title">
+    <?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="col-md-9 col-sm-8">
@@ -72,60 +73,25 @@ $id = get_the_ID();
                         the_content();
                     ?>
                     <?php wp_link_pages('before=<div class="unit-page-links page-links"><div class="page-link">&link_before=<span>&link_after=</span>&after=</div></div>'); 
-                    do_action('wplms_after_every_unit',get_the_ID());
                     ?>
                     </div> 
-                    <div class="tags">
-                    <?php the_unit_tags('<ul><li>','</li><li>','</li></ul>'); ?>
+                    <div class="unit_tags">
+                    <?php 
+                    if(function_exists('the_unit_tags'))
+                      the_unit_tags($id); 
+                    ?>
                     </div>   
                     <?php
-                    $args = array(
-                              'post_type' => 'attachment',
-                              'output' => 'ARRAY_N',
-                              'orderby' => 'menu_order',
-                              'order' => 'ASC',
-                              'post_parent' => $id
-                            );
-                      $attachments = get_children( $args );
-                      if($attachments && count($attachments)){
-                        $att= '';
-
-                        $count=0;
-                      foreach( $attachments as $attachmentsID => $attachmentsPost ){
-                      
-                      $type=get_post_mime_type($attachmentsID);
-
-                      if($type != 'image/jpeg' && $type != 'image/png' && $type != 'image/gif'){
-                          
-                          if($type == 'application/zip')
-                            $type='icon-compressed-zip-file';
-                          else if($type == 'video/mpeg' || $type== 'video/mp4' || $type== 'video/quicktime')
-                            $type='icon-movie-play-file-1';
-                          else if($type == 'text/csv' || $type== 'text/plain' || $type== 'text/xml')
-                            $type='icon-document-file-1';
-                          else if($type == 'audio/mp3' || $type== 'audio/ogg' || $type== 'audio/wmv')
-                            $type='icon-music-file-1';
-                          else if($type == 'application/pdf')
-                            $type='icon-text-document';
-                          else
-                            $type='icon-file';
-
-                          $count++;
-
-                          $att .='<li><i class="'.$type.'"></i>'.wp_get_attachment_link($attachmentsID).'</li>';
+                    
+                    $attachments = apply_filters('wplms_unit_attachments',1,$id);
+                    if($attachments){
+                        if(function_exists('bp_course_get_unit_attachments')){
+                            echo bp_course_get_unit_attachments($id);
                         }
-                      }
-                        if($count){
-                          echo '<div class="unitattachments"><h4>'.__('Attachments','vibe').'<span><i class="icon-download-3"></i>'.$count.'</span></h4><ul id="attachments">';
-                          echo $att;
-                         echo '</ul></div>';
-                        }
-                      }
-
-                      $forum=get_post_meta($id,'vibe_forum',true);
-                      if(!empty($forum) && get_post_type($forum) == 'forum'){
-                        echo '<div class="unitforum"><a href="'.get_permalink($forum).'">'.__('Have Questions ? Ask in the Unit Forums','vibe').'</a></div>';
-                      }
+                    }
+                    
+                    do_action('wplms_after_every_unit',get_the_ID());
+                    
                      ?>
                  </div>
                   <div class="side_comments"><a id="all_comments_link" data-href="<?php if(isset($unit_comments) && is_numeric($unit_comments)){echo get_permalink($unit_comments);} ?>"><?php _e('SEE ALL','vibe'); ?></a>

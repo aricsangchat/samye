@@ -801,7 +801,7 @@ jq(document).ready( function() {
 			else
 				var page_number = Number( jq(target).html() );
 			
-			if ( pagination_id.indexOf( 'pag-bottom' ) !== -1 ) {
+			if ( pagination_id && pagination_id.indexOf( 'pag-bottom' ) !== -1 ) {
 				var caller = 'pag-bottom';
 			} else {
 				var caller = null;
@@ -1528,7 +1528,7 @@ function bp_init_objects(objects) {
 			});
 			jq('#' + objects[i] + '-' + jq.cookie('bp-' + objects[i] + '-scope') + ', #object-nav li.current').addClass('selected');
 			if (typeof jq.cookie('bp-' + objects[i] + '-scope') !== 'undefined'){
-				bp_filter_request( objects[i], jq.cookie('bp-' + objects[i] + '-filter'), jq.cookie('bp-' + objects[i] + '-scope') , 'div.' + objects[i],'', 1, jq.cookie('bp-' + objects[i] + '-extras') );
+				//bp_filter_request( objects[i], jq.cookie('bp-' + objects[i] + '-filter'), jq.cookie('bp-' + objects[i] + '-scope') , 'div.' + objects[i],'', 1, jq.cookie('bp-' + objects[i] + '-extras') );
 			}
 		}
 	});
@@ -1884,4 +1884,9 @@ function footergroups_wiget_response(response) {
 		);
 	}
 }
+
+/*Woocommerce mini cart fix */
+jQuery( document.body ).on( 'removed_from_cart',function(e, data){
+	window.location.reload(true);
+});
 //})(jQuery);

@@ -15,7 +15,7 @@
 
 				<?php else : ?>
 
-					<?php printf( __( 'Conversation between %s and you.', 'vibe' ), bp_get_the_thread_recipients() ); ?>
+					<?php printf( __( 'Conversation between %s', 'vibe' ), bp_get_the_thread_recipients() ); ?>
 
 				<?php endif; ?>
 

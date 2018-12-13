@@ -116,7 +116,7 @@ if ( !class_exists('vibe_bp_login') ) {
           </div>
 					
 					<?php do_action( 'bp_sidebar_login_form' ); ?>
-					<input type="submit" name="user-submit" id="sidebar-wp-submit" value="<?php _e( 'Log In','vibe' ); ?>" tabindex="100" />
+					<input type="submit" name="user-submit" id="sidebar-wp-submit" data-security="<?php echo wp_create_nonce('wplms_signon'); ?>" value="<?php _e( 'Log In','vibe' ); ?>" tabindex="100" />
 					<input type="hidden" name="user-cookie" value="1" />
 					<?php if ( bp_get_signup_allowed() ) :
             $registration_link = apply_filters('wplms_buddypress_registration_link',site_url( BP_REGISTER_SLUG . '/' ));
@@ -389,6 +389,9 @@ class vibe_course_categories_nav extends WP_Widget {
     $args['exclude'] = $exclude_terms;
     $pages = get_option('bp-pages');
     $course_dir = isset($pages['course'])?$pages['course']:0;
+    if(function_exists('icl_object_id')){
+      $course_dir = icl_object_id($course_dir, 'page', true);
+    }
     echo '<div class="course_cat_nav"><ul class=" '.$order.'">';
 
     echo '<li class="'.((bp_current_component() == 'course' && is_page())?'current-cat':'').'"><a href="'.get_permalink($course_dir).'">'.get_the_title($course_dir).'</a></li>';

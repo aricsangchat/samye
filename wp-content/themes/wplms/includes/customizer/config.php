@@ -22,7 +22,13 @@ if(isset($vibe_options['custom_fonts']) && is_array($vibe_options['custom_fonts'
     }
     $fonts= array_merge($fonts, $custom_fonts); 
 }
-
+$font_weights =array(
+        '300'=>'300 : Light',
+        '400'=>'400 : Normal',
+        '600'=>'600 : Bold',
+        '700'=>'700 : Bolder',
+        '800'=>'800 : Bolder'
+    );
  
                     
 $vibe_customizer = array(
@@ -45,6 +51,7 @@ $vibe_customizer = array(
                                                         'minimal'=>__('Minimal','vibe'),
                                                         'elegant'=>__('Elegant','vibe'),
                                                         'modern'=>__('Modern','vibe'),
+                                                        'material'=>__('Material','vibe'),
                                                         ),
                                                     'default' => ''
                                                 ),
@@ -62,57 +69,59 @@ $vibe_customizer = array(
         'layouts' => array( 
                     'theme_style' => array(
                                             'label' => 'Theme Layout',
-                                            'type'  => 'select',
+                                            'type'  => 'imgselect',
                                             'choices' => array(
-                                                ''=>__('Container','vibe'),
-                                                'fluid'=>__('Fluid','vibe'),
-                                                'boxed'=>__('Boxed','vibe'),
+                                                ''=>VIBE_URL.'/includes/customizer/images/theme_layout_container.jpg',
+                                                'fluid'=>VIBE_URL.'/includes/customizer/images/theme_layout_full_width.jpg',
+                                                'boxed'=>VIBE_URL.'/includes/customizer/images/theme_layout_boxed.jpg',
                                                 ),
                                             'default' => ''
                                         ),
                     'directory_layout' => array(
                                             'label' => 'Directory Layout',
-                                            'type'  => 'select',
+                                            'type'  => 'imgselect',
                                             'choices' => array(
-                                                ''=>'Default',
-                                                'd2'=>'D2',
-                                                'd3'=>'D3',
-                                                'd4'=>'D4',
-                                                'd5'=>'D5',
+                                                ''=>VIBE_URL.'/includes/customizer/images/directory_layout_default.jpg',
+                                                'd2'=>VIBE_URL.'/includes/customizer/images/directory_layout_d2.jpg',
+                                                'd3'=>VIBE_URL.'/includes/customizer/images/directory_layout_d3.jpg',
+                                                'd4'=>VIBE_URL.'/includes/customizer/images/directory_layout_d4.jpg',
+                                                'd5'=>VIBE_URL.'/includes/customizer/images/directory_layout_d5.jpg',
                                                 ),
                                             'default' => ''
                                         ),
                     'profile_layout' => array(
                                         'label' => 'Profile Layout',
-                                        'type'  => 'select',
+                                        'type'  => 'imgselect',
                                         'choices' => array(
-                                                ''=>'Default',
-                                                'p2'=>'P2',
-                                                'p3'=>'P3',
-                                                'p4'=>'P4',
+                                                ''=>VIBE_URL.'/includes/customizer/images/profile_layout_default.jpg',
+                                                'p2'=>VIBE_URL.'/includes/customizer/images/profile_layout_p2.jpg',
+                                                'p3'=>VIBE_URL.'/includes/customizer/images/profile_layout_p3.jpg',
+                                                'p4'=>VIBE_URL.'/includes/customizer/images/profile_layout_p4.jpg',
                                                 ),
                                         'default' => ''
                                     ), 
                     'group_layout' => array(
                                         'label' => 'Group Layout',
-                                        'type'  => 'select',
+                                        'type'  => 'imgselect',
                                         'choices' => array(
-                                            ''=>'Default',
-                                                'g2'=>'G2',
-                                                'g3'=>'G3',
-                                                'g4'=>'G4',
+                                                ''=>VIBE_URL.'/includes/customizer/images/group_layout_default.jpg',
+                                                'g2'=>VIBE_URL.'/includes/customizer/images/group_layout_g2.jpg',
+                                                'g3'=>VIBE_URL.'/includes/customizer/images/group_layout_g3.jpg',
+                                                'g4'=>VIBE_URL.'/includes/customizer/images/group_layout_g4.jpg',
                                                 ),
                                         'default' => ''
                                     ), 
                     'course_layout' => array(
                                         'label' => 'Course Layout',
-                                        'type'  => 'select',
+                                        'type'  => 'imgselect',
                                         'choices' => array(
-                                                ''=>'Default',
-                                                'c2'=>'C2',
-                                                'c3'=>'C3',
-                                                'c4'=>'C4',
-                                                'c5'=>'C5',
+                                                ''=>VIBE_URL.'/includes/customizer/images/course_layout_default.jpg',
+                                                'c2'=>VIBE_URL.'/includes/customizer/images/course_layout_c2.jpg',
+                                                'c3'=>VIBE_URL.'/includes/customizer/images/course_layout_c3.jpg',
+                                                'c4'=>VIBE_URL.'/includes/customizer/images/course_layout_c4.jpg',
+                                                'c5'=>VIBE_URL.'/includes/customizer/images/course_layout_c5.jpg',
+                                                'c6'=>VIBE_URL.'/includes/customizer/images/course_layout_c6.jpg',
+                                                'blank'=>VIBE_URL.'/includes/customizer/images/theme_layout_full_width.jpg',
                                                 ),
                                         'default' => ''
                                     ),
@@ -131,6 +140,7 @@ $vibe_customizer = array(
                                                         'standardcenter'=>__('Standard Center','vibe'),
                                                         'mooc'=>__('Mooc','vibe'),
                                                         'app'=>__('App style','vibe'),
+                                                        'univ'=>__('University','vibe'),
                                                         ),
                                                     'default' => ''
                                                 ),
@@ -240,7 +250,6 @@ $vibe_customizer = array(
                                                 ),                                                                                              
 
                             ),
-
         'typography' => array(
             
                             'h1_font' => array(
@@ -252,7 +261,8 @@ $vibe_customizer = array(
                               'h1_font_weight' => array(
                                                             'label' => 'H1: Font Weight',
                                                             'type'  => 'select',
-                                                            'default' => '400'
+                                                            'default' => '400',
+                                                            'choices' => $font_weights
                                                             ),                               
                              'h1_color' => array(
                                                             'label' => 'H1 Font Color',
@@ -274,6 +284,7 @@ $vibe_customizer = array(
                                'h2_font_weight' => array(
                                                             'label' => 'H2: Font Weight',
                                                             'type'  => 'select',
+                                                            'choices' => $font_weights,
                                                             'default' => '400'
                                                             ),                              
                              'h2_color' => array(
@@ -295,6 +306,7 @@ $vibe_customizer = array(
                              'h3_font_weight' => array(
                                                             'label' => 'H3: Font Weight',
                                                             'type'  => 'select',
+                                                            'choices' => $font_weights,
                                                             'default' => '400'
                                                             ),                               
                              'h3_color' => array(
@@ -316,7 +328,8 @@ $vibe_customizer = array(
                              'h4_font_weight' => array(
                                                             'label' => 'H4: Font Weight',
                                                             'type'  => 'select',
-                                                            'default' => '400'
+                                                            'default' => '400',
+                                                            'choices' => $font_weights,
                                                             ),                               
                              'h4_color' => array(
                                                             'label' => 'H4 Font Color',
@@ -337,6 +350,7 @@ $vibe_customizer = array(
                              'h5_font_weight' => array(
                                                             'label' => 'H5: Font Weight',
                                                             'type'  => 'select',
+                                                            'choices' => $font_weights,
                                                             'default' => '400'
                                                             ),                               
                              'h5_color' => array(
@@ -358,6 +372,7 @@ $vibe_customizer = array(
                              'h6_font_weight' => array(
                                                             'label' => 'H6: Font Weight',
                                                             'type'  => 'select',
+                                                            'choices' => $font_weights,
                                                             'default' => '400'
                                                             ),                               
                              'h6_color' => array(

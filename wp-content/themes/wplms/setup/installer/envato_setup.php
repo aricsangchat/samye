@@ -14,8 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
-
 if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 	/**
 	 * Envato_Theme_Setup_Wizard class
@@ -30,7 +28,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		 *
 		 * @var string
 		 */
-		protected $version = '2.7';
+		protected $version = '3.4';
 
 		/** @var string Current theme name, used as namespace in actions. */
 		protected $theme_name = 'wplms';
@@ -85,14 +83,14 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		 *
 		 * @var string
 		 */
-		protected $tgmpa_menu_slug = 'tgmpa-install-plugins';
+		public $tgmpa_menu_slug = 'tgmpa-install-plugins';
 
 		/**
 		 * TGMPA Menu url
 		 *
 		 * @var string
 		 */
-		protected $tgmpa_url = 'themes.php?page=tgmpa-install-plugins';
+		public $tgmpa_url = 'themes.php?page=tgmpa-install-plugins';
 
 		/**
 		 * The slug name for the parent menu
@@ -149,7 +147,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			return self::$instance;
 		}
 
-
 		/**
 		 * A dummy constructor to prevent this class from being loaded more than once.
 		 *
@@ -161,6 +158,10 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		public function __construct() {
 			$this->init_globals();
 			$this->init_actions();
+
+			//Ajax Calls
+			add_action('wp_ajax_wplms_exported_content_plupload',array($this,'wplms_exported_content_plupload'));
+			add_action('wp_ajax_insert_export_content_final',array($this,'insert_export_content_final'));
 		}
 
 		/**
@@ -187,7 +188,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			return '80px';
 		}
 
-
 		/**
 		 * Get the default style. Can be overriden by theme init scripts.
 		 *
@@ -212,10 +212,9 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			$current_theme         = wp_get_theme();
 			$this->theme_name      = 'wplms';//strtolower( preg_replace( '#[^a-zA-Z]#', '', $current_theme->get( 'Name' ) ) );
 			$this->envato_username = apply_filters( $this->theme_name . '_theme_setup_wizard_username', 'vibethemes' );
-			$this->oauth_script    = apply_filters( $this->theme_name . '_theme_setup_wizard_oauth_script', 'http://vibethemes.com/api/server-script.php' );
+			$this->oauth_script    = apply_filters( $this->theme_name . '_theme_setup_wizard_oauth_script', 'https://wplms.io/api/server-script.php' );
 			$this->page_slug       = apply_filters( $this->theme_name . '_theme_setup_wizard_page_slug', $this->theme_name . '-setup' );
 			$this->parent_slug     = apply_filters( $this->theme_name . '_theme_setup_wizard_parent_slug', '' );
-
 
 			$this->features = array(
 								
@@ -245,7 +244,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 	                    						'label'=>__('Visual Composer'),
 	                    						'icon'=>'images/directory.png',
 	                    						'description'=> __('The top selling premium page builder for WordPress.','vibe'),
-	                    						'verify'=>array('js_composer/js_composer.php')
+	                    						'verify'=>array('js_composer/js_composer.php','wplms_vc_templates/wplms_vc_templates.php')
                     						),
 	                    		'events'=>array(
 	                    						'label'=>__('Events'),
@@ -290,19 +289,39 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 	                    						'description'=> __('Enable multiple instructors per course. Add more than 1 isntructor per course. ','vibe'),
 	                    						'verify'=>array('co-authors-plus/co-authors-plus.php','WPLMS-Coauthors-Plus/wplms-coauthor-plus.php')
                     						),
+	                    		'bigbluebutton'=>array(
+	                    						'label'=>__('Video Conferencing'),
+	                    						'icon'=>'images/single-instructor.png',
+	                    						'description'=> __('Enable Video conferencing with BigBlueButton. ','vibe'),
+	                    						'verify'=>array('bigbluebutton/bigbluebutton-plugin.php','wplms-bbb/wplms-bbb.php')
+                    						),
+	                    		'h5p'=>array(
+	                    						'label'=>__('H5P Interactive Learning'),
+	                    						'icon'=>'images/messaging.png',
+	                    						'description'=> 'Enable Video conferencing with H5P. ',
+	                    						'verify'=>array('h5p/h5p.php','wplms-h5p/wplms-h5p.php')
+                    						),
 	                    		
 	                    	);
 
 			// create an images/styleX/ folder for each style here.
 			$this->site_styles = array(
-                'demo1' => array('label'=>'Demo 1','link'=>'http://themes.vibethemes.com/wplms/skins/demo1/'),
-                'demo2' => array('label'=>'Demo 2','link'=>'http://themes.vibethemes.com/wplms/skins/demo2/'),
-                'demo3' => array('label'=>'Demo 3','link'=>'http://themes.vibethemes.com/wplms/skins/demo3/'),
-                'demo4' => array('label'=>'Demo 4','link'=>'http://themes.vibethemes.com/wplms/skins/demo4/'),
-                'demo5' => array('label'=>'Demo 5','link'=>'http://themes.vibethemes.com/wplms/skins/demo5/'),
-                'demo6' => array('label'=>'Demo 6','link'=>'http://themes.vibethemes.com/wplms/skins/demo6/'),
-                'default' => array('label'=>'Default','link'=>'http://themes.vibethemes.com/wplms/skins/default/'),
-            );
+               'demo1' => array('label'=>'Demo 1','link'=>'https://wplms.io/demos/demo1/'),
+               'demo2' => array('label'=>'Demo 2','link'=>'https://wplms.io/demos/demo2/'),
+               'demo3' => array('label'=>'Demo 3','link'=>'https://wplms.io/demos/demo3/'),
+               'demo4' => array('label'=>'Demo 4','link'=>'https://wplms.io/demos/demo4/'),
+               'demo5' => array('label'=>'Demo 5','link'=>'https://wplms.io/demos/demo5/'),
+               'demo6' => array('label'=>'Demo 6','link'=>'https://wplms.io/demos/demo6/'),
+               'demo7' => array('label'=>'Demo 7','link'=>'https://wplms.io/demos/demo7/'),
+               'demo8' => array('label'=>'Demo 8','link'=>'https://wplms.io/demos/demo8/'),
+               'demo9' => array('label'=>'Demo 9','link'=>'https://wplms.io/demos/demo9/'),
+               'demo10' => array('label'=>'Demo 10','link'=>'https://wplms.io/demos/demo10/'),
+               'default' => array('label'=>'Default','link'=>'https://wplms.io/demos/default/'),
+               'points_system' => array('label'=>'Points System','link'=>'https://wplms.io/demos/points_system/'),
+               'oneinstructor' => array('label'=>'One Instructor','link'=>'https://wplms.io/demos/oneinstructor/'),
+               'onecourse' => array('label'=>'One Course','link'=>'https://wplms.io/demos/onecourse/'),
+               'childone' => array('label'=>'Child One','link'=>'https://wplms.io/demos/childone/'),
+           );
 
 			//If we have parent slug - set correct url
 			if ( $this->parent_slug !== '' ) {
@@ -328,8 +347,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		 * @access public
 		 */
 		public function init_actions() {
-
-			 
 
 			if ( apply_filters( $this->theme_name . '_enable_setup_wizard', true ) && current_user_can( 'manage_options' ) ) {
 				add_action( 'after_switch_theme', array( $this, 'switch_theme' ) );
@@ -376,9 +393,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 
 		function wplms_register_sidebars(){
 
-			
-
-			$style = get_option('wplms_site_style');
+			$style = vibe_get_site_style();//get_option('wplms_site_style');
 			if(empty($style)){$style = $this->get_default_theme_style();}
 			switch($style){
 				case 'demo1':
@@ -465,13 +480,11 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 					$check = 0;
 				}
 			}
-			
 
 			return $check;	
 		}
 		function setup_wizard_plugins($plugins){
 
-			
 			// SETUP WIZARD PLUGINS
 			$wplms_plugins = get_option( 'wplms_plugins');
 			if(isset($wplms_plugins) && is_array($wplms_plugins)){
@@ -517,6 +530,27 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
             	'file'					=> 'paid-memberships-pro/paid-memberships-pro.php',
         		);
 
+	        	$plugins[] = array(
+	            'name'                  => 'BigBlueButton',
+	            'slug'                  => 'bigbluebutton', 
+	            'file'					=> 'bigbluebutton/bigbluebutton-plugin.php',
+	        	);
+	        	$plugins[] = array(
+	            'name'                  => 'WPLMS BBB',
+	            'slug'                  => 'bbb-wplms', 
+	            'file'					=> 'wplms-bbb/wplms-bbb.php',
+	        	);
+
+	        	$plugins[] = array(
+	            'name'                  => 'H5P',
+	            'slug'                  => 'h5p', 
+	            'file'					=> 'h5p/h5p.php',
+	        	);
+	        	$plugins[] = array(
+	            'name'                  => 'WPLMS H5P',
+	            'slug'                  => 'wplms-h5p-plugin', 
+	            'file'					=> 'wplms-h5p/wplms-h5p.php',
+	        	);
 				foreach($plugins as $k=>$plugin){
 					if(empty($plugin['required']) && isset($plugin['file']) && !in_array($plugin['file'],$wplms_plugins)){
 						unset($plugins[$k]);
@@ -621,8 +655,12 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				) );
 			}
 
-		}
+			add_theme_page( esc_html__( 'Export Wizard' ), esc_html__( 'Export Wizard' ), 'manage_options', $this->page_slug.'&export', array(
+					$this,
+					'export_wizard',
+				) );
 
+		}
 
 		/**
 		 * Setup steps.
@@ -660,12 +698,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				'view'    => array( $this, 'envato_page_setup' ),
 				'handler' => array( $this, 'envato_page_setup_save' ),
 			);
-
-			$this->steps['updates']         = array(
-				'name'    => esc_html__( 'Updates' ),
-				'view'    => array( $this, 'envato_setup_updates' ),
-				'handler' => array( $this, 'envato_setup_updates_save' ),
-			);
+			
 			if( count($this->site_styles) > 1 ) {
 				$this->steps['style'] = array(
 					'name'    => esc_html__( 'Style' ),
@@ -703,8 +736,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
                 <div class="theme-features">
                     <ul>
 	                    <?php
-	                    
-	                   
+
 	                    foreach ( $this->features as $feature => $data ) {
 	                    	$class='';$flag=0;
 	                    	
@@ -739,12 +771,11 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
                     </ul>
                 </div>
 
-
-                <hr><p><em>Have a suggestion for us. Share it with us <a href="" target="_blank">here</a>  !</em></p>
+                <hr><p><em>Have a suggestion for us. Share it with us <a href="http://vibethemes.com/documentation/wplms/forums/forum/general/feature-request/" target="_blank">here</a>  !</em></p>
 
                 <p class="envato-setup-actions step">
                     <input type="submit" class="button-primary button button-large button-next"
-                           value="<?php esc_attr_e( 'Continue' ); ?>" name="save_step"/>
+                           value="<?php _e( 'Continue', 'vibe' ); ?>" name="save_step"/>
                     <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>"
                        class="button button-large button-next"><?php esc_html_e( 'Skip this step' ); ?></a>
 					<?php wp_nonce_field( 'envato-setup' ); ?>
@@ -880,7 +911,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				<form method="post">
                 <p class="envato-setup-actions step">
                     <input type="submit" class="button-primary button button-large button-next"
-                           value="<?php esc_attr_e( 'Continue' ); ?>" name="save_step"/>
+                           value="<?php _e( 'Continue', 'vibe' ); ?>" name="save_step"/>
                     <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>"
                        class="button button-large button-next"><?php esc_html_e( 'Skip this step' ); ?></a>
 					<?php wp_nonce_field( 'envato-setup' ); ?>
@@ -890,10 +921,12 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 
 		}
 
-		public function envato_page_setup_save(){
-			check_admin_referer( 'envato-setup' );
+		public function envato_page_setup_save($go=null){
+			if(empty($go)){
+				check_admin_referer( 'envato-setup' );
+			}
 
-			if ( ! empty( $_REQUEST['save_step'] )){
+			if ( ! empty( $_REQUEST['save_step'] ) || !empty($go)){
 				
 				$user_id = get_current_user_id();
 				$pages = array(
@@ -1043,9 +1076,10 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 					}
 				}
 			}
-
-			wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
-			exit;
+			if(empty($go)){
+				wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+				exit;
+			}
 		}
 		/**
 		 * Setup Wizard Header
@@ -1145,6 +1179,53 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		 */
 		public function envato_setup_introduction() {
 
+
+			$setup_options = '<div class="setup_wizard_options_overlay">
+					<div class="setup_wizard_options">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-4 col-md-offset-4 col-sm-6">
+									<a class="button-primary button" id="install_setup_wizard">Install using Setup Wizard</a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4 col-md-offset-4 col-sm-6">
+									<a class="button" id="install_one_click_installer">';
+								
+									
+								$setup_options .='Install using One Click installer';
+								if(function_exists('ini_get')){
+										$maxtime = ini_get('max_execution_time');
+										if($maxtime < 200){
+											$setup_options .= '<span style="color:red;display:block;font-size:80%;">( * Increase Max execution time to 200 )</span> ';
+										}
+									}
+								$setup_options.='</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<style>
+				.setup_wizard_options_overlay{
+				    position: fixed;top: 0;z-index:9;
+				    background: rgba(0,0,0,0.6);left: 0;
+				    width: 100%;height: 100%;
+				    display: flex;justify-content: center;align-content: center;
+				}.setup_wizard_options{align-self: center;}
+				.setup_wizard_options .row+.row{margin-top:30px;}
+				.setup_wizard_options .button{
+				    width: 100%;text-align: center;height: auto;padding: 30px;font-size: 16px;}
+				</style><script>
+				jQuery(document).ready(function($){
+					$("#install_setup_wizard").on("click",function(){
+						$(".setup_wizard_options_overlay").hide(200).remove();
+					});
+					$("#install_one_click_installer").on("click",function(){
+						window.location.href = "'.admin_url('index.php?page=wplms-install').'";
+					});
+				});
+				</script>';
+
 			if ( isset( $_REQUEST['debug'] ) ) {
 				echo '<pre>';
 				// debug inserting a particular post so we can see what's going on
@@ -1170,6 +1251,8 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				@include('envato-setup-export.php');
 
 			} else if ( $this->is_possible_upgrade() ) {
+
+				echo $setup_options;
 				?>
 				<h1><?php printf( esc_html__( 'Welcome to the setup wizard for %s.' ), 'WPLMS' ); ?></h1>
 				<p><?php esc_html_e( 'It looks like you may have recently upgraded to this theme. Great! This setup wizard will help ensure all the default settings are correct. It will also show some information about your new website and support options.' ); ?></p>
@@ -1181,6 +1264,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				</p>
 				<?php
 			} else if ( get_option( 'envato_setup_complete', false )) {
+				echo $setup_options;
 				?>
 				<h1><?php printf( esc_html__( 'Welcome to the setup wizard for %s Theme.' ), 'WPLMS'); ?></h1>
 				<p><?php esc_html_e( 'It looks like you have already run the setup wizard. Below are some options: ' ); ?></p>
@@ -1193,7 +1277,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 						<form method="post">
 							<input type="hidden" name="reset-font-defaults" value="yes">
 							<!--input type="submit" class="button-primary button button-large button-next"
-							       value="<?php //esc_attr_e( 'Reset font style and colors' ); ?>" name="save_step"/ -->
+							       value="<?php //_e( 'Reset font style and colors', 'vibe' ); ?>" name="save_step"/ -->
 							<?php wp_nonce_field( 'envato-setup' ); ?>
 						</form>
 					</li>
@@ -1204,7 +1288,10 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				</p>
 				<?php
 			} else {
+
+				echo $setup_options;
 				?>
+
 				<h1 style="font-size:3rem;text-align:center;margin:20px 0;"><?php echo esc_html__('WPLMS Setup Wizard'); ?></h1>
 				<p><?php 
 					printf( '<h4>'.esc_html__( 'Welcome to the setup wizard for WPLMS Theme. You\'re using %s theme.').'</h4><hr>',wp_get_theme());
@@ -1283,22 +1370,22 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		}
 
 		function wplms_let_to_num( $size ) {
-		$l   = substr( $size, -1 );
-		$ret = substr( $size, 0, -1 );
-		switch ( strtoupper( $l ) ) {
-			case 'P':
-				$ret *= 1024;
-			case 'T':
-				$ret *= 1024;
-			case 'G':
-				$ret *= 1024;
-			case 'M':
-				$ret *= 1024;
-			case 'K':
-				$ret *= 1024;
+			$l   = substr( $size, -1 );
+			$ret = substr( $size, 0, -1 );
+			switch ( strtoupper( $l ) ) {
+				case 'P':
+					$ret *= 1024;
+				case 'T':
+					$ret *= 1024;
+				case 'G':
+					$ret *= 1024;
+				case 'M':
+					$ret *= 1024;
+				case 'K':
+					$ret *= 1024;
+			}
+			return $ret;
 		}
-		return $ret;
-	}
 
 		public function filter_options( $options ) {
 			return $options;
@@ -1334,7 +1421,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 
 			return false;
 		}
-
 
 		private function _get_plugins() {
 			$instance = call_user_func( array( get_class( $GLOBALS['tgmpa'] ), 'get_instance' ) );
@@ -1451,7 +1537,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			<?php
 		}
 
-
 		public function ajax_plugins() {
 			if ( ! check_ajax_referer( 'envato_setup_nonce', 'wpnonce' ) || empty( $_POST['slug'] ) ) {
 				wp_send_json_error( array( 'error' => 1, 'message' => esc_html__( 'No Slug Found' ) ) );
@@ -1515,7 +1600,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			exit;
 
 		}
-
 
 		private function _content_default_get() {
 
@@ -1590,16 +1674,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				// dont check if already have content installed.
 			);
 			
-			$content['settings'] = array(
-				'title'            => esc_html__( 'Settings' ),
-				'description'      => esc_html__( 'Configure default settings (menus locations, widget connections, set home page, link course units, quiz questions etc).' ),
-				'pending'          => esc_html__( 'Pending.' ),
-				'installing'       => esc_html__( 'Installing Default Settings.' ),
-				'success'          => esc_html__( 'Success.' ),
-				'install_callback' => array( $this, '_content_install_settings' ),
-				'checked'          => $this->is_possible_upgrade() ? 0 : 1,
-				// dont check if already have content installed.
-			);
 			$content['slider'] = array(
 				'title'            => esc_html__( 'Slider' ),
 				'description'      => esc_html__( 'Import sliders used in the demo' ),
@@ -1607,6 +1681,17 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				'installing'       => esc_html__( 'Installing Slider.' ),
 				'success'          => esc_html__( 'Success.' ),
 				'install_callback' => array( $this, '_content_install_slider' ),
+				'checked'          => 0,
+				// dont check if already have content installed.
+			);
+
+			$content['settings'] = array(
+				'title'            => esc_html__( 'Settings' ),
+				'description'      => esc_html__( 'Configure default settings (menus locations, widget connections, set home page, link course units, quiz questions etc).' ),
+				'pending'          => esc_html__( 'Pending.' ),
+				'installing'       => esc_html__( 'Installing Default Settings.' ),
+				'success'          => esc_html__( 'Success.' ),
+				'install_callback' => array( $this, '_content_install_settings' ),
 				'checked'          => $this->is_possible_upgrade() ? 0 : 1,
 				// dont check if already have content installed.
 			);
@@ -1669,7 +1754,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			</form>
 			<?php
 		}
-
 
 		public function ajax_content() {
 			$content = $this->_content_default_get();
@@ -1809,7 +1893,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 
 		}
 
-
 		public function elementor_post( $post_id = false ) {
 
 			// regenrate the CSS for this Elementor post
@@ -1819,8 +1902,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			}
 
 		}
-
-
 
 		private function _imported_post_id( $original_id = false, $new_id = false ) {
 			if ( is_array( $original_id ) || is_object( $original_id ) ) {
@@ -1879,7 +1960,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 
 		}
 
-
 		// return the difference in length between two strings
 		public function cmpr_strlen( $a, $b ) {
 			return strlen( $b ) - strlen( $a );
@@ -1907,7 +1987,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			}
 
 			$post_data['post_type'] = $post_type;
-
 
 			$post_parent = (int) $post_data['post_parent'];
 			if ( $post_parent ) {
@@ -1987,7 +2066,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 							return true; // alrady done;
 						}
 						// ignore post parent, we haven't imported those yet.
-						//                          $file_data = wp_remote_get($post_data['guid']);
+						// $file_data = wp_remote_get($post_data['guid']);
 						$remote_url = $post_data['guid'];
 
 						$post_data['upload_date'] = date( 'Y/m', strtotime( $post_data['post_date_gmt'] ) );
@@ -2002,7 +2081,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 								}
 							}
 						}
-//
+
 						$upload = $this->_fetch_remote_file( $remote_url, $post_data );
 
 						if ( ! is_array( $upload ) || is_wp_error( $upload ) ) {
@@ -2315,11 +2394,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 						}
 					}
 
-
-
-
 					$post_id = wp_insert_post( $post_data, true );
-
 
 					if ( ! is_wp_error( $post_id ) ) {
 						$this->_imported_post_id( $post_data['post_id'], $post_id );
@@ -2491,15 +2566,21 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			}
 		}
 
-		private function _content_install_type() {
+		public function _content_install_type($type=null,$index=null) {
 			$post_type = ! empty( $_POST['content'] ) ? $_POST['content'] : false;
+			if(!empty($type)){
+				$post_type= $type;
+			}
 			$all_data  = $this->_get_json( 'default.json' );
 			if ( ! $post_type || ! isset( $all_data[ $post_type ] ) ) {
 				return false;
 			}
 			$limit = 10 + ( isset( $_REQUEST['retry_count'] ) ? (int) $_REQUEST['retry_count'] : 0 );
-			$x     = 0;
-
+			if(!isset($_REQUEST['retry_count']) && !empty($index)){
+				$limit = 5 + ( isset( $index) ? (int) $index : 0 );
+			}
+			$x  = 0;
+			
 			$this->logs[]='#1 - Inside the Nav menu item - '.$post_type;
 			if($post_type == 'nav_menu_item'){
 				$style = get_option('wplms_site_style');
@@ -2563,7 +2644,21 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 					$x = $this->_imported_post_id(2140);
 					if(empty($x)){
 						$course_directory = get_page_by_title( 'All Courses' );
-						$this->_imported_post_id( 2172, $course_directory->ID );
+						$this->_imported_post_id( 2140, $course_directory->ID );
+
+					}
+				}else if($style == 'demo7'){
+					$x = $this->_imported_post_id(2140);
+					if(empty($x)){
+						$course_directory = get_page_by_title( 'All Courses' );
+						$this->_imported_post_id( 2140, $course_directory->ID );
+
+					}
+				}else if($style == 'demo8'){
+					$x = $this->_imported_post_id(25);
+					if(empty($x)){
+						$course_directory = get_page_by_title( 'All Courses' );
+						$this->_imported_post_id( 25, $course_directory->ID );
 
 					}
 				}else if($style == 'default'){
@@ -2586,10 +2681,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			}
 
 			$this->_handle_delayed_posts();
-
 			$this->_handle_post_orphans();
-
-			
 
 			return true;
 
@@ -2636,7 +2728,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			$file_name  = basename( $url );
 			$upload     = false;
 
-
 			if ( ! $upload || $upload['error'] ) {
 				// get placeholder file in the upload dir with a unique, sanitized filename
 				$upload = wp_upload_bits( $file_name, 0, '', $post['upload_date'] );
@@ -2644,17 +2735,26 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 					return new WP_Error( 'upload_dir_error', $upload['error'] );
 				}
 
-				// fetch the remote url and write it to the placeholder file
-				//$headers = wp_get_http( $url, $upload['file'] );
-
 				$max_size = (int) apply_filters( 'import_attachment_size_limit', 0 );
 
 				if ( empty( $this->debug ) ) {
-					$vibe_url = 'http://themes.vibethemes.com/wplms/demodata/content/images/'.$file_name;
+
+					//Change to Uploaded file path if uploaded
+					$path = get_option('wplms_export_import_content_path');
+					if( !empty($path) ){
+						$vibe_url = site_url().'/wp-content/uploads/upload_demos/'.basename($path).'/images/'.$file_name;
+					}else{
+						if(strpos($url, 'http://local.wordpress.dev') !== false || strpos($url, 'htt://themes.vibethemes.com') !== false){
+							$vibe_url = 'https://wplms.io/demos/demodata/content/images/'.$file_name;
+						}else{
+							$vibe_url = $url;
+						}
+					}
 				}
 
 				$response = wp_remote_get( $vibe_url ,array('timeout' => 60));
 				if ( is_array( $response ) && ! empty( $response['body'] ) && $response['response']['code'] == '200' ) {
+					//
 				}else{
 					$local_file = trailingslashit( get_template_directory() ) . 'assets/images/title_bg.png';
 					
@@ -2669,9 +2769,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 						}
 					}
 				}
-				// we check if this file is uploaded locally in the source folder.
-				
-				
 
 				if ( is_array( $response ) && ! empty( $response['body'] ) && $response['response']['code'] == '200' ) {
 					require_once( ABSPATH . 'wp-admin/includes/file.php' );
@@ -2719,8 +2816,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			return $upload;
 		}
 
-
-		private function _content_install_widgets() {
+		public function _content_install_widgets() {
 			// todo: pump these out into the 'content/' folder along with the XML so it's a little nicer to play with
 			$import_widget_positions = $this->_get_json( 'widget_positions.json' );
 			$import_widget_options   = $this->_get_json( 'widget_options.json' );
@@ -2775,9 +2871,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 
 		public function _content_options_settings(){
 
-			
-	        
-	        
 			$this->logs[] = 'inside options panel';
 			$custom_options = $this->_get_json( 'options.json' );
 
@@ -2797,10 +2890,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			return true;
 		}
 
-		
 		public function _content_customizer_settings(){
-
-			
 
 			$this->logs[] = 'inside customizer settings';
 			$custom_options = $this->_get_json( 'options.json' );
@@ -2828,8 +2918,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			$this->logs[] = 'inside settings';
 			$custom_options = $this->_get_json( 'options.json' );
 
-        
-
 			// we also want to update the widget area manager options.
 			foreach ( $custom_options as $option => $value ) {
 				// we have to update widget page numbers with imported page numbers.
@@ -2843,7 +2931,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 						$option = str_replace( $matches[1] . $matches[2] . '_', $matches[1] . $new_page_id . '_', $option );
 					}
 				}
-				
 
 				if($option != 'wplms' && $option != 'vibe_customizer'){
 					update_option( $option, $value );	
@@ -2856,9 +2943,9 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			if(empty($style)){$style = $this->get_default_theme_style();}
 
 			foreach ( $menu_ids as $menu_id => $term_id ) { 
-				
+
 				$new_term_id = $this->_imported_term_id( $term_id );
-				if ( $new_term_id  && in_array($style,array('demo1','demo3','demo4','demo5','demo6'))) {
+				if ( $new_term_id  && in_array($style,array('demo1','demo3','demo4','demo5','demo6','demo7','demo8'))) {
 					$save[ $menu_id ] = $new_term_id;
 				}else{
 					$save[ $menu_id ] = $term_id;
@@ -2868,8 +2955,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				set_theme_mod( 'nav_menu_locations', array_map( 'absint', $save ) );
 			}
 
-
-			//
 			// set the blog page and the home page.
 			$shoppage = get_page_by_title( 'Shop' );
 			if ( $shoppage ) {
@@ -2906,7 +2991,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		    $wp_rewrite->set_permalink_structure( '/%postname%/' );
 		    $wp_rewrite->flush_rules();
 		    $wp_rewrite->init();
-
 			$post_ids = get_transient( 'importpostids' );
 			
 			if(!empty($post_ids)){
@@ -2921,7 +3005,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				$ids = implode(',',$ids);
 				foreach($meta_keys as $meta_key){
 					global $wpdb;
-					
 
 					$results = $wpdb->get_results($wpdb->prepare("SELECT post_id,meta_value FROM {$wpdb->postmeta} WHERE meta_key = %s AND post_id IN ($ids)",$meta_key));
 
@@ -2946,7 +3029,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 											$result->meta_value[$k] = $post_ids[$v];
 										}else{
 											if(is_string($v)){
-												$v = unserialize($v);
+												$v = @unserialize($v);
 											}
 										} 
 										
@@ -2966,7 +3049,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 					}
 				}
 			}
-			
 
 			update_option('default_role','student');			
 
@@ -2975,19 +3057,21 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			update_option( 'rewrite_rules', false );
 			$wp_rewrite->flush_rules( true );
 
-			
 			return true;
 		}
 
 		function _content_install_slider(){
 
 			$style = get_option('wplms_site_style');
+
 			if(empty($style)){$style = $this->get_default_theme_style();}
 
 			$slider_array = array();
 			$ls_slider_array = array();
 
-			$url = 'http://themes.vibethemes.com/wplms/demodata/content/'.$style;
+			//$url = 'https://s3.amazonaws.com/wplmsdownloads/demodata/'.$style;
+			$url = 'https://wplms.io/demos/demodata/content/'.$style;
+
 			if(in_array($style,array('demo1'))){
 				$slider_array = array($url."/classicslider1.zip");
 			}
@@ -3010,8 +3094,24 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				$slider_array = array($url."/homeslider.zip");
 			}
 
+			if(in_array($style,array('demo7'))){
+				$slider_array = array($url."/demo7.zip");
+			}
+
+			if(in_array($style,array('demo8'))){
+				$slider_array = array($url."/demo8.zip");
+			}
+ 
+			if(in_array($style,array('demo9'))){
+				$slider_array = array($url."/demo9.zip",$url."/demo9_parallax.zip");
+			}
+			
 			if(in_array($style,array('default'))){
 				$ls_slider_array = array($url."/lsslider.zip");
+			}
+
+			if(in_array($style,array('demo10'))){
+				$ls_slider_array = array($url."/demo10-1.zip",$url."/demo10-2.zip",$url."/demo10-3.zip");
 			}
 	        
 	        if(!empty($ls_slider_array)){
@@ -3024,13 +3124,16 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 	        	}
 	        }
 
+
 			if(class_exists('RevSlider') && !empty($slider_array)){
 				$slider = new RevSlider();
 				foreach($slider_array as $url){
 					$filepath = $this->_download_slider($url);
 					$slider->importSliderFromPost(true,true,$filepath);  
 				}	
+
 			}
+
 
 			return true;
 		}
@@ -3038,17 +3141,13 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		function _download_slider($url){
 
 			$file_name = basename( $url );
-
-			
 			$upload_dir = wp_upload_dir();
 			$full_path = $upload_dir['path'].'/'.$file_name;
 			if(file_exists($full_path)){
 				@unlink($full_path);
 			}
 
-
 			$upload = wp_upload_bits( $file_name, 0, '');
-
 
 			if ( $upload['error'] ) { // File already imported
 				@unlink( $upload['file'] );
@@ -3062,7 +3161,9 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			}
 
 			// we check if this file is uploaded locally in the source folder.
-			$response = wp_remote_get( $url ,array('timeout' => 120));
+			$response = wp_remote_get( $url ,array('timeout' => 200));
+
+
 			WP_Filesystem();
 			global $wp_filesystem;
 			$wp_filesystem->put_contents( $upload['file'], $response['body'] );
@@ -3080,20 +3181,22 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				return new WP_Error( 'import_file_error', esc_html__( 'Remote server did not respond' ) );
 			}
 
-
 			return $upload['file'];
 		}
 
-
 		public function _get_json( $file ) {
 
-            $style = get_option('wplms_site_style');
+			//Change to Uploaded file path if uploaded
+			$path = get_option('wplms_export_import_content_path');
 
-            if(empty($style)){$style = $this->get_default_theme_style();}
-
-
-            $theme_style = __DIR__ . '/content/' . basename($style) .'/';
-
+			if( !empty($path) ){
+				$style = basename($path);
+				$theme_style = $path.'/';
+			}else{
+				$style = get_option('wplms_site_style');
+				if(empty($style)){$style = $this->get_default_theme_style();}
+				$theme_style = __DIR__ . '/content/' . basename($style) .'/';
+			}
 
             if($file == 'options.json'){
                 WP_Filesystem();
@@ -3105,8 +3208,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
                 }  
                 return json_decode($file, true );
             }
-            
-                
+
             if ( is_file( $theme_style . basename( $file ) ) ) {
                 WP_Filesystem();
                 global $wp_filesystem;
@@ -3198,7 +3300,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 				}
 			}
 
-
 			foreach($fields as $field){
 				xprofile_insert_field($field);	
 			}
@@ -3270,7 +3371,6 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			return true;
 		}
 
-
 		public $logs = array();
 
 		public function log( $message ) {
@@ -3295,6 +3395,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 	                    <?php
 
 	                    $current_style = get_option('wplms_site_style');
+	                    
 						if(empty($current_style)){$current_style = $this->get_default_theme_style();}
 	                    foreach ( $this->site_styles as $style_name => $style_data ) {
 		                    ?>
@@ -3308,18 +3409,190 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 
                 <input type="hidden" name="demo_style" id="demo_style" value="<?php echo $current_style; ?>">
 
-                <p><em>Please Note: Advanced changes to website graphics/colors may require extensive PhotoShop and Web
-                        Development knowledge. We recommend hiring an expert from <a
-                                href="http://studiotracking.envato.com/aff_c?offer_id=4&aff_id=1564&source=DemoInstall"
-                                target="_blank">Envato Studio</a> to assist with any advanced website changes.</em></p>
+                <hr>
+                <div class="custom_upload_block">
+                <h3 class="hide_next">* OR Import your exported code from another WPLMS site. (<a href="http://vibethemes.com/documentation/wplms/knowledge-base/wplms-site-import-and-export/" title="wplms site exporter" target="_blank">?</a>)</h3>
+                <div class="hide">
+	                <?php wp_enqueue_script('plupload'); ?>
+
+	                <div  class="plupload_error_notices notice notice-error is-dismissible"></div>
+	                <div id="plupload-upload-ui" class="hide-if-no-js">
+	                    <div id="drag-drop-area">
+	                        <div class="drag-drop-inside">
+	                            <p class="drag-drop-info"><?php _e('Drop files here','vibe'); ?></p>
+	                            <p><?php _ex('or', 'Uploader: Drop files here - or - Select Files','vibe'); ?></p>
+	                            <p class="drag-drop-buttons"><input id="plupload-browse-button" type="button" value="<?php _e('Select Files','vibe'); ?>" class="button" /></p>
+	                        </div>
+	                    </div>
+	                </div>
+
+	                <div class="pl_wplms_progress">
+	                	<div class="warning_plupload" style="display:none;padding:15px;padding-bottom:1px;margin:10px 0;background:#d8d8d8;">
+		                    <h3><?php echo __("Please do not close the window until process is completed","vibe") ?></h3>
+		                </div>
+	                </div>
+                </div>
+
+                <?php
+                    if ( function_exists( 'ini_get' ) )
+                        $post_size = ini_get('post_max_size') ;
+                    $post_size = preg_replace('/[^0-9\.]/', '', $post_size);
+                    $post_size = intval($post_size);
+                    if($post_size != 1){
+                        $post_size = $post_size-1;
+                    }
+
+                 $plupload_init = array(
+                    'runtimes'            => 'html5,silverlight,flash,html4',
+                    'chunk_size'          =>  (($post_size*1024) - 100).'kb',
+                    'max_retries'         => 3,
+                    'browse_button'       => 'plupload-browse-button',
+                    'container'           => 'plupload-upload-ui',
+                    'drop_element'        => 'drag-drop-area',
+                    'multiple_queues'     => false,
+                    'multi_selection'     => false,
+                    'filters'             => array( array( 'extensions' => implode( ',', array('zip') ) ) ),
+                    'url'                 => admin_url('admin-ajax.php'),
+                    'flash_swf_url'       => includes_url('js/plupload/plupload.flash.swf'),
+                    'silverlight_xap_url' => includes_url('js/plupload/plupload.silverlight.xap'),
+                    'multipart'           => true,
+                    'urlstream_upload'    => true,
+
+                    // additional post data to send to our ajax hook
+                    'multipart_params'    => array(
+                      '_ajax_nonce' => wp_create_nonce('wplms_exported_content_plupload'),
+                      'action'      => 'wplms_exported_content_plupload'
+                    ),
+                  );
+
+                $plupload_init = apply_filters('plupload_init', $plupload_init);
+                
+                ?>
+				<script>
+					jQuery(document).ready(function($){
+						var temp = <?php echo json_encode($plupload_init,JSON_UNESCAPED_SLASHES); ?>;
+						// create the uploader and pass the config from above
+						var uploader = new plupload.Uploader(temp);
+						// checks if browser supports drag and drop upload, makes some css adjustments if necessary
+						uploader.bind('Init', function(up){
+							var uploaddiv = $('#plupload-upload-ui');
+							uploaddiv.css({'display':'block','margin-bottom':'10px'});
+							if(up.features.dragdrop){
+                				uploaddiv.addClass('drag-drop');
+                				$('#drag-drop-area')
+                					.bind('dragover.wp-uploader', function(){ uploaddiv.addClass('drag-over'); })
+                					.bind('dragleave.wp-uploader, drop.wp-uploader', function(){ uploaddiv.removeClass('drag-over'); })
+                					.css('height', 'auto');
+                			}else{
+                				uploaddiv.removeClass('drag-drop');
+                				$('#drag-drop-area').unbind('.wp-uploader');
+                			}
+                		});
+
+                		uploader.init();
+
+                		// a file was added in the queue
+                        uploader.bind('FilesAdded', function(up, files){
+                            
+                            var hundredmb = 100 * 1024 * 1024, max = parseInt(up.settings.max_file_size, 10);
+                            plupload.each(files, function(file){
+                                if (file.size > max && up.runtime != 'html5'){
+                                    console.log('call "upload_to_amazon" not sent');
+                                }else{
+                                     $('.pl_wplms_progress').addClass('visible');
+                                    var clone = $('.pl_wplms_progress').append('<div class="'+file.id+'">'+file.name+'<i></i><strong><span></span></strong></div>');
+                                    $('.pl_wplms_progress').append(clone);
+                                    $('.warning_plupload').show(300);
+                                }
+                               
+                            });
+
+                            up.refresh();
+                            up.start();
+                        });
+
+                		uploader.bind('Error', function(up, args){
+                			console.log(up);
+                			$('.plupload_error_notices').show();
+                			$('.plupload_error_notices').html('<div class="message text-danger danger tada animate load">'+args.message+' for '+args.file.name+'</div>');
+                			setTimeout(function(){
+                				$('.plupload_error_notices').hide();
+                			}, 5000);
+                			up.refresh();
+                			up.start();
+                		});
+                		uploader.bind('UploadProgress', function(up, file){
+                			if(file.percent < 100 && file.percent >= 1){
+                				$('.pl_wplms_progress div.'+file.id+' strong span').css('width', (file.percent)+'%');
+                				$('.pl_wplms_progress div.'+file.id+' i').html( (file.percent)+'%');
+                			}
+                			up.refresh();
+                			up.start();
+                		});
+                		// a file was uploaded
+                		uploader.bind('FileUploaded', function(up, file, response) {
+
+                            //$('.stop_s3_plupload_upload').addClass('disabled');
+                             $.ajax({
+                              type: "POST",
+                              url: 'admin-ajax.php',
+                              data: { action: 'insert_export_content_final', 
+                                      security: '<?php echo wp_create_nonce("wplms_export_content_final"); ?>',
+                                      name:file.name,
+                                      type:file.type,
+                                      size:file.origSize,
+                                    },
+                              cache: false,
+                              success: function (html) {
+                                if(html){
+                                    if(html == '0'){
+                                        $('.pl_wplms_progress div.'+file.id+' strong span').css('width', '0%');
+                                        $('.pl_wplms_progress div.'+file.id+' strong').html("<i class='error'><?php echo __("File couldn't be unzipped properly","vibe"); ?><i>");
+                                        setTimeout(function(){
+                                            $('.pl_wplms_progress div.'+file.id).fadeOut(600);
+                                            $('.pl_wplms_progress div.'+file.id).remove();
+                                        }, 2500);
+                                        $('.warning_plupload').hide(300);
+                                        return false;
+                                    }else{
+
+                                        $('.pl_wplms_progress div.'+file.id+' strong span').css('width', '100%');
+                                        $('.pl_wplms_progress div.'+file.id+' i').html('100%');
+
+                                            setTimeout(function(){
+                                              $('.pl_wplms_progress div.'+file.id+' strong').fadeOut(500);
+                                            }, 1200);
+
+                                            $('.pl_wplms_progress div.'+file.id).html(html);
+                                            $('.pl_wplms_progress div.success.message').css({'border-left':'4px solid #a0da13','background-color':'#f4fbea','margin-bottom':'10px'});
+                                            setTimeout(function(){
+                                                if($('.pl_wplms_progress strong').length < 1){
+                                                    $('.warning_plupload').hide(300);
+                                                }
+											}, 1750);
+                                    }
+                                }
+
+                              }
+                            });
+                        });
+
+                	});
+                </script>
+                <?php
+                ?>
 
                 <p class="envato-setup-actions step">
                     <input type="submit" class="button-primary button button-large button-next"
-                           value="<?php esc_attr_e( 'Continue' ); ?>" name="save_step"/>
+                           value="<?php _e( 'Continue','vibe' ); ?>" name="save_step"/>
                     <a href="<?php echo esc_url( $this->get_next_step_link() ); ?>"
                        class="button button-large button-next"><?php esc_html_e( 'Skip this step' ); ?></a>
 					<?php wp_nonce_field( 'envato-setup' ); ?>
                 </p>
+                <p><em>Please Note: Advanced changes to website graphics/colors may require extensive PhotoShop and Web
+                        Development knowledge. We recommend hiring an expert from <a
+                                href="http://studio.envato.com/"
+                                target="_blank">Envato Studio</a> to assist with any advanced website changes.</em></p>
             </form>
 			<?php
 		}
@@ -3327,23 +3600,31 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		/**
 		 * Save logo & design options
 		 */
-		public function envato_setup_demo_style_save() {
-			check_admin_referer( 'envato-setup' );
+		public function envato_setup_demo_style_save($demo=null) {
+			if(empty($demo)){
+				check_admin_referer( 'envato-setup' );
+			}
 
 			$demo_style = isset( $_POST['demo_style'] ) ? $_POST['demo_style'] : false;
+			if(!empty($demo)){
+				$demo_style=$demo;
+			}
 			if ( $demo_style ) {
 				update_option( 'wplms_site_style', $demo_style );
 			}
-
-			wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
-			exit;
+			if(empty($demo)){
+				wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+				exit;
+			}
+			
 		}
-
 
 		/**
 		 * Logo & Design
 		 */
 		public function envato_setup_design() {
+			/*Delete option for uploaded content to avoid conflicts when setup wizard runs again*/
+			delete_option( 'wplms_export_import_content_path' );
 
 			?>
 			<h1><?php esc_html_e( 'Design and Layouts' ); ?></h1>
@@ -3430,7 +3711,7 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 
 				<p class="envato-setup-actions step">
 					<input type="submit" class="button-primary button button-large button-next"
-					       value="<?php esc_attr_e( 'Continue' ); ?>" name="save_step"/>
+					       value="<?php _e( 'Continue','vibe' ); ?>" name="save_step"/>
 					<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>"
 					   class="button button-large button-next"><?php esc_html_e( 'Skip this step' ); ?></a>
 					<?php wp_nonce_field( 'envato-setup' ); ?>
@@ -3442,13 +3723,18 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		/**
 		 * Save logo & design options
 		 */
-		public function envato_setup_design_save() {
-			check_admin_referer( 'envato-setup' );
+		public function envato_setup_design_save($theme=null) {
+			if(empty($theme)){
+				check_admin_referer( 'envato-setup' );
+			}
 
 			$logo_url = $_POST['logo_url'];
 			vibe_update_option('logo',$logo_url);
 
 			$theme_skin =  isset( $_POST['theme_skin'] ) ? $_POST['theme_skin'] : false;
+			if(!empty($theme)){
+				$theme_skin = $theme;
+			}
 			if ( $theme_skin ) {
 				vibe_update_customizer('theme_skin',$theme_skin);
 				if(function_exists('wplms_get_theme_color_config')){
@@ -3471,89 +3757,12 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 			if ( $primary_color ) {
 				vibe_update_customizer('primary_color',$primary_color);
 			}
-
-			wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
-			exit;
+			if(empty($theme)){
+				wp_redirect( esc_url_raw( $this->get_next_step_link() ) );
+				exit;
+			}
 		}
-
-		/**
-		 * Payments Step
-		 */
-		public function envato_setup_updates() {
-			?>
-			<h1><?php esc_html_e( 'Theme Updates' ); ?></h1>
-			<?php if ( function_exists( 'envato_market' ) ) { ?>
-				<form method="post">
-					<?php
-					$option = envato_market()->get_options();
-					
-					$my_items = array();
-					if ( $option && ! empty( $option['items'] ) ) {
-						foreach ( $option['items'] as $item ) {
-							if ( ! empty( $item['oauth'] ) && ! empty( $item['token_data']['expires'] ) && $item['oauth'] == $this->envato_username && $item['token_data']['expires'] >= time() ) {
-								// token exists and is active
-								$my_items[] = $item;
-							}
-						}
-					}
-					if ( count( $my_items ) ) {
-						?>
-						<p>Thanks! Theme updates have been enabled for the following items: </p>
-						<ul>
-							<?php foreach ( $my_items as $item ) { ?>
-								<li><?php echo esc_html( $item['name'] ); ?></li>
-							<?php } ?>
-						</ul>
-						<p>When an update becomes available it will show in the Dashboard with an option to install.</p>
-						<p>Change settings from the 'Envato Market' menu in the WordPress Dashboard.</p>
-
-						<p class="envato-setup-actions step">
-							<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>"
-							   class="button button-large button-next button-primary"><?php esc_html_e( 'Continue' ); ?></a>
-						</p>
-						<?php
-					} else {
-						?>
-						<p><?php esc_html_e( 'Please login using your ThemeForest account to enable Theme Updates. We update themes when a new feature is added or a bug is fixed. It is highly recommended to enable Theme Updates.' ); ?></p>
-						<p>When an update becomes available it will show in the Dashboard with an option to install.</p>
-						<p>
-							<em>On the next page you will be asked to Login with your ThemeForest account and grant
-								permissions to enable Automatic Updates. If you have any questions please <a
-									href="https://themeforest.net/user/vibethemes" target="_blank">contact us</a>.</em>
-						</p>
-						<p class="envato-setup-actions step">
-							<input type="submit" class="button-primary button button-large button-next"
-							       value="<?php esc_attr_e( 'Login with Envato' ); ?>" name="save_step"/>
-							<a href="<?php echo esc_url( $this->get_next_step_link() ); ?>"
-							   class="button button-large button-next"><?php esc_html_e( 'Skip this step' ); ?></a>
-							<?php wp_nonce_field( 'envato-setup' ); ?>
-						</p>
-					<?php } ?>
-				</form>
-			<?php } else { ?>
-				Please ensure the Envato Market plugin has been installed correctly. <a
-					href="<?php echo esc_url( $this->get_step_link( 'default_plugins' ) ); ?>">Return to Required
-					Plugins installer</a>.
-			<?php } ?>
-			<?php
-		}
-
-		/**
-		 * Payments Step save
-		 */
-		public function envato_setup_updates_save() {
-			check_admin_referer( 'envato-setup' );
-
-			// redirect to our custom login URL to get a copy of this token.
-			$url = $this->get_oauth_login_url( $this->get_step_link( 'updates' ) );
-
-			wp_redirect( esc_url_raw( $url ) );
-			exit;
-		}
-
-
 		
-
 		/**
 		 * Final step
 		 */
@@ -3914,6 +4123,91 @@ if ( ! class_exists( 'Envato_Theme_Setup_Wizard' ) ) {
 		public function is_submenu_page() {
 			return ( $this->parent_slug == '' ) ? false : true;
 		}
+
+		function wplms_exported_content_plupload(){
+
+			check_ajax_referer('wplms_exported_content_plupload');
+			if( !is_user_logged_in() )
+				die('user not logged in');
+
+			if( empty($_FILES) || $_FILES['file']['error'] )
+				die('{"OK": 0, "info": "Failed to move uploaded file."}');
+
+			$chunk 	  = isset($_REQUEST["chunk"]) ? intval($_REQUEST["chunk"]) : 0;
+			$chunks   = isset($_REQUEST["chunks"]) ? intval($_REQUEST["chunks"]) : 0;
+			$fileName = isset($_REQUEST["name"]) ? $_REQUEST["name"] : $_FILES["file"]["name"];
+
+			$upload_dir_base = wp_upload_dir();
+			$folderPath = $upload_dir_base['basedir'].'/upload_demos/';
+			if ( function_exists('is_dir') && !is_dir( $folderPath ) ) {
+				if( function_exists('mkdir') ){
+					mkdir($folderPath, 0755, true) || chmod($folderPath, 0755);
+				}
+			}
+			$filePath = $folderPath."/$fileName";
+
+			if($chunk == 0)
+				$perm = "wb";
+			else
+				$perm = "ab";
+
+			$out = @fopen("{$filePath}.part",$perm );
+			if($out){
+				// Read binary input stream and append it to temp file
+				$in = @fopen($_FILES['file']['tmp_name'], "rb");
+				if($in){
+					while ($buff = fread($in, 4096))
+						fwrite($out, $buff);
+				}else{
+					die('{"OK": 0, "info": "Failed to open input stream."}');
+				}
+				@fclose($in);
+				@fclose($out);
+				@unlink($_FILES['file']['tmp_name']);
+			}else{
+				die('{"OK": 0, "info": "Failed to open output stream."}');
+			}
+
+			// Check if file has been uploaded
+			if( !$chunks || $chunk == $chunks - 1 ){
+				// Strip the temp .part suffix off
+				rename("{$filePath}.part", $filePath);
+			}
+
+			die('{"OK": 1, "info": "Upload successful."}');
+			exit;
+		}
+
+		function insert_export_content_final(){
+			if( !isset($_POST['security']) || !wp_verify_nonce($_POST['security'],'wplms_export_content_final') || !is_user_logged_in() ){
+				wp_die( __('Security check failed contact administrator','vibe') );
+				die();
+			}
+
+			$filename 		 = $_POST['name'];
+			$upload_dir_base = wp_upload_dir();
+			$folderPath 	 = $upload_dir_base['basedir'].'/upload_demos';
+			$filePath = $folderPath.'/'.$filename;
+
+			$zip = new ZipArchive;
+			$response = $zip->open( $filePath );
+			if( $response ){
+				$zip->extractTo($folderPath);
+				$zip->close();
+
+				//Update option for importing content from uploads folder
+				$temp_folder_path = $folderPath.'/'.basename($filePath,'.zip');
+				update_option( 'wplms_export_import_content_path', $temp_folder_path );
+
+				//Delete file after uploading
+				unlink($filePath);
+				echo '<div class="success message">'.__('File uploaded and unzipped successfully','vibe').'<div>';
+			}else{
+				echo '0';
+			}
+
+			die();
+		}
 	}
 
 }// if !class_exists
@@ -3936,13 +4230,6 @@ add_filter('wplms_theme_setup_wizard_username', 'wplms_set_theme_setup_wizard_us
 if( ! function_exists('wplms_set_theme_setup_wizard_username') ){
     function wplms_set_theme_setup_wizard_username($username){
         return 'vibethemes';
-    }
-}
-
-add_filter('wplms_theme_setup_wizard_oauth_script', 'wplms_set_theme_setup_wizard_oauth_script', 10);
-if( ! function_exists('wplms_set_theme_setup_wizard_oauth_script') ){
-    function wplms_set_theme_setup_wizard_oauth_script($oauth_url){
-        return 'http://vibethemes.com/api/server-script.php';
     }
 }
 

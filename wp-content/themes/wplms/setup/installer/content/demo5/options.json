@@ -13,6 +13,8 @@
 		"thankyou_redirect":1,
 		"default_course_block_style":"course3",
 		"related_courses":1,
+		"logo":"http://wplms.io/demos/demo5/wp-content/uploads/2017/12/logonew-310x103.png",
+		"footer_logo":"http://wplms.io/demos/demo5/wp-content/uploads/2017/12/logonew-310x103.png",
 		"google_fonts": [
 			"Montserrat-regular-latin",
 			"Montserrat-700-latin",
@@ -28,7 +30,7 @@
 		"bottom_footer_columns": "col-md-3 col-sm-6",
 		"footerbottom_right": "1",
 		"headertop_content": "Contact for queries : \n<div class=\"mobile\"><i class=\"fa fa-phone\"></i><a class=\"value\" href=\"tel:00123456789\">(00) 123 456 789</a></div>\n<div class=\"email\"><i class=\"fa fa-envelope\"></i><a href=\"mailto:hello@wplms.io\">contact@wplms.io</a></div>",
-		"header_content": "&nbsp;\n<img class=\"alignnone size-big wp-image-2360\" src=\"http://local.wordpress.dev/wp-content/plugins/wplms_demo5/data/uploads/banner1.png\" alt=\"banner1\" width=\"768\" height=\"106\" />",
+		"header_content": "&nbsp;\n<img class=\"alignnone size-big wp-image-2360\" src=\"http://wplms.io/demos/demo5/wp-content/uploads/2017/12/banner1-768x106.png\" alt=\"banner1\" width=\"768\" height=\"106\" />",
 		"social_icons": {
 			"social": [
 				"facebook",

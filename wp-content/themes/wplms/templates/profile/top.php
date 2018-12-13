@@ -1,8 +1,12 @@
 <?php
 $header_style =  vibe_get_customizer('header_style');
 if($header_style == 'transparent' || $header_style == 'generic'){ 
-	echo '<section id="title"></section>';
+	echo '<section id="title">';
+	do_action('wplms_before_title');
+	echo '</section>';
 }
+
+
 ?>
 <section id="content">
 	<div id="buddypress">
@@ -11,7 +15,8 @@ if($header_style == 'transparent' || $header_style == 'generic'){
 	            <div class="col-md-3 col-sm-4">
 	             <?php do_action( 'bp_before_member_home_content' ); ?>
 	                <div class="pagetitle">
-						<div id="item-header" role="complementary">
+						<div id="item-header" class="<?php 
+						$image = bp_attachments_get_user_has_cover_image();echo (empty($image)?'':'cover_image')?>" role="complementary">
 							<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
 
 						</div><!-- #item-header -->

@@ -10,12 +10,17 @@
  */
 if ( !defined( 'ABSPATH' ) ) exit;
 $user_id=get_current_user_id();
+
+if(function_exists('bp_course_get_current_user_id')){
+	$user_id=bp_course_get_current_user_id();	
+}
+
 $append='&instructor='.$user_id;
 ?>
 
 <?php do_action( 'bp_before_course_loop' ); ?>
 <?php 
-$user_id=get_current_user_id();
+
 
 if ( bp_course_has_items( bp_ajax_querystring( 'course' ).$append )) : ?>
 <?php // global $items_template; var_dump( $items_template ) ?>
@@ -82,7 +87,7 @@ if ( bp_course_has_items( bp_ajax_querystring( 'course' ).$append )) : ?>
 				<div class="col-md-9 col-sm-8">
 
 					<div class="item">
-						<div class="item-title"><?php bp_course_title(); ?></div>
+						<div class="item-title"><?php bp_course_title(); if(get_post_status() != 'publish'){echo '<i> ( '.get_post_status().' ) </i>';} ?></div>
 						<div class="item-meta"><?php bp_course_meta(); ?></div>
 						<div class="item-action-buttons">
 							<?php bp_course_instructor_controls(); ?>

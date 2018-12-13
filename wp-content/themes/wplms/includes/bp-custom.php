@@ -135,7 +135,6 @@ add_action('bp_before_profile_content','wplms_show_profile_snapshot');
 function wplms_show_profile_snapshot(){
    global $bp;
 
-   
   $user_id=bp_displayed_user_id();
   
   if(function_exists('bp_current_action') && bp_current_action() !== 'public')
@@ -183,7 +182,7 @@ function wplms_show_profile_snapshot(){
 
   
    $certis=vibe_sanitize(get_user_meta($user_id,'certificates',false));
-   
+
      if(isset($certis) && is_Array($certis) && count($certis)){
           echo '<div class="certifications"><h6>'.__('Certifications','vibe').'</h6><ul class="slides">';
           if(isset($certis) && is_Array($certis)) 

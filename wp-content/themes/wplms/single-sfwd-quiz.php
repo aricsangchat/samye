@@ -7,6 +7,7 @@ if(vibe_validate($title)){
 
 ?>
 <section id="title">
+    <?php do_action('wplms_before_title'); ?>
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-8">

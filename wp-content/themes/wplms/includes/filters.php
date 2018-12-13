@@ -64,6 +64,9 @@ class WPLMS_Filters{
 		add_filter('wplms_grid_course_filters',array($this,'wplms_exlude_courses_directroy'));
 		add_filter('vibe_editor_filterable_type',array($this,'wplms_exlude_courses_directroy'));
 		add_filter('bp_course_wplms_filters',array($this,'wplms_exlude_courses_directroy'));
+		add_filter('vibe_related_courses',array($this,'wplms_exlude_courses_directroy'));
+		add_filter('wplms_show_instructor_courses',array($this,'wplms_exlude_courses_from_inst_profile'));
+
 		add_filter('pre_get_posts',array($this,'wplms_exlude_courses_from_directroy'));
 		add_filter('pre_get_posts',array($this,'wplms_exclude_courses_authors'));
 
@@ -122,11 +125,70 @@ class WPLMS_Filters{
 		add_filter('wplms_enable_signup',array($this,'enable_signup'));
 		add_filter('wplms_buddypress_registration_link',array($this,'registration_link'));
 		
-		
+		//Transparent header options
+		add_filter('wplms_title_bg',array($this,'transparent_title_css'));
+		add_filter('wplms_title_color',array($this,'transparent_title_color'));
 
+		//Search options
+		add_filter('wplms-main-menu',array($this,'nav_search'),999);
     }
+	
+
+	function nav_search($args){
+		$course_search = vibe_get_option('course_search');
+		if($course_search == 2){
+			ob_start();
+			do_action('wplms_header_nav_search');
+			$search = ob_get_clean();
+			$args['items_wrap'] = '<ul id="%1$s" class="%2$s">%3$s<li class="menu_nav_search">'.$search.'</li></ul>';
+		}
+		if($course_search == 3){
+			ob_start();
+			do_action('wplms_header_nav_search');
+			$search = ob_get_clean();
+			$args['items_wrap'] = '<ul id="%1$s" class="%2$s"><li class="menu_nav_search">'.$search.'</li>%3$s</ul>';
+		}
+		return $args;
+	}
+    //Transparent header
+    function transparent_title_css($bg){
+    	$title_bg = vibe_get_option('title_bg');
+    	if(!empty($title_bg) && strlen($title_bg) > 4){
+    		 if(filter_var($title_bg, FILTER_VALIDATE_URL)){
+    			return 'background:url('.$title_bg.') !important;';
+    		}else{
+    			return $title_bg;
+    		}
+    	}
+    	return $bg;
+    }
+    function transparent_title_color($color){
+    	$c = vibe_get_option('title_color');
+    	if(!empty($c) && strlen($c) > 2){
+    		return 'color:'.$c;
+    	}
+    	return $color;
+    }
+    //
     
-    
+    function wplms_exlude_courses_from_inst_profile($args){
+    	if($args['post_type'] == 'course'){
+	    	if(is_user_logged_in() && function_exists('bp_is_my_profile') && bp_is_my_profile()){
+	    		return $args;
+	    	}else{
+	    		$excluded_courses=vibe_get_option('hide_courses');
+	    		if(!empty($excluded_courses)){
+	    			if(!empty($args['post__not_in'])){
+			          $args['post__not_in'] = array_merge($args['post__not_in'], $excluded_courses);
+			        }else{
+			          $args['post__not_in'] = $excluded_courses;  
+			        }
+	    		}
+	    		
+	    	}
+    	}
+    	return $args;
+    }
     
 
     /*
@@ -179,7 +241,7 @@ class WPLMS_Filters{
 					<div class="col-md-8 col-sm-8">
 
 						<div class="item">
-							<div class="item-title"><?php bp_course_title(); ?></div>
+							<div class="item-title"><?php bp_course_title(); if(get_post_status() != 'publish'){echo '<i> ( '.get_post_status().' ) </i>';} ?></div>
 							<div class="item-meta"><?php bp_course_meta(); ?></div>
 							<div class="item-action-buttons">
 								<?php bp_course_instructor_controls(); ?>
@@ -449,11 +511,19 @@ class WPLMS_Filters{
     	if($header_style == 'transparent' || $header_style == 'generic'){
     		$sections[1]['fields'][] = array(
 						'id' => 'title_bg',
-						'type' => 'upload',
+						'type' => 'text_upload',
 						'title' => __('Upload Title Background', 'vibe'), 
 						'sub_desc' => __('Upload a background image for title', 'vibe'),
 						'desc' => __('Upload title image.', 'vibe'),
                         'std' => VIBE_URL.'/assets/images/title_bg.jpg'
+						);
+    		$sections[1]['fields'][] = array(
+						'id' => 'title_color',
+						'type' => 'color',
+						'title' => __('Title Color', 'vibe'), 
+						'sub_desc' => __('Title text/link color', 'vibe'),
+						'desc' => __('Set a Title text color.', 'vibe'),
+                        'std' => '#ffffff'
 						);
     	}
 
@@ -592,7 +662,7 @@ class WPLMS_Filters{
 	
 
 	function change_avatar_css($class) {
-	  	$class = str_replace("class='avatar", "class='retina_avatar zoom animate", $class) ;
+		$class = str_replace("class='avatar", "class='retina_avatar", $class) ;
 	  	return $class;
 	}
 

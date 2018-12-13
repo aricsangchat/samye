@@ -10,7 +10,7 @@ get_header(vibe_get_header());
 do_action('wplms_before_create_course_page');
 
 ?>
-<section id="title"></section>
+<section id="title"><?php do_action('wplms_before_title'); ?></section>
 <section id="content">
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">

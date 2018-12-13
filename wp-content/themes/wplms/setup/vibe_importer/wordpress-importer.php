@@ -286,7 +286,7 @@ class WP_Import extends WP_Importer {
 	</p>
 <?php endif; ?>
 
-	<p class="submit"><input type="submit" class="button" value="<?php esc_attr_e( 'Submit', 'vibe' ); ?>" /></p>
+	<p class="submit"><input type="submit" class="button" value="<?php _e( 'Submit', 'vibe' ); ?>" /></p>
 </form>
 <?php
 	}

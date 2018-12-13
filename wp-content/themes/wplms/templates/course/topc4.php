@@ -3,7 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 $header = vibe_get_customizer('header_style');
 if($header == 'transparent' || $header == 'generic'){
-    echo '<section id="title"><div class="container">
+    echo '<section id="title">';
+     do_action('wplms_before_title'); 
+    echo '<div class="container">
     	<div class="pagetitle">'; ?>
     		<?php vibe_breadcrumbs(); ?>
 	<h1><a href="<?php bp_course_permalink(); ?>" title="<?php bp_course_name(); ?>"><?php bp_course_name(); ?></a></h1>

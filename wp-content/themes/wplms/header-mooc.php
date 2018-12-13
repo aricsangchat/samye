@@ -27,9 +27,12 @@ wp_head();
                         }else{
                             echo '<h2 id="logo">';
                         }
+                        $url = apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header');
+                        if(!empty($url)){
                     ?>
-                        <a href="<?php echo vibe_site_url(); ?>"><img src="<?php  echo apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header'); ?>" alt="<?php echo get_bloginfo('name'); ?>" /></a>
+                        <a href="<?php echo vibe_site_url(); ?>"><img src="<?php  echo $url; ?>" alt="<?php echo get_bloginfo('name'); ?>" /></a>
                     <?php
+                        }
                         if(is_front_page()){
                             echo '</h1>';
                         }else{
@@ -50,13 +53,13 @@ wp_head();
                         ?>
                     </div>
                     <ul class="topmenu">
-                        <li><a id="new_searchicon"><i class="fa fa-search"></i></a></li>
+                        <li><?php do_action('wplms_header_nav_search'); ?></li>
                         <?php do_action('wplms_header_top_login'); ?>
                         <?php
                         if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )  || (function_exists('is_plugin_active') && is_plugin_active( 'woocommerce/woocommerce.php'))) { global $woocommerce;
                         ?>
-                            <li><a class="smallimg vbpcart"><span class="fa fa-shopping-basket"><?php echo (($woocommerce->cart->cart_contents_count)?'<em>'.$woocommerce->cart->cart_contents_count.'</em>':''); ?></span></a>
-                            <div class="woocart"><?php woocommerce_mini_cart(); ?></div>
+                            <li><a class=" vbpcart"><span class="fa fa-shopping-basket"><?php echo (($woocommerce->cart->cart_contents_count)?'<em>'.$woocommerce->cart->cart_contents_count.'</em>':''); ?></span></a>
+                            <div class="woocart"><div class="widget_shopping_cart_content"><?php woocommerce_mini_cart(); ?></div></div>
                             </li>
                         <?php
                         }
@@ -66,7 +69,7 @@ wp_head();
                         <?php
                         else:
                         ?>
-                        <li><a href="#login" rel="nofollow" class="smallimg vbplogin"><span><?php _e('LOGIN','vibe'); ?></span></a></li>
+                        <li><a href="#login" rel="nofollow" class=" vbplogin"><span><?php _e('LOGIN','vibe'); ?></span></a></li>
                         <?php
                         endif;    
                         ?>

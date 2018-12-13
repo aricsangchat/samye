@@ -27,7 +27,7 @@ class VIBE_Options_pagebuilder_layouts extends VIBE_Options{
 	 * @since VIBE_Options 1.0.5
 	*/
 	function render(){
-		
+		$sample_layouts =array();
 		$class = (isset($this->field['class']))?$this->field['class']:'regular-text';
 		
 		echo '<ul id="'.$this->field['id'].'-ul">';

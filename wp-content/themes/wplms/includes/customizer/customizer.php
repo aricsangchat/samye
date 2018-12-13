@@ -55,11 +55,12 @@ if(isset($vibe_customizer) && is_array($vibe_customizer))
                                                 'label'         => $type['label'],
                                                 'type'           => 'option',
                                                 'capability'     => 'edit_theme_options',
+                                                'transport'  => 'refresh',
                                                 'default'       => (empty($type['default'])?'':$type['default'])
                                             ) );
             
             switch($type['type']){
-                case 'color':
+                case 'color':/*
                         $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $control, array(
                         'label'   => $type['label'],
                         'section' => $section,
@@ -67,6 +68,16 @@ if(isset($vibe_customizer) && is_array($vibe_customizer))
                         'priority'       => $i
                         ) ) );            
                     break;
+                case 'alpha-color': */
+                        $wp_customize->add_control( new Vibe_Customize_Color_Control( $wp_customize, $control, array(
+                                    'label'   => $type['label'],
+                                    'section' => $section,
+                                    'settings'   => 'vibe_customizer['.$control.']',
+                                    'priority'       => $i,
+                                )
+                            ) 
+                        );            
+                    break;   
                 case 'image':
                         $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $control, array(
                             'label'   => $type['label'],
@@ -84,6 +95,26 @@ if(isset($vibe_customizer) && is_array($vibe_customizer))
                                 'type'    => 'select',
                                 'choices'    => (empty($type['choices'])?'':$type['choices'])                        
                                 ) );
+                break;
+                case 'imgselect':
+                        $wp_customize->add_control( new Vibe_Customize_ImgSelect_Control( $wp_customize, $control, array(
+                                'label'   => $type['label'],
+                                'section' => $section,
+                                'settings'   => 'vibe_customizer['.$control.']',
+                                'priority'       => $i,
+                                'type'    => 'imgselect',
+                                'choices'    => (empty($type['choices'])?'':$type['choices'])                        
+                                ) ) ); 
+                break;
+                case 'custom_checkbox':
+                        $wp_customize->add_control( new Vibe_Customize_ImgSelect_Control( $wp_customize, $control, array(
+                                'label'   => $type['label'],
+                                'section' => $section,
+                                'settings'   => 'vibe_customizer['.$control.']',
+                                'priority'       => $i,
+                                'type'    => 'custom_checkbox',
+                                'choices'    => (empty($type['choices'])?'':$type['choices'])                        
+                                ) ) ); 
                 break;
                 case 'text':
                         $wp_customize->add_control( $control, array(
@@ -120,9 +151,10 @@ if(isset($vibe_customizer) && is_array($vibe_customizer))
 add_action('customize_controls_print_styles', 'vibe_customize_css');
 
 function vibe_customize_css(){
-    wp_enqueue_style('customizer_css',VIBE_URL.'/includes/customizer/customizer.css');
+    wp_dequeue_style( 'vibe-popup-css');
+    wp_enqueue_style('customizer_css',VIBE_URL.'/includes/customizer/customizer.css',array(),WPLMS_VERSION,true);
+    
 }
-
 add_action('customize_controls_print_scripts', 'vibe_customize_scripts');
 function vibe_customize_scripts(){
     wp_enqueue_script('wplms_customizer_js',VIBE_URL.'/includes/customizer/customizer.js',array( 'jquery' ),WPLMS_VERSION,true);
@@ -133,6 +165,7 @@ function wplms_get_theme_color_config($theme){
     $option = array();
     switch($theme){
         case 'minimal':
+        case 'material':
             $option['header_top_bg'] = '#ffffff';
             $option['header_bg'] = '#ffffff';
             $option['nav_bg'] = '#ffffff';
@@ -153,7 +186,6 @@ function wplms_get_theme_color_config($theme){
             $option['footer_color'] = '#444444';
             $option['footer_heading_color'] = '#444444';
             $option['footer_bottom_color'] = '#444444';
-            
         break;
         case 'modern':
             $option['header_top_bg'] = '#232b2d';

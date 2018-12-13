@@ -49,7 +49,7 @@ echo ' <div class="blogpost">
         <div class="excerpt '.(has_post_thumbnail($post_id)?'thumb':'').'">
             <h3><a href="'.get_permalink().'">'.get_the_title().'</a></h3>
             <div class="cats">
-                '.$cats.'
+                '.get_the_category_list('','').'
                 <p>
                 '.$instructor.'
                 </p>

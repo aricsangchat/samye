@@ -73,5 +73,5 @@ $archive_page_id = evo_get_event_page_id($evOpt);
     </div>
 </section>
 <?php
-get_footer();
+get_footer(vibe_get_footer());
 ?>

@@ -7,6 +7,7 @@ $id= vibe_get_bp_page_id('groups');
 <?php do_action( 'bp_before_directory_groups_page' ); ?>
 
 <section id="title">
+	<?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="col-md-9 col-sm-8">

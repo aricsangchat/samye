@@ -66,11 +66,11 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 					<?php if ( !bp_get_activity_is_favorite() ) : ?>
 
-						<a href="<?php bp_activity_favorite_link(); ?>" class="fav bp-secondary-action" title="<?php esc_attr_e( 'Mark as Favorite', 'vibe' ); ?>"><?php _e( 'Favorite', 'vibe' ); ?></a>
+						<a href="<?php bp_activity_favorite_link(); ?>" class="fav bp-secondary-action" title="<?php _e( 'Mark as Favorite', 'vibe' ); ?>"><?php _e( 'Favorite', 'vibe' ); ?></a>
 
 					<?php else : ?>
 
-						<a href="<?php bp_activity_unfavorite_link(); ?>" class="unfav bp-secondary-action" title="<?php esc_attr_e( 'Remove Favorite', 'vibe' ); ?>"><?php _e( 'Remove Favorite', 'vibe' ); ?></a>
+						<a href="<?php bp_activity_unfavorite_link(); ?>" class="unfav bp-secondary-action" title="<?php _e( 'Remove Favorite', 'vibe' ); ?>"><?php _e( 'Remove Favorite', 'vibe' ); ?></a>
 
 					<?php endif; ?>
 

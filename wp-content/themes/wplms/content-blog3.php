@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 title="'.$name.'" class="blogpost_author">'.((function_exists('bp_core_fetch_avatar'))?bp_core_fetch_avatar(array(
                     'item_id' => get_the_author_meta( 'ID' ),
                     'object'  => 'user'
-                )):'').'<strong>'.$name.'<span class="blogpost_style3_date">'.get_the_time('M j,y').'</span></strong></a>';
+                )):'').'<strong>'.$name.'<span class="blogpost_style3_date">'.get_the_time(get_option( 'date_format' )).'</span></strong></a>';
             ?>
         </div>
     </div>

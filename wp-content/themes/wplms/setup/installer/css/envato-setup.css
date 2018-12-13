@@ -27,6 +27,41 @@ hr{clear:both;}
     font-size:14px;
     border:1px solid #eee;
 }
+
+.hide_next{
+    position:relative;
+    padding:20px !important;
+    background:#f6f6f6;
+    border:1px solid #ddd !important;
+}
+
+.hide_next:after{
+    content: "\f132";
+    font-family:'dashicons';
+    position:absolute;
+    right:20px;
+    top:20px;
+    font-size:20px;
+}
+.hide_next.show:after{
+    content: "\f158";
+    font-family:'dashicons';
+    position:absolute;
+    right:20px;
+    top:20px;
+    font-size:20px;
+}
+
+.hide{
+    display:none;
+}
+.hide.show{
+    display:block;
+}
+
+.plupload_error_notices.notice{
+    padding-top:0;padding-bottom:0;
+}
 .wplms-setup-pages tr{
     padding: 10px 0; border-bottom: 1px solid #eee; display: inline-block; 
 }

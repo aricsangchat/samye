@@ -185,6 +185,16 @@ ul.socialicons{
 	}
 }
 
+/* ------------------------------------------------------------------------ */
+/* 03. MEMBER GRID
+/* ------------------------------------------------------------------------ */
+
+.member_grid{
+	display:grid;
+}
+/* ------------------------------------------------------------------------ */
+/* 03. MEMBER BLOCKS 
+/* ------------------------------------------------------------------------ */
 .member_block,
 .member_block3{
 	text-align:center;
@@ -243,7 +253,23 @@ ul.socialicons{
 
 .product_meta+ul.socialicons{margin-top:15px;}
 
-
+.member_block4{
+	display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+    grid-gap: 15px;
+    align-items: center;
+	.member_avatar {
+		img{
+			border-radius:0;
+		}
+	}
+	.member_info{
+		h3{
+			margin:0;
+			line-height:1;
+		}
+	}
+}
 /*===Social Icons Colored ====*/
 
 ul.socialicons.color{

@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                             <?php do_action('wplms_header_top_login'); 
                             else:
                             ?>
-                            <li><a href="#login" rel="nofollow" class="smallimg vbplogin"><?php _e('Login','vibe'); ?></a></li>
+                            <li><a href="#login" rel="nofollow" class=" vbplogin"><?php _e('Login','vibe'); ?></a></li>
                             <li>
                                 <?php
                                 $enable_signup = apply_filters('wplms_enable_signup',0);
@@ -81,10 +81,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                             }else{
                                 echo '<h2 id="logo">';
                             }
+                            $url = apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header');
+                            if(!empty($url)){
                         ?>
                         
-                            <a href="<?php echo vibe_site_url('','logo'); ?>"><img src="<?php  echo apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header'); ?>" alt="<?php echo get_bloginfo('name'); ?>" /></a>
+                            <a href="<?php echo vibe_site_url('','logo'); ?>"><img src="<?php  echo $url; ?>" alt="<?php echo get_bloginfo('name'); ?>" /></a>
                         <?php
+                            }
                             if(is_home()){
                                 echo '</h1>';
                             }else{

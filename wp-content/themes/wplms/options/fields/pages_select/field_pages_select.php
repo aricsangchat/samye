@@ -41,9 +41,14 @@ class VIBE_Options_pages_select extends VIBE_Options{
 			
 
 		echo '<option value="">'.__('None','vibe').'</option>';
+		if(!empty($this->value) && function_exists('icl_object_id')){
+			$t_pid = icl_object_id($this->value);
+			echo '<option value="'.$this->value.'" selected>'.get_the_title($t_pid).'</option>';
+		}
+
 		if(isset($this->field['options']) && !empty($this->field['options'])){
 			foreach ( $this->field['options'] as $id=>$page ) {
-				echo '<option value="'.$id.'"'.selected($this->value, $id, false).'>'.$page.'</option>';
+				echo '<option value="'.$id.'"'.(function_exists('icl_object_id')?'':selected($this->value, $id, false)).'>'.$page.'</option>';
 			}
 		}
 		if(is_array($pages)){
@@ -51,7 +56,7 @@ class VIBE_Options_pages_select extends VIBE_Options{
 				if(function_exists('icl_object_id')){
 					$page->ID = icl_object_id($page->ID);
 				}
-				echo '<option value="'.$page->ID.'"'.selected($this->value, $page->ID, false).'>'.$page->post_title.'</option>';
+				echo '<option value="'.$page->ID.'"'.(function_exists('icl_object_id')?'':selected($this->value, $page->ID, false)).'>'.$page->post_title.'</option>';
 			}
 		}
 		echo '</select>';

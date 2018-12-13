@@ -33,7 +33,7 @@ $dom_array = array(
                                           .hover-link:hover,#buddypress .activity-list li.load-more a:hover,
                                           #buddypress div.generic-button a:hover,
                                           .archive #buddypress .course_category,
-                                          .archive #buddypress .course_category h3,#buddypress ul.item-list li .item-credits a.button,#buddypress ul.item-list li .item-credits a.button span,#course_creation_tabs li.done:after,.widget .course_cat_nav ul li a,
+                                          .archive #buddypress .course_category h3,#buddypress ul.item-list li .item-credits a.button,#buddypress ul.item-list li .item-credits a.button span,#course_creation_tabs li.done:after,
                                           #buddypress .item-list-tabs ul li a:hover,
                                           .pagination .current,#question #submit:hover,.ques_link:hover,.reset_answer:hover,
                                           .widget .course_cat_nav ul li.current-cat-parent>a, .widget .course_cat_nav ul li.current-cat>a,
@@ -53,7 +53,7 @@ $dom_array = array(
                                           .mooc .vbpcart span em, .sleek .vbpcart span em,
                                           .single-course.c2 #item-nav div.item-list-tabs#object-nav li.current a, 
                                           .single-course.c3 #item-nav div.item-list-tabs#object-nav li.current a, 
-                                          .single-course.c5 #item-nav div.item-list-tabs#object-nav li.current a,
+                                          .single-course.c5 #item-nav div.item-list-tabs#object-nav li.current a, 
                                           .single-item.groups.g2 #buddypress div.item-list-tabs#object-nav li a:hover, 
                                           .single-item.groups.g3 #buddypress div.item-list-tabs#object-nav li a:hover, 
                                           .single-item.groups.g4 #buddypress div.item-list-tabs#object-nav li a:hover,
@@ -75,7 +75,9 @@ $dom_array = array(
                                           .elegant #buddypress .dir-form div.item-list-tabs ul li:not(.selected) a:hover,
                                           .elegant.single-course.c4 #buddypress .item-list-tabs#object-nav li a:hover,
                                           .elegant .widget.pricing a.button,.block.general .block_content .general_details>a,
-                                          .modern .vibe_carousel .flex-direction-nav a:hover,.course_pursue_panel .course_action_points,.course_pursue_panel .course_action_points h1,.course_pursue_panel .course_time strong,.course_pursue_panel .course_time strong span',
+                                          .modern .vibe_carousel .flex-direction-nav a:hover,.course_pursue_panel .course_action_points,.course_pursue_panel .course_action_points h1,.course_pursue_panel .course_time strong,.course_pursue_panel .course_time strong span,
+                                          .block.courseitem.course6 .block_media .postblock_cats .postblock_cat,
+                                          .block.courseitem.course6 .block_media .course_start_date',
                             'css' => 'color'
                             ),
         'logo_size' => array(
@@ -163,12 +165,12 @@ $dom_array = array(
     'login_dark'=> array(
                               'element' => '#vibe_bp_login,#wplms_custom_registration_form,
                                           #wplms_forgot_password_form,.logged-out #vibe_bp_login .fullscreen_login #vbp-login-form,.login_sidebar,
-                              #vibe_bp_login #wplms_custom_registration_form, #vibe_bp_login #wplms_forgot_password_form',
+                              #vibe_bp_login #wplms_custom_registration_form, #vibe_bp_login',
                               'css'     => 'background'
                             ),
     'login_dark_color'=> array(
                             'element' => '#vibe_bp_login .fullscreen_login label,#vibe_bp_login label,#vibe_bp_login ul li#vbplogout a,.login_sidebar .login_content #vbp-login-form label,.login_sidebar .login_content #sidebar-me #bpavatar+ul li#username a,.login_sidebar .login_content #sidebar-me #bpavatar+ul li a, .login_sidebar .login_content #sidebar-me #bpavatar+ul+ul li a,.login_sidebar .login_content #vbp-login-form label .tip,
-                            #vibe_bp_login a:hover, #vibe_bp_login ul li a',
+                            #vibe_bp_login a:hover, #vibe_bp_login ul li a, a.vbpforgot',
                             'css' => 'color'
                             ),
     'h1_font' => array(
@@ -340,9 +342,7 @@ $dom_array = array(
                             'css' => 'color'
                             ),
   'price_color'  => array(
-                            'element' => '.block.courseitem .star-rating+strong .amount, .block.courseitem .star-rating+ a strong .amount,
-                            .block.courseitem .star-rating+strong>span, .block.courseitem .star-rating+a strong>span,
-                            span.amount,.block.courseitem .block_content .star-rating+strong, .block.courseitem .block_content .star-rating+a, .block.courseitem .instructor_course+strong,
+                            'element' => 'span.amount,span.amount+.subs,.course_price .subs,.course_price>a,.block.courseitem .block_content .star-rating+strong, .block.courseitem .block_content .star-rating+a, .block.courseitem .instructor_course+strong,
                              .block.courseitem .instructor_course+a,.pricing_course li strong,.widget .course_details > ul > li:first-child a, .widget .course_details > ul > li:first-child strong > span,
                              .item-credits, .curriculum_check li span.done,.item-credits a,.pricing_course li strong span.subs,.widget .course_details > ul > li:first-child a strong > span, .widget .course_details > ul > li:first-child span.subs,
                              #buddypress ul.item-list li .item-credits strong, #buddypress ul.item-list li .item-credits strong span.amount,#buddypress ul.item-list li .item-credits span',
@@ -367,7 +367,7 @@ $dom_array = array(
   'single_light_color'  => array(
                             'element' => '#buddypress div.item-list-tabs,.widget .item-options,#buddypress div.item-list-tabs#object-nav,
                             #buddypress div.item-list-tabs,.quiz_bar,.widget .course_cat_nav,
-                            .single-course.c2 #item-nav,.single-course.c3 #item-nav,.single-course.c5 #item-nav,
+                            .single-course.c2 #item-nav,.single-course.c3 #item-nav,.single-course.c5 #item-nav,.widget .course_cat_nav ul li a,
                             .minimal.single-course.c2 #item-nav, 
                             .minimal.single-course.c3 #item-nav, 
                             .minimal.single-course.c5 #item-nav,
@@ -383,7 +383,7 @@ $dom_array = array(
                             'css' => 'background-color'
                             ),
   'single_light_text' =>  array(
-                            'element' => '#buddypress div.item-list-tabs,.widget .item-options,.flexMenu-popup li a,#buddypress div.item-list-tabs#object-nav,.quiz_timeline li>a>span,.unit_prevnext,.quiz_bar,.course_timeline li.active a,.course_timeline li a,.minimal .course_timeline li.active a,.minimal .course_timeline li a,#buddypress .item-list-tabs ul li a,.widget .course_cat_nav ul li.current-cat-parent>ul>li:not(.current-cat)>a,.single-course.c2 #item-nav div.item-list-tabs#object-nav li a, .single-course.c3 #item-nav div.item-list-tabs#object-nav li a, .single-course.c5 #item-nav div.item-list-tabs#object-nav li a',
+                            'element' => '#buddypress div.item-list-tabs,.widget .item-options,.flexMenu-popup li a,#buddypress div.item-list-tabs#object-nav,.quiz_timeline li>a>span,.unit_prevnext,.quiz_bar,.course_timeline li.active a,.course_timeline li a,.minimal .course_timeline li.active a,.minimal .course_timeline li a,#buddypress .item-list-tabs ul li a,.widget .course_cat_nav ul li.current-cat-parent>ul>li:not(.current-cat)>a,.single-course.c2 #item-nav div.item-list-tabs#object-nav li a, .single-course.c3 #item-nav div.item-list-tabs#object-nav li a, .single-course.c5 #item-nav div.item-list-tabs#object-nav li a,.widget .course_cat_nav ul li a',
                             'css' => 'color'
                             ),
   'single_dark_color'  => array(
@@ -564,12 +564,13 @@ foreach($dom_array as $style => $value){
                       .quiz_timeline li.active>a>span,.vbplogin em,
                       #buddypress div.item-list-tabs#subnav ul li.switch_view a.active,
                       #buddypress .activity-list li.load-more a:hover,.note-tabs ul li.selected a, .note-tabs ul li.current a,
-                      .data_stats li:hover, .data_stats li.active,.course_students li .progress .bar,
+                      .data_stats li:hover, .data_stats li.active,.wplms_clp_stats li.active,.wplms_clp_stats li:hover,.course_students li .progress .bar,
                       .in_quiz .pagination ul li span,.quiz_meta .progress .bar,
                       .page-links span,#vibe_bp_login input[type=submit],
                       .single-course.c2 #item-nav div.item-list-tabs#object-nav li.current a, 
                       .single-course.c3 #item-nav div.item-list-tabs#object-nav li.current a, 
                       .single-course.c5 #item-nav div.item-list-tabs#object-nav li.current a,
+                      .single-course.c6 #item-nav div.item-list-tabs#object-nav li.current a,
                       .minimal .widget .course_cat_nav ul li a:hover span,
                       .minimal .pusher #buddypress a.button:hover,
                       .minimal #buddypress #item-nav .item-list-tabs ul li.current a:after, 
@@ -639,7 +640,9 @@ foreach($dom_array as $style => $value){
                       body.loading.pageloader2 .global:before,body.loading.pageloader2 .global:after,
                       .course_pursue_panel .course_action_points,.course_pursue_panel .course_timeline li.unit_line.active:before,
                       .block.simple .block_content .simple_category a:before, .block.simple .block_media:before,
-                      .block.generic .block_content .generic_category a:before,.block.generic .block_content .block_title a:before
+                      .block.generic .block_content .generic_category a:before,.block.generic .block_content .block_title a:before, .block.courseitem.course6 .block_media .postblock_cats .postblock_cat,
+                                          .block.courseitem.course6 .block_media .course_start_date,
+                                          .block.courseitem.course6 .block_content .course_instructor:after
                       {
                         background:'.$theme_customizer[$style].'; 
                       }
@@ -891,6 +894,17 @@ foreach($dom_array as $style => $value){
         echo '.unit_content p span.side_comment:hover:after,.unit_content p span.side_comment.active:after{
                   border-color:  '.$theme_customizer['primary_bg'].' transparent transparent '.$theme_customizer['primary_bg'].' !important;;
               }';
+          global $post;
+          if($post->post_type == 'learningpath'){
+            echo '.wplms_clp_step.done:before,
+                .wplms_clp_step:hover:before{
+                  background:'.$theme_customizer['primary_bg'].' !important;
+                  border-color:'.$theme_customizer['primary_bg'].' !important;
+                }';
+            echo '.wplms_clp_step.done .wplms_clp_step_image:before{
+                    background:'.$theme_customizer['primary_bg'].' !important;
+                  }';
+          }
         }
 
 

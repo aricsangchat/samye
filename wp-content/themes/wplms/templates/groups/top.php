@@ -1,7 +1,9 @@
 <?php
 $header_style =  vibe_get_customizer('header_style');
 if($header_style == 'transparent'){ 
-	echo '<section id="title"></section>';
+	echo '<section id="title">';
+	do_action('wplms_before_title');
+	echo '</section>';
 }
 ?>
 <section id="content">

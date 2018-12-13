@@ -236,7 +236,7 @@ class VIBE_Options{
 		if(true === $this->args['allow_sub_menu']){
 						
 			//this is needed to remove the top level menu item from showing in the submenu
-			add_submenu_page($this->args['page_slug'],$this->args['page_title'],'',$this->args['page_cap'],$this->args['page_slug'],create_function( '$a', "return null;" ));
+			add_submenu_page($this->args['page_slug'],$this->args['page_title'],'',$this->args['page_cap'],$this->args['page_slug'],function(){return null;});
 						
 						
 			foreach($this->sections as $k => $section){
@@ -247,7 +247,7 @@ class VIBE_Options{
 						$section['title'], 
 						$this->args['page_cap'], 
 						$this->args['page_slug'].'&tab='.$k, 
-						create_function( '$a', "return null;" )
+						function(){return null;}
 				);
 					
 			}
@@ -260,7 +260,7 @@ class VIBE_Options{
 						__('Import / Export', 'vibe'), 
 						$this->args['page_cap'], 
 						$this->args['page_slug'].'&tab=import_export_default', 
-						create_function( '$a', "return null;" )
+						function(){return null;}
 				);
 					
 			}//if
@@ -274,7 +274,7 @@ class VIBE_Options{
 						$tab['title'], 
 						$this->args['page_cap'], 
 						$this->args['page_slug'].'&tab='.$k, 
-						create_function( '$a', "return null;" )
+						function(){return null;}
 				);
 				
 			}
@@ -287,7 +287,7 @@ class VIBE_Options{
 						__('Dev Mode Info', 'vibe'), 
 						$this->args['page_cap'], 
 						$this->args['page_slug'].'&tab=dev_mode_default', 
-						create_function( '$a', "return null;" )
+						function(){return null;}
 				);
 				
 			}//if

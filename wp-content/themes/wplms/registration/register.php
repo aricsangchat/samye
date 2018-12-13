@@ -1,4 +1,5 @@
 <?php 
+global $bp;
 
 if ( !defined( 'ABSPATH' ) ) exit;
 $register_id = vibe_get_bp_page_id('register');
@@ -12,6 +13,7 @@ if(!empty($site_lock)){
 get_header( vibe_get_header() ); 
 ?>
 <section id="title">
+	<?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="col-md-12">
@@ -249,8 +251,12 @@ get_header( vibe_get_header() );
 										 * @since 1.1.0
 										 */
 										do_action( 'bp_custom_profile_edit_fields' ); ?>
-
-										<p class="description"><?php bp_the_profile_field_description(); ?></p>
+										<?php
+										 //now buddypress already show descption below the field since 2.9 
+										if(function_exists('version_compare') && !empty($bp->version) && version_compare($bp->version, '2.9.0','<')){
+											
+											echo '<p class="description">'.bp_the_profile_field_description().'</p>';
+										}?>
 
 									</div>
 

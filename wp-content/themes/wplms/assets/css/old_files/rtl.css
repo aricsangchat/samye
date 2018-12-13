@@ -36,6 +36,15 @@ html{direction:rtl}body{direction:rtl}.flip.text-left{text-align:right}.flip.tex
 }
 nav .sub-menu{left:auto;right:0;}
 nav .menu li.hasmegamenu:hover>.sub-menu{right:20%;left:auto;}
+.course-star-rating {
+   margin-left: 5px;
+}
+
+
+.bp_filled_stars {
+   float: right;
+   right: 0;
+}
 /*========================================================================*/
 /*   01. CAROUSELS
 /*========================================================================*/
@@ -647,3 +656,27 @@ h4.post_title{line-height: 1 !important;}
 .rtl a#calculate_avg_course {float:left !important;}
 .rtl .calculate_panel strong{float:right !important; margin-right:15px !important;}
 .rtl .calculate_panel {padding-top:20px; padding-bottom:40px !important; }
+
+/* 9 May 2018*/
+.rtl #buddypress div.pagination .pagination-links{
+	    float: left;
+}
+.rtl #buddypress div.pagination .pag-count{
+	float: right;
+}
+.rtl #buddypress .item-list-tabs ul li a{text-align: right !important;}
+.rtl #buddypress form#whats-new-form #whats-new-submit{float: left;}
+.rtl #item-body .badges>ul>li{float:right;}
+.rtl #item-body .certifications .flex-direction-nav .flex-prev {left: 24px;}
+.rtl #item-body .certifications .flex-direction-nav .flex-next{left:50px;}
+.rtl .instructor_courses .heading a{float:left;}
+.rtl #buddypress ul.button-nav li{float:right;}
+.rtl #buddypress .notifications-options-nav{text-align:left !important;}
+.rtl .edit_course_content ul li .switch{float:left !important;}
+
+/*changes after 3.7*/
+.switch.conditional:after {right: -24px;}
+.vibe_vibe_course_badge.upload_button {float: left;}
+.new_forum_formselect, .course_components .new_group_form select {padding-right: 25px;}
+.create_course_content .button.hero:after, .edit_course_content .button.hero:after {margin-right: 5px;}
+ul.curriculum>.new_section:after {left: 40px;right:auto;}

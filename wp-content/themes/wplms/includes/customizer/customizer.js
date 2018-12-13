@@ -22,4 +22,9 @@
             }
         });
     });
+
+    jQuery( document ).ready( function( $ ) {
+      
+        $( 'input.alpha-color-control' ).alphaColorPicker();
+    });
 })(jQuery);

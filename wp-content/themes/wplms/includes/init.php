@@ -94,6 +94,9 @@ class WPLMS_Init{
         add_action('bp_activity_post_form_options',array($this,'activity_form_options'));
 
         add_filter('bp_course_wplms_filters',array($this,'course_category'));
+
+        remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
+        add_action( 'woocommerce_cart_totals', 'woocommerce_cart_totals', 10 );
     }
 
     function body_class($classes){
@@ -181,7 +184,7 @@ class WPLMS_Init{
     }
 
     function option($field,$compare = null){
-        $this->option =wp_cache_get('vibe_option','settings');
+        $this->option = wp_cache_get('vibe_option','settings');
         if ( false === $this->option ) {
             $this->option=get_option(THEME_SHORT_NAME);
             wp_cache_set('vibe_option', $this->option,'settings', DAY_IN_SECONDS);
@@ -208,6 +211,17 @@ class WPLMS_Init{
 
         if(isset($this->customizer[$field]))
             return $this->customizer[$field];
+        else
+            return '';
+    }
+
+    function get_site_style(){
+        
+        if(empty($this->site_style))  
+            $this->site_style = get_option('wplms_site_style');
+
+        if(isset($this->site_style))
+            return $this->site_style;
         else
             return '';
     }
@@ -338,14 +352,20 @@ class WPLMS_Init{
             }
         }
 
-        if(!isset($url) || $url == ''){
+        if(!isset($url) || $url == '' ){
             $url = get_stylesheet_directory_uri().'/assets/images/logo.png';
         }
         ?>
         <style type="text/css">
-            body.login div#login h1 a {
-                background-image: url(<?php echo $url; ?>);
+            <?php
+            if(filter_var($url, FILTER_VALIDATE_URL)){
+                ?>
+                body.login div#login h1 a {
+                    background-image: url(<?php echo $url; ?>);
+                }
+                <?php 
             }
+            ?>
             .bp_social_connect{text-align:center;}
             .bp_social_connect>a{display:inline-block;float:none !important;text-decoration:none;}
             .bp_social_connect>a:before{content:'' !important;}
@@ -776,6 +796,7 @@ function vibe_logo_url($url='/',$location = null){
     
     $logo=vibe_get_option('logo'); 
     $alt = get_bloginfo('name');
+    
     if(empty($logo)){
         $url = VIBE_URL.'/assets/images/logo.png';
     }else{
@@ -789,16 +810,36 @@ function vibe_logo_url($url='/',$location = null){
                 // No changes
             break;
             case 'header':
+
+
                 $header = vibe_get_customizer('header_style');
                 $alt_logo=vibe_get_option('alt_logo');
                 $mobile_logo = vibe_get_option('mobile_logo');
+
+                if(!filter_var($url, FILTER_VALIDATE_URL)){
+                    echo '<span id="header_logo">'.$url.'</span>';
+                    if(!filter_var($alt_logo, FILTER_VALIDATE_URL)){
+                        echo '<span id="header_alt_logo">'.$alt_logo.'</span>';
+                    }else{
+                        echo '<img id="header_alt_logo" alt="'.$alt.'" src="'.$alt_logo.'">';
+                    }
+
+                    if(!filter_var($mobile_logo, FILTER_VALIDATE_URL)){
+                        echo '<span id="header_mobile_logo" class="hide">'.$mobile_logo.'</span>';
+                    }else{
+                        echo '<img id="header_mobile_logo" src="'.$mobile_logo.'" class="hide" alt="'.$alt.'">';
+                    }
+                    
+                    return 0;
+                }
+
                 if(empty($alt_logo)){
                     $alt_logo = $url; 
                 }
                 if(empty($mobile_logo)){
                     $mobile_logo =$url; 
                 }
-                if(in_array($header,array('sleek','transparent','center','generic'))){
+                if(in_array($header,array('sleek','transparent','center','generic','app'))){
                     $url .='" id="header_logo" alt="'.$alt.'"><img id="header_mobile_logo" src="'.$mobile_logo.'" class="hide" alt="'.$alt.'"><img id="header_alt_logo" alt="'.$alt.'" src="'.$alt_logo;    
                 }else{
                     if(!empty($alt_logo)) 
@@ -814,19 +855,45 @@ function vibe_logo_url($url='/',$location = null){
                 if(empty($mobile_logo)){
                     $mobile_logo = $url; 
                 }
-                 if(!empty($mobile_logo)) 
+                 if(filter_var($mobile_logo, FILTER_VALIDATE_URL)){
                     $url .= '" id="header_logo" alt="'.$alt.'"><img id="header_mobile_logo" alt="'.$alt.'" src="'.$mobile_logo.'" class="hide';
+                }else{
+                    echo '<span id="header_mobile_logo" class="hide">'.$mobile_logo.'</span>';
+                    return 0; 
+                }
+                    
             break;
             case 'footer':
                 $footer_logo=vibe_get_option('footer_logo');
-                if(!empty($footer_logo)) 
+                if(!empty($footer_logo)) {
                     $url  = $footer_logo;
+                }else{
+                    echo $url;
+                    return 0;
+                }
             break;
             case 'headertop':
                 $alt_logo=vibe_get_option('alt_logo');
                 $mobile_logo = vibe_get_option('mobile_logo');
-                if(!empty($alt_logo)) 
-                    $url = $alt_logo.'" id="header_logo" alt="'.$alt.'"><img id="header_mobile_logo" alt="'.$alt.'" src="'.$mobile_logo.'" class="hide';
+
+                if(filter_var($alt_logo, FILTER_VALIDATE_URL)){
+                    $url = $alt_logo.'" id="header_logo" alt="'.$alt.'">';
+                    if(filter_var($mobile_logo, FILTER_VALIDATE_URL)){
+                        $url .='<img id="header_mobile_logo" alt="'.$alt.'" src="'.$mobile_logo.'" class="hide';
+                    }else{
+                        echo '<img src="'.$alt_logo.'" id="header_logo" alt="'.$alt.'"><span id="header_mobile_logo" class="hide">'.$mobile_logo.'</span>';
+                        return 0;
+                    }
+                    
+                }else{
+                    echo '<span id="header_alt_logo" class="hide">'.$alt_logo.'</span>';
+                    if(filter_var($mobile_logo, FILTER_VALIDATE_URL)){
+                        echo '<img id="header_mobile_logo" alt="'.$alt.'" src="'.$mobile_logo.'" class="hide" />';
+                    }else{
+                        echo '<span id="header_mobile_logo" class="hide">'.$mobile_logo.'</span>';
+                    }
+                    return 0;
+                }
             break;
         }
     }
@@ -876,6 +943,14 @@ if(!function_exists('vibe_get_customizer')){
         return $wplms->get_cutomizer($field); 
     }
 }
+
+if(!function_exists('vibe_get_site_style')){
+    function vibe_get_site_style(){
+        $wplms = WPLMS_Init::init();  
+        return $wplms->get_site_style(); 
+    }
+}
+
 
 if(!function_exists('vibe_update_customizer')){
     function vibe_update_customizer($field,$value){
@@ -1070,9 +1145,9 @@ function register_required_plugins() {
         array(
             'name'                  => 'Buddypress', // The plugin name
             'slug'                  => 'buddypress', // The plugin slug (typically the folder name)
-            'source'                => 'https://downloads.wordpress.org/plugin/buddypress.2.7.4.zip', // The plugin source
+            'source'                => 'https://downloads.wordpress.org/plugin/buddypress.4.0.0.zip', // The plugin source
             'required'              => true, // If false, the plugin is only 'recommended' instead of required
-            'version'               => '2.7.4', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'version'               => '4.0.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation'      => $force_activate, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
@@ -1081,9 +1156,9 @@ function register_required_plugins() {
         array(
             'name'                  => 'WooCommerce', // The plugin name
             'slug'                  => 'woocommerce', // The plugin slug (typically the folder name)
-            'source'                => 'https://downloads.wordpress.org/plugin/woocommerce.2.6.8.zip', // The plugin source
+            'source'                => 'https://downloads.wordpress.org/plugin/woocommerce.3.5.1.zip', // The plugin source
             'required'              => false, // If false, the plugin is only 'recommended' instead of required
-            'version'               => '2.6.8', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'version'               => '3.5.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
@@ -1092,9 +1167,9 @@ function register_required_plugins() {
         array(
             'name'                  => 'BBPress', // The plugin name
             'slug'                  => 'bbpress', // The plugin slug (typically the folder name)
-            'source'                => 'https://downloads.wordpress.org/plugin/bbpress.2.5.12.zip', // The plugin source
+            'source'                => 'https://downloads.wordpress.org/plugin/bbpress.2.5.14.zip', // The plugin source
             'required'              => false, // If false, the plugin is only 'recommended' instead of required
-            'version'               => '2.5.12', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'version'               => '2.5.14', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
@@ -1114,9 +1189,9 @@ function register_required_plugins() {
         array(
             'name'                  => 'BP Social Connect', // The plugin name
             'slug'                  => 'bp-social-connect', // The plugin slug (typically the folder name)
-            'source'                => 'https://downloads.wordpress.org/plugin/bp-social-connect.1.4.1.zip', // The plugin source
+            'source'                => 'https://downloads.wordpress.org/plugin/bp-social-connect.1.5.zip', // The plugin source
             'required'              => false, // If false, the plugin is only 'recommended' instead of required
-            'version'               => '1.4.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'version'               => '1.5.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
@@ -1199,15 +1274,6 @@ function register_required_plugins() {
             'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         ),
-
-        array(
-            'name' => 'Envato Market',
-            'slug' => 'envato-market',
-            'source' => 'https://envato.github.io/wp-envato-market/dist/envato-market.zip',
-            'required' => true,
-            'recommended' => true,
-            'force_activation' => true,
-        ),
     );
     
     if($force_activate){
@@ -1263,6 +1329,11 @@ function register_required_plugins() {
         );
     }
 
+    $one_click_plugins  = get_option('wplms_one_click_required_plugins');
+
+    if(!empty($one_click_plugins)){
+        $plugins = array_merge($plugins,$one_click_plugins);
+    }
     
     $plugins = apply_filters('wplms_required_plugins',$plugins);
     // Change this to your theme text domain, used for internationalising strings

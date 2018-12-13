@@ -29,6 +29,7 @@ get_header( vibe_get_header() ); ?>
 
 <?php do_action( 'bp_before_create_blog_content_template' ); ?>
 <section id="blogtitle">
+	<?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="col-md-9 col-sm-8">

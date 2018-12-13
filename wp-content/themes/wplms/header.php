@@ -6,7 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="google-site-verification" content="p2ONk38lkM6KhG5VNkHW8k-UQFQofOPDeL3hKLRxFJ0" />
 <?php
     wp_head();
 ?>
@@ -24,7 +23,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             <div class="<?php echo vibe_get_container(); ?>">
                 <div class="row">
                     <div class="col-md-4 col-sm-3 col-xs-4">
-                       <a href="<?php echo vibe_site_url('','logo'); ?>" class="homeicon"><img src="<?php  echo apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','headertop'); ?>" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a> 
+                        <?php
+
+                        $url = apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','headertop');
+                        if(!empty($url)){
+                            ?>
+                            <a href="<?php echo vibe_site_url('','logo'); ?>" class="homeicon"><img src="<?php  echo $url; ?>" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a> 
+                            <?php
+                        }
+
+                        ?>
                     </div>
                     <div class="col-md-8 col-sm-9 col-xs-8">
                     <?php
@@ -38,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     else :
                         ?>
                         <ul class="topmenu">
-                            <li><a href="#login" class="smallimg vbplogin"><?php _e('Login','vibe'); ?></a></li>
+                            <li><a href="#login" class="vbplogin"><?php _e('Login','vibe'); ?></a></li>
                             <li><?php 
                                 $enable_signup = apply_filters('wplms_enable_signup',0);
                                 if ( $enable_signup ) : 
@@ -84,9 +92,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                             }else{
                                 echo '<h2 id="logo">';
                             }
+
+                            $url = apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header');
+                            if(!empty($url)){
                         ?>
-                            <a href="<?php echo vibe_site_url(); ?>"><img src="<?php  echo apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header'); ?>" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a>
+                            <a href="<?php echo vibe_site_url(); ?>"><img src="<?php  echo $url; ?>" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a>
                         <?php
+                            }
                             if(is_front_page()){
                                 echo '</h1>';
                             }else{

@@ -354,6 +354,7 @@ class wplms_tincan{
        
         return $tincan_statement;
     }
+
     function initialize_tincan_statements($args){
         $allowed_array= apply_filters('wplms_tincan_allowed_bp_type',array('start_course',
             'unit_complete','submit_course','start_quiz','submit_quiz','quiz_evaluated',

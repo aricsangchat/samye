@@ -671,18 +671,7 @@
 	.single-item #buddypress .item-list-tabs#subnav ul li a{
 		background:$light-border-color;
 	}
-	#buddypress div#item-header div#item-header-content,
-	#buddypress div#item-header div#item-header-content h3 a,
-	#buddypress div#item-header div#item-header-content span.highlight a,
-	&.single-course.c2 .course_header #item-header-content .breadcrumbs li+li:before, 
-	&.single-course.c2 .course_header #item-header-content a, 
-	&.single-course.c3 .course_header #item-header-content .breadcrumbs li+li:before, 
-	&.single-course.c3 .course_header #item-header-content a,
-	#buddypress div#item-header div#item-meta,
-	#item-admins h3,#item-admins h5, #item-admins h5 a,
-	#buddypress div#item-header #latest-update h6{
-		color:#444;
-	}
+	
 	.course_description+.course_curriculum .course_title h2, .review_title,	
 	.total_students{
 		margin:0;
@@ -696,12 +685,11 @@
 		color:#444;
 	    margin: 0;
     	line-height: 2;
-		a{color:#444;}
 	}
 	.unit_prevnext{margin-top:30px;}
 	.course_timeline li>a{color:#444;&:hover{color:$primarybg;}}
-	.course_timeline.accordion .section:after{color:#444;top:20px;}
+	.course_timeline.accordion .section:after{top:20px;}
 }
 
 
-.elegant.single-course.c5 .course_header #item-header .widget.pricing{background:#FFF;border:none;}
+.elegant.single-course.c5 .course_header #item-header .widget.pricing{background:rgba(255,255,255,0.8);border:none;}

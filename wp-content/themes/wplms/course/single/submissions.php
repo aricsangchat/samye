@@ -14,8 +14,8 @@ global $wpdb;
 
 
 $tabs = apply_filters('wplms_course_submission_tabs',array(
-	'quiz' => sprintf(_x('Quiz Submissions <span>%d</span>','Quiz Submissions in course/admin/submissions','vibe'),bp_course_get_quiz_submission_count($course_id)),
-	'course' => sprintf(_x('Course Submissions <span>%d</span>','Course Submissions in course/admin/submissions','vibe'),bp_course_get_course_submission_count($course_id)),
+	'quiz' => sprintf(_x('Quiz <span>%d</span>','Quiz Submissions in course/admin/submissions','vibe'),bp_course_get_quiz_submission_count($course_id)),
+	'course' => sprintf(_x('Course <span>%d</span>','Course Submissions in course/admin/submissions','vibe'),bp_course_get_course_submission_count($course_id)),
 	),$course_id);
 
 ?>

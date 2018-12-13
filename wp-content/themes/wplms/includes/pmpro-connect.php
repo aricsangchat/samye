@@ -32,8 +32,8 @@ Class WPLMS_PMPRO_Connect{
       //add_action( 'personal_options_update',array($this, 'pmpro_membership_level_profile_fields_update', ),1);
       //add_action( 'edit_user_profile_update', array($this,'pmpro_membership_level_profile_fields_update' ),1);
 
-      add_action('pmpro_before_change_membership_level',array($this,'record_previous_subscriptions'),10,2);
-      add_action('pmpro_after_change_membership_level',array($this,'wplms_pmprostop_previous_courses'),10,2);
+      add_action('pmpro_before_change_membership_level',array($this,'record_previous_subscriptions'),10,4);
+      add_action('pmpro_after_change_membership_level',array($this,'wplms_pmprostop_previous_courses'),10,3);
       add_filter('wplms_private_course_button',array($this,'wplms_check_pmpro_button'));
       add_filter('wplms_private_course_button_label',array($this,'wplms_check_pmpro_course_button'));
     }
@@ -53,12 +53,8 @@ Class WPLMS_PMPRO_Connect{
                 $course_duration_parameter = apply_filters('vibe_course_duration_parameter',86400,$course_id);
                 $new_duration = time()+$course_duration_parameter*$duration;
                 $new_duration = apply_filters('wplms_pmpro_course_check',$new_duration);
-                if(update_user_meta($user_id,$course_id,$new_duration)){
-                  bp_course_update_user_course_status($user_id,$course_id,0); //since version 1.8.4
-                  $group_id=get_post_meta($course_id,'vibe_group',true);
-                  if(isset($group_id) && $group_id !=''){
-                    groups_join_group($group_id, $user_id );
-                  }
+                if(function_exists('bp_course_add_user_to_course')){
+                  bp_course_add_user_to_course($user_id,$course_id,$new_duration);
                 }
 
             }
@@ -89,10 +85,12 @@ Class WPLMS_PMPRO_Connect{
 
     }
     function wplms_track_course_membership($levels, $user_id){
+      
         global $wpdb;
         if($levels){
           foreach($levels as $old_level) {
             $membership_courses=$wpdb->get_results($wpdb->prepare("SELECT post_id as course_id  FROM {$wpdb->postmeta} WHERE meta_key ='%s' AND meta_value LIKE '%s'",'vibe_pmpro_membership','%"'.$old_level->ID.'"%'));
+
             if(!empty($membership_courses)){
               foreach($membership_courses as $membership_course){
                 $courses[]=$membership_course->course_id;
@@ -104,39 +102,48 @@ Class WPLMS_PMPRO_Connect{
           $courses= array_unique( $courses);
         
         $this->user_courses = $courses;
+      
     } 
-
+ 
     /*
     * REMOVE COURSES WHICH ARE NOT IN THE NEW MEMBERSHIP
     */
    
-    function record_previous_subscriptions($level_id, $user_id){
-      $levels = pmpro_getMembershipLevelsForUser($user_id);
+    function record_previous_subscriptions($level_id, $user_id,$levels,$cancel_level){
+      //$levels = pmpro_getMembershipLevelsForUser($user_id);
       $this->wplms_track_course_membership($levels, $user_id);
     }
 
-    function wplms_pmprostop_previous_courses($level_id, $user_id){
+    function wplms_pmprostop_previous_courses($level_id, $user_id,$cancel_level){
       global $pmpro_pages, $wpdb;
       $courses = array();
-      if(!empty($level_id) && !empty($this->user_courses)){
+      
+      if(!empty($level_id)){
         
         $membership_courses=$wpdb->get_results($wpdb->prepare("SELECT post_id as course_id  FROM {$wpdb->postmeta} WHERE meta_key ='%s' AND meta_value LIKE '%s'",'vibe_pmpro_membership','%"'.$level_id.'"%'));
-
         if(!empty($membership_courses)){
           foreach($membership_courses as $membership_course){
             $courses[]=$membership_course->course_id;
           }
         }
-        foreach($courses as $course_id){
-          if(!in_array($course_id,$this->user_courses)){
-            bp_course_add_user_to_course($user_id,$course_id);
+
+        if(!empty($courses) && !empty($this->user_courses)){
+          foreach($courses as $course_id){
+            if(!in_array($course_id,$this->user_courses)){
+              bp_course_add_user_to_course($user_id,$course_id);
+            }
           }
         }
+      }
+
+      if(!empty($this->user_courses)){
         foreach($this->user_courses as $k => $course_id){
-          if(!in_array($course_id,$courses))
+          if(!in_array($course_id,$courses)){
            bp_course_remove_user_from_course($user_id,$course_id);
+          }
         }
       }
+
       return;
     }
 

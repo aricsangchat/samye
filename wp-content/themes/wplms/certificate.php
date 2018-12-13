@@ -12,19 +12,30 @@ if(isset($code)){
   $template = apply_filters('wplms_certificate_code_template_id',$code);
 
   if(strlen($code)<2 || empty($user_id) || empty($course_id) || empty($template)){
-    wp_die(__('INVALID CERTIFICATE CODE','vibe'));
+    wp_die(__('INVALID CERTIFICATE CODE','vibe'),__('INVALID CERTIFICATE CODE','vibe'));
   }
-  if($template !== get_the_ID()){
-    $location = get_permalink($template).'?c='.$course_id.'&u='.$user_id;
-    wp_redirect($location);
-    exit();
-  }
+  
 }else{
   $user_id = $_REQUEST['u'];
   $course_id = $_REQUEST['c'];
 }
 
 do_action('wplms_validate_certificate',$user_id,$course_id);
+
+$url = apply_filters('bp_get_course_certificate_url',0,$course_id,$user_id);
+
+if(strpos($url, '.jpeg')){
+  wp_redirect($url);
+  exit;
+}
+
+if(isset($code)){
+  if($template !== get_the_ID()){
+    $location = get_permalink($template).'?c='.$course_id.'&u='.$user_id;
+    wp_redirect($location);
+    exit();
+  }
+}
 
 get_header(vibe_get_header());
 if ( have_posts() ) : while ( have_posts() ) : the_post();

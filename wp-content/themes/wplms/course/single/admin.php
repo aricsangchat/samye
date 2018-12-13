@@ -144,7 +144,7 @@ if(!isset($loop_number)) $loop_number = 5;
 		}
 		if(count($students_undertaking)>0){
 
-			echo '<li><div class="pagination"><div class="pag-count" id="course-member-count">'.sprintf(__('Viewing page %d of %d ','vibe'),1,$max_page).'</div>';
+			echo '<li><div class="pagination"><div><div class="pag-count" id="course-member-count">'.sprintf(__('Viewing page %d of %d ','vibe'),1,$max_page).'</div>';
 			echo '<div class="pagination-links"><span class="page-numbers current">'._x('1','pagination number course admin','vibe').'</span>';
 			$f=$g=1;
 			if($max_page > 1){
@@ -157,7 +157,7 @@ if(!isset($loop_number)) $loop_number = 5;
 					}
 				}
 			}
-			echo '</div></div></li>';	
+			echo '</div></div></div></li>';	
 		}
 		echo '</ul>';
 		

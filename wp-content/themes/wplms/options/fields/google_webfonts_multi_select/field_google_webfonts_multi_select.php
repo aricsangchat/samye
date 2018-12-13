@@ -13,6 +13,7 @@ class VIBE_Options_google_webfonts_multi_select extends VIBE_Options{
 		parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
 		$this->field = $field;
 		$this->value = $value;
+		if(empty($this->field)){$this->field=array();}
 		$this->field['fonts'] = array();
 		/*
 		$fonts = get_transient('vibe-opts-google-webfonts');

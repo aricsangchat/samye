@@ -14,6 +14,10 @@ if ( !defined( 'ABSPATH' ) ) exit;
 <?php do_action( 'bp_before_course_loop' ); ?>
 <?php 
 $user_id=get_current_user_id();
+if(function_exists('bp_course_get_current_user_id')){
+	$user_id=bp_course_get_current_user_id();	
+}
+
 $append='&user='.$user_id;
 
 

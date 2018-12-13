@@ -331,26 +331,16 @@
 					color:#FFF;
 				}
 			}
-			.students{
-			    display: block;
-			    clear: both;
-			    line-height: 2;
-			}
 			h1{
 				margin-top:0;
 				font-weight:600;
 			}
 		}
-		#item-admins{
-			border:none;
-			margin:0;
-			h3{
-				padding:0;
-				border:none;
-			}
-			.item-avatar{
-				margin-left:0;
-			}
+	}
+	#item-admins{
+		h3{
+			padding:0;
+			border:none;	
 		}
 	}
 }
@@ -365,11 +355,22 @@
 			list-style:decimal outside;
 			margin-left:20px;
 		}
+	}
+
+	#item-meta{
+		display: grid;
+	    align-items: center;
+	    grid-template-columns: 80px 120px 1fr;
+	    .students:before {
+		    content: "\f0c0";
+		    font-family: fontawesome;
+		}
 	}	
 }
 .single-course.c2,
 .single-course.c3,
-.single-course.c5{
+.single-course.c5,
+.single-course.c6{
 	#item-nav{
 		background:$lightmenubg;
 		div.item-list-tabs#object-nav{
@@ -395,6 +396,7 @@
 						opacity:1;
 					}
 				}
+				h1{color:#fff;}
 				&.current{
 					a{
 						opacity:1;
@@ -537,20 +539,6 @@
 				}
 			}
 		}
-		#item-admins{
-		    padding: 30px 0;
-		    background: #FFF;
-		    margin-top: 30px;
-		    color: #444;
-		    h3{
-		    	margin:0 0 15px;
-		    	padding:0;
-		    	color:#444;
-		    }
-		    .instructor_course{padding-left:0;}
-		    h5 a{color:#444;}
-		    .item-avatar{margin-left:0;}
-		}
 	}
 	&.minimal{
 		#buddypress{
@@ -584,8 +572,14 @@
 	}
 }
 
+.single-course.c6{
 
-
+	#item-admins{
+		h5, h5 a{
+			color:#444;	
+		}
+	}
+}
 .single-course.c5{
 	.course_header{
 	    background: #FFF;
@@ -625,18 +619,6 @@
 					line-height:2;
 				}
 			}
-			#item-admins{
-				h3{
-					padding-left: 0;
-			        font-size: 16px;
-				    text-transform: uppercase;
-				    font-weight: 600;
-				}
-				.instructor_course{
-					.item-avatar{margin-left:0;}
-			    	h5.course_instructor>a{	color:#444; }
-			    }
-			}
 	    }
 	}
 	header.transparent + #title{
@@ -651,17 +633,7 @@
 	}
 }
 
-.single-course{
-	#item-admins{
-		.instructor_course{
-			padding-left:15px;
-			padding-rightt:15px;
-		}
-	}
-	&.c2,&.c3,&.c4,&.c5{
-		#item-admins,.instructor_course{padding-left:0;padding-right:0;}
-	}
-}
+
 /*========================================================================*/
 /*   01. RESPONSIVE
 /*========================================================================*/

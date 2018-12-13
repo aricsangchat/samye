@@ -42,7 +42,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     else :
                         ?>
                         <ul class="topmenu">
-                            <li><a href="#login" rel="nofollow" class="smallimg vbplogin"><?php _e('Login','vibe'); ?></a></li>
+                            <li><a href="#login" rel="nofollow" class=" vbplogin"><?php _e('Login','vibe'); ?></a></li>
                             <li><?php if ( function_exists('bp_get_signup_allowed') && bp_get_signup_allowed() ) :
                                 $registration_link = apply_filters('wplms_buddypress_registration_link',site_url( BP_REGISTER_SLUG . '/' ));
                                 printf( __( '<a href="%s" class="vbpregister" title="'.__('Create an account','vibe').'">'.__('Sign Up','vibe').'</a> ', 'vibe' ), $registration_link );
@@ -86,9 +86,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                             }else{
                                 echo '<h2 id="logo">';
                             }
+                            $url = apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header');
+                            if(!empty($url)){
                         ?>
-                            <a href="<?php echo vibe_site_url(); ?>"><img src="<?php  echo apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header'); ?>" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a>
+                            <a href="<?php echo vibe_site_url(); ?>"><img src="<?php  echo $url; ?>" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a>
                         <?php
+                            }
+                            
                             if(is_front_page()){
                                 echo '</h1>';
                             }else{

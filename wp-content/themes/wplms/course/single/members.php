@@ -24,13 +24,41 @@ if(empty($course_layout)){
 ?>
 
 <?php
+$loop_number=vibe_get_option('loop_number');
+if(!isset($loop_number)) $loop_number = 5;
+if(function_exists('bp_course_get_course_students')){
+	$course_students=bp_course_get_course_students();
+	$students_undertaking = $course_students['students'];
+	$max_page = ceil($course_students['max']/$loop_number);
+}else{
+	$students_undertaking=bp_course_get_students_undertaking();	
+	$max_page = ceil(count($students_undertaking)/$loop_number);
+}
 
-$students_undertaking= bp_course_get_students_undertaking(); 
 
 if(count($students_undertaking) > 0 ){
 	?>
 	<h4 class="total_students"><?php _e('Total number of Students in course','vibe'); ?><span><?php echo $students; ?></span></h4>
+	<form id="course_user_ajax_search_results" data-id="<?php echo get_the_ID(); ?>">
+		<select id="course_status">
+			<option value=""><?php _ex('Filter by Status','course-members-select','vibe'); ?></option>
+			<?php
+				$sorters = apply_filters('wplms_course_members_sorters',array(
+					'recent'=> _x('Recently joined','course-members-select','vibe'),
+					'alphabetical'=> _x('Alphabetical','course-members-select','vibe'),
+					'toppers'=> _x('Top scorers','course-members-select','vibe'),
+					));
+				foreach($sorters as $sort => $label){
+					echo '<option value="'.$sort.'">'.$label.'</option>';
+				}
+			?>
+		</select>
+		<span id="search_course_member">
+			<input type="text" name="search" placeholder="<?php _e('Enter student name/email','vibe'); ?>">
+		</span>
+	 </form>
 	<?php
+	
 	echo '<ul class="course_students">';
 	foreach($students_undertaking as $student){
 
@@ -64,8 +92,22 @@ if(count($students_undertaking) > 0 ){
 		    
 		}
 	}
+	echo '<li><div class="pagination"><div><div class="pag-count" id="course-member-count">'.sprintf(__('Viewing page %d of %d ','vibe'),1,$max_page).'</div>';
+	echo '<div class="pagination-links"><span class="page-numbers current">'._x('1','pagination number course admin','vibe').'</span>';
+	$f=$g=1;
+	if($max_page > 1){
+		for($i=2;$i<=$max_page;$i++ ){
+			if($i == 2 || $i == $max_page){
+				echo '<a class="page-numbers course_admin_paged">'.$i.'</a>';
+			}else if($f && $i >= 3 && $i < $max_page){
+				echo '<a class="page-numbers">...</a>'; 
+				$f=0;
+			}
+		}
+	}
+	echo '</div></div></div></li>';
 	echo '</ul>';
-	echo bp_course_paginate_students_undertaking();
+	wp_nonce_field('security'.get_the_ID(),'bulk_action');
 }else{
 	echo '<div class="message">'._x('No members found in this course.','No members notification in course - members','vibe').'</div>';
 }

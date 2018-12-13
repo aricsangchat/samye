@@ -17,7 +17,6 @@ vibe_include_template("profile/top$profile_layout.php");
 <div id="item-body">
 
 	<?php do_action( 'bp_before_member_body' ); ?>
-
 	<div class="item-list-tabs no-ajax" id="subnav">
 		<ul>
 
@@ -29,7 +28,7 @@ vibe_include_template("profile/top$profile_layout.php");
 	</div><!-- .item-list-tabs -->
 
 	<h3><?php _e( 'Capabilities', 'vibe' ); ?></h3>
-
+	<?php do_action('bp_before_member_settings_template'); ?>
 	<form action="<?php echo bp_displayed_user_domain() . bp_get_settings_slug() . '/capabilities/'; ?>" name="account-capabilities-form" id="account-capabilities-form" class="standard-form" method="post">
 
 		<?php do_action( 'bp_members_capabilities_account_before_submit' ); ?>

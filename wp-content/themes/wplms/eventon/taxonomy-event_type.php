@@ -29,6 +29,7 @@ $tax_name = $eventon->frontend->get_localized_event_tax_names_by_slug($tax);
 do_action('eventon_before_main_content');
 ?>
 <section id="title">
+    <?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="col-md-12">

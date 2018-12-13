@@ -41,7 +41,8 @@ if ( bp_course_has_items( bp_ajax_querystring( 'course' ) ) ) : ?>
 			if($cache_duration){
 				$course_key= 'course_'.$post->ID;
 				if(is_user_logged_in()){
-					$user_id = get_current_user_id();
+					$user_id = bp_displayed_user_id();
+
 					$user_meta = get_user_meta($user_id,$post->ID,true);
 					if(isset($user_meta)){
 						$course_key= 'course_'.$user_id.'_'.get_the_ID();

@@ -13,6 +13,7 @@
 		"thankyou_redirect":1,
 		"default_course_block_style":"course3",
 		"related_courses":1,
+		"logo":"http://wplms.io/demos/demo3/wp-content/uploads/2017/12/logo_black.png",
 		"footerbottom_right":1,
 		"google_fonts": [
 			"Lato-300-latin",
@@ -26,6 +27,7 @@
 		"page_loader": "pageloader2",
 		"top_footer_columns": "col-md-3 col-sm-6",
 		"bottom_footer_columns": "col-md-3 col-sm-6",
+		"footer_logo": "http://wplms.io/demos/demo2/wp-content/uploads/2017/12/logo-120x58.png",
 		"social_icons": {
 			"social": [
 				"facebook",
@@ -217,6 +219,7 @@
 		"header_color": "#444",
 		"header_top_color": "#444",
 		"primary_bg": "#009dd8",
+		"logo_size": "48",
 		"login_style": "pop_login",
 		"h1_font": "Roboto-regular-latin",
 		"h2_font": "Roboto-regular-latin",

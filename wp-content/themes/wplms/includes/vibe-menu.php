@@ -161,7 +161,7 @@ include_once( 'menu/custom_walker.php' );
 
       <p class="button-controls">
         <span class="add-to-menu">
-          <input type="submit"<?php if ( function_exists( 'wp_nav_menu_disabled_check' ) ) : wp_nav_menu_disabled_check( $nav_menu_selected_id ); endif; ?> class="button-secondary submit-add-to-menu right" value="<?php esc_attr_e( 'Add to Menu', 'vibe' ); ?>" name="add-custom-menu-item" id="submit-wplms-menu" />
+          <input type="submit"<?php if ( function_exists( 'wp_nav_menu_disabled_check' ) ) : wp_nav_menu_disabled_check( $nav_menu_selected_id ); endif; ?> class="button-secondary submit-add-to-menu right" value="<?php _e( 'Add to Menu', 'vibe' ); ?>" name="add-custom-menu-item" id="submit-wplms-menu" />
           <span class="spinner"></span>
         </span>
       </p>

@@ -30,13 +30,24 @@ header{
 	background: $headerbg;
 	width:100%;
 	transition: all 0.6s ease-in-out;
-	.smallimg img{
-		height:20px;
-		width:20px;
-		border-radius:50%;
-		margin-right:8px;
+
+	.smallimg{
+		display:-ms-grid !important;
+		display:grid !important;
+		grid-template-columns:20px 1fr;
+		-ms-grid-columns:20px 1fr;
+		grid-gap:5px;
+		align-items: center;
+		img{
+			border-radius:50%;
+		}
+	} 
+	#header_alt_logo,
+	#header_mobile_logo{
+		display:none;
 	}
 }
+
 
 .admin-bar{
 	#headertop.fix,header.fix{
@@ -45,6 +56,7 @@ header{
 		}
 	}
 }
+
 
 /*========================================================================*/
 /*   01. HEADER & NAVIGATION
@@ -90,6 +102,31 @@ header{
 	
 .search_active #searchdiv{display:block;transform: translateY(0);}
 
+
+.nav_search {
+	display: inline-block;
+    border: 1px solid rgba(0,0,0,0.08);
+    margin: 30px 6px;
+    width:100%;
+    select,
+    input{
+    	border:none;
+    	
+    }
+    input{padding-right:20px;}
+    form{
+    	position:relative;
+	    &:after{
+	    	content: "\f002";
+	    	position: absolute;
+		    right: 8px;
+		    top: 6px;
+		    font-family: fontawesome;
+	    }
+    }
+}
+
+
 /*========================================================================*/
 /*   01. TOP HEADER
 /*========================================================================*/
@@ -103,12 +140,19 @@ header{
 	.homeicon{
 		display: none;
 	}
-	.smallimg img{
-		height:20px;
-		width:20px;
-		border-radius:50%;
-		margin-right:8px;
-	}
+	.smallimg{
+		display:-ms-grid !important;
+		display:grid !important;
+		grid-template-columns:20px 1fr;
+		-ms-grid-columns:20px 1fr;
+		
+		grid-gap:5px;
+		align-items: center;
+		img{
+			border-radius:50%;
+		}
+	} 
+
 	&.fixed{
 		position: fixed;
 		width:100%;

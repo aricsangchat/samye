@@ -85,11 +85,15 @@ if ( !defined( 'ABSPATH' ) ) exit;
 					 do_action( 'bp_profile_header_meta' );
 
 					 ?>
-
 				</div><!-- #item-meta -->
 				<?php
 			    }
 			?>
+			<?php
+	
+			 do_action( 'bp_profile_after_member_header_meta' );
+
+			 ?>
 			</div>
 		</div>
 	</div>

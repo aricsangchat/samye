@@ -28,7 +28,7 @@ class WPLMS_Actions{
 		add_action('init',array($this,'wplms_removeHeadLinks'));
 
 		add_action('wp_head',array($this,'add_loading_css'));
-		add_action('wp_head',array($this,'include_child_theme_styling'));
+		add_action('wp_enqueue_scripts',array($this,'include_child_theme_styling'));
 
 		add_action('template_redirect',array($this,'site_lock'),1);
 
@@ -39,7 +39,8 @@ class WPLMS_Actions{
 
 		add_action( 'pre_get_posts', array($this,'course_search_results' ));
 
-		add_action(	'template_redirect',array($this,'vibe_check_access_check'));
+		add_action(	'template_redirect',array($this,'vibe_check_access_check'),11);
+
 		add_action( 'template_redirect', array($this,'vibe_check_course_archive' ));
 		add_action( 'template_redirect', array($this,'vibe_product_woocommerce_direct_checkout' ));
 		add_action('woocommerce_order_item_name',array($this,'vibe_view_woocommerce_order_course_details'),2,100);
@@ -65,7 +66,7 @@ class WPLMS_Actions{
 			$tips = WPLMS_tips::init(); // Use instead of get_option to avoid unnecessary sql call
 			if(!empty($tips->settings) && !empty($tips->settings['woocommerce_account'])){
 				/* ==== WooCommerce MY Orders ==== */
-				if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )  || (function_exists('is_plugin_active') && is_plugin_active( 'woocommerce/woocommerce.php'))) {
+				if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )  || (function_exists('is_plugin_active') && is_plugin_active( 'woocommerce/woocommerce.php')) || class_exists('WooCommerce')) {
 					add_action( 'bp_setup_nav', array($this,'woo_setup_nav' ));
 					add_action( 'bp_init', array($this, 'woo_save_account_details' ) ,999);
 					add_action('woocommerce_save_account_details',array($this,'woo_myaccount_page'));
@@ -117,6 +118,7 @@ class WPLMS_Actions{
 		add_action('wplms_after_course_directory',array($this,'detect_cat_level_location'));
 
 		// Ajax Registration and login form styles
+		add_action('wp_ajax_nopriv_wplms_get_signon_security',array($this,'wplms_get_signon_security'));
 		add_action('wp_ajax_nopriv_wplms_signon',array($this,'wplms_signon'));
 		add_action( 'login_form', array( $this, 'enable_ajax_registration_login'));
 		add_action( 'wp_ajax_nopriv_wplms_forgot_password',array($this,'wplms_forgot_password'));
@@ -128,6 +130,482 @@ class WPLMS_Actions{
 		add_action('bp_before_course_header',array($this,'wplms_course_tabs_supports'),99);
       
 		add_action('login_head',array($this,'remove_ajax_reg_login_from_wp_login'),99);
+
+		//right click disbale in course status page
+		add_action('template_redirect',array($this,'check_contextmenu_course_status'));
+
+		//Add google captcha on buddypress registration page
+		add_action('bp_signup_validate', array($this,'google_captcha_validate'),1);
+		add_action('bp_before_registration_submit_buttons', array($this,'show_google_captcha'),1,1);
+
+		add_action( 'wp_ajax_switch_demo_homes',array($this,'switch_demo_homes' ));
+		add_action( 'wp_ajax_switch_demo_layout',array($this,'switch_demo_layout' ));
+
+		add_action('wplms_customizer_custom_css',array($this,'demo_import_fixes'),10,1);
+
+		//XSS vulenrability reported in search
+		add_action('template_redirect',function(){
+			if(isset($_GET['s'])){
+				$_GET['s'] = esc_attr($_GET['s']);
+			}
+		});
+		add_action('wplms_header_nav_search',array($this,'nav_search'));
+		//Ajax header reload
+		add_action('wp_footer',array($this,'header_reload'));
+		add_action('wp_ajax_header_reload',array($this,'ajax_header_reload'));
+    }
+
+    function header_reload(){
+    	$header_reload = vibe_get_option('header_reload');
+    	if(!empty($header_reload)){
+    		if(is_user_logged_in()){
+    		?>
+    		<script>
+    			jQuery(document).ready(function($){
+    				if($('.vbplogin').length && !$('.vbplogin').hasClass('smallimg')){
+
+    					$.ajax({
+				          	type: "POST",
+				          	url: ajaxurl,
+				          	data: { action: 'header_reload',
+				                  security:'<?php echo vibe_get_option('security_key'); ?>',
+				                },
+				          	cache: false,
+				          	success: function (html) {
+				            	if(html){
+				            		jQuery('#vibe_bp_login').append(html);
+				            		$('.vbplogin').html($(html).find('#bpavatar').html() + '<span>'+$(html).find('#username').text()+'</span>');
+				            		$('.vbplogin').addClass('smallimg');
+				            	}
+				          	}
+				        });
+    				}
+    			});
+    		</script>
+    		<?php
+    		}
+    	}
+    }
+
+    function ajax_header_reload(){
+
+    	if ( !isset($_POST['security']) || $_POST['security'] != vibe_get_option('security_key') || !is_user_logged_in() || !function_exists('bp_loggedin_user_link')){
+	       die();
+	    }
+
+    	do_action( 'bp_before_sidebar_me' ); ?>
+		  <div id="sidebar-me">
+			    <div id="bpavatar">
+			      <?php bp_loggedin_user_avatar( 'type=full' ); ?>
+			    </div>
+			    <ul>
+			      <li id="username"><a href="<?php bp_loggedin_user_link(); ?>"><?php bp_loggedin_user_fullname(); ?></a></li>
+			      <?php do_action('wplms_header_top_login'); ?>
+			      <li><a href="<?php echo bp_loggedin_user_domain() . BP_XPROFILE_SLUG ?>/" title="<?php _e('View profile','vibe'); ?>"><?php _e('View profile','vibe'); ?></a></li>
+			      <li id="vbplogout"><a href="<?php echo wp_logout_url( get_permalink() ); ?>" id="destroy-sessions" rel="nofollow" class="logout" title="<?php _e( 'Log Out','vibe' ); ?>"><i class="icon-close-off-2"></i> <?php _e('LOGOUT','vibe'); ?></a></li>
+			      <li id="admin_panel_icon"><?php if (current_user_can("edit_posts"))
+			           echo '<a href="'.vibe_site_url() .'wp-admin/" title="'.__('Access admin panel','vibe').'"><i class="icon-settings-1"></i></a>'; ?>
+			      </li>
+			    </ul> 
+			    <ul>
+			<?php
+			$loggedin_menu = array(
+			  'courses'=>array(
+			              'icon' => 'icon-book-open-1',
+			              'label' => __('Courses','vibe'),
+			              'link' => bp_loggedin_user_domain().BP_COURSE_SLUG
+			              ),
+			  'stats'=>array(
+			              'icon' => 'icon-analytics-chart-graph',
+			              'label' => __('Stats','vibe'),
+			              'link' => bp_loggedin_user_domain().BP_COURSE_SLUG.'/'.BP_COURSE_STATS_SLUG
+			              )
+			  );
+			if ( bp_is_active( 'messages' ) ){
+			  $loggedin_menu['messages']=array(
+			              'icon' => 'icon-letter-mail-1',
+			              'label' => __('Inbox','vibe').(messages_get_unread_count()?' <span>' . messages_get_unread_count() . '</span>':''),
+			              'link' => bp_loggedin_user_domain().BP_MESSAGES_SLUG
+			              );
+			}
+			if ( bp_is_active( 'notifications' ) ){
+			  $n=vbp_current_user_notification_count();
+			  $loggedin_menu['notifications']=array(
+			              'icon' => 'icon-exclamation',
+			              'label' => __('Notifications','vibe').(($n)?' <span>'.$n.'</span>':''),
+			              'link' => bp_loggedin_user_domain().BP_NOTIFICATIONS_SLUG
+			              );
+			}
+			if ( bp_is_active( 'groups' ) ){
+			  $loggedin_menu['groups']=array(
+			              'icon' => 'icon-myspace-alt',
+			              'label' => __('Groups','vibe'),
+			              'link' => bp_loggedin_user_domain().BP_GROUPS_SLUG 
+			              );
+			}
+
+			$loggedin_menu['settings']=array(
+			              'icon' => 'icon-settings',
+			              'label' => __('Settings','vibe'),
+			              'link' => bp_loggedin_user_domain().BP_SETTINGS_SLUG
+			              );
+			$loggedin_menu = apply_filters('wplms_logged_in_top_menu',$loggedin_menu);
+			foreach($loggedin_menu as $item){
+			  echo '<li><a href="'.$item['link'].'"><i class="'.$item['icon'].'"></i>'.$item['label'].'</a></li>';
+			}
+			?>
+		    </ul>
+		  
+		  <?php
+		  do_action( 'bp_sidebar_me' ); ?>
+		  </div>
+		  <?php do_action( 'bp_after_sidebar_me' );
+
+		  die();
+    }
+
+    function nav_search(){
+
+    	$course_search = vibe_get_option('course_search');
+
+    	if($course_search ==2 || $course_search ==3){
+
+    		$args = apply_filters('wplms_course_nav_cats',array(
+		        'taxonomy'=>'course-cat',
+		        'hide_empty'=>false,
+		        'orderby'    => $order,
+		        'order' => $sort,
+		        'hierarchial'=>1,
+		      ));
+
+    		$terms = get_terms($args);
+    		echo '<div class="nav_search">
+    		<form method="GET" action="'.home_url().'">';
+
+    		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+			    echo '<select name="'.$args['taxonomy'].'" style="max-width:100px;"><option value="">'._x('All','all courses in course nav search in categories','vibe').'</option>';
+			    foreach ( $terms as $term ) {
+			        echo '<option value="'.$term->slug.'" '.(($_GET[$args['taxonomy']] == $term->slug)?'selected':'').'>' . $term->name . '</li>';
+			    }
+			    echo '</select>';
+			}
+    			
+    			
+    		echo '</select>
+    			<input type="text" name="s" placeholder="'._x('Search courses..','search placeholder','vibe').'" value="'.$_GET['s'].'" />
+    			<input type="hidden" name="post_type" value="course" />
+    		</form>
+    		</div>';
+
+    		if(vibe_get_customizer('header_style') == 'univ'){
+    			echo '<style>.menu_nav_search{    grid-column-end: span 2;}</style>';
+    		}
+    	}else{
+    		echo '<a id="new_searchicon"><i class="fa fa-search"></i></a>';
+    	}
+    	
+    }
+
+    function switch_demo_layout(){
+    	if ( !isset($_POST['security']) || !wp_verify_nonce($_POST['security'],'switch_demo_layouts') || empty($_POST['demo'])){
+	       _e('Security check Failed. Contact Administrator.','vibe');
+	       die();
+	    }
+	    $dir = get_home_path() . '/wp-content/themes/wplms/setup/installer/content/';
+	    $demo = $_POST['demo'];
+		if ( is_dir( $dir ) ) {
+			$json_url = $dir.$demo.'/options.json';
+			$json = file_get_contents($json_url);
+			$json = json_decode($json ,TRUE);
+			if(!empty($json)){
+				foreach ( $json as $option => $value ) {
+					if($option == 'vibe_customizer'){
+						$ops = get_option('vibe_customizer');
+						foreach($value as $key => $val){
+							if(strpos($key,"google_fonts") == false){
+								$ops[$key] = $val;
+							}
+						}
+						//handle fonts here please 
+
+						update_option( $option, $ops );
+
+						break;
+					}
+				}
+				$existing_vibe_options = get_option('wplms');
+				$existing_vibe_options['demo_switch'] = $demo;
+				update_option('wplms',$existing_vibe_options);
+			}
+		}
+		die();
+    }
+
+    function _download_slider_actions($url){
+
+		$file_name = basename( $url );
+
+		
+		$upload_dir = wp_upload_dir();
+		$full_path = $upload_dir['path'].'/'.$file_name;
+		if(file_exists($full_path)){
+			@unlink($full_path);
+		}
+
+
+		$upload = wp_upload_bits( $file_name, 0, '');
+
+
+		if ( $upload['error'] ) { // File already imported
+			@unlink( $upload['file'] );
+
+			$upload = wp_upload_bits( $file_name, 0, '');
+
+			if ( $upload['error'] ) {
+				return $upload['file'];
+			}
+			//new WP_Error( 'upload_dir_error', $upload['error'] );
+		}
+
+		// we check if this file is uploaded locally in the source folder.
+		$response = wp_remote_get( $url ,array('timeout' => 120));
+		WP_Filesystem();
+		global $wp_filesystem;
+		$wp_filesystem->put_contents( $upload['file'], $response['body'] );
+			
+		if ( is_array( $response ) && ! empty( $response['body'] ) && $response['response']['code'] == '200' ) {
+			require_once( ABSPATH . 'wp-admin/includes/file.php' );
+			$headers = $response['headers'];
+			WP_Filesystem();
+			global $wp_filesystem;
+			$wp_filesystem->put_contents( $upload['file'], $response['body'] );
+		} else {
+			// required to download file failed.
+			@unlink( $upload['file'] );
+
+			return new WP_Error( 'import_file_error', esc_html__( 'Remote server did not respond' ) );
+		}
+
+
+		return $upload['file'];
+	}
+
+
+    function switch_demo_homes(){
+    	if ( !isset($_POST['security']) || !wp_verify_nonce($_POST['security'],'switch_demo_layouts') || empty($_POST['demo'])){
+	       _e('Security check Failed. Contact Administrator.','vibe');
+	       die();
+	    }
+	    //find home page layout in json file and import it 
+	    $dir = get_home_path() . '/wp-content/themes/wplms/setup/installer/content/';
+	    $style = $_POST['demo'];
+		if ( is_dir( $dir ) ) {
+			$json_url = $dir.$style.'/default.json';
+			$json = file_get_contents($json_url);
+			$json = json_decode($json ,TRUE);
+			$json = $json['page'];
+			if(!empty($json)){
+
+				foreach ($json as $key => $page) {
+
+					if(!empty($page) && !empty($page['post_name']) && $page['post_name'] == 'home'){
+						$metas = $page['meta'];
+						unset($page['meta']);
+						unset($page['post_id']);
+						unset($page['guid']);
+						unset($page['post_date']);
+						unset($page['post_date_gmt']);
+						unset($page['terms']);
+						$page['post_type'] = 'page';
+						
+						$homepage = wp_insert_post($page);
+						if ( !(is_wp_error( $homepage )) && !empty($homepage) ) {
+							//slider import
+							$slider_array = array();
+							$ls_slider_array = array();
+
+							$url = 'https://wplms.io/demos/demodata/content/'.$style;
+							if(in_array($style,array('demo1'))){
+								$slider_array = array($url."/classicslider1.zip");
+							}
+							if(in_array($style,array('demo2'))){
+								$slider_array = array($url."/search-form-hero2.zip",$url."/news-hero4.zip",$url."/about1.zip");
+							}
+							if(in_array($style,array('demo3'))){
+								$slider_array = array($url."/highlight-showcase4.zip");
+							}
+
+							if(in_array($style,array('demo4'))){
+								$slider_array = array($url."/homeslider.zip",$url."/categories.zip");
+							}
+
+							if(in_array($style,array('demo5'))){
+								$slider_array = array($url."/demo5.zip");
+							}
+
+							if(in_array($style,array('demo6'))){
+								$slider_array = array($url."/homeslider.zip");
+							}
+
+							if(in_array($style,array('demo7'))){
+								$slider_array = array($url."/demo7.zip");
+							}
+
+							if(in_array($style,array('demo8'))){
+								$slider_array = array($url."/demo8.zip");
+							}
+							if(in_array($style,array('demo9'))){
+								$slider_array = array($url."/demo9.zip",$url."/demo9_parallax.zip");
+							}
+							if(in_array($style,array('demo10'))){
+								$ls_slider_array = array($url."/demo10-2.zip");
+							}
+							if(in_array($style,array('default'))){
+								$ls_slider_array = array($url."/lsslider.zip");
+							}
+					        
+					        if(!empty($ls_slider_array)){
+					        	include LS_ROOT_PATH.'/classes/class.ls.importutil.php';
+					        	if(class_exists('LS_ImportUtil')){
+					        		foreach($ls_slider_array as $url) {
+						        		$filepath = $this->_download_slider_actions($url);
+										$import = new LS_ImportUtil($filepath);
+									}
+					        	}
+					        }
+
+							if(class_exists('RevSlider') && !empty($slider_array)){
+								$slider = new RevSlider();
+								foreach($slider_array as $url){
+									$filepath = $this->_download_slider_actions($url);
+									$slider->importSliderFromPost(true,true,$filepath);  
+								}	
+							}
+							foreach($metas as $key => $meta){
+								//print_R($key);
+								if(!empty($meta)){
+									/*if($key == '_builder_settings'){
+										//print_R($meta);
+										$meta =serialize($meta);
+										$meta = "'".mysql_real_escape_string($meta)."'";
+										global $wpdb;
+
+										$wpdb->query("INSERT INTO {$wpdb->postmeta} (post_id,meta_key,meta_value) VALUES ($homepage,'_builder_settings',$meta)");
+									}else{
+										update_post_meta($homepage, $key,$meta);
+									}*/
+									update_post_meta($homepage, $key,$meta);
+								}
+								
+							}
+							update_post_meta($homepage,"_add_content","no");
+							update_option( 'page_on_front', $homepage );
+							update_option( 'show_on_front', 'page' );
+							update_option('wplms_site_style',$style);
+							flush_rewrite_rules( true );
+						}
+
+					}
+				}
+			}
+			
+		}
+	    die();
+    }
+
+    function show_google_captcha(){
+    	
+    	$google_captcha_public_key = vibe_get_option('google_captcha_public_key');
+    	if(empty($google_captcha_public_key)){
+    		return;
+    	}
+
+        if ( ! wp_script_is( 'google-recaptcha', 'enqueued' ) ) {
+        	$wp_locale = get_locale();
+        	$translate_captcha = apply_filters('translate_wplms_reg_form_captcha',1);
+            if(!empty($wp_locale) && $translate_captcha){
+                preg_match("/[a-z]*/", $wp_locale, $locale);
+                wp_enqueue_script( 'google-recaptcha', 'https://www.google.com/recaptcha/api.js'.(!empty($locale[0])?'?hl='.$locale[0]:'') );
+            }else{
+                wp_enqueue_script( 'google-recaptcha', 'https://www.google.com/recaptcha/api.js' );
+            }
+        }
+        echo '<div class="g-recaptcha" data-theme="clean" data-sitekey="'.$google_captcha_public_key.'" style="padding:15px 0;"></div>';
+        ?>
+        <script>
+			jQuery(window).load(function(){
+				
+				var $= jQuery;
+				if(typeof grecaptcha !== "undefined"){
+					$("#signup_submit").addClass("disabled");
+
+    				$("#signup_submit").on("click",function(event){
+    					var $this = $(this);
+    					response = grecaptcha.getResponse();
+				        if(response.length == 0){
+				        	$this.parent().find(".message").remove();
+			            	$this.parent().append("<div class='message' style='margin-top:15px;'>"+vibe_shortcode_strings.captcha_mismatch+"</div>");
+			            	$(".message").click(function(){$(this).hide(200);});
+			            }else{
+			            	$this.removeClass("disabled");
+			            }
+			            
+    					if($(this).hasClass("disabled")){
+    						event.preventDefault();
+    					}
+    				});
+
+    			}
+			});
+    	</script>
+    	<?php
+    }
+
+    function google_captcha_validate(){
+
+    	$google_captcha_private_key = vibe_get_option('google_captcha_private_key');
+    	if(empty($google_captcha_private_key)){
+    		return;
+    	}
+
+    	$gresponse = $_POST['g-recaptcha-response'];
+    	$response = wp_remote_post( 'https://www.google.com/recaptcha/api/siteverify',array(
+    		'timeout'     => 30,
+    		'method' => 'POST',
+			'body' => array( 
+    					'secret'   => $google_captcha_private_key,
+    					'response' => $gresponse
+					),
+    		));
+
+    	$api_response = json_decode( wp_remote_retrieve_body( $response ), true );
+
+    	if(!$api_response['success']){
+    		
+    		if(is_array($api_respose['error-codes'])){
+    			$api_respose['error-codes'] = $api_respose['error-codes'][0];
+    		}
+
+    		$message = '';
+    		switch($api_respose['error-codes']){
+    			case 'missing-input-secret':
+    				$message = 'The secret parameter is missing.';
+    			break;
+    			case 'invalid-input-secret':
+    				$message = 'The secret parameter is invalid or malformed.';
+    			break;
+    			case 'missing-input-response':
+    				$message = 'The response parameter is missing.';
+    			break;
+    			case 'invalid-input-response':
+    				$message = 'The response parameter is invalid or malformed.';
+    			break;
+    			case 'bad-request':
+    				$message = 'The request is invalid or malformed.';
+    			break;
+    		}
+    		wp_die($message,_x('Captcha validation failed','captcha mismatch','vibe'),array('response'=>200,'back_link'=>true));
+    	}
     }
 	
     function remove_ajax_reg_login_from_wp_login(){
@@ -382,13 +860,20 @@ class WPLMS_Actions{
     CSS BACKGROUND WHICH APPLIES WHEN TRANSPARENT HEADER IS ENABLED
      */
     function transparent_header_title_background(){ 
+    	if(is_admin()){
+    		return;
+    	}
     	$header_style =  vibe_get_customizer('header_style');
     	if($header_style == 'transparent' || $header_style == 'generic'){ 
 	    	if(is_page() || is_single() || (function_exists('bp_is_directory') &&  bp_is_directory()) || (function_exists('bp_current_component') &&  bp_current_component()) || is_archive() || is_search() || (is_home() && !is_front_page())){ 
-	    		global $post;
-	    		
+	    		global $post,$bp;
+
 	    		if(!is_archive() || bp_is_directory()){
-	    			$title_bg = get_post_meta($post->ID,'vibe_title_bg',true);	
+	    			if(empty($post->ID)){
+	    				$title_bg = get_post_meta($bp->pages->course->id,'vibe_title_bg',true);
+	    			}else{
+	    				$title_bg = get_post_meta($post->ID,'vibe_title_bg',true);
+	    			}
 	    		}
 	    		
 	    		if(is_numeric($title_bg)){
@@ -396,7 +881,7 @@ class WPLMS_Actions{
     				
     				if(!empty($bg) && !empty($bg[0]))
     					$title_bg = $bg[0];
-    			}	
+    			}
 
     			if(empty($title_bg) || strlen($title_bg) < 5 ){
 	    			$title_bg = vibe_get_option('title_bg');
@@ -404,13 +889,26 @@ class WPLMS_Actions{
 	    				$title_bg = VIBE_URL.'/assets/images/title_bg.jpg';
 	    			}
 	    		}
-
+				
+				$title_bg = apply_filters('wplms_title_bg','background:url('.$title_bg.') !important;');
+	    		$title_color= apply_filters('wplms_title_color','color:#fff !important;');
+	    		$title_link= apply_filters('wplms_link_color','color:#222 !important;');
 				if(!empty($title_bg)){
 	    		?>
-	    		<style>.course_header,.group_header{background:url(<?php echo $title_bg; ?>) !important;}#title{background:url(<?php echo $title_bg; ?>) !important;padding-bottom:30px !important; background-size: cover;}
+	    		<style>.course_header,.group_header{
+	    			<?php echo $title_bg; ?>
+	    			}#title{<?php echo $title_bg; ?> padding-bottom:30px !important; background-size: cover;}
+
 	    		#title.dark h1,#title.dark h5,#title.dark a:not(.button),#title.dark,#title.dark #item-admins h3,#item-header.dark #item-header-content .breadcrumbs li+li:before,#title.dark .breadcrumbs li+li:before,.group_header.dark div#item-header-content,.group_header.dark #item-header-content h3 a,.bbpress.dark .bbp-breadcrumb .bbp-breadcrumb-sep:after,#item-header.dark #item-admins h3,#item-header.dark #item-admins h5,#item-header.dark #item-admins h3 a,#item-header.dark #item-admins h5 a,
-	    		#item-header.dark #item-header-content a,#item-header.dark #item-header-content{color:#222 !important;}
-	    		#title.light h1,#title.light h5,#title.light a:not(.button),#title.light,#title.light #item-admins h3,#item-header.light #item-header-content .breadcrumbs li+li:before,#item-header.light #item-admins h3,#item-header.light #item-admins h5,#item-header.light #item-admins h3 a,#item-header.light #item-admins h5 a,#title.light .breadcrumbs li+li:before,.group_header.light div#item-header-content,.group_header.light #item-header-content h3 a,.bbpress.light .bbp-breadcrumb .bbp-breadcrumb-sep:after,#item-header.light #item-header-content a,#item-header.light #item-header-content{color:#fff !important;}.bp-user div#global .pusher .member_header div#item-header{background:url(<?php echo $title_bg; ?>);}.group_header #item-header{background-color:transparent !important;}</style>
+	    		#item-header.dark #item-header-content a,#item-header.dark #item-header-content{<?php echo $title_link; ?>}
+	    		#title.light h1,#title.light h5,#title.light a:not(.button),#title.light,#title.light #item-admins h3,#item-header.light #item-header-content .breadcrumbs li+li:before,#item-header.light #item-admins h3,#item-header.light #item-admins h5,#item-header.light #item-admins h3 a,#item-header.light #item-admins h5 a,#title.light .breadcrumbs li+li:before,.group_header.light div#item-header-content,.group_header.light #item-header-content h3 a,.bbpress.light .bbp-breadcrumb .bbp-breadcrumb-sep:after,#item-header.light #item-header-content a,#item-header.light #item-header-content{
+	    			<?php echo $title_color .'!important;'; ?>
+    			}
+    			.bp-user div#global .pusher .member_header div#item-header:not(.cover_image){
+    				<?php echo $title_bg; ?>
+    			}
+	    		.group_header #item-header{background-color:transparent !important;}
+	    	</style>
 	    		<?php
 	    		}
 	    	}
@@ -445,7 +943,8 @@ class WPLMS_Actions{
     	$bypass = apply_filters('wplms_bp_page_site_lock_bypass',1);
     	global $post;
     	if(!empty($site_lock) && !is_user_logged_in() && !is_front_page() && !in_Array($post->ID,$exlusions) && (bp_current_component()!='activate') && $bypass){
-    		wp_redirect( home_url() );
+    		$url = apply_filters('wplms_site_lock_redirect_url',home_url());
+    		wp_redirect( $url );
         	exit();
     	}
     }
@@ -457,6 +956,97 @@ class WPLMS_Actions{
 	    remove_action('wp_head', 'wlwmanifest_link'); 
 	    add_filter('xmlrpc_enabled','__return_false');
 	  }
+
+	  $style = get_option('wplms_site_style');
+	  if($style == 'points_system'){
+	  	add_filter('vibe_builder_thumb_styles',array($this,'custom_vibe_builder_thumb_styles'));
+		add_filter('vibe_featured_thumbnail_style',array($this,'custom_vibe_featured_thumbnail_style'),1,3);
+	  }
+	  if($style == 'childone'){
+	  	add_filter('vibe_builder_thumb_styles',array($this,'custom_vibe_builder_thumb_styles1'));  
+		add_filter('vibe_featured_thumbnail_style',array($this,'custom_vibe_featured_thumbnail_style'),1,3);
+	  }
+	  if($style == 'one_instructor'){
+	  	add_filter('vibe_builder_thumb_styles',array($this,'custom_vibe_builder_thumb_styles2'));  
+		add_filter('vibe_featured_thumbnail_style',array($this,'custom_vibe_featured_thumbnail_style'),1,3);
+	  }
+
+	}
+
+	function custom_vibe_builder_thumb_styles($styles){
+		$styles['modern_block'] =  get_template_directory().'assets/images/thumb_modern.png';
+		return $styles;
+	}
+
+	function custom_vibe_builder_thumb_styles1($styles){
+		$styles['modern_block1'] =  get_template_directory().'assets/images/thumb_modern.png';
+		return $styles;
+	}
+
+	function custom_vibe_builder_thumb_styles2($styles){
+		$styles['modern_block2'] =  get_template_directory().'assets/images/thumb_modern.png';
+		return $styles;
+	}
+
+	function custom_vibe_featured_thumbnail_style($thumbnail_html,$post,$style){
+
+		if($style == 'modern_block'){ 
+			$instructors = apply_filters('wplms_course_instructors',$post->post_author,$post->ID);
+	        $thumbnail_html ='';
+	        $thumbnail_html .= '<div class="block modern_course">';
+	        $thumbnail_html .= '<div class="block_media">';
+	        $thumbnail_html .= '<a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'medium').'</a>';
+	        $thumbnail_html .= '</div>';
+	        $thumbnail_html .= '<div class="block_content">';
+	        $thumbnail_html .= '<h4 class="block_title"><a href="'.get_permalink($post->ID).'" title="'.$post->post_title.'">'.$post->post_title.'</a></h4>';
+	        $thumbnail_html .= '<span>'.__('by ','vibe');
+	        if(is_array($instructors) && count($instructors) > 1){
+	        	 $thumbnail_html .= bp_core_get_user_displayname($post->post_author).' ( & '.(count($instructors)-1).' more )';
+			}else{
+				 $thumbnail_html .= bp_core_get_user_displayname($post->post_author);
+			}
+	        $thumbnail_html .= '</span>';
+	        $thumbnail_html .= '<div class="course_meta">
+	        <i class="icon-users"></i> '.get_post_meta($post->ID,'vibe_students',true).'
+	        '.bp_course_get_course_credits().'
+	        </div>';
+	        $thumbnail_html .= '';
+	        $thumbnail_html .= '</div></div>';
+	    }
+
+	    if($style == 'modern_block1'){
+	    	$thumbnail_html ='';
+	        $thumbnail_html .= '<div class="block modern_course">';
+	        $thumbnail_html .= '<div class="block_media">';
+	        $thumbnail_html .= '<a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'medium').'</a>';
+	        $thumbnail_html .= '<a href="'.bp_core_get_user_domain($post->post_author) .'" class="course_block_instructor">'.bp_course_get_instructor_avatar().'</a>';
+	        $thumbnail_html .= '</div>';
+	        $thumbnail_html .= '<div class="block_content">';
+	        $thumbnail_html .= '<h4 class="block_title"><a href="'.get_permalink($post->ID).'" title="'.$post->post_title.'">'.$post->post_title.'</a></h4>';
+	        $thumbnail_html .= bp_course_get_type();
+	        $thumbnail_html .= '</div></div>';
+	    }
+
+	    if($style == 'modern_block2'){ 
+	        $thumbnail_html ='';
+	        $thumbnail_html .= '<div class="block modern_course">';
+	        $thumbnail_html .= '<div class="block_media">';
+	        $thumbnail_html .= '<a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'medium').'</a>';
+	        $thumbnail_html .= '</div>';
+	        $thumbnail_html .= '<div class="block_content">';
+	        $thumbnail_html .= '<h4 class="block_title"><a href="'.get_permalink($post->ID).'" title="'.$post->post_title.'">'.$post->post_title.'</a></h4>';
+	        $thumbnail_html .= '<span>';
+	        $thumbnail_html .= get_the_term_list($post->ID,'course-cat','',',');
+	        $thumbnail_html .= '</span>';
+	        $thumbnail_html .= '<div class="course_meta">
+	        <i class="icon-users"></i> '.get_post_meta($post->ID,'vibe_students',true).'
+	        '.bp_course_get_course_credits().'
+	        </div>';
+	        $thumbnail_html .= '';
+	        $thumbnail_html .= '</div></div>';
+	    }
+
+	    return $thumbnail_html;
 	}
 
 	function reset_googlewebfonts(){ 
@@ -618,10 +1208,14 @@ class WPLMS_Actions{
 	       _e('Security check Failed. Contact Administrator.','vibe');
 	       die();
 	    }
+
 	    $course_progress = $_POST['progress'];
 	    $user_id = get_current_user_id();
 	    $progress='progress'.$course_id;
-	    update_user_meta($user_id,$progress,$course_progress);
+	    $flag = apply_filters('wplms_allow_course_progress_record',1,$user_id,$course_id);
+	    if($flag){
+	    	update_user_meta($user_id,$progress,$course_progress);
+	    }
 	    die();
 	}
 	// END course Functions	
@@ -678,11 +1272,11 @@ class WPLMS_Actions{
 	              			// if product not found, add it
 	              			if ( ! $found )
 	                			WC()->cart->add_to_cart( $product_id );
-	                		$cart_url = $woocommerce->cart->get_cart_url(); 
+	                		$cart_url = esc_url( wc_get_cart_url() ); 
 	                		wp_redirect( $cart_url); 
 	            		}else{
 			              	WC()->cart->add_to_cart( $product_id );
-			              	$cart_url = $woocommerce->cart->get_cart_url(); 
+			              	$cart_url = esc_url( wc_get_cart_url() ); 
 			              	wp_redirect( $cart_url);
 	            		}
 	            		exit();
@@ -693,8 +1287,10 @@ class WPLMS_Actions{
 	}
 
 	function vibe_view_woocommerce_order_course_details($html, $item ){
-		 
-	  	$product_id=$item['item_meta']['_product_id'][0];
+		$product_id=$item['item_meta']['_product_id'][0];
+	  	if(empty($product_id)){
+	  		$product_id = $item->get_product_id();
+	  	}
 	  	if(isset($product_id) && is_numeric($product_id)){
 	      	$courses = get_post_meta($product_id,'vibe_courses',true);
 	      	if(!empty($courses) && is_Array($courses)){
@@ -861,7 +1457,7 @@ class WPLMS_Actions{
 
 			$i=20;
 			foreach($endpoints as $key => $endpoint){
-				switch ( $endpoint ) {
+				switch ( $key ) {
 					case 'edit-account' :
 						$title = __( 'Edit Account Details', 'vibe' );
 					break;
@@ -934,7 +1530,8 @@ class WPLMS_Actions{
 	}
 	function woo_save_account_details(){
 		if(isset($_POST)){
-			WC_Form_Handler::save_account_details();
+			if(class_exists('WC_Form_Handler'))
+				WC_Form_Handler::save_account_details();
 		}
 	}
 
@@ -1350,7 +1947,6 @@ class WPLMS_Actions{
 			while($courses->have_posts()): $courses->the_post();
 			global $post;
 			echo '<li class="col-md-4">';
-			
 
 			if(empty($style))
 				$style = 'course4';
@@ -1577,7 +2173,7 @@ class WPLMS_Actions{
 	                    	}
 
 	                    	//Parmas : Next Unit, Next timestamp, course_id, userid
-	                    	do_action('wplms_start_unit',$units[$key],$course_id,$user_id,$units[$pre_unit_key],(time()+$total_drip_duration));
+	                    	do_action('wplms_start_unit',$units[$key],$course_id,$user_id,$units[$key+1],(time()+$total_drip_duration));
 	                	}
 	                	
 	                	return $units[$pre_unit_key];
@@ -1671,6 +2267,11 @@ class WPLMS_Actions{
 	/*
 	ENABLE AJAX BASED SIGNON
 	 */
+
+	function wplms_get_signon_security(){
+		echo wp_create_nonce('wplms_signon');
+		die();
+	}
 	function wplms_signon(){
 
 		$response = array();
@@ -1890,7 +2491,7 @@ class WPLMS_Actions{
 	
 	function wplms_course_tabs_supports(){
 		global $post;
-    	$layouts = array('c5','c4','c3','c2');
+    	$layouts = array('c5','c4','c3','c2','c6');
     	$layout = vibe_get_customizer('course_layout');
     	$tab_style_course_layout = vibe_get_option('tab_style_course_layout');
     	
@@ -1899,7 +2500,7 @@ class WPLMS_Actions{
     		$this->wplms_course_tabs_tabs_array = apply_filters('course_tabs_array',array(
     			'home' => _x('home','custom tabs for tabbed layout','vibe'),
     			'curriculum' => _x('curriculum','custom tabs for tabbed layout','vibe')
-    			));
+    		));
 
 			if($post->comment_status == 'open'){
 				if(!empty($this->wplms_course_tabs_tabs_array) && is_array($this->wplms_course_tabs_tabs_array))
@@ -1967,7 +2568,7 @@ class WPLMS_Actions{
 		foreach($tabs as $key => $tab){
 			if(function_exists('bp_get_course_permalink')){
 				unset($temp[$key]);
-				$nav[$tab] = array(
+				$nav[$key] = array(
 	                'id' => $key,
 	                'label'=>$tab,
 	                'action' => '#course-'.strtolower($key),
@@ -1991,9 +2592,11 @@ class WPLMS_Actions{
     	if(empty($action) && !empty($_GET['action'])){
     		$action = $_GET['action'];
     	}
-    	
-    	if(!empty($action))
+    	global $post;
+
+    	if(!empty($action) && $action != $post->post_name)
     		return;
+
     	?>
     		<style>
     		.single-course div#item-nav ul li.flexMenu-viewMore ul.flexMenu-popup{
@@ -2034,6 +2637,7 @@ class WPLMS_Actions{
 		  	<script>
 			  	jQuery(window).load(function($){
 			  		$ = jQuery;
+			  		var review_course = <?php echo (!empty($_POST['review_course'])?1:0)?>;
 			  		var topMenuHeight = $('header').outerHeight(true);
 			  		var windowWidth = $(window).width();
 			  		var windowHeight = $(window).height();
@@ -2051,7 +2655,7 @@ class WPLMS_Actions{
 				     		$('#scrolltop').css('bottom',66);
 		  				  	if(typeof $('.single-course div#item-nav.fixed ul li.flexMenu-viewMore ul.flexMenu-popup') !== 'undefined'){
 	  				  			var flexmenuheight = $this.outerHeight(true);
-	  				  			$this.append('<style>.single-course div#item-nav.fixed{transform: translate3d(0,0,0);}.single-course div#item-nav.fixed ul li.flexMenu-viewMore ul.flexMenu-popup{bottom:'+flexmenuheight+'px;}.flexMenu-popup{max-height:calc(75vh - '+topMenuHeight+'px);}</style>');
+	  				  			$this.append('<style>.single-course div#item-nav.fixed{transform: translate3d(0,0,0);}.single-course div#item-nav.fixed ul li.flexMenu-viewMore ul.flexMenu-popup{bottom:'+flexmenuheight+'px;}.flexMenu-popup{max-height:calc(75vh - '+topMenuHeight+'px);}#footerbottom{padding-bottom:'+(20+flexmenuheight)+'px;}</style>');
 		  				  	}
 
 				     		
@@ -2116,6 +2720,7 @@ class WPLMS_Actions{
 						var topMenuHeight = $('header').outerHeight(true);
 
 						menuItems.click(function(event){
+
 							if($(this).parent().hasClass('flexMenu-viewMore'))
 								return false;
 							selector.find('ul.flexMenu-popup').css('display','none');
@@ -2123,23 +2728,24 @@ class WPLMS_Actions{
 						   	var type = href.split('#');
 							var hash2 = '';
 							if(type.length > 1){
-							  hash2 = type[1];
-							  if($('#'+hash2).length>0){
-							  	event.preventDefault();
-							  }
-							}
-							if(hash2 != ''){
-								var offsetTop = hash2 === "#" ? 0 : $('#'+hash2).offset().top-topMenuHeight+1;
-							    if(!selector.hasClass('fixed')){
-									offsetTop = offsetTop - selector.outerHeight(true);
+							 	hash2 = type[1];
+							  	if(hash2 != '' && $('#'+hash2).length>0){
+							  		event.preventDefault();
+									var offsetTop = hash2 === "#" ? 0 : $('#'+hash2).offset().top-topMenuHeight+1;
+								    if(!selector.hasClass('fixed')){
+										offsetTop = offsetTop - selector.outerHeight(true);
+									}
+								   	$('html, body').stop().animate({ 
+								       scrollTop: offsetTop
+								   	}, 800);
+								   	$('.single-course div#item-nav ul li,.single-course div#object-nav ul li').each(function(){
+										$(this).removeClass('current active');
+								   	});
+								   	$(this).parent().addClass("active current");
+								}else{
+									var new_location = type[0];
+									window.location.href= new_location;
 								}
-							   	$('html, body').stop().animate({ 
-							       scrollTop: offsetTop
-							   	}, 800);
-							   	$('.single-course div#item-nav ul li,.single-course div#object-nav ul li').each(function(){
-									$(this).removeClass('current active');
-							   	});
-							   	$(this).parent().addClass("active current");
 							}
 						    
 						});
@@ -2154,6 +2760,49 @@ class WPLMS_Actions{
 		  	</script>
     	<?php
     }
+
+
+    function check_contextmenu_course_status(){
+
+    	$status = vibe_get_option('disable_contextmenu_course_status');
+    	if(empty($status)){
+    		return;	
+    	}
+		$course_status = vibe_get_option('take_course_page');
+		if(is_page($course_status)){
+			add_filter('body_class',function($class){
+			    echo ' oncontextmenu="return false" ';
+			    return $class;
+			},9999);
+		}	
+	}
+
+	/*
+	Fix styles and colors of demo import
+	*/
+	function demo_import_fixes($customizer){
+
+		$style = vibe_get_site_style();
+		if($style == 'demo5'){
+		    $primary_bg = vibe_get_customizer('primary_bg');
+		    ?>
+		    header.standard nav .sub-menu li a:hover, 
+		    header.standard nav .sub-menu li:hover a, 
+		    header.standard nav>.menu>li.current-menu-item>a, 
+		    header.standard nav>.menu>li.current_page_item>a,
+		    header.standard nav>.menu>li:hover>a:after{
+		      background:<?php echo $primary_bg;?>
+		    }
+		    header #searchform:after, nav>.menu>li:hover>a:before{
+		      border-color:transparent transparent <?php echo $primary_bg;?> transparent !important;
+		    }
+		    header.standard{
+		    border-bottom-color:<?php echo $primary_bg;?> !important;
+		    }
+			<?php  
+		}
+
+	}
 }
 
 WPLMS_Actions::init();

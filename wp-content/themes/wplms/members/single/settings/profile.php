@@ -16,6 +16,7 @@ vibe_include_template("profile/top$profile_layout.php");
 ?>
 <div id="item-body">
 	<?php do_action( 'bp_before_member_body' ); ?>
+
 	<div class="item-list-tabs no-ajax" id="subnav">
 		<ul>
 
@@ -26,6 +27,7 @@ vibe_include_template("profile/top$profile_layout.php");
 		</ul>
 	</div><!-- .item-list-tabs -->
 	<?php do_action('wplms_after_single_item_list_tabs'); ?>
+	<?php do_action('bp_before_member_settings_template'); ?>
 	<form action="<?php echo trailingslashit( bp_displayed_user_domain() . bp_get_settings_slug() . '/profile' ); ?>" method="post" class="standard-form" id="settings-form">
 
 	<?php if ( bp_xprofile_get_settings_fields() ) : ?>
@@ -65,7 +67,7 @@ vibe_include_template("profile/top$profile_layout.php");
 	<?php do_action( 'bp_core_xprofile_settings_before_submit' ); ?>
 
 	<div class="submit">
-		<input id="submit" type="submit" name="xprofile-settings-submit" value="<?php esc_attr_e( 'Save Settings', 'vibe' ); ?>" class="auto" />
+		<input id="submit" type="submit" name="xprofile-settings-submit" value="<?php _e( 'Save Settings', 'vibe' ); ?>" class="auto" />
 	</div>
 
 	<?php do_action( 'bp_core_xprofile_settings_after_submit' ); ?>

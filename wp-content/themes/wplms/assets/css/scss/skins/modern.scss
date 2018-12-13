@@ -498,9 +498,6 @@
 .modern{
 	#buddypress{
 		div#item-header{
-			#item-admins{
-				h3,h5,h3 a,h5 a{color:#444;}
-			}
 			#item-header-content{
 			    border: 1px solid $bordercolor;
 			    border-top: none;
@@ -547,14 +544,6 @@
 		}
 	}
 	&.single-course{
-		#item-header{
-			#item-admins{
-				border-left:1px solid $bordercolor;
-				border-right:1px solid $bordercolor;
-				margin:0;
-				padding-bottom:20px;
-			}
-		}
 		.total_students,
 		.review_title,
 		.course_title > h2{
@@ -630,7 +619,6 @@
 .modern.single-course.c3,
 .modern.single-course.c5{
 	.course_header{
-		background: url('../images/title_bg.jpg');
 		color:#fff;
 		#item-header{
 			div#item-header-content{
@@ -638,11 +626,6 @@
 				a,.breadcrumbs li+li:before{
 					color:#fff;
 				}
-			}
-			#item-admins{
-				border:none;
-				h3,h5,h5.course_instructor>a{color:#fff;}
-
 			}
 			.widget.pricing{
 				padding:15px;

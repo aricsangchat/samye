@@ -155,9 +155,15 @@ class WC_Widget_Advanced_Layered_Nav extends WP_Widget {
 						$current_filter[] = $term->term_id;
 
 					// Base Link decided by current page
+					$shop_page_id = '';
+	                if(function_exists('wc_get_page_id')){
+	                   $shop_page_id = wc_get_page_id('shop');
+	                }else{
+	                  $shop_page_id =  woocommerce_get_page_id( 'shop' );
+	                }
 					if ( defined( 'SHOP_IS_ON_FRONT' ) ) {
 						$link = home_url();
-					} elseif ( is_post_type_archive( 'product' ) || is_page( woocommerce_get_page_id('shop') ) ) {
+					} elseif ( is_post_type_archive( 'product' ) || is_page( $shop_page_id ) ) {
 						$link = get_post_type_archive_link( 'product' );
 					} else {
 						$link = get_term_link( get_query_var('term'), get_query_var('taxonomy') );

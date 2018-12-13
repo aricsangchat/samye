@@ -21,7 +21,8 @@
 		],
 		"page_loader": "pageloader2",
 		"top_footer_columns": "col-md-3 col-sm-6",
-		"bottom_footer_columns": "col-md-3 col-sm-6"
+		"bottom_footer_columns": "col-md-3 col-sm-6",
+		"footer_logo": "http://wplms.io/demos/default/wp-content/themes/wplms/assets/images/logo.png"
 	},
 	"wplms_version": "2.4.0",
 	"widget_wplms_course_codes": {

@@ -36,6 +36,7 @@ if($user_id == $post->post_author || current_user_can('manage_options'))
     $flag=1;
 ?>
 <section id="title">
+    <?php do_action('wplms_before_title'); ?>
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-8">
@@ -54,7 +55,11 @@ if($user_id == $post->post_author || current_user_can('manage_options'))
                         if(is_user_logged_in()){
                             $user_id = get_current_user_id();
                             if(wplms_user_course_active_check($user_id,$course_id)){
-                                $take_course_page=get_permalink(vibe_get_option('take_course_page'));
+                                $take_id = vibe_get_option('take_course_page');
+                                if(function_exists('icl_object_id')){
+                                    $take_id = icl_object_id($take_id,'page',ICL_LANGUAGE_CODE);
+                                }
+                                $take_course_page=get_permalink( $take_id);
                                 echo '<form action="'.$take_course_page.'" method="post">';
                                 echo '<input type="submit" class="button full create-group-button" value="'.__('Back to Course','vibe').'">';
                                 wp_nonce_field('continue_course'.$user_id,'continue_course'); 

@@ -51,7 +51,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 	<?php  
 	
 
-	do_action( 'bp_before_member_header_meta' ); 
+	do_action( 'bp_profile_before_member_header_meta' ); 
 
 	 // Hiding MEta Info
 
@@ -87,6 +87,11 @@ if ( !defined( 'ABSPATH' ) ) exit;
 	<?php
     }
 	?>
+	<?php
+	
+	 do_action( 'bp_profile_after_member_header_meta' );
+
+	 ?>
 </div><!-- #item-header-content -->
 
 <?php do_action( 'bp_after_member_header' ); ?>

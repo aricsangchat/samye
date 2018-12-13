@@ -11,25 +11,39 @@ if(!class_exists('WC_Courses_Checkout')){
         public $enable_guest_checkout_changed;
 
 
+        public static $instance;
+    
+        public static function init(){
+
+            if ( is_null( self::$instance ) )
+                self::$instance = new WC_Courses_Checkout();
+
+            return self::$instance;
+        }
+
+
         /**
          * Constructor
          *
          * @since 1.0.0
          */
         public function __construct() {
+            $enable_force_wplms = apply_filters('wplms_force_registration_during_checkout',1);
 
-            // users must be able to register on checkout
-            // note this runs at -1 priority to ensure this is set before any other hooks
-            add_action( 'woocommerce_before_checkout_form', array( $this, 'maybe_enable_registration' ), -1 );
+            if($enable_force_wplms){
+                // users must be able to register on checkout
+                // note this runs at -1 priority to ensure this is set before any other hooks
+                add_action( 'woocommerce_before_checkout_form', array( $this, 'maybe_enable_registration' ), -1 );
 
-            // mark checkout registration fields as required
-            add_action( 'woocommerce_checkout_fields', array( $this, 'maybe_require_registration_fields' ) );
+                // mark checkout registration fields as required
+                add_action( 'woocommerce_checkout_fields', array( $this, 'maybe_require_registration_fields' ) );
 
-            // remove guest checkout param from WC checkout JS
-            add_filter( 'wc_checkout_params', array( $this, 'remove_guest_checkout_js_param' ) );
+                // remove guest checkout param from WC checkout JS
+                add_filter( 'woocommerce_get_script_data', array( $this, 'remove_guest_checkout_js_param' ) );
 
-            // force registration during checkout process
-            add_action( 'woocommerce_before_checkout_process', array( $this, 'maybe_force_registration_during_checkout' ) );
+                // force registration during checkout process
+                add_action( 'woocommerce_before_checkout_process', array( $this, 'maybe_force_registration_during_checkout' ) );
+            }
         }
 
 
@@ -168,5 +182,5 @@ if(!class_exists('WC_Courses_Checkout')){
         }
 
     }
-    $wplms_woo_c  = new WC_Courses_Checkout(); 
+    WC_Courses_Checkout::init(); 
 }

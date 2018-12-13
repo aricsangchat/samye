@@ -8,6 +8,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 ?>
 <section id="title">
+    <?php do_action('wplms_before_title'); ?>
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
             <div class="col-md-12">

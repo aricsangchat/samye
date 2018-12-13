@@ -28,7 +28,7 @@ do_action( 'bp_before_group_request_membership_content' ); ?>
 		 */
 		do_action( 'bp_group_request_membership_content' ); ?>
 
-		<p><input type="submit" name="group-request-send" id="group-request-send" value="<?php esc_attr_e( 'Send Request', 'vibe' ); ?>" />
+		<p><input type="submit" name="group-request-send" id="group-request-send" value="<?php _e( 'Send Request', 'vibe' ); ?>" />
 
 		<?php wp_nonce_field( 'groups_request_membership' ); ?>
 	</form><!-- #request-membership-form -->

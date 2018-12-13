@@ -178,6 +178,14 @@ $sections[] = array(
 						'type' => 'divide',
                         'desc' => __('Details required for Auto-Update','vibe')
 						),
+                         array(
+						'id' => 'token',
+						'type' => 'token',
+						'title' => __('Login to Envato / Themeforest for Updates', 'vibe'), 
+						'title_alt'=>__('Updates Active. Click to re-confirm.', 'vibe'), 
+						'sub_desc' => __('Login to generate token for automatic updates', 'vibe'),
+                                                'std' => ''
+						),           
                                     array(
 						'id' => 'username',
 						'type' => 'text',
@@ -185,14 +193,14 @@ $sections[] = array(
 						'sub_desc' => __('Required for Automatic Upgrades.', 'vibe'),
                                                 'std' => ''
 						),
-                                    array(
+                        /*array(
 						'id' => 'apikey',
 						'type' => 'password',
 						'title' => __('Enter Your Themeforest API KEY', 'vibe'), 
 						'sub_desc' => __('Please Enter your API Key.Required for Automatic Upgrades.', 'vibe'),
                                                 'desc' => __('Whats an API KEY? Where can I find one?','vibe').' : <a href="http://themeforest.net/help/api" target="_blank">Get all your Anwers here</a> or use our Support Forums',
                                                 'std' => ''
-						),
+						),*/
                                     )
                                 );
 
@@ -205,7 +213,7 @@ $sections[] = array(
                     
                        array(
 						'id' => 'logo',
-						'type' => 'upload',
+						'type' => 'text_upload',
 						'title' => __('Upload Logo', 'vibe'), 
 						'sub_desc' => __('Upload your logo', 'vibe'),
 						'desc' => sprintf(__('This Logo is shown in header. NOT ABLE TO UPLOAD ? %s REFER TIP %s', 'vibe'),'<a href="http://vibethemes.com/documentation/wplms/knowledge-base/logo-and-favicon-not-uploading/" target="_blank">','</a>'),
@@ -213,7 +221,7 @@ $sections[] = array(
 						),
                        array(
 						'id' => 'mobile_logo',
-						'type' => 'upload',
+						'type' => 'text_upload',
 						'title' => __('Upload Logo for Mobile', 'vibe'), 
 						'sub_desc' => __('Upload a logo for mobile viewport', 'vibe'),
 						'desc' => sprintf(__('This Logo is shown in header on Mobile devices, less than 768px wide. NOT ABLE TO UPLOAD ? %s REFER TIP %s', 'vibe'),'<a href="http://vibethemes.com/documentation/wplms/knowledge-base/logo-and-favicon-not-uploading/" target="_blank">','</a>'),
@@ -221,7 +229,7 @@ $sections[] = array(
 						),
                        array(
 						'id' => 'alt_logo',
-						'type' => 'upload',
+						'type' => 'text_upload',
 						'title' => __('Upload Alternate Logo', 'vibe'), 
 						'sub_desc' => __('Alternate logo', 'vibe'),
 						'desc' => sprintf(__('This Logo is shown in header when it becomes fixed. Or in the Header top area. Defaults to logo.NOT ABLE TO UPLOAD ? %s REFER TIP %s', 'vibe'),'<a href="http://vibethemes.com/documentation/wplms/knowledge-base/logo-and-favicon-not-uploading/" target="_blank">','</a>'),
@@ -246,10 +254,10 @@ $sections[] = array(
 						),  
 						array(
 							'id' => 'course_search',
-	                        'title' => __('Navigation Search as Course Search', 'vibe'),
+	                        'title' => __('Navigation Search', 'vibe'),
 	                        'sub_desc' => __('Force the header search to search only in courses', 'vibe'),
 	                        'type' => 'button_set',
-							'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),//Must provide key => value pairs for radio options
+							'options' => array('0' => __('No','vibe'),'1'=>__('Course Search','vibe'),'2'=>__('Course Category Search after menu','vibe'),'3'=>__('Course Category Search before menu','vibe')),//Must provide key => value pairs for radio options
 							'std' => '0'
 						),   
 						array(
@@ -268,6 +276,14 @@ $sections[] = array(
 							'desc' => __('Optional content, only required in Header variations', 'vibe'),
 	                        'std' => ''
 						),
+						array(
+							'id' => 'header_reload',
+	                        'title' => __('Enabl ajax header reload', 'vibe'),
+	                        'sub_desc' => __('When your site is heavily cached, header is reloaded after page load based on user logged in status.', 'vibe'),
+	                        'type' => 'button_set',
+							'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),//Must provide key => value pairs for radio options
+							'std' => '0'
+						), 
 					)
 				);
 
@@ -597,6 +613,15 @@ $sections[] = array(
 						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
 						'std' => '0'
 						),
+						array(
+						'id' => 'disable_contextmenu_course_status',
+                        'title' => __('Disable right click in Course status page', 'vibe'),
+                        'sub_desc' => __('Disable right click in Course status page', 'vibe'),
+                        'desc' => __('disable right click for content copy in course status page.', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => '0'
+						),
 						array( 
 						'id' => 'course_status_template',
                         'title' => __('Course status templates', 'vibe'),
@@ -783,7 +808,7 @@ $sections[] = array(
 						'id' => 'show_news',
                         'title' => __('Display News', 'vibe'),
                         'sub_desc' => __('Display News section in courses', 'vibe'),
-                        'desc' => __('Display News section in courses, *requires WPLMS Dashboard plugin', 'vibe'),
+                        'desc' => __('Display News section in courses.', 'vibe'),
                         'type' => 'button_set',
 						'options' => array('' => __('No','vibe'),'1'=>__('Yes','vibe')),
 						'std' => '0'
@@ -1196,7 +1221,7 @@ $sections[] = array(
 						'id' => 'contact_ll',
 						'type' => 'text',
 						'title' => __('Contact Page Latitude and Longitude values', 'vibe'), 
-						'sub_desc' => __('Grab the latitude and Longitude values from .', 'vibe').'<a href="http://itouchmap.com/latlong.html">'.__('Link','vibe').'</a>',
+						'sub_desc' => __('Grab the latitude and Longitude values from .', 'vibe').'<a href="http://www.mapcoordinates.net/en">'.__('Link','vibe').'</a>',
 						'std' => '43.730325,7.422155'
 						),
                        array(
@@ -1257,7 +1282,41 @@ $sections[] = array(
 	                        'std' => 'VibeThemes'
 						),
                       )
-                    );      
+                    );
+$sections[] = array(
+				'icon' => 'desktop',
+				'title' => __('Demo Switcher', 'vibe'),
+				'desc' => '<p class="description">'.__('Swicth between diffrent demos','vibe').'..</p>',
+				'fields' => array(
+                    
+                       array(
+						'id' => 'demo_switch',
+						'type' => 'demo_switcher',
+                        'options' => array(             
+	                                        'default' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/default.jpg')),
+	                                        'demo10' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo10.jpg')),
+	                                        'demo9' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo9.jpg')),
+											'demo1' => array('Demo1' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo1.jpg')),
+											'demo2' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo2.jpg')),
+											'demo3' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo3.jpg')),
+											'demo4' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo4.jpg')),
+											'demo5' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo5.jpg')),
+											'demo6' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo6.jpg')),
+											'demo7' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo7.jpg')),
+											'demo8' => array('Default' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/demo8.jpg')),
+											'oneinstructor' => array('One Instructor' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/oneinstructor.jpg')),
+											'onecourse' => array('One Course' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/onecourse.jpg')),
+											'points_system' => array('Points System' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/points_system.jpg')),
+											'childone' => array('Points System' => __('Four Columns','vibe'), 'img' => esc_url(get_template_directory_uri() .'/setup/installer/images/childone.jpg')),
+											
+
+											
+											),
+	                    ),//Must provide key => value(array:title|img) pairs for radio options
+				),
+			);
+
+
 	$tabs = array();
 	
 			
@@ -1337,4 +1396,6 @@ function validate_callback_function($field, $value, $existing_value){
 	return $return;
 	
 }//function
+
+
 ?>

@@ -10,7 +10,8 @@
 			 */
 			do_action( 'bp_before_group_home_content' ); ?>
 
-			<div id="item-header" role="complementary">
+			<div id="item-header" class="<?php 
+						$image = bp_attachments_get_group_has_cover_image();echo (empty($image)?'':'cover_image')?>"  role="complementary">
 
 				<?php locate_template( array( 'groups/single/group-header2.php' ), true ); ?>
 
