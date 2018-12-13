@@ -1,0 +1,504 @@
+# Translation of Plugins - Category Posts Widget - Stable (latest release) in Portuguese (Brazil)
+# This file is distributed under the same license as the Plugins - Category Posts Widget - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-01-23 15:46:59+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: pt_BR\n"
+"Project-Id-Version: Plugins - Category Posts Widget - Stable (latest release)\n"
+
+#: cat-posts.php:1927
+msgid "Support"
+msgstr "Suporte"
+
+#: cat-posts.php:1916
+msgid "Disable only font styles"
+msgstr "Desativar apenas estilos de fontes"
+
+#: cat-posts.php:1915
+msgid "Disable the built-in CSS"
+msgstr "Desativar CSS embutido"
+
+#: cat-posts.php:1879
+msgid "HTML without styling"
+msgstr "HTML sem estilos"
+
+#: cat-posts.php:1878
+msgid "Bottom right"
+msgstr "Inferior direito"
+
+#: cat-posts.php:1877
+msgid "Top right"
+msgstr "Superior direito"
+
+#: cat-posts.php:1876
+msgid "Center"
+msgstr "Centro"
+
+#: cat-posts.php:1875
+msgid "Bottom left"
+msgstr "Inferior esquerdo"
+
+#: cat-posts.php:1874
+msgid "Top left"
+msgstr "Superior esquerda"
+
+#: cat-posts.php:1872
+msgid "Indicate post format and position"
+msgstr "Indicar formato do post e posição"
+
+#: cat-posts.php:1870
+msgid "Icon"
+msgstr "Ícone"
+
+#: cat-posts.php:1862
+msgid "Do not wrap thumbnail with overflowing text"
+msgstr "Não envolver a miniatura com texto excedente"
+
+#: cat-posts.php:1855
+msgid "Thumbnail settings"
+msgstr "Configurações da miniatura"
+
+#: cat-posts.php:1848
+msgid "PHP Style Date format"
+msgstr "Formato de data estilo PHP"
+
+#: cat-posts.php:1846
+msgid "PHP style format"
+msgstr "Formato estilo PHP"
+
+#: cat-posts.php:1845
+msgid "Time since published"
+msgstr "Tempo desde a publicação"
+
+#: cat-posts.php:1844
+msgid "Site date"
+msgstr "Data do site"
+
+#: cat-posts.php:1843
+msgid "Site date and time"
+msgstr "Data e hora do site"
+
+#: cat-posts.php:1839
+msgid "Date format settings"
+msgstr "Configurações do formato de data"
+
+#: cat-posts.php:1833 cat-posts.php:2204
+msgid "..."
+msgstr "..."
+
+#: cat-posts.php:1829
+msgid "Excerpt settings"
+msgstr "Configurações do resumo"
+
+#: cat-posts.php:1823
+msgid "Select this template"
+msgstr "Selecionar este modelo"
+
+#: cat-posts.php:1821
+msgid "All with icons"
+msgstr "Tudo, com ícones"
+
+#: cat-posts.php:1820
+msgid "Title, Thumbnail and Excerpt"
+msgstr "Título, miniatura e resumo"
+
+#: cat-posts.php:1819
+msgid "Title and Thumbnail"
+msgstr "Título e miniatura"
+
+#: cat-posts.php:1818
+msgid "Title and Excerpt"
+msgstr "Título e resumo"
+
+#: cat-posts.php:1817
+msgid "Only the title"
+msgstr "Apenas o título"
+
+#: cat-posts.php:1815
+msgid "Select premade Template"
+msgstr "Selecionar modelo pronto"
+
+#: cat-posts.php:1810
+msgid "Post categories"
+msgstr "Categorias de post"
+
+#: cat-posts.php:1806
+msgid "Post tags"
+msgstr "Tags"
+
+#: cat-posts.php:1802
+msgid "The number of comments to the post"
+msgstr "Número de comentários do post"
+
+#: cat-posts.php:1798
+msgid "Post author"
+msgstr "Autor do post"
+
+#: cat-posts.php:1794
+msgid "Post excerpt"
+msgstr "Resumo do post"
+
+#: cat-posts.php:1790
+msgid "Post publish date"
+msgstr "Data de publicação do post"
+
+#: cat-posts.php:1786
+msgid "Post thumbnail possibly wrapped by text"
+msgstr "Miniatura, possivelmente envolta pelo texto"
+
+#: cat-posts.php:1782
+msgid "Post title"
+msgstr "Título do post"
+
+#: cat-posts.php:1778
+msgid "Next line is a paragraph"
+msgstr "Próxima linha é um novo parágrafo"
+
+#: cat-posts.php:1777
+msgid "Empty line"
+msgstr "Linha em branco"
+
+#: cat-posts.php:1774
+msgid "Space"
+msgstr "Espaço"
+
+#: cat-posts.php:1773
+msgid "New line"
+msgstr "Nova linha"
+
+#: cat-posts.php:1769
+msgid "The following text will be replaced with the relevant information. In addition you can use any text and html (if you have the permisions) anywhere you want"
+msgstr "O texto a seguir será substituído pelas informações correspondentes. Adicionalmente, você pode usar qualquer outro texto e HTML (se tiver permissões)."
+
+#: cat-posts.php:1761
+msgid "Show template help"
+msgstr "Exibir ajuda do modelo"
+
+#: cat-posts.php:1761
+msgid "Template"
+msgstr "Modelo"
+
+#: cat-posts.php:1758
+msgid "Displayed parts"
+msgstr "Partes a serem exibidas"
+
+#: cat-posts.php:1425
+msgid "Published, Private or Scheduled"
+msgstr "Publicado, Privado ou Agendado"
+
+#: cat-posts.php:1424
+msgid "Private or Scheduled"
+msgstr "Privado ou Agendado"
+
+#: cat-posts.php:1423
+msgid "Published or Private"
+msgstr "Publicado ou Privado"
+
+#: cat-posts.php:1421
+msgid "Private"
+msgstr "Privado"
+
+#: cat-posts.php:1381
+msgid "Title link URL"
+msgstr "URL do link do título"
+
+#: cat-posts.php:989
+msgid "(%d) comments to this post"
+msgstr "(%d) comentários para este post"
+
+#: cat-posts.php:1418
+msgid "WordPress Default"
+msgstr "Padrão do WordPress"
+
+#: cat-posts.php:1422
+msgid "Published or Scheduled"
+msgstr "Publicado ou Agendado"
+
+#: cat-posts.php:1420
+msgid "Scheduled"
+msgstr "Agendado"
+
+#: cat-posts.php:1419
+msgid "Published"
+msgstr "Publicado"
+
+#: cat-posts.php:1417
+msgid "Status"
+msgstr "Status"
+
+#: cat-posts.php:1923
+msgid "Footer link URL"
+msgstr "URL do link do rodapé"
+
+#: cat-posts.php:1834
+msgid "Don't override Themes and plugin filters"
+msgstr "Não sobrepor filtros de temas e plugins"
+
+#: cat-posts.php:1428
+msgid "Start with post"
+msgstr "Iniciar com o post"
+
+#. Author URI of the plugin/theme
+msgid "http://tiptoppress.com"
+msgstr "http://tiptoppress.com"
+
+#. Author of the plugin/theme
+msgid "TipTopPress"
+msgstr "TipTopPress"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/category-posts/"
+msgstr "https://wordpress.org/plugins/category-posts/"
+
+#: tinymce_translations.php:21
+msgid "Hide the button"
+msgstr "Ocultar botão"
+
+#: tinymce_translations.php:20
+msgid "Category Posts Insert Shortcode"
+msgstr "Inserir Shortcode do Category Posts"
+
+#: tinymce_translations.php:19
+msgid "Insert Category Posts shortcode"
+msgstr "Inserir shortcode de Posts por Categoria"
+
+#: tinymce_translations.php:18
+msgid "Name"
+msgstr "Nome"
+
+#: cat-posts.php:2605
+msgid "Hide the \"insert shortcode\" button from the editor"
+msgstr "Ocultar o botão \"inserir shortcode\" do editor"
+
+#: cat-posts.php:2602
+msgid "Visual editor button"
+msgstr "Botão do editor visual"
+
+#: cat-posts.php:2598
+msgid "Close the curremtly open panel when opening a new one"
+msgstr "Fecha o painel atualmente aberto ao abrir um novo"
+
+#: cat-posts.php:2595
+msgid "Open panels behavior"
+msgstr "Comportamento dos painéis abertos"
+
+#: cat-posts.php:2591
+msgid "Category Posts Widget behaviour settings"
+msgstr "Configurações de comportamento do Category Posts Widget"
+
+#: cat-posts.php:2354
+msgid "[shortcode]"
+msgstr "[shortcode]"
+
+#: cat-posts.php:1928
+msgid "We are on <a href=\"%1$s\">Facebook</a> and <a href=\"%2$s\">Twitter</a>."
+msgstr "Estamos no <a href=\"%1$s\">Facebook</a> e no <a href=\"%2$s\">Twitter</a>."
+
+#: cat-posts.php:1926
+msgid "Documentation"
+msgstr "Documentação"
+
+#: cat-posts.php:1925
+msgid "Widget admin behaviour settings"
+msgstr "Configurações de admin do widget"
+
+#: cat-posts.php:1909
+msgid "Everything is a link"
+msgstr "Todo o conteúdo é um link"
+
+#: cat-posts.php:1903
+msgid "No default"
+msgstr "Sem padrão"
+
+#: cat-posts.php:1900
+msgid "Select image"
+msgstr "Selecionar imagem"
+
+#: cat-posts.php:1884
+msgid "Default thumbnail: "
+msgstr "Miniatura padrão:"
+
+#: cat-posts.php:1416
+msgid "Exclude child categories"
+msgstr "Suprimir categorias filhas"
+
+#: cat-posts.php:1406
+msgid "All categories"
+msgstr "Todas as categorias"
+
+#: cat-posts.php:1051
+msgid "Continue reading %s"
+msgstr "Continue lendo %s"
+
+#: cat-posts.php:733 cat-posts.php:736 cat-posts.php:1379 cat-posts.php:2184
+msgid "Recent Posts"
+msgstr "Posts recentes"
+
+#: cat-posts.php:191
+msgid "Select"
+msgstr "Selecionar"
+
+#: cat-posts.php:190
+msgid "Select a default thumbnail"
+msgstr "Selecionar uma miniatura padrão"
+
+#. Description of the plugin/theme
+msgid "Adds a widget that shows the most recent posts from a single category."
+msgstr "Adiciona um widget que exibe os posts mais recentes de uma única categoria."
+
+#. Plugin Name of the plugin/theme
+msgid "Category Posts Widget"
+msgstr "Category Posts Widget"
+
+#: cat-posts.php:2392
+msgid "Layout"
+msgstr "Layout"
+
+#: cat-posts.php:2318
+msgid "Category Posts Shortcode"
+msgstr "Shortcode do Posts por Categoria"
+
+#: cat-posts.php:1743 cat-posts.php:1955
+msgid "Get the Pro version"
+msgstr "Obtenha a versão Pro"
+
+#: cat-posts.php:1922
+msgid "Footer link text"
+msgstr "Texto do link do rodapé"
+
+#: cat-posts.php:1920
+msgid "Footer"
+msgstr "Rodapé"
+
+#: cat-posts.php:1918
+msgid "Hide if there are no matching posts"
+msgstr "Ocultar widget quando não houver nenhum post"
+
+#: cat-posts.php:1912
+msgid "General"
+msgstr "Geral"
+
+#: cat-posts.php:1842
+msgid "Date format"
+msgstr "Formato da data"
+
+#: cat-posts.php:1833
+msgid "Excerpt 'more' text:"
+msgstr "Texto para o 'leia mais' do resumo:"
+
+#: cat-posts.php:1832
+msgid "Excerpt length (words):"
+msgstr "Tamanho do resumo (em palavras):"
+
+#: cat-posts.php:1748
+msgid "Post details"
+msgstr "Detalhes do post"
+
+#: cat-posts.php:1869
+msgid "Blur"
+msgstr "Desfocar"
+
+#: cat-posts.php:1868
+msgid "Zoom in"
+msgstr "Ampliar"
+
+#: cat-posts.php:1867
+msgid "Brighter"
+msgstr "Clarear"
+
+#: cat-posts.php:1866
+msgid "Darker"
+msgstr "Escurecer"
+
+#: cat-posts.php:192 cat-posts.php:1865 cat-posts.php:1873 cat-posts.php:1890
+msgid "None"
+msgstr "Nenhuma"
+
+#: cat-posts.php:1864
+msgid "Animation on mouse hover:"
+msgstr "Animação ao passar o mouse:"
+
+#: cat-posts.php:1863
+msgid "CSS crop to requested size"
+msgstr "Cortar imagem no tamanho especificado"
+
+#: cat-posts.php:1860
+msgid "Height:"
+msgstr "Altura:"
+
+#: cat-posts.php:1859
+msgid "Width:"
+msgstr "Largura:"
+
+#: cat-posts.php:1857
+msgid "Thumbnail dimensions (pixel)"
+msgstr "Dimensões da miniatura (pixel)"
+
+#: cat-posts.php:1437
+msgid "Exclude posts which have no thumbnail"
+msgstr "Suprimir posts sem imagem destacada"
+
+#: cat-posts.php:1436
+msgid "Exclude current post"
+msgstr "Suprimir post atual"
+
+#: cat-posts.php:1435
+msgid "Reverse sort order (ascending)"
+msgstr "Ordenação inversa (ascendente)"
+
+#: cat-posts.php:1433
+msgid "Random"
+msgstr "Aleatório"
+
+#: cat-posts.php:1432
+msgid "Number of comments"
+msgstr "Número de comentários"
+
+#: cat-posts.php:1430
+msgid "Date"
+msgstr "Data"
+
+#: cat-posts.php:1429
+msgid "Sort by"
+msgstr "Ordenar por"
+
+#: cat-posts.php:1427
+msgid "Number of posts to show"
+msgstr "Número de posts a exibir"
+
+#: cat-posts.php:1403
+msgid "Category"
+msgstr "Categoria"
+
+#: cat-posts.php:1399
+msgid "Filter"
+msgstr "Filtro"
+
+#: cat-posts.php:1377
+msgid "Hide title"
+msgstr "Ocultar título"
+
+#: cat-posts.php:1380
+msgid "Make widget title link"
+msgstr "Fazer do título um link para a categoria"
+
+#: cat-posts.php:1375 cat-posts.php:1379 cat-posts.php:1431
+msgid "Title"
+msgstr "Título"
+
+#: cat-posts.php:425
+msgid "Category Posts"
+msgstr "Posts por Categoria"
+
+#: cat-posts.php:423
+msgid "List single category posts"
+msgstr "Lista posts de uma categoria específica"
+
+#: cat-posts.php:66
+msgid "Customize"
+msgstr "Personalizar"

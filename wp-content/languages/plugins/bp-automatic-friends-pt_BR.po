@@ -1,0 +1,119 @@
+# Translation of Plugins - BuddyPress Automatic Friends - Stable (latest release) in Portuguese (Brazil)
+# This file is distributed under the same license as the Plugins - BuddyPress Automatic Friends - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-01-29 13:08:16+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: GlotPress/2.3.0-alpha\n"
+"Language: pt_BR\n"
+"Project-Id-Version: Plugins - BuddyPress Automatic Friends - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://stevenword.com/"
+msgstr "http://stevenword.com/"
+
+#. Author of the plugin/theme
+msgid "Steven Word"
+msgstr "Steven Word"
+
+#. Description of the plugin/theme
+msgid "Automatically create and accept friendships for specified users upon new user registration. * Requires BuddyPress"
+msgstr "Crie e aceite automaticamente amizades de usuários específicos após um novo registo de usuário. *BuddyPress é necessário"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.stevenword.com/bp-automatic-friends/"
+msgstr "http://www.stevenword.com/bp-automatic-friends/"
+
+#: inc/admin.php:371
+msgid "Remove"
+msgstr "Remover"
+
+#: inc/admin.php:370
+msgid "Edit"
+msgstr "Editar"
+
+#: inc/admin.php:255
+msgid "Automatically create friendships with all new users"
+msgstr "Criar amizades automaticamente para todos os novos usuários"
+
+#: inc/admin.php:251
+msgid "Global Friend"
+msgstr "Amigo Global"
+
+#: inc/admin.php:227
+msgid "Add User"
+msgstr "Adicionar Usuário"
+
+#: inc/admin.php:225
+msgid "Search by Username"
+msgstr "Pesquisar por Nome de Usuário"
+
+#: inc/admin.php:223
+msgid "Global Friends"
+msgstr "Amigos Global"
+
+#: inc/admin.php:222
+msgid "When new user accounts are registered, friendships between the new user and each of the following global friends will be created automatically."
+msgstr "Quando novas contas de usuários forem registradas, amizades entre o novo usuário e cada amigos será criada automaticamente."
+
+#: inc/admin.php:215
+msgid "Review on WordPress.org"
+msgstr "Avaliação no WordPress.org"
+
+#: inc/admin.php:214
+msgid "GitHub Project"
+msgstr "Projeto no GitHub"
+
+#: inc/admin.php:213
+msgid "BP Automatic Friends on the Web"
+msgstr "BP Amigos Automáticos na Web"
+
+#: inc/admin.php:212
+msgid "Support Forums"
+msgstr "Forums de suporte"
+
+#: inc/admin.php:209
+msgid "Contact BP Automatic Friends"
+msgstr "Entrar em contato com BP Amigos Automático"
+
+#: inc/admin.php:196
+msgid "Find us on %1$s or donate to the project using the button below."
+msgstr "Nos encontre no %1$s ou doe para o projeto usando o botão abaixo."
+
+#: inc/admin.php:194
+msgid "We would really appreciate your input to help us continue to improve the product."
+msgstr "Nós gostaríamos de sua opinião para continuar melhorando o produto."
+
+#: inc/admin.php:192
+msgid "Help Improve BP Automatic Friends"
+msgstr "Ajude a Melhorar BP Amigos Automático"
+
+#. #-#-#-#-#  tmp-bp-automatic-friends.pot (BuddyPress Automatic Friends 2.0.7)
+#.  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: inc/admin.php:187 inc/admin.php:249
+msgid "BuddyPress Automatic Friends"
+msgstr "Amigos Automáticos para o BuddyPress"
+
+#: inc/admin.php:161
+msgid "No Global Friends found."
+msgstr "Nenhum amigo encontrado."
+
+#: inc/admin.php:147 inc/admin.php:169
+msgid "Friends"
+msgstr "Amigos"
+
+#: inc/admin.php:146 inc/admin.php:168
+msgid "Name"
+msgstr "Nome"
+
+#: inc/admin.php:145 inc/admin.php:167
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: inc/admin.php:118
+msgid "Automatic Friends"
+msgstr "Amigos Automático"

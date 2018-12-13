@@ -1,0 +1,214 @@
+# Translation of Plugins - WooCommerce Google Analytics Integration - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - WooCommerce Google Analytics Integration - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-10-18 19:27:15+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - WooCommerce Google Analytics Integration - Stable (latest release)\n"
+
+#. translators: 1: href link to GA pro
+#: woocommerce-google-analytics-integration.php:150
+msgid "Add advanced tracking for your sales funnel, coupons and more. [<a href=\"%s\" target=\"_blank\">Learn more</a> &gt;]"
+msgstr "Añade seguimiento avanzado de tu embudo de ventas, cupones y más. [<a href=\"%s\" target=\"_blank\">Aprende más</a> &gt;]"
+
+#: woocommerce-google-analytics-integration.php:147
+msgid "Get detailed insights into your sales with Google Analytics Pro"
+msgstr "Obtén información detallada sobre tus ventas con Google Analytics Pro"
+
+#: includes/class-wc-google-analytics.php:154
+msgid "Enable this to find broken or dead links. An \"Event\" with category \"Error\" and action \"404 Not Found\" will be created in Google Analytics for each incoming pageview to a non-existing page. By setting up a \"Custom Goal\" for these events within Google Analytics you can find out where broken links originated from (the referrer). %sRead how to set up a goal%s."
+msgstr "Activa esto para descubrir enlaces rotos o muertos. Se crearán en Google Analytics un \"Evento\" con la categoría \"Error\" y la acción \"404 No encontrado\" por cada visualización de página entrante a una página que no exista. Al configurar un \"Objetivo personalizado\" para estos eventos dentro de Google Analytics podrás descubrir dónde se originaron estos enlaces rotos (el referente). %sLee cómo configurar un objtivo%s."
+
+#: includes/class-wc-google-analytics.php:153
+msgid "Track 404 (Not found) Errors."
+msgstr "Seguimiento de errores 404 (no encontrado)."
+
+#. Author URI of the plugin/theme
+msgid "https://woocommerce.com"
+msgstr "https://woocommerce.com"
+
+#: woocommerce-google-analytics-integration.php:77
+msgid "Support"
+msgstr "Soporte"
+
+#: woocommerce-google-analytics-integration.php:76
+msgid "Settings"
+msgstr "Ajustes"
+
+#: includes/class-wc-google-analytics.php:377
+msgid "ID:"
+msgstr "ID:"
+
+#: includes/class-wc-google-analytics.php:133
+msgid "Set the Google Analytics code to support Enhanced Link Attribution. %sRead more about Enhanced Link Attribution%s."
+msgstr "Configura el código de Google Analytics para que sea compatible con la atribución mejorada de enlaces. %sLee más sobre la atribución mejorada de enlaces%s."
+
+#: includes/class-wc-google-analytics.php:132
+msgid "Use Enhanced Link Attribution"
+msgstr "Usar atribución mejorada de enlaces"
+
+#: includes/class-wc-google-analytics.php:233
+msgid "Please note, for transaction tracking to work properly, you will need to use a payment gateway that redirects the customer back to a WooCommerce order received/thank you page."
+msgstr "Por favor, ten en cuenta que  para que funcione correctamente el seguimiento de transacciones, tienes que usar una pasarela de pago que redirija al cliente de vuelta tu página de pedido recibido/agradecimiento de WooCommerce."
+
+#: includes/class-wc-google-analytics.php:230
+msgid "Please allow Google Analytics 24 hours to start displaying results."
+msgstr "Por favor, dale a Google Analytics 24 horas para empezara a mostrar resultados."
+
+#: includes/class-wc-google-analytics.php:217
+msgid "Checkout Process Initiated"
+msgstr "Iniciado el proceso de pago"
+
+#: includes/class-wc-google-analytics.php:209
+msgid "Product Detail Views"
+msgstr "Ver detalles del producto"
+
+#: includes/class-wc-google-analytics.php:201
+msgid "Product Clicks from Listing Pages"
+msgstr "Clics en producto en las páginas de catálogo"
+
+#: includes/class-wc-google-analytics.php:193
+msgid "Product Impressions from Listing Pages"
+msgstr "Impresiones de producto en las páginas de catálogo"
+
+#: includes/class-wc-google-analytics.php:185
+msgid "Remove from Cart Events"
+msgstr "Eventos de eliminar del carrito"
+
+#: includes/class-wc-google-analytics.php:167
+msgid "Add to Cart Events"
+msgstr "Eventos de añadir al carrito"
+
+#: includes/class-wc-google-analytics.php:176
+msgid "Enhanced eCommerce allows you to measure more user interactions with your store, including: product impressions, product detail views, starting the checkout process, adding cart items, and removing cart items. Universal Analytics must be enabled for Enhanced eCommerce to work. Before enabling this setting, turn on Enhanced eCommerce in your Google Analytics dashboard. <a href=\"%s\">See here for more information</a>."
+msgstr "Comercio electrónico mejorado te permite medir más interacciones del usuario con tu tienda, incluyendo: impresiones de producto, vistas de detalle de producto, inicio del proceso de pago, añadir productos al carrito y eliminar productos del carrito. Debe estar activo Universal Analytics para que funcione comercio electrónico mejorado. Antes de activar este ajuste activa comercio electrónico mejorado en tu escritorio de Google Analytics. <a href=\"%s\">Ve esto para más información</a>."
+
+#: includes/class-wc-google-analytics.php:175
+msgid "Enable Enhanced eCommerce "
+msgstr "Activar comercio electrónico mejorado"
+
+#: includes/class-wc-google-analytics.php:174
+msgid "Enhanced eCommerce"
+msgstr "Comercio electrónico mejorado"
+
+#: includes/class-wc-google-analytics.php:160
+msgid "Purchase Transactions"
+msgstr "Transacciones de venta"
+
+#: includes/class-wc-google-analytics.php:161
+msgid "This requires a payment gateway that redirects to the thank you/order received page after payment. Orders paid with gateways which do not do this will not be tracked."
+msgstr "Esto requiere una pasarela de pago que redirija a la página de agradecimiento/pedido recibido tras el pago. Los pedidos pagados con pasarelas que no hagan esto no tendrán seguimiento."
+
+#: includes/class-wc-google-analytics.php:147
+msgid "Enabling this option is mandatory in certain countries due to national privacy laws. %sRead more about IP Anonymization%s."
+msgstr "Activar esto es obligatorio en ciertos países debido a las leyes nacionales de privacidad. %sLee más acerca del anonimato de IPs%s."
+
+#: includes/class-wc-google-analytics.php:146
+msgid "Anonymize IP addresses."
+msgstr "Direcciones IP anónimas."
+
+#: includes/class-wc-google-analytics.php:139
+msgid "Enable Universal Analytics"
+msgstr "Activar Universal Analytics"
+
+#: includes/class-wc-google-analytics.php:125
+msgid "\"Display Advertising\" Support"
+msgstr "Compatibilidad con \"analíticas de publicidad\""
+
+#: includes/class-wc-google-analytics.php:126
+msgid "Set the Google Analytics code to support Display Advertising. %sRead more about Display Advertising%s."
+msgstr "Configura el código de Google Analytics par que sea compatible con analíticas de publicidad. %sLee más sobre analíticas de publicidad%s."
+
+#: includes/class-wc-google-analytics.php:140
+msgid "Uses Universal Analytics instead of Classic Google Analytics. If you have <strong>not</strong> previously used Google Analytics on this site, check this box. Otherwise, %sfollow step 1 of the Universal Analytics upgrade guide.%s Enabling this setting will take care of step 2. %sRead more about Universal Analytics%s. Universal Analytics must be enabled to enable enhanced eCommerce."
+msgstr "Utilizar Universal Analytics en vez de Google Analytics clásico. Si <strong>no</strong> has usado previamente Google Analytics en este sitio, marca esta casilla. En caso contrario, %ssigue al paso 1 de la guía de migración a Universal Analytics.%s Activar este ajuste realizará el paso 2. %sLee más sobre Universal Analytics%s. Universal Analytics debe estar activo para activar el comercio electrónico mejorado."
+
+#: includes/class-wc-google-analytics-info-banner.php:62
+msgid "(Dismiss)"
+msgstr "(Descartar)"
+
+#: includes/class-wc-google-analytics.php:117
+msgid "Tracking Options"
+msgstr "Opciones de seguimiento"
+
+#: includes/class-wc-google-analytics.php:118
+msgid "Enable Standard Tracking"
+msgstr "Activar el seguimiento estándar"
+
+#: includes/class-wc-google-analytics.php:119
+msgid "This tracks session data such as demographics, system, etc. You don't need to enable this if you are using a 3rd party Google analytics plugin."
+msgstr "Esto realiza seguimientos de datos de sesión como demografía, sistema, etc. No necesitas activar esto si estás usando ya otro plugin para Google Analytics."
+
+#: includes/class-wc-google-analytics-info-banner.php:62
+msgid "Dismiss this notice."
+msgstr "Descarta este aviso."
+
+#: includes/class-wc-google-analytics-info-banner.php:57
+msgid "Google Analytics &amp; WooCommerce"
+msgstr "Google Analytics y WooCommerce"
+
+#: includes/class-wc-google-analytics-info-banner.php:58
+msgid "<a href=\"%s\">Connect WooCommerce to Google Analytics</a> to finish setting up this integration."
+msgstr "<a href=\"%s\">Conecta WooCommerce a Google Analytics</a> para finalizar de configurar esta integración."
+
+#. Description of the plugin/theme
+msgid "Allows Google Analytics tracking code to be inserted into WooCommerce store pages."
+msgstr "Permite insertar el código de seguimiento de Google Analytics en las páginas de una tienda WooCommerce."
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/woocommerce-google-analytics-integration/"
+msgstr "https://es.wordpress.org/plugins/woocommerce-google-analytics-integration/"
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Google Analytics Integration"
+msgstr "WooCommerce Google Analytics Integration"
+
+#. #-#-#-#-#  woocommerce-google-analytics-integration-code.pot (WooCommerce
+#. Google Analytics Integration 1.4.7)  #-#-#-#-#
+#. Author of the plugin/theme
+#: woocommerce-google-analytics-integration.php:115
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: includes/class-wc-google-analytics.php:104
+msgid "Google Analytics ID"
+msgstr "ID de Google Analytics"
+
+#: includes/class-wc-google-analytics.php:24
+msgid "Google Analytics is a free service offered by Google that generates detailed statistics about the visitors to a website."
+msgstr "Google Analytics es un servicio gratuito ofrecido por Google que genera estadísticas detalladas sobre los visitantes de una web."
+
+#: includes/class-wc-google-analytics.php:23
+msgid "Google Analytics"
+msgstr "Google Analytics"
+
+#: includes/class-wc-google-analytics.php:105
+msgid "Log into your Google Analytics account to find your ID. e.g. <code>UA-XXXXX-X</code>"
+msgstr "Accede a tu cuenta de Google Analytics para encontrar tu ID. P.ej. <code>UA-XXXXX-X</code>"
+
+#: includes/class-wc-google-analytics.php:111
+msgid "Set Domain Name"
+msgstr "Define el nombre de dominio"
+
+#: includes/class-wc-google-analytics.php:112
+msgid "(Optional) Sets the <code>_setDomainName</code> variable. <a href=\"%s\">See here for more information</a>."
+msgstr "(Opcional) Configura la variable <code>_setDomainName</code>. <a href=\"%s\">Mira esto para más información</a>."
+
+#: woocommerce-google-analytics-integration.php:115
+msgid "WooCommerce Google Analytics depends on the last version of %s to work!"
+msgstr "¡WooCommerce Google Analytics depende de la última versión de %s para funcionar!"
+
+#: includes/class-wc-google-analytics.php:376
+#: includes/class-wc-google-analytics.php:446
+msgid "Add to Cart"
+msgstr "Añadir al carrito"
+
+#: includes/class-wc-google-analytics.php:375
+#: includes/class-wc-google-analytics.php:445
+msgid "Products"
+msgstr "Productos"

@@ -1,0 +1,303 @@
+# Translation of Plugins - Event Tracking for Gravity Forms - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - Event Tracking for Gravity Forms - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-12-03 18:43:43+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: es\n"
+"Project-Id-Version: Plugins - Event Tracking for Gravity Forms - Stable (latest release)\n"
+
+#: includes/GFGAET_Pagination_Settings.php:97
+msgid "Pagination Value"
+msgstr "Valor de paginación"
+
+#: includes/GFGAET_Pagination_Settings.php:92
+msgid "Pagination Label"
+msgstr "Etiqueta de paginación"
+
+#: includes/GFGAET_Pagination_Settings.php:87
+msgid "Pagination Action"
+msgstr "Acción de paginación"
+
+#: includes/GFGAET_Pagination_Settings.php:82
+msgid "Pagination Category"
+msgstr "Categoría de paginación"
+
+#: includes/GFGAET_Pagination_Settings.php:77
+msgid "{form title}::{source page number}::{current page number}"
+msgstr "{form title}::{source page number}::{current page number}"
+
+#: includes/GFGAET_Pagination_Settings.php:77
+msgid "If left blank, the following values are used:"
+msgstr "Si se deja en blanco, los siguientes valores se utilizarán:"
+
+#: includes/GFGAET_Pagination_Settings.php:68
+#: includes/GFGAET_Pagination_Settings.php:78
+#: includes/GFGAET_Pagination_Settings.php:83
+#: includes/GFGAET_Pagination_Settings.php:88
+#: includes/GFGAET_Pagination_Settings.php:93
+msgid "Pagination Event Tracking"
+msgstr "Seguimiento de eventos de paginación"
+
+#: includes/GFGAET_Partial_Entries.php:253
+msgid "Event value (Integers only) which you would like to send to Google Analytics using Partial Entries. Merge tags are not allowed. If left blank, the form value will be used assuming it is an integer."
+msgstr "Valor del evento (sólo enteros) que deseas enviar a Google Analytics utilizando entradas parciales. No se permiten las etiquetas Merge. Si lo dejas en blanco se usará el valor del formulario asumiendo que es un entero."
+
+#: includes/GFGAET_Partial_Entries.php:252
+msgid "Event label which you would like to send to Google Analytics using Partial Entries. Merge tags are not allowed. If left blank, the form value will be used."
+msgstr "Etiqueta del evento que deseas enviar a Google Analytics utilizando entradas parciales. No se permiten las etiquetas Merge. Si lo dejas en blanco se usará el valor del formulario."
+
+#: includes/GFGAET_Partial_Entries.php:251
+msgid "Event action which you would like to send to Google Analytics using Partial Entries. Merge tags are not allowed."
+msgstr "Acción del evento que deseas enviar a Google Analytics utilizando entradas parciales. No se permiten las etiquetas Merge."
+
+#: includes/GFGAET_Partial_Entries.php:250
+msgid "Event category which you would like to send to Google Analytics using Partial Entries. Merge tags are not allowed."
+msgstr "Categoría del evento que deseas enviar a Google Analytics utilizando entradas parciales. No se permiten las etiquetas Merge."
+
+#: includes/GFGAET_UA.php:69
+msgid "UA Tracker Name"
+msgstr "Nombre seguimiento UA"
+
+#: includes/GFGAET_UA.php:68
+msgid "Enter your Tracker you would like to send events from if you are using a custom Tracker"
+msgstr "Introduce tu rastreador al que te gustaría enviar eventos al rastreador personalizado"
+
+#: includes/GFGAET_Submission_Feeds.php:695
+msgid "Enter your Google Analytics event value. Leave blank to omit pushing a value to Google Analytics. Or to use the purchase value of a payment based form. <strong>Note:</strong> This must be a number (int). Floating numbers (e.g., 20.95) will be rounded up (e.g., 30)"
+msgstr "Introduce el valor del evento de Google Analytics. Si lo dejas en blanco no se enviará el valor a Google Analytics. O puedes utilizar el valor de compra de un formulario basado en los pagos. <strong> Nota: </strong> Este debe ser un número (entero). Los números decimales (p. ej., 20,95) se redondearán (p. ej., 30)"
+
+#: includes/GFGAET_UA.php:56
+msgid "Need help? <a target=\"_blank\" href=\"https://mediaron.com/event-tracking-for-gravity-forms/\">See our guide</a>.</p>"
+msgstr "¿Necesitas ayuda? <a target=\"_blank\" href=\"https://mediaron.com/event-tracking-for-gravity-forms/\">Mira nuestra guía</a>.</p>"
+
+#: includes/GFGAET_UA.php:117
+msgid "Site ID"
+msgstr "ID del sitio"
+
+#: includes/GFGAET_UA.php:109
+msgid "Matomo URL"
+msgstr "URL Matomo"
+
+#: includes/GFGAET_Submission_Feeds.php:666
+msgid "Google Analytics UA Code (Optional)"
+msgstr "Código UA de Google Analytics (Opcional)"
+
+#. Description of the plugin/theme
+msgid "Add event tracking to your Gravity Forms with ease using Google Analytics, Tag Manager, or Matomo (formerly Piwik)."
+msgstr "Añade de forma fácil, el seguimiento de eventos a tu Gravity Forms para Google Analytics, Tag Manager, o Matomo (antes Piwik)."
+
+#: includes/GFGAET_UA.php:55
+msgid "Google Analytics and Google Tag Manager"
+msgstr "Google Analytics y Google Tag Manager"
+
+#: includes/GFGAET_UA.php:138
+msgid "Tracking HTTP API (Default)"
+msgstr "Seguimiento por HTTP API (por defecto)"
+
+#: includes/GFGAET_UA.php:132
+msgid "JavaScript `trackEvent` Function (Ajax only)"
+msgstr "Función JavaScript `trackEvent` (sólo Ajax)"
+
+#: includes/GFGAET_UA.php:116
+msgid "Enter your Site ID (ex. 2 or J2O1NDvxzmMB if using the Protect Track ID plugin.)"
+msgstr "Introduce tu ID del sitio (ej. 2 o 2O1NDvxzmMB si usas el plugin de protección de ID seguimiento)"
+
+#: includes/GFGAET_UA.php:147
+msgid "This will make all your forms Ajax only for options that require it."
+msgstr "Esto hará que tus formularios solo sean Ajax para las opciones que lo requieran."
+
+#: includes/GFGAET_UA.php:104
+msgid "<a target=\"_blank\" href=\"https://matomo.org\">Matomo</a> (formerly Piwik) Open Analytics Platform"
+msgstr "<a target=\"_blank\" href=\"https://matomo.org\">Matomo</a> (antes Piwik) Plataforma Abierta de Analítica"
+
+#: includes/GFGAET_UA.php:137
+msgid "Events will be sent using the <a target=\"_blank\" href=\"https://developer.matomo.org/api-reference/tracking-api\">Tracking HTTP API</a>."
+msgstr "Los eventos se enviarán usando la <a target=\"_blank\" href=\"https://developer.matomo.org/api-reference/tracking-api\">API HTTP de seguimiento</a>."
+
+#: includes/GFGAET_UA.php:131
+msgid "Forms must be Ajax only. Events will be sent using the <a target=\"_blank\" href=\"https://matomo.org/docs/event-tracking/#javascript-trackevent\">`trackEvent` JavaScript function</a>."
+msgstr "Los formularios deben ser sólo Ajax. Los eventos se enviarán utilizando la <a target=\"_blank\" href=\"https://matomo.org/docs/event-tracking/#javascript-trackevent\">función JavaScript `trackEvent`</a>."
+
+#: includes/GFGAET_UA.php:108
+msgid "Enter your Matomo (formerly Piwik) URL. This is the same URL you use to access your Matomo instance (ex. http://www.example.com/matomo/.)"
+msgstr "Introduce tu URL de Matomo (antes Piwik). Es la misma URL que utilizas para acceder a tu instancia Matomo (ej. http://www.example.com/matomo/.)"
+
+#. Plugin Name of the plugin/theme
+msgid "Gravity Forms Event Tracking"
+msgstr "Gravity Forms Event Tracking"
+
+#: includes/GFGAET_UA.php:163
+msgid "Default"
+msgstr "Por defecto"
+
+#: includes/GFGAET_UA.php:158
+msgid "Ajax only"
+msgstr "Sólo Ajax"
+
+#: includes/GFGAET_UA.php:96
+msgid "Measurement Protocol (Default)"
+msgstr "Protocolo de medida (por defecto)"
+
+#: includes/GFGAET_UA.php:90
+msgid "Google Tag Manager (Ajax only)"
+msgstr "Google Tag Manager (sólo Ajax)"
+
+#: includes/GFGAET_UA.php:84
+msgid "Google Analytics (Ajax only)"
+msgstr "Google Analytics (sólo Ajax)"
+
+#: includes/GFGAET_UA.php:83 includes/GFGAET_UA.php:89
+msgid "Forms must be Ajax only"
+msgstr "Los formularios deben ser sólo Ajax"
+
+#: includes/GFGAET_UA.php:146
+msgid "Advanced"
+msgstr "Avanzado"
+
+#: includes/GFGAET_Submission_Feeds.php:562
+#: includes/GFGAET_Submission_Feeds.php:654
+msgid "Submission Tracking Settings"
+msgstr "Ajustes de seguimiento al enviar"
+
+#: includes/GFGAET_UA.php:95
+msgid "Events will be sent using the measurement protocol."
+msgstr "Los eventos se enviarán por el protocolo de medida."
+
+#: includes/GFGAET_UA.php:56
+msgid "By default, events are sent using the measurement protocol. You can change to using pure Google Analytics and Google Tag Manager if your forms are Ajax only."
+msgstr "Por defecto, los eventos se envían al protocolo de medición. Puedes cambiar usando puro Google Analytics y Google Tag Manager si los formularios son sólo Ajax."
+
+#: gravity-forms-event-tracking.php:78
+msgid "Gravity Forms Event Tracking requires PHP version 5.3 and up. You are currently running PHP version %s."
+msgstr "Gravity Forms Event Tracking necesita la versión mínima PHP 5.3. Actualmente estás utilizando la versión PHP %s."
+
+#: includes/GFGAET_Submission_Feeds.php:573
+msgid "You don't have sufficient permissions to update the form settings."
+msgstr "No tienes permisos suficientes para actualizar los ajustes del formulario."
+
+#. Author of the plugin/theme
+msgid "Ronald Huereca"
+msgstr "Ronald Huereca"
+
+#. Author URI of the plugin/theme
+msgid "https://mediaron.com"
+msgstr "https://mediaron.com"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/gravity-forms-google-analytics-event-tracking/"
+msgstr "https://es.wordpress.org/plugins/gravity-forms-google-analytics-event-tracking/"
+
+#: includes/GFGAET_Pagination_Settings.php:77
+#: includes/GFGAET_Submission_Feeds.php:743
+msgid "Value"
+msgstr "Valor"
+
+#: includes/GFGAET_Pagination_Settings.php:77
+#: includes/GFGAET_Submission_Feeds.php:742
+msgid "Label"
+msgstr "Etiqueta"
+
+#: includes/GFGAET_Pagination_Settings.php:77
+#: includes/GFGAET_Submission_Feeds.php:741
+msgid "Action"
+msgstr "Acción"
+
+#: includes/GFGAET_Pagination_Settings.php:77
+#: includes/GFGAET_Submission_Feeds.php:740
+msgid "Category"
+msgstr "Categoria"
+
+#: includes/GFGAET_Submission_Feeds.php:704
+#: includes/GFGAET_Submission_Feeds.php:706
+msgid "Conditional Logic"
+msgstr "Lógica condicional"
+
+#: includes/GFGAET_Submission_Feeds.php:739
+msgid "Name"
+msgstr "Nom"
+
+#: includes/GFGAET_Submission_Feeds.php:700
+msgid "Other Settings"
+msgstr "Otros ajustes"
+
+#: includes/GFGAET_Partial_Entries.php:337
+#: includes/GFGAET_Submission_Feeds.php:691
+#: includes/GFGAET_Submission_Feeds.php:695
+#: includes/GFGAET_Submission_Feeds.php:727
+msgid "Event Value"
+msgstr "Valor del evento"
+
+#: includes/GFGAET_Partial_Entries.php:330
+#: includes/GFGAET_Submission_Feeds.php:684
+#: includes/GFGAET_Submission_Feeds.php:688
+#: includes/GFGAET_Submission_Feeds.php:726
+msgid "Event Label"
+msgstr "Etiqueta del evento"
+
+#: includes/GFGAET_Partial_Entries.php:323
+#: includes/GFGAET_Submission_Feeds.php:677
+#: includes/GFGAET_Submission_Feeds.php:681
+#: includes/GFGAET_Submission_Feeds.php:725
+msgid "Event Action"
+msgstr "Acción del evento"
+
+#: includes/GFGAET_Submission_Feeds.php:688
+msgid "Enter your Google Analytics event label"
+msgstr "Introduce la etiqueta del evento Google Analytics"
+
+#: includes/GFGAET_Submission_Feeds.php:681
+msgid "Enter your Google Analytics event action"
+msgstr "Introduce la acción del evento Google Analytics"
+
+#: includes/GFGAET_Submission_Feeds.php:722
+msgid "If you leave these blank, the following defaults will be used when the event is tracked"
+msgstr "Si dejas esto en blanco se usarán los siguientes resultados cuando el evento tenga seguimiento"
+
+#: includes/GFGAET_Submission_Feeds.php:706
+msgid "When conditions are enabled, events will only be sent to google when the conditions are met. When disabled, all form submissions will trigger an event."
+msgstr "Cuando se activan las condiciones, los eventos sólo irán a google si se cumplen. Cuando están deshabitadas, todos los envíos de formularios activarán un evento de seguimiento."
+
+#: includes/GFGAET_Submission_Feeds.php:674
+msgid "Enter your Google Analytics event category"
+msgstr "Introduce tu categoría de evento de Google Analytics"
+
+#: includes/GFGAET_Partial_Entries.php:316
+#: includes/GFGAET_Submission_Feeds.php:670
+#: includes/GFGAET_Submission_Feeds.php:674
+#: includes/GFGAET_Submission_Feeds.php:724
+msgid "Event Category"
+msgstr "Categoría del evento"
+
+#: includes/GFGAET_Submission_Feeds.php:666
+msgid "Leave empty to use global GA Code. You can enter multiple UA codes as long as they are comma separated."
+msgstr "Déjalo vacío para usar un código GA global. Puedes introducir múltiples códigos UA al ponerlos separados por comas."
+
+#: includes/GFGAET_Submission_Feeds.php:662
+msgid "Event UA Code"
+msgstr "Código UA de evento"
+
+#: includes/GFGAET_Submission_Feeds.php:649
+msgid "Enter a feed name to uniquely identify this setup."
+msgstr "Introduce el nombre del feed único que identifique esta configuración."
+
+#: includes/GFGAET_Submission_Feeds.php:641
+msgid "Feed Settings"
+msgstr "Ajustes del Feed"
+
+#: includes/GFGAET_Submission_Feeds.php:644
+#: includes/GFGAET_Submission_Feeds.php:649
+msgid "Feed Name"
+msgstr "Nombre del feed"
+
+#: includes/GFGAET_UA.php:61
+msgid "UA Tracking ID"
+msgstr "ID UA de seguimiento"
+
+#: includes/GFGAET_UA.php:60
+msgid "Enter your UA code (UA-XXXX-Y) Find it <a href=\"https://support.google.com/analytics/answer/1032385\" target=\"_blank\">using this guide</a>."
+msgstr "Introduce tu código UA (UA-XXXX-Y). Puedes encontrarlo <a href=\"https://support.google.com/analytics/answer/1032385\" target=\"_blank\">utilizando esta guía</a>."

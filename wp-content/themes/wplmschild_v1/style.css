@@ -1,0 +1,2187 @@
+/*
+Theme Name: Samye Dharma - WPLMS Child v1.0
+Description: Samye Dharma - WPLMS Child Theme v2.6.1.4
+Author URI: http://themeforest.com/user/vibethemes
+Template: wplms
+Version: v2.8.0.1
+*/
+
+
+/**********************/
+
+.h1, .h2, .h3, h1, h2, h3 {
+	margin-top: 40px;
+}
+
+#headertop {
+	display: none;
+}
+
+#logo { padding: .2em; }
+.content { background: white; }
+.pagetitle h1 { padding: 0.4em 0 0.6em; }
+
+nav>.menu>li>a,
+.sleek .topmenu>li>a,
+.sleek nav>.menu>li>a,
+body,
+.content,
+#item-body,
+#buddypress ul.item-list li div.item-desc,
+p {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header nav .menu>li>a {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+ul.breadcrumbs,
+.breadcrumbs span {
+    font-size: 11px;
+}
+
+blockquote p {
+    line-height: 1.65em;
+}
+
+span.time {
+    visibility: hidden;
+}
+
+.unitforum {
+    display: none;
+}
+
+.vc_btn3.vc_btn3-color-danger.vc_btn3-style-modern {
+    border-color: #b31f13;
+    background-color: #b31f13;
+}
+/* style links as buttons on unit pages */
+
+
+/*
+.main_unit_content.unit_class.single_unit_content.stop_notes p a {
+    background-color: #6793BF;
+    color: white;
+    padding: 2em;
+    display: inline-block;
+}
+*/
+
+
+/* donation button full width + samyered background */
+
+.btn.btn-donation {
+    width: 100%;
+    background-color: #b71f14;
+}
+
+
+/* Wisdom Blog Aspiration & Dedication */
+
+.jumbotron.aspiration p,
+.jumbotron.dedication p {
+    font-size: 16px;
+}
+
+.aspiration {
+    background: url(http://samyedharma.org/wp-content/themes/wplmschild_v1/images/blue-sky-sun.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.dedication {
+    background: url(http://samyedharma.org/wp-content/themes/wplmschild_v1/images/blue-sky-sun.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+/* GRD Archives */
+
+li.year {
+    font-size: 40px;
+    list-style: none;
+    float: left;
+    padding: 40px;
+    background-color: #e0d0d0;
+    border: 5px solid white;
+}
+
+li.year:nth-child(2n) {
+    background-color: #d0e0d0;
+}
+
+li.year:nth-child(3n) {
+    background-color: #d0d0d0;
+}
+
+
+/* fix ol li numbers running on blog posts */
+
+#content .content ol li {
+    list-style-position: outside;
+}
+
+
+/*fix course category pages*/
+
+
+/*a#trigger:before {
+    content: "Menu";
+    color: #fff;
+    font-size: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px 15px 0px 0px;
+    font-weight: bold;
+}*/
+
+.block_media img {
+    width: 100%;
+}
+
+.tax-course-cat #content .content.padding_adjusted {
+    padding: 0px !important;
+    margin-top: 0px;
+}
+
+
+/*make the price bigger */
+
+.block.courseitem span.amount {
+    font-size: 16px !important;
+}
+
+.security-question-section input[type="number"] {
+    border: 1px solid #DDD;
+}
+
+.security-question-section+.submit {
+    clear: both;
+}
+
+.content ul.question_options {
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    list-style: none;
+}
+
+.widget+.widget {
+    margin-top: 0px;
+}
+
+
+/*change forum title font size*/
+
+.bbp-forum-title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.widget .bbp-forum-title,
+.footerwidget .bbp-forum-title {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#bbpress-forums .bbp-forum-info .bbp-forum-content,
+#bbpress-forums p.bbp-topic-meta {
+    font-size: 13px;
+    color: #666;
+}
+
+#bp_search {
+    border: 1px solid #DDD;
+    padding: 9px 12px;
+    border-radius: 2px;
+}
+
+.bbp-topic-permalink {
+    font-size: 16px;
+}
+
+
+/*change avatar size*/
+
+#bbpress-forums p.bbp-topic-meta img.avatar,
+#bbpress-forums ul.bbp-reply-revision-log img.avatar,
+#bbpress-forums ul.bbp-topic-revision-log img.avatar,
+#bbpress-forums div.bbp-template-notice img.avatar,
+#bbpress-forums .widget_display_topics img.avatar,
+#bbpress-forums .widget_display_replies img.avatar {
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+
+
+/*make bold breadcrumbs*/
+
+.bbp-breadcrumb,
+.bbp-breadcrumb a {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.content .breadcrumbs {
+    padding-left: 0px;
+}
+
+
+/*hide the live edit sidebar button*/
+
+.live-edit-sidebar,
+.live-edit-sidebar+.text-options {
+    display: none;
+}
+
+
+/*make lists inside*/
+
+.unit_content ol:not([class]):not([id]),
+.unit_content ul:not([class]):not([id]),
+.content ol:not([class]):not([id]),
+.content ul:not([class]):not([id]) {
+    margin: 0px 0px 10px!important;
+    padding: 0px 0px 0px 40px !important;
+    list-style-position: initial;
+}
+
+.unit_content ul:not([class]):not([id]),
+.content ul:not([class]):not([id]) {
+    list-style-type: disc;
+}
+
+.unit_content ol:not([class]):not([id]),
+.content ol:not([class]):not([id]) {
+    list-style-type: decimal;
+}
+
+.custom_field_container {
+    clear: both;
+    margin: 20px 0;
+}
+
+.terms-and-conditions-container {
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid #EFEFEF;
+    height: 120px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+
+/* hide continue course button (from profile edit screen) */
+.item-credits {
+    display: none;
+}
+
+/*hide the footer logo*/
+
+#footerlogo {
+    display: none;
+}
+
+
+/*hide course reviews on course page*/
+
+.course_reviews {
+    display: none;
+}
+
+.students_undertaking {
+    display: none;
+}
+
+
+/*hide star rating on course page*/
+
+#item-meta .star-rating {
+    display: none;
+}
+
+#item-meta .students,
+#buddypress div#item-header div#item-meta .students {
+    display: none;
+}
+
+
+/*hide the review course button on course page*/
+
+.more_course .button.review_course {
+    display: none !important;
+}
+
+.unit_title .instructor {
+    display: none !important;
+}
+
+
+/*hide header on group directory page*/
+
+.directory.buddypress header+section {
+    display: none;
+}
+
+
+/*hide visibility settings on register page*/
+
+.field-visibility-settings,
+.field-visibility-settings-notoggle,
+.field-visibility-settings-toggle,
+.single-course #item-admins {
+    display: none;
+}
+
+.single-product .breadcrumbs,
+.single-product .prev_next_links {
+    display: none;
+}
+
+div#item-actions {
+    display: none;
+}
+
+
+/*remove background documents item*/
+
+li#nav-documents-groups-li,
+li#nav-documents-personal-li {
+    background: none;
+}
+
+.single-item.groups #buddypress ul.item-list>li div.action {
+    clear: both;
+}
+
+.widget .item-options a {
+    color: #fff !important;
+}
+
+.widget .item-options a.selected {
+    background-color: #54add3;
+}
+
+.sidebar .widget ul.item-list li {
+    border-color: #dfdfdf;
+    padding: 5px 0;
+}
+
+.sidebar .widget ul.item-list li img.avatar {
+    max-width: 48px;
+    float: left;
+    height: auto;
+    margin: 0 20px 0 0;
+    border-radius: 50%;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .widget ul.item-list li div.item-title {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sidebar .widget span.activity {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    background: none;
+    margin: 2px;
+    color: #bbb;
+    text-align: right;
+    display: inline-block;
+    float: right;
+}
+
+body.my-profile #item-body div.instructor_line,
+#course-list>li div.item-meta {
+    display: none;
+    visibility: hidden;
+}
+
+.content .product .related.products {
+    clear: both;
+}
+
+
+/*hide the title*/
+
+body.topic.single #title>div.container,
+body.forum.single #title>div.container,
+body.forum-archive.archive #title>div.container,
+body.archive.tax-product_cat #title>div.container,
+body.archive.post-type-archive-product #title>div.container {
+    display: none;
+    visibility: hidden;
+}
+
+
+/*fix email options*/
+
+.groups #buddypress #item-header {
+    overflow: visible;
+}
+
+.groups #buddypress #item-header .group-subscription-options {
+    padding: 10px;
+    float: none !important;
+    line-height: 20px;
+}
+
+.groups #buddypress #item-header .group-subscription-options a {
+    display: inline-block;
+    float: none !important;
+    clear: both;
+    cursor: pointer;
+    height: auto;
+}
+
+.groups #buddypress #item-header .group-subscription-options-link {
+    color: #fff;
+}
+
+#groups-dir-list .group-subscription-div>span,
+#groups-dir-list .group-subscription-div>a {
+    display: inline-block !important;
+}
+
+#groups-dir-list .group-subscription-div>a {
+    color: #999;
+}
+
+#groups-list .group-subscription-options {
+    width: 400px;
+    max-width: 90%;
+}
+
+
+/*fix groups list align*/
+
+#buddypress ul.item-list li img.avatar {
+    max-width: 75px;
+    height: auto;
+    margin: 0 20px 0 0;
+    border-radius: 50%;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+#groups-dir-list #groups-list li img.avatar {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    margin: 0px 0px;
+    float: none;
+}
+
+#groups-dir-list ul.item-list li .meta {
+    margin: 0px 15px 0px 0px !important;
+}
+
+#buddypress ul.item-list.grid li .action {
+    float: none !important;
+}
+
+#item-body #groups-list div.generic-button a,
+#item-body #groups-list div.generic-button a.leave-group,
+#groups-dir-list #groups-list div.generic-button a,
+#groups-dir-list #groups-list div.generic-button a.leave-group {
+    float: none;
+    display: inline-block;
+}
+
+#item-body #groups-list .group-subscription-options,
+#groups-dir-list #groups-list .group-subscription-options {
+    position: absolute;
+    right: auto;
+    left: 0px;
+    margin: 0px;
+    padding: 10px;
+}
+
+#item-body #groups-list .group-subscription-options .group-subscription-close,
+#groups-dir-list #groups-list .group-subscription-options .group-subscription-close {
+    height: auto;
+    cursor: pointer;
+}
+
+.buddysidebar #groups-list {
+    padding-top: 10px !important;
+}
+
+#buddypress .widget #groups-list .item-avatar,
+.buddysidebar #groups-list .item-avatar {
+    float: left;
+    margin: 0px 0px;
+}
+
+.buddysidebar #groups-list .item-avatar {
+    border-radius: 0px !important;
+    width: auto !important;
+    height: auto;
+}
+
+.activity-comments .acomment-avatar img.avatar {
+    margin: 0px 0px !important;
+}
+
+
+/* joolz bug fixes 19/04/2015 */
+
+div.item-avatar {
+    border-radius: 0px;
+}
+
+
+/* j00lz bug fixed 21/12/2015 */
+
+.widget.buddypress ul.item-list img.avatar {
+    height: 20px;
+    margin-right: 10px;
+    width: 48px;
+}
+
+#buddypress .widget #groups-list div.item,
+.buddysidebar #groups-list div.item {
+    padding-left: 64px;
+    margin-left: 0px !important;
+}
+
+#buddypress .widget #groups-list img.avatar,
+.buddysidebar #groups-list img.avatar {
+    margin: 0px 0px !important;
+    border-radius: 50%;
+    float: none;
+}
+
+.buddysidebar #groups-list div.item-title {
+    margin-top: 0px !important;
+}
+
+.buddysidebar #groups-list div.item-title a {
+    text-align: left !important;
+}
+
+#item-body #member-list span.activity {
+    float: none;
+    display: block;
+    text-align: left;
+    margin: 0px 0px;
+}
+
+#item-body #member-list div.action {
+    clear: both;
+    padding: 5px 0px 0px 78px;
+}
+
+#item-body #member-list div.action .ass_members_status {
+    text-align: right;
+}
+
+#item-body #member-list div.generic-button a {
+    float: none;
+    display: inline-block;
+}
+
+
+/*hide instructor from course listing page in courses profile page*/
+
+body.bp-user #course-list .item-instructor {
+    display: none !important;
+}
+
+
+/* fix for long file names */
+
+.bp-group-documents-title {
+    display: block;
+    max-width: 84%;
+}
+
+
+/*fix group resources sidebar widget*/
+
+.buddysidebar ul.bp-group-documents-list {
+    margin-bottom: 10px;
+}
+
+.buddysidebar ul.bp-group-documents-list>li {
+    position: relative;
+    padding-left: 24px;
+}
+
+.buddysidebar ul.bp-group-documents-list>li a.bp-group-documents-icon {
+    margin-left: 0px;
+    position: absolute;
+    left: 0px;
+}
+
+.buddysidebar .view-all>a {
+    margin: 0px 0px 0px 10px;
+}
+
+#buddypress div.item-list-tabs ul li#dashboard-personal-li {
+    display: none;
+}
+
+
+/*hide instructor and date from start course page*/
+
+#unit_content .unit_title>span:nth-child(1),
+#unit_content .page_title>span:nth-child(1),
+#unit_content .page_title .instructor {
+    display: none;
+}
+
+.group-subscription-options .group-sub {
+    cursor: pointer;
+}
+
+.samye_breadcrumbs {
+    margin: 30px 0px 0px;
+}
+
+.content .samye_breadcrumbs {
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.samye_breadcrumbs ul {
+    margin: 0px 0px !important;
+    padding: 0px 0px !important;
+}
+
+.clear-mt {
+    margin-top: 0px !important;
+}
+
+.add-mb-20 {
+    margin-bottom: 20px !important;
+}
+
+.item-list-tabs ul li#members-instructors,
+#members-list li div.item-title>span {
+    display: none !important;
+}
+
+#vibe_bp_login,
+nav .sub-menu {
+    z-index: 200;
+}
+
+body.friends #buddypress div.friends #member-dir-pag-top {
+    display: none;
+}
+
+#vibe_bp_login li#admin_panel_icon {
+    right: 10px;
+}
+
+.bbp-topic-content iframe,
+.bbp-reply-content iframe {
+    max-height: 340px;
+    max-width: 100%;
+    border: 0px;
+}
+
+.activity-content iframe {
+    max-height: 274px;
+}
+
+.lwa td {
+    text-transform: capitalize;
+}
+
+
+
+
+div#searchicon {
+    display: none;
+}
+
+a#new_searchicon {
+    display: none;
+}
+
+nav .sub-menu {
+    left: auto;
+    right: 0px;
+}
+
+nav .menu-item-has-children:hover>a:before {
+    left: auto;
+    right: 20px;
+}
+
+.activity-header a {
+    color: #1e73be !important;
+}
+
+.activity-header a:hover {
+    color: #444 !important;
+    text-decoration: underline;
+}
+
+
+/*fix blog post*/
+
+.single #content .col-md-9.col-sm-8 .content div.tags,
+.single #content .col-md-9.col-sm-8 .content div.featured {
+    display: none;
+}
+
+.single #content .col-md-9.col-sm-8 #comments {
+    padding: 0px 30px;
+}
+
+#item-header #item-header-content .highlight,
+#item-header #item-header-content #item-meta {
+    display: none;
+}
+
+
+/*checkout*/
+
+.woocommerce-order-received #content ul.order_details {
+    padding-left: 0px;
+}
+
+.woocommerce-order-received #content ul.order_details li .button {
+    display: block;
+    padding: 10px 10px;
+    margin: 6px 0px;
+    text-align: center;
+}
+
+.woocommerce-order-received #content table.shop_table th,
+.woocommerce-order-received #content table.shop_table td {
+    padding: 10px 0px;
+}
+
+
+/*shiftnav*/
+
+.shiftnav {
+    background-color: #b71f14;
+}
+
+.shiftnav nav {
+    display: block;
+    float: none;
+}
+
+.shiftnav ul {
+    position: relative;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    display: block;
+    opacity: 1;
+}
+
+.shiftnav .shiftnav-menu-title {
+    padding: 20px 15px;
+}
+
+.shiftnav .shiftnav-menu-title a {
+    background-image: url(/wp-content/uploads/2017/11/samye_logo11.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    text-indent: -9999px;
+    display: block;
+    width: 160px;
+    height: 44px;
+    margin: 0px auto;
+}
+
+#shiftnav-toggle-main {
+    /* background-color: #b71f14; */
+    display: none;
+}
+
+#shiftnav-toggle-main .shiftnav-main-toggle-content {
+    padding: 5px 0px 0px;
+}
+
+#shiftnav-toggle-main .shiftnav-main-toggle-content a {
+    background-image: url(/wp-content/uploads/2017/11/samye_logo11.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    text-indent: -9999px;
+    display: block;
+    width: 146px;
+    height: 40px;
+    margin: 0px auto;
+}
+
+/* j00lz added */
+a.shiftnav-target {
+    color: black !important;
+    background: #eee;
+}
+
+.shiftnav.shiftnav-skin-light ul.shiftnav-menu ul.sub-menu li.menu-item > .shiftnav-target {}
+
+a.shiftnav-target:hover {
+    background: #eee !important;
+    color: red !important;
+}
+
+
+
+/*events*/
+
+#tribe-events h2.tribe-events-page-title {
+    text-align: left;
+}
+
+.events-list .tribe-events-loop,
+.single-tribe_organizer .tribe-events-loop,
+.single-tribe_venue .tribe-events-loop,
+.tribe-events-day .tribe-events-loop {
+    max-width: none;
+}
+
+.tribe-events-list-separator-month {
+    text-align: left;
+    padding: 0px;
+    margin: 0px 0px;
+}
+
+.tribe-events-list-separator-month:after {
+    display: none;
+}
+
+.tribe-events-list-separator-month span {
+    background: transparent;
+    padding: 0px;
+}
+
+
+/*content*/
+
+.container>p:empty,
+.container-fluid>p:empty {
+    display: none;
+}
+
+header .menu-main-menu-container select {
+    display: none;
+}
+
+.single-item #bbpress-forums li.bbp-topic-title {
+    position: relative;
+    padding: 10px 0px 10px 64px;
+}
+
+.single-item #bbpress-forums li.bbp-topic-title a.bbp-topic-permalink {
+    padding: 0px;
+    display: inline !important;
+}
+
+.single-item #bbpress-forums li.bbp-topic-title .bbp-topic-meta {
+    position: absolute;
+    margin: 0px;
+    top: 50%;
+    left: 0px;
+    margin-top: -24px;
+}
+
+.sidebar .widget .widgettitle {
+    border-bottom: 3px solid #EFEFEF;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#content.widecolumn {
+    max-width: 1170px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}
+
+#buddypress .item-list-tabs ul li a,
+nav .menu li a {
+    font-weight: 400;
+}
+
+.single-course .course_title .breadcrumbs {
+    display: none;
+}
+
+#buddypress .standard-form select {
+    min-width: 60px;
+}
+
+#bbpress-forums ul.bbp-forums li.bbp-header,
+#bbpress-forums ul.bbp-topics li.bbp-header {
+    background-color: #232b2d;
+    border-radius: 6px 6px 0px 0px;
+    padding: 15px 0px 15px 15px;
+}
+
+#bbpress-forums ul.bbp-forums li.bbp-header li,
+#bbpress-forums ul.bbp-topics li.bbp-header li {
+    padding: 0px;
+    font-size: 12px;
+}
+
+#bbpress-forums li.bbp-topic-title a.bbp-topic-permalink {
+    font-size: 14px;
+}
+
+.groups #item-nav #activity-groups-li {
+    display: none;
+}
+
+.groups #buddypress #item-body {
+    padding-top: 0px;
+}
+
+.groups #buddypress #item-body #bp-group-documents {
+    margin-top: 0px;
+}
+
+.bbp-topic-content .fitvids iframe,
+.bbp-reply-content .fitvids iframe {
+    max-height: none;
+}
+
+.content .wisdom-note {
+    padding-top: 30px;
+    clear: both;
+}
+
+.content .wisdom-note blockquote p {
+    font-size: 16px;
+}
+
+
+/*fix woocommerce account page*/
+
+.woocommerce-account .content .woocommerce-MyAccount-navigation {
+    padding: 0px;
+    margin: 0px 0px 30px;
+    display: block;
+}
+
+.woocommerce-account .content .woocommerce-MyAccount-navigation:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.woocommerce-account .content .woocommerce-MyAccount-navigation ul {
+    list-style: none;
+    padding: 0px;
+}
+
+
+/*end fix woocommerce account page*/
+
+
+/*HOT FIX HOME PAGE - LATEST WISDOM BLOG SECTION*/
+
+.vc_gitem-zone.vc-gitem-zone-height-mode-auto-1-1:before {
+    display: none;
+}
+
+.vc_gitem-zone.vc-gitem-zone-height-mode-auto-1-1 .vc_gitem-row-position-top {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+}
+
+.widget.pricing form.cart {
+    padding: 15px;
+    background-color: #f6f6f6;
+    border-radius: 6px;
+}
+
+.widget.pricing form.cart label {
+    margin: 0px;
+}
+
+.widget.pricing form.cart .button {
+    display: block;
+    width: 100%;
+    margin: 10px 0px 0px;
+}
+
+.single-product .product-type-simple form.cart>label {
+    display: inline-block;
+    margin: 0px 0px;
+}
+
+.single-product .product-type-simple form.cart>.button {
+    display: block;
+    float: none !important;
+    margin: 15px 0px 0px;
+}
+
+
+/* HOT FIX GROUP FORUM PAGE */
+
+.bbp-author-avatar img.animate {
+    opacity: 1 !important;
+}
+
+.bbp-topic-title a.bbp-topic-permalink {
+    text-transform: none;
+}
+
+.bbp-attachments-form a.d4p-attachment-addfile {
+    display: inline-block;
+    background-color: #ddd;
+    color: #333;
+    font-size: 14px;
+    padding: 6px 20px;
+    border-radius: 4px;
+}
+
+.groups #buddypress #item-body #bp-group-documents>h3,
+.groups #buddypress #item-body #bbpress-forums>h3 {
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+    float: none;
+    padding-top: 20px;
+    margin: 0px 0px 15px;
+}
+
+.groups #buddypress #item-body #bbpress-forums .bbp-author-avatar img {
+    width: 48px;
+    height: auto;
+}
+
+.groups #buddypress #item-body #bbpress-forums .bbp-footer {
+    display: none;
+}
+
+
+/*FORM STYLE*/
+
+.content .gform_wrapper .gfield textarea,
+.content .gform_wrapper .gfield input[type=text],
+.content .gform_wrapper .gfield input[type=email] {
+    border: 2px solid #ddd;
+    padding: 4px 15px !important;
+    outline: none;
+    height: 34px;
+    -webkit-transition: border-color .4s ease;
+    transition: border-color .4s ease;
+}
+
+.content .gform_wrapper .gfield textarea {
+    height: 139px;
+    resize: vertical;
+    padding: 10px 15px !important;
+}
+
+.content .gform_wrapper .gfield textarea:focus,
+.content .gform_wrapper .gfield input[type=text]:focus,
+.content .gform_wrapper .gfield input[type=email]:focus {
+    border-color: #5AA1E3 !important;
+}
+
+.content .gform_wrapper .gfield_error textarea,
+.content .gform_wrapper .gfield_error input[type=text],
+.content .gform_wrapper .gfield_error input[type=email] {
+    border: 2px solid #b71f14 !important;
+}
+
+
+/*END FORM STYLE*/
+
+@media (min-width: 992px) {
+    body.shiftnav-enabled {
+        padding-top: 0px !important;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    #buddypress #groups-dir-list #groups-list li div.item div.item-title {
+        max-width: 70%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #buddypress #groups-dir-list #groups-list li div.item .meta {
+        position: relative;
+        top: auto;
+        text-align: left;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 991px) {
+    #shiftnav-toggle-main {
+        display: block;
+    }
+    .pusher header {
+        padding: 10px 0px;
+        display: none;
+    }
+    .pusher header #logo {
+        margin: 0px;
+    }
+    .pusher header #trigger {
+        top: 0px;
+        right: 20px;
+    }
+    .pusher #logo img {
+        width: 180px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+    .pusher .row .col-xs-4,
+    .pusher .row .col-xs-8 {
+        float: none;
+        width: 100%;
+        padding: 0px 15px !important;
+        text-align: center;
+    }
+    header .menu-main-menu-container {
+        display: block;
+        float: none;
+        width: 260px;
+        position: relative;
+        margin: 0px auto;
+    }
+    header .menu-main-menu-container:after {
+        content: '';
+        position: absolute;
+        top: 0px;
+        right: 15px;
+        height: 100%;
+        width: 20px;
+        background-image: url(images/hamburger.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100% auto;
+    }
+    header .menu-main-menu-container .menu {
+        display: none;
+    }
+    header .menu-main-menu-container select {
+        display: block;
+        color: #333;
+        border: 2px solid #fff;
+        background: #fff;
+        padding: 6px 40px 6px 10px;
+        margin: 0px auto;
+        line-height: 100%;
+        height: auto;
+        border-radius: 4px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .pusher header #trigger {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    #buddypress #groups-dir-list #groups-list li div.item-avatar {
+        float: none;
+        margin: 0px auto 10px;
+    }
+    #buddypress #groups-dir-list #groups-list li div.item {
+        padding: 0px 0px;
+        margin: 0px 0px;
+        text-align: left;
+    }
+    #buddypress #groups-dir-list #groups-list li div.item div.item-title {
+        text-align: left;
+    }
+    #buddypress #groups-dir-list #groups-list li div.item div.item-title a {
+        text-align: left;
+        display: inline-block;
+    }
+    #buddypress #groups-dir-list #groups-list li div.item .activity {
+        float: none;
+        text-align: left;
+    }
+    #buddypress #groups-dir-list #groups-list li div.item .action {
+        float: none;
+        right: auto;
+        margin: 0px 0px;
+    }
+    #buddypress #groups-dir-list #groups-list li div.item .meta {
+        position: relative;
+        top: auto;
+        text-align: left;
+        margin-top: 10px;
+    }
+    .bbp-topic-content iframe,
+    .activity-content iframe,
+    .bbp-reply-content iframe,
+    .activity-content iframe {
+        max-height: 225px;
+    }
+    .bp-user #course-list li div.item-avatar {
+        float: none !important;
+        margin: 0px auto 15px !important;
+    }
+    .bp-user #course-list li div.item {
+        float: none;
+        margin: 0px 0px !important;
+    }
+    .bp-user #course-list li div.item .item-title {
+        margin-top: 0px !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .single #content .col-md-9.col-sm-8 #comments {
+        padding: 0px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .single-item #bbpress-forums li.bbp-topic-title {
+        padding-left: 0px;
+    }
+    .single-item #bbpress-forums li.bbp-topic-voice-count {
+        display: none;
+    }
+    #bbpress-forums .bbp-pagination .bbp-pagination-count {
+        display: block;
+        float: none;
+        margin-bottom: 10px;
+    }
+    #bbpress-forums .bbp-pagination .bbp-pagination-count+.bbp-pagination-links {
+        float: none;
+    }
+    .widget.pricing,
+    .container .unit_content,
+    .container-fluid .unit_content,
+    .container #item-body,
+    .container-fluid #item-body,
+    .container .content,
+    .container-fluid .content,
+    .container .padder.content,
+    .container-fluid .padder.content {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .single .content img.alignright,
+    .page .content img.alignright,
+    .single .content img.alignleft,
+    .page .content img.alignleft {
+        float: none;
+        display: block;
+        margin: 0px 0px 15px;
+    }
+    .content.grd-signup-form {
+        padding: 15px !important;
+    }
+    .content .vc_call_to_action {
+        padding: 15px;
+    }
+    .single .content .blogpost .meta {
+        display: none;
+    }
+    #buddypress ul.item-list li a span.group-documents-filesize {
+        float: none;
+    }
+    #buddypress div.item-list-tabs#subnav ul li>a {
+        display: block;
+    }
+}
+
+
+/* j00lz customizing crowdfunding in woocommerce */
+
+.woocommerce div.product div.images img {
+    width: 12%;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+h1.product_title.entry-title {
+    text-align: center;
+    font-size: 32px;
+}
+
+.summary.entry-summary h3 {
+    text-align: center;
+    font-size: 20px;
+    color: #868E96;
+    margin: 0 50px
+}
+
+.fundraising {
+    margin-top: 96px;
+}
+
+span.fundraising.time-remaining,
+span.fundraising.woocommerce-Price-amount.amount {
+    font-size: 24px;
+    line-height: 0.5;
+}
+
+.sum,
+.orders {
+    display: inline;
+}
+
+.orders,
+.tag,
+div.time-remaining,
+.goal.tag {
+    color: #B71F14;
+    margin-bottom: 4px;
+}
+
+.orders {
+    padding-left: 8px;
+}
+
+.remaining {
+    float: right;
+}
+
+.remaining span.woocommerce-Price-amount.amount {
+    font-size: 18px;
+}
+
+.goal {
+    padding: 20px 0px;
+}
+
+.progress {
+    margin: 14px 0px 8px;
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 16px;
+    background-color: #B71F14;
+    border-radius: 25%;
+}
+
+.samye_card {
+    background: #F3F3F3;
+    margin: 12px;
+    padding: 24px;
+}
+
+.samye_card h2 {
+    font-size: 16px;
+    margin: 10px 32px 16px 0px;
+    color: #B71F14;
+}
+
+.fundraising-price {
+    /* color: #B71F14; */
+	color: green;
+    float: right;
+    font-size: 1.1em;
+}
+
+.fundraising-price.fundraising-total {
+    border-top: solid;
+    padding: 6px 0px;
+}
+
+hr { padding:2px;}
+
+
+/* Courses page */
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    /* margin: 2em; */
+}
+
+.intro-text {
+    padding: 1em;
+}
+
+.intro-text img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+}
+
+.courses-section {
+    background: whitesmoke;
+    padding: 12px;
+    min-width: 50%;
+}
+
+.courses-section h2 {
+    display: block;
+    text-align: center;
+    font-size: 1.8em;
+    padding: 0.2em;
+}
+
+.courses-section p {
+    padding: 1em;
+}
+
+.cards {
+    display: flex;
+}
+
+@media (max-width: 1000px) {
+    .cards {
+        display: block;
+    }
+}
+
+.course-card {
+    margin: 0.5em;
+    padding: 1em;
+    background: white;
+    flex: 1;
+}
+
+.course-card ul {}
+
+.course-card h3 {
+    font-size: 1.3em;
+    text-align: center;
+    padding: 1em 0 0 0;
+    color: darkred
+}
+
+.course-card img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+.course-card a {
+    color: darkred !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+/* 
+  Alex - redesign
+*/
+
+@media (max-width: 649px) {
+ .container {
+    margin-top: -29px;
+ }
+}
+
+.hero {
+    display: flex;
+    width: 100%;
+    height: 330px;
+    margin-top: 33px;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgb(151, 151, 151);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: rgb(151, 151, 151);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(151, 151, 151);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: rgb(151, 151, 151);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    background-image: url(/wp-content/uploads/2017/11/pr_hero1.jpg);
+    background-size: contain;
+    box-shadow: rgb(138, 133, 133) 1px 2px 2px -1px;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+ }
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape){
+	.hero {
+		height: 451px;
+		background-position-x: 170%;
+	}
+	
+	.hero-text p {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 649px) {
+ .hero {
+    /* height: 680px; --Alex */
+	height: 820px; 
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-image: url(/wp-content/uploads/2017/11/pr_hero_orig.jpg);
+    background-size: 320px;
+    background-position: 0px 0px;
+    margin-top: 60px;
+    box-shadow: none;
+    max-width: 310px;
+ }
+}
+@media only screen and (min-width : 650px) and (max-width : 720px) {
+.hero {
+    background-image: url(/wp-content/uploads/2017/11/pr_hero_orig.jpg);
+     background-position: 130% 50%;
+  }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+	.hero {
+	    background-position-x: 170%;
+	}
+	.hero .hero-empty {
+		width: 360px;
+	}
+	.hero .hero-text p {
+		font-size: 13px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+	
+	.sd_card .sd_card__infotext {
+		padding-top: 0;
+	}
+	
+	.sd_card .sd_card__infotext p {
+		font-size: 14px;
+	}
+	
+}
+   
+.hero-text {
+   display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+}
+
+@media (max-width: 649px) {
+ .hero-text {
+    width: 320px;
+    height: 550px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    margin-top: 0px;
+    
+ }
+}
+
+.hero-text h1 {
+    margin-top: 25px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-left: 42px;
+    font-family: "Open Sans", sans-serif;
+    color: rgb(38, 38, 38);
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 400;
+    text-align: left;
+}
+
+@media (max-width: 649px) {
+ .hero-text h1 {
+    margin-top: -160px;
+    padding-right: 40px;
+    padding-left: 40px;
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+}
+
+
+/* removing 'device' */
+@media only screen and (min-width : 650px) and (max-width : 991px) {
+ .hero-text h1 {
+   display: none;
+  }
+}
+
+.hero-text p {
+    margin-top: 10px;
+    margin-bottom: -1px;
+    padding-right: 20px;
+    padding-bottom: 1px;
+    padding-left: 42px;
+}
+
+
+/* removing 'device' */
+@media only screen and (min-width : 650px) and (max-width : 991px) {
+ .hero-text p {
+   margin-top: 0;
+   margin-right: 0;
+   padding-right: 0;
+   font-size: 14px;
+  }
+}
+
+@media (max-width: 649px) {
+   .hero-text p {
+       margin-top: 0px;
+       margin-bottom: -1px;
+       padding-right: 40px;
+       padding-bottom: 1px;
+       padding-left: 40px;
+       font-size: 14px;
+  } 
+}
+
+.hero-text .hero-link {
+   margin-right: 22px;
+   margin-bottom: 25px;
+   font-family: "Open Sans", sans-serif;
+   color: rgb(211, 25, 25);
+   text-align: right;
+   text-decoration: none;
+}
+.hero-text .hero-link:hover {
+   color: #f62817;
+}
+
+@media (max-width: 649px) {
+.hero-text .hero-link {
+     margin-top: 20px;
+     margin-bottom: 40px;
+     padding-top: 0px;
+     text-align: center;
+ }
+}
+
+.hero-empty {
+    width: 500px;
+    height: 100%;  
+}
+
+@media only screen and (min-width : 650px) and (max-width : 720px) {
+.hero-empty {
+   width: 430px;
+  }
+}
+
+
+@media (max-width: 649px) {
+ .hero-empty {
+    width: 320px;
+    height: 550px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+  }
+}
+
+.cards-container {
+   display: flex;
+   width: 100%;
+   margin-top: 24px;
+   margin-right: auto;
+   margin-left: auto;
+   padding-bottom: 22px;
+   justify-content: space-between;
+   align-items: flex-start;
+   overflow: hidden;
+  }
+
+
+/* removing 'device' */
+@media only screen and (min-width : 650px) and (max-width : 991px) {
+   .cards-container {
+    margin-top: 17px;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 649px) {
+ .cards-container {
+   margin-top: -30px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+ }
+}
+
+.sd_card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (min-width: 992px) {
+    .sd_card {
+        width: 33.33%;
+    }
+}
+
+
+/* removing 'device' */
+@media only screen and (min-width : 650px) and (max-width : 991px) {
+ .sd_card {
+    margin-bottom: 23px;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 649px) {
+ .sd_card {
+     margin-top: 33px;
+ }
+}
+
+.sd_card__header {
+    margin-bottom: 24px;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #B31F13;
+}
+
+
+@media (max-width: 649px) {
+ .sd_card__header {
+    display: block;
+    position: relative;
+    z-index: 5;
+    width: 315px;
+    margin-right: auto;
+    margin-bottom: -4px;
+    margin-left: -2px;
+    padding-top: 13px;
+    padding-bottom: 10px;
+    border-bottom-style: none;
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color: rgb(187, 176, 176);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: rgb(187, 176, 176);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: rgb(187, 176, 176);
+ }
+}
+
+
+/* removing 'device' */
+@media only screen and (min-width : 650px) and (max-width : 991px) {
+ .sd_card__header {
+   margin-top: 20px;
+  }
+}
+
+.sd_card__header-text {
+    padding-bottom: 7px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+}
+
+@media (max-width: 649px) {
+ .sd_card__header-text {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    color: rgb(51, 51, 51);
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+ }
+}
+
+.sd_card__body {
+   display: flex;
+    width: 300px;
+    margin-right: 14px;
+    margin-left: 0px;
+    flex-direction: column;
+    align-items: center;
+    border-top-style: none;
+    border-top-width: 1px;
+    border-top-color: rgb(187, 176, 176);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-right-color: rgb(187, 176, 176);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: rgb(187, 176, 176);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: rgb(187, 176, 176);
+    border-top-left-radius: 0;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-image: linear-gradient(white, white);
+    box-shadow: rgb(138, 133, 133) 1px 2px 2px -1px;
+}
+
+
+/* removing 'device' */
+@media only screen and (min-width : 650px) and (max-width : 991px) {
+ .sd_card__body {
+    width: 100%;
+    flex-direction: row;
+    justify-content: stretch;
+  }
+}
+
+@media (max-width: 649px) {
+ .sd_card__body {
+     margin-left: -2px;
+     width: 315px;
+     box-shadow: none;
+     margin-right: 0;
+ }
+}
+
+.sd_card__imagecontainer {
+   position: relative;
+    width: 299px;
+    height: 220px;
+    overflow: hidden;
+    border-top-left-radius: 0px;
+     border-top-right-radius: 10px;
+    box-shadow: rgb(138, 133, 133) 1px 0px 2px -1px
+}
+
+/* removing 'device' */
+@media only screen and (min-width : 650px) and (max-width : 991px) {
+  .sd_card__imagecontainer {
+     width: 100%;
+     height: 255px;
+      border-top-right-radius: 0;
+ }
+}
+
+@media (max-width: 647px) {
+ .sd_card__imagecontainer {
+     width: 315px;
+   }
+}
+
+.sd_card__imagecontainer img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.sd_card__infotext {
+    display: flex;
+    width: 100%;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 1px;
+    padding-left: 22px;
+    flex-direction: column;
+    align-items: stretch;
+    border-top-style: none;
+    border-top-width: 0px;
+    border-top-color: black;
+    border-right-style: none;
+    border-right-width: 0px;
+    border-right-color: black;
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+    border-bottom-color: black;
+    border-left-style: none;
+    border-left-width: 0px;
+    border-left-color: black;
+}
+
+@media (max-width: 649px) {
+ .sd_card__infotext {
+      margin-left: 15px;
+ }
+}
+
+.sd_card__infotext h2 {
+   font-family: "Open Sans", sans-serif;
+   color: rgb(38, 38, 38);
+   font-weight: 500;
+   font-size: 20px;
+    min-height: 54px;
+}
+
+.sd_card__infotext p {
+   margin-top: 9px;
+   padding-bottom: 11px;
+   font-size: 16px;
+   min-height: 115px;
+}
+
+@media only screen and (min-width : 650px) and (max-width : 991px) {
+  .sd_card__infotext p {
+   min-height: 0;
+}}
+
+@media (max-width: 649px) {
+.sd_card__infotext p  {
+    margin-bottom: -10px;
+ }
+}
+.sd_card__infotext a {
+    margin-bottom: 25px;
+    font-family: "Open Sans", sans-serif;
+    color: #B31F13;
+    text-align: right;
+    text-decoration: none;  
+}
+
+.sd_card__infotext a:hover {
+   color: #f62817;
+}
+@media (max-width: 649px) {
+.sd_card__infotext a {
+    margin-top: 26px;
+    margin-bottom: 21px;
+    padding-top: 0px;
+    text-align: center;
+}
+}
+
+#shiftnav-toggle-main {
+    background-color: #ffffff !important;
+}
+
+/* Alex - fixes for Fundraising appeal */
+
+.goal {
+    margin-top: 40px;
+}
+
+.recurring {
+  font-size: 14px;
+  font-weight: 600;
+  padding-bottom: 30px;
+  position: absolute;
+  z-index: 4;
+}
+
+.row {
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+.unit_content ol:not([class]):not([id]), .unit_content ul:not([class]):not([id]), .content ol:not([class]):not([id]), .content ul:not([class]):not([id]) {
+  padding-left: 15px !important;
+}
+
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button {
+   font-size: 80% !important;
+   line-height: 1.4 !important;
+   white-space: normal !important;
+}
+
+#fr_info {
+  margin-top: 140px;
+}
+
+#calligraphy {
+        margin-top: 100px;
+}
+
+/* Alex - END fixes for Fundraising appeal */
+
+/* mobility disclaimer form */
+#mobility-disclaimer-form {
+    clear: both;
+}
+
+#mobility-disclaimer-form form input[type=checkbox] {
+    margin: 0px 6px 0px 0px;
+}
+
+#mobility-disclaimer-form form label {
+    margin: 0px 0px;
+    cursor: pointer;
+}
+/* END mobility disclaimer form */
+
+/* CUSTOM CURRICULUM */
+.custom-curriculum h3,
+.custom-curriculum h4 {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 600;
+    color: #232323;
+    margin: 0px 0px 15px;
+    clear: both;
+}
+
+.custom-curriculum h3 {
+    font-size: 18px;
+}
+
+.custom-curriculum h4 {
+    font-size: 16px;
+}
+
+.custom-curriculum p:empty {
+    display: none;
+    margin: 0px;
+}
+
+.custom-curriculum ul {
+    list-style: none;
+    margin: 0px 0px 20px;
+    padding: 0px 0px 0px;
+}
+
+.custom-curriculum ul:last-child,
+.custom-curriculum ul:last-of-type {
+    margin-bottom: 0px;
+}
+
+.custom-curriculum ul li {
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    position: relative;
+    padding: 0px 0px 15px 25px;
+}
+
+.custom-curriculum ul li:last-child {
+    padding-bottom: 0px;
+}
+
+.custom-curriculum ul li:before {
+    content: "\e137";
+    font-family: fonticon;
+    font-size: 16px;
+    font-weight: 400;
+    position: absolute;
+    top: -2px;
+    left: 0px;
+}
+
+.custom-curriculum .one_half {
+    padding: 10px 10px 20px;
+    background-color: rgba(0,0,0,.08);
+    margin-bottom: 25px;
+}
+/* END CUSTOM CURRICULUM */
+
+/* ADD CART LINK TO CHECKOUT */
+.woocommerce-info.cart-link:before {
+    content: '\f07a';
+}
+
+.woocommerce-info.cart-link a {
+    font-weight: 700;
+}
+/* END ADD CART LINK TO CHECKOUT */
+
+/* HOME PAGE */
+.sd_card .sd_card__infotext {
+    padding-top: 30px;
+}
+
+.sd_card .sd_card__infotext h2 {
+    margin: 0px 0px 10px;
+}
+
+.sd_card .sd_card__infotext h2:empty {
+    display: none;
+}
+
+.sd_card .sd_card__infotext p {
+    padding: 0px 0px;
+    margin: 0px 0px 10px;
+}
+
+@media (max-width: 1200px) {
+    nav ul.menu > li > a {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    div.hero {
+        background-image: none;
+        display: block;
+        height: auto;
+    }
+
+    div.hero:before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 500px;
+        background-image: url(/wp-content/uploads/2017/11/pr_hero_orig.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    div.hero .hero-text {
+        display: block;
+        height: auto;
+        padding: 20px 20px;
+    }
+
+    div.hero .hero-text h1 {
+        display: block;
+        margin: 0px 0px 20px;
+        padding: 0px 0px;
+    }
+
+    div.hero .hero-text p {
+        margin: 0px 0px 15px;
+        padding: 0px 0px;
+    }
+
+    div.hero .hero-empty {
+        display: none;
+    }
+}
+
+@media (max-width: 649px) {
+    div.hero:before {
+        height: 300px;
+    }
+}
+/* END HOME PAGE */
