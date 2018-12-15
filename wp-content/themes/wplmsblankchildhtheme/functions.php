@@ -2,6 +2,7 @@
 
 if ( !defined( 'VIBE_URL' ) )
 define('VIBE_URL',get_template_directory_uri());
+define( 'META_DIR', trailingslashit(get_stylesheet_directory_uri()) );
 
 function meta_wp_enqueue_scripts() {
     wp_register_script( 'meta_custom_js', META_DIR . 'js/custom.js', array('jquery'), META_VER, true );
