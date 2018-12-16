@@ -97,6 +97,93 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 <img src="http://placehold.jp/1500x300.png" alt="...">
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Sign up Email Updates</h2>
+                <input type="text" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <img src="http://placehold.jp/500x500.png" alt="...">
+                <h2>Most Recent Course</h2>
+            </div>
+            <div class="col-xs-12 col-md-4">
+                <img src="http://placehold.jp/500x200.png" alt="...">
+                <h2>Recent Videos</h2>
+                <img src="http://placehold.jp/500x200.png" alt="...">
+                <h2>Recent Videos</h2>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <img src="http://placehold.jp/500x200.png" alt="...">
+                <h2>Recent Post</h2>
+                <img src="http://placehold.jp/500x200.png" alt="...">
+                <h2>Recent Post</h2>
+                <img src="http://placehold.jp/500x200.png" alt="...">
+                <h2>Recent Post</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Explore by Topic</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <h2>Topic</h2>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h2>Topic</h2>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h2>Topic</h2>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h2>Topic</h2>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h2>Topic</h2>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h2>Topic</h2>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h2>Topic</h2>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h2>Topic</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Guru Rinpoche Day Teachings</h2>
+                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                <a href="#">2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018</a>
+            </div>
+        </div>
+
+         <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <img src="http://placehold.jp/500x500.png" alt="...">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h2>Guru Rinpoche Day Teachings</h2>
+                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                <a href="#">Link</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Weekly Reflections</h2>
+                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+            </div>
+        </div>
     </div>
 
     <!-- <div class="<?php echo vibe_get_container(); ?>">
