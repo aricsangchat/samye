@@ -37,5 +37,7 @@
         autoplaySpeed: 3000,
         });
     });
+
+    $('.carousel').carousel();
     
 })(jQuery);
