@@ -6,9 +6,10 @@ Author: VibeThemes
 Author URI: http://themeforest.com/user/vibethemes
 Template: wplms
 Version: 1.0
+@import url("../wplms/style.css");
+
 */
 
-@import url("../wplms/style.css");
 
 /* Slider */
 .slick-slider

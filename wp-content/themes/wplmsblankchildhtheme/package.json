@@ -1,0 +1,15 @@
+{
+  "name": "node-compiler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "css": "node-sass --output-style compressed --include-path scss assets/scss/source.scss assets/css/source.css",
+    "watch": "node-sass --watch assets/scss/ -o assets/css/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.11.0"
+  }
+}
