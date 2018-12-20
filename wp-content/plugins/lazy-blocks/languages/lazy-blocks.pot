@@ -1,0 +1,181 @@
+# Copyright (C) 2018 Lazy Blocks
+# This file is distributed under the same license as the Lazy Blocks package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Lazy Blocks\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: nK <https://nkdev.info>\n"
+"Last-Translator: nK <https://nkdev.info>\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: dist/lazy-blocks/classes/class-blocks.php:240, dist/lazy-blocks/classes/class-blocks.php:1039
+msgid "Lazy Blocks"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:241
+msgid "Lazy Block"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:308, dist/lazy-blocks/classes/class-blocks.php:503
+msgid "Icon"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:309, dist/lazy-blocks/classes/class-blocks.php:511
+msgid "Category"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:362
+msgid "Controls"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:370
+msgid "Code"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:378
+msgid "Settings"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:386
+msgid "Condition"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:495
+msgid "Slug"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:506
+msgid "Choose"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:545
+msgid "Description"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:550
+msgid "Keywords"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:555
+msgid "Supports"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:560
+msgid "Multiple"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:566
+msgid "Class Name"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:572
+msgid "Anchor"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:578
+msgid "HTML"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:584
+msgid "Show in Blocks Inserter"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:589
+msgid "Align"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:628
+msgid "Name"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:629
+msgid "Type"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:630
+msgid "Placement"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:631
+msgid "Meta"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:637
+msgid "Loading..."
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:662
+msgid "Frontend HTML"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:665
+msgid "Editor HTML"
+msgstr ""
+
+#. translators: %1$s - documentation link.
+#: dist/lazy-blocks/classes/class-blocks.php:687
+msgid "You can use PHP to output block <a href=\"%1$s\">%1$s</a>"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:716
+msgid "Note 1: if you use blocks as Metaboxes, you may leave these code editors blank."
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:719
+msgid "Note 2: supported Handlebars syntax with your controls available by name. For example, if you have control with name <strong>my_control</strong>, you can print it <strong>{{my_control}}</strong>."
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:722
+msgid "Note 3: yep, I know that Gutenberg based on React, but c'mon... converting a string with JSX to React components is much more complicated than simple text replacements (Handlebars)."
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:739
+msgid "Show in posts"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:740
+msgid "In all posts by default"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-blocks.php:936
+msgid "-- Select --"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-templates.php:142
+msgid "Templates"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-templates.php:143
+msgid "Template"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-templates.php:207
+msgid "Select post type:"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-tools.php:29, dist/lazy-blocks/classes/class-tools.php:30, dist/lazy-blocks/classes/class-tools.php:91
+msgid "Tools"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-tools.php:95
+msgid "Toggle panel: Export"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-tools.php:95
+msgid "Export"
+msgstr ""
+
+#: dist/lazy-blocks/classes/class-tools.php:97
+msgid "You can export PHP code and use it in the theme/plugin to register a local version of generated blocks and templates. A local field group can provide many benefits such as faster load times, version control & dynamic blocks/templates. Simply copy and paste the following code to your theme's functions.php file or include it within an external file."
+msgstr ""
+
+#: dist/lazy-blocks/lazy-blocks.php:209, dist/lazy-blocks/lazy-blocks.php:210
+msgid "Documentation"
+msgstr ""

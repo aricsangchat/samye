@@ -31,13 +31,13 @@
             });
         }
     });
-    $(document).ready(function(){
-        $('.ct-slick-homepage').slick({
-        autoplay: true,
-        autoplaySpeed: 3000,
-        });
-    });
+    // $(document).ready(function(){
+    //     $('.ct-slick-homepage').slick({
+    //     autoplay: true,
+    //     autoplaySpeed: 3000,
+    //     });
+    // });
 
-    $('.carousel').carousel();
+    // $('.carousel').carousel();
     
 })(jQuery);

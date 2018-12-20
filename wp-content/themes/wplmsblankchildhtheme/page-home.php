@@ -186,21 +186,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         </div>
     </div>
 
-    <!-- <div class="<?php echo vibe_get_container(); ?>">
+    <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xs-12">
 
-                <div class="<?php echo $v_add_content;?> content">
+                <!-- <div class="<?php echo $v_add_content;?> content"> -->
                     <?php
                         the_content();
                         $page_comments = vibe_get_option('page_comments');
                         if(!empty($page_comments))
                             comments_template();
                      ?>
-                </div>
+                <!-- </div> -->
             </div>
         </div>
-    </div> -->
+    </div>
 </section>
 <?php
 endwhile;
