@@ -32,15 +32,16 @@ registerBlockType('cgb/grd-home-block', {
 	title: __('GRD HOME BLOCK'),
 	description: __('Most recent GRD Posts'),
 	icon: 'image-filter',
-	category: 'Custom',
+	category: 'common',
 	keywords: [__('grd-home-block')],
 	edit: withSelect(select => {
 		return {
-			posts: select('core').getEntityRecords('postType', 'grd-teaching', {
+			posts: select('core').getEntityRecords('postType', 'post', {
 				per_page: 3
 			})
 		};
 	})(({ posts, className, attributes, setAttributes }) => {
+		console.log(attributes);
 		if (!posts) {
 			return <p className={className}>
 				<Spinner />
@@ -56,7 +57,13 @@ registerBlockType('cgb/grd-home-block', {
 					tagName="h2"
 					value={attributes.content}
 					onChange={content => setAttributes({ content })}
-					placeholder={__('What up, bruh?')}
+					placeholder={__('Add Title')}
+				/>
+				<RichText
+					tagName="p"
+					value={attributes.description}
+					onChange={description => setAttributes({ description })}
+					placeholder={__('Add Title')}
 				/>
 				<ul>
 					{posts.map(post => {

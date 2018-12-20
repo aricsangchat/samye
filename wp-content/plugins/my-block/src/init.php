@@ -61,16 +61,16 @@ function my_block_cgb_editor_assets() { // phpcs:ignore
 }
 
 function cgb_grd_home_block_posts( $attributes ) {
-
+	var_dump($attributes);
 	$recent_posts = wp_get_recent_posts(
 		array(
 			'numberposts' => 3,
 			'post_stats'  => 'publish',
-			'post_type' => 'grd-teaching',
+			'post_type' => 'post',
 		)
 	);
 
-	$dynamic_block_title = ( $attributes['content'] ) ? sprintf( '<h2>%1$s</h2>', $attributes['content'] ) : '';
+	$dynamic_block_title =  isset( $attributes['content']) ? sprintf( '<h2>%1$s</h2>', $attributes['content'] ) : '';
 
 	$list_item_markup = '';
 
@@ -107,6 +107,9 @@ function register_dynamic_blocks() {
 		array(
 			'attributes' => array(
 				'content' => array(
+					'type' => 'string',
+				),
+				'description' => array(
 					'type' => 'string',
 				),
 				'className' => array(
