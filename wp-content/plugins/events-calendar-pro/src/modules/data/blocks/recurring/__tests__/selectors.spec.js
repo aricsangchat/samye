@@ -16,10 +16,12 @@ describe( 'Recurrence selectors', () => {
 			[ blocksConstants.KEY_START_DATE_INPUT]: 'September 21, 2018',
 			[ blocksConstants.KEY_START_DATE_OBJ]: new Date( 'September 21, 2018' ),
 			[ blocksConstants.KEY_START_TIME ]: '14:53',
+			[ blocksConstants.KEY_START_TIME_INPUT ]: '14:53',
 			[ blocksConstants.KEY_END_DATE ]: '2019-05-14',
 			[ blocksConstants.KEY_END_DATE_INPUT ]: 'May 14, 2019',
 			[ blocksConstants.KEY_END_DATE_OBJ ]: new Date( 'May 14, 2019' ),
 			[ blocksConstants.KEY_END_TIME ]: '09:43',
+			[ blocksConstants.KEY_END_TIME_INPUT ]: '09:43',
 			[ blocksConstants.KEY_BETWEEN ]: 1,
 			[ blocksConstants.KEY_LIMIT_TYPE ]: 'count',
 			[ blocksConstants.KEY_LIMIT ]: 7,
@@ -109,6 +111,11 @@ describe( 'Recurrence selectors', () => {
 			.toEqual( rule[ blocksConstants.KEY_START_TIME ].slice( 0, -3 ) );
 	} );
 
+	test( 'getStartTimeInput', () => {
+		expect( selectors.getStartTimeInput( state, ownProps ) )
+			.toEqual( rule[ blocksConstants.KEY_START_TIME_INPUT ] );
+	} );
+
 	test( 'getEndDate', () => {
 		expect( selectors.getEndDate( state, ownProps ) )
 			.toEqual( rule[ blocksConstants.KEY_END_DATE ] );
@@ -132,6 +139,11 @@ describe( 'Recurrence selectors', () => {
 	test( 'getEndTimeNoSeconds', () => {
 		expect( selectors.getEndTimeNoSeconds( state, ownProps ) )
 			.toEqual( rule[ blocksConstants.KEY_END_TIME ].slice( 0, -3 ) );
+	} );
+
+	test( 'getEndTimeInput', () => {
+		expect( selectors.getEndTimeInput( state, ownProps ) )
+			.toEqual( rule[ blocksConstants.KEY_END_TIME_INPUT ] );
 	} );
 
 	test( 'getBetween', () => {

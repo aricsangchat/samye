@@ -66,10 +66,19 @@ describe( 'Shared recurrence sagas', () => {
 			);
 
 			expect( gen.next( endMoment ).value ).toEqual(
+				call( [ startMoment, 'date' ] )
+			);
+			expect( gen.next( 1 ).value ).toBe(
+				call( [ Math, 'ceil' ], 1 / 7 )
+			);
+			expect( gen.next( 1 ).value ).toEqual(
 				call( [ startMoment, 'isoWeekday' ] )
 			);
+			expect( gen.next( 1 ).value ).toEqual(
+				call( [ startMoment, 'month' ] )
+			);
 
- 			expect( gen.next( 1 ).value ).toEqual(
+ 			expect( gen.next( 0 ).value ).toEqual(
 				call( momentUtil.toDatabaseDate, startMoment )
 			);
 			expect( gen.next( args.start_date ).value ).toEqual(
@@ -90,7 +99,14 @@ describe( 'Shared recurrence sagas', () => {
 				call( momentUtil.toDate, endMoment )
 			);
 
-			expect( gen.next().value ).toMatchSnapshot();
+			expect( gen.next( args.end_date ).value ).toEqual(
+				call( momentUtil.toTime, startMoment )
+			);
+			expect( gen.next( args.start_date ).value ).toEqual(
+				call( momentUtil.toTime, endMoment )
+			);
+
+			expect( gen.next( args.end_date ).value ).toMatchSnapshot();
 		} );
 	} );
 
@@ -112,6 +128,10 @@ describe( 'Shared recurrence sagas', () => {
 					[ constants.KEY_END_TIME ]: '23:59:59',
 				} ) )
 			);
+
+			expect( gen.next().value ).toEqual(
+				call( sagas.handleTimeInput, { actions, selectors }, action, constants.KEY_END_TIME )
+			)
 
 			expect( gen.next().done ).toEqual( true );
 		} );
@@ -144,6 +164,10 @@ describe( 'Shared recurrence sagas', () => {
 					}, action )
 				);
 
+				expect( gen.next().value ).toEqual(
+					call( sagas.handleTimeInput, { actions, selectors }, action, constants.KEY_START_TIME )
+				)
+
 				expect( gen.next().done ).toEqual( true );
 			} );
 			it( 'should handle end time changes', () => {
@@ -174,6 +198,10 @@ describe( 'Shared recurrence sagas', () => {
 					}, action )
 				);
 
+				expect( gen.next().value ).toEqual(
+					call( sagas.handleTimeInput, { actions, selectors }, action, constants.KEY_END_TIME )
+				)
+
 				expect( gen.next().done ).toEqual( true );
 			} );
 		} );
@@ -194,6 +222,75 @@ describe( 'Shared recurrence sagas', () => {
 				} ) )
 			);
 
+			expect( gen.next().value ).toEqual(
+				call( sagas.handleTimeInput, { actions, selectors }, action, constants.KEY_END_TIME )
+			)
+
+			expect( gen.next().done ).toEqual( true );
+		} );
+	} );
+
+	describe( 'handleTimeInput', () => {
+		it( 'should handle time input when all-day', () => {
+			const action = { payload: {
+				[ constants.KEY_END_TIME ]: 'all-day',
+			}, index: 0 };
+			const gen = sagas.handleTimeInput( { actions, selectors }, action, constants.KEY_END_TIME );
+
+			expect( gen.next().value ).toEqual(
+				call( toMoment, '00:00', TIME_FORMAT, false )
+			);
+			expect( gen.next( '00:00' ).value ).toEqual(
+				call( toMoment, '23:59', TIME_FORMAT, false )
+			);
+			expect( gen.next( '23:59' ).value ).toEqual(
+				call( toTime, startTimeMoment )
+			);
+			expect( gen.next( '00:00' ).value ).toEqual(
+				call( toTime, endTimeMoment )
+			);
+
+			expect( gen.next( '23:59' ).value ).toEqual(
+				put( actions.sync( 0, {
+					[ constants.KEY_START_TIME_INPUT ]: '00:00',
+					[ constants.KEY_END_TIME_INPUT ]: '23:59',
+				} ) )
+			);
+
+			expect( gen.next().done ).toEqual( true );
+		} );
+		it( 'should handle time input for all other cases', () => {
+			const startTime = '12:00';
+			const endTime = '13:00';
+			const action = { payload: {
+				[ constants.KEY_MULTI_DAY ]: false,
+			}, index: 0 };
+			const gen = sagas.handleTimeInput( { actions, selectors }, action, constants.KEY_END_TIME );
+
+			expect( gen.next().value ).toEqual(
+				select( selectors.getStartTimeNoSeconds, action )
+			);
+			expect( gen.next( startTime ).value ).toEqual(
+				select( selectors.getEndTimeNoSeconds, action )
+			);
+			expect( gen.next( endTime ).value ).toEqual(
+				call( toMoment, startTime, TIME_FORMAT, false )
+			);
+			expect( gen.next( startTime ).value ).toEqual(
+				call( toMoment, endTime, TIME_FORMAT, false )
+			);
+			expect( gen.next( endTime ).value ).toEqual(
+				call( toTime, startTimeMoment )
+			);
+			expect( gen.next( startTime ).value ).toEqual(
+				call( toTime, endTimeMoment )
+			);
+			expect( gen.next( endTime ).value ).toEqual(
+				put( actions.sync( 0, {
+					[ constants.KEY_START_TIME_INPUT ]: startTime,
+					[ constants.KEY_END_TIME_INPUT ]: endTime,
+				} ) )
+			);
 			expect( gen.next().done ).toEqual( true );
 		} );
 	} );
@@ -232,6 +329,9 @@ describe( 'Shared recurrence sagas', () => {
 			expect( gen.next( endTime ).value ).toEqual(
 				call( sagas.preventEndTimeBeforeStartTime, { actions }, { startTime, endTime }, action )
 			);
+			expect( gen.next().value ).toEqual(
+				call( sagas.handleTimeInput, { actions, selectors }, action, constants.KEY_MULTI_DAY )
+			)
 			expect( gen.next().done ).toEqual( true );
 		} );
 	} );

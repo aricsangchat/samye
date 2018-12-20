@@ -16,14 +16,14 @@ import { DateTime } from '@moderntribe/events/icons';
  */
 import EventDateTimeContent from './container';
 
-const timeZone = get( globals.common(), 'timeZone', {} );
+const timeZone = get( globals.tec(), 'timeZone', {} );
 
 export default {
 	id: 'event-datetime-content',
-	title: __( 'Event Date Time Content', 'events-gutenberg' ),
+	title: __( 'Event Date Time Content', 'the-events-calendar' ),
 	description: __(
 		'Define the date, time, and duration for your event.',
-		'events-gutenberg'
+		'the-events-calendar'
 	),
 	category: 'tribe-events',
 	keywords: [ 'event', 'events-gutenberg', 'tribe' ],

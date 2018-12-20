@@ -29,6 +29,8 @@ describe( 'shared selectors', () => {
 			_start_date_obj: {},
 			_end_date_input: '',
 			_end_date_obj: {},
+			_start_time_input: '07:30',
+			_end_time_input: '08:00',
 		};
 	} );
 

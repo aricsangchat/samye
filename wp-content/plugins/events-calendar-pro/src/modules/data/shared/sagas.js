@@ -1,14 +1,14 @@
 /**
  * External dependencies
  */
-import { put, select, call, all } from 'redux-saga/effects';
+import { put, select, call } from 'redux-saga/effects';
 
 /**
  * Internal dependencies
  */
 import * as constants from '@moderntribe/events-pro/data/blocks/constants';
 import * as recurringConstants from '@moderntribe/events-pro/data/blocks/recurring/constants';
-import { moment as momentUtil, time } from '@moderntribe/common/utils';
+import { moment as momentUtil, time as timeUtil } from '@moderntribe/common/utils';
 import { blocks } from '@moderntribe/events/data';
 
 const {
@@ -17,6 +17,8 @@ const {
 	KEY_MULTI_DAY,
 	KEY_START_TIME,
 	KEY_END_TIME,
+	KEY_START_TIME_INPUT,
+	KEY_END_TIME_INPUT,
 	KEY_START_DATE,
 	KEY_START_DATE_INPUT,
 	KEY_START_DATE_OBJ,
@@ -41,6 +43,8 @@ const {
 	toDate,
 	toDatabaseDate,
 	toDatabaseTime,
+	toTime,
+	TIME_FORMAT,
 } = momentUtil;
 
 const {
@@ -51,7 +55,7 @@ const {
 	TIME_FORMAT_HH_MM,
 	toSeconds,
 	fromSeconds,
-} = time;
+} = timeUtil;
 
 export function* handleAddition( { actions } ) {
 	const start = yield select( blocks.datetime.selectors.getStart );
@@ -63,7 +67,12 @@ export function* handleAddition( { actions } ) {
 	const startMoment = yield call( toMoment, start );
 	const endMoment = yield call( toMoment, end );
 
+	const startMomentDate = yield call( [ startMoment, 'date' ] );
+	const startWeekNum = yield call( [ Math, 'ceil' ], startMomentDate / 7 );
+	const startWeek = recurringConstants.WEEK_NUM_MAPPING_TO_WEEKS_OF_THE_MONTH[ startWeekNum ];
 	const startWeekday = yield call( [ startMoment, 'isoWeekday' ] );
+	/* startMonth is zero-indexed, January is 0, December is 11 */
+	const startMonth = yield call( [ startMoment, 'month' ] );
 
 	const startDate = yield call( toDatabaseDate, startMoment );
 	const startTime = yield call( toDatabaseTime, startMoment );
@@ -75,6 +84,9 @@ export function* handleAddition( { actions } ) {
 	const endDateInput = yield call( toDate, endMoment );
 	const endDateObj = new Date( endDateInput );
 
+	const startTimeInput = yield call( toTime, startMoment );
+	const endTimeInput = yield call( toTime, endMoment );
+
 	yield put( actions.add( {
 		[ KEY_TYPE ]: recurringConstants.SINGLE,
 		[ KEY_ALL_DAY ]: allDay,
@@ -83,19 +95,22 @@ export function* handleAddition( { actions } ) {
 		[ KEY_START_DATE_INPUT ]: startDateInput,
 		[ KEY_START_DATE_OBJ ]: startDateObj,
 		[ KEY_START_TIME ]: startTime,
+		[ KEY_START_TIME_INPUT ]: startTimeInput,
 		[ KEY_END_DATE ]: endDate,
 		[ KEY_END_DATE_INPUT ]: endDateInput,
 		[ KEY_END_DATE_OBJ ]: endDateObj,
 		[ KEY_END_TIME ]: endTime,
+		[ KEY_END_TIME_INPUT ]: endTimeInput,
 		[ KEY_BETWEEN ]: 1,
 		[ KEY_LIMIT_TYPE ]: recurringConstants.COUNT,
 		[ KEY_LIMIT ]: 7,
 		[ KEY_LIMIT_DATE_INPUT ]: endDateInput,
 		[ KEY_LIMIT_DATE_OBJ ]: endDateObj,
 		[ KEY_DAYS ]: [ startWeekday ],
-		[ KEY_WEEK ]: recurringConstants.FIRST,
+		[ KEY_WEEK ]: startWeek,
 		[ KEY_DAY ]: startWeekday,
-		[ KEY_MONTH ]: [],
+		/* KEY_MONTH is one-indexed, January is 1, December is 12 */
+		[ KEY_MONTH ]: [ startMonth + 1 ],
 		[ KEY_TIMEZONE ]: timezone,
 		[ KEY_MULTI_DAY_SPAN ]: recurringConstants.NEXT_DAY,
 	} ) );
@@ -146,6 +161,35 @@ export function* handleTimeChange( { actions, selectors }, action, key ) {
 			} )
 		);
 	}
+
+	yield call( handleTimeInput, { actions, selectors }, action, key );
+}
+
+export function* handleTimeInput( { actions, selectors }, action, key ) {
+	const payloadTime = action.payload[ key ];
+	const isAllDay = payloadTime === 'all-day';
+
+	let startTimeMoment, endTimeMoment;
+
+	if ( isAllDay ) {
+		startTimeMoment = yield call( toMoment, '00:00', TIME_FORMAT, false );
+		endTimeMoment = yield call( toMoment, '23:59', TIME_FORMAT, false );
+	} else {
+		const startTime = yield select( selectors.getStartTimeNoSeconds, action );
+		const endTime = yield select( selectors.getEndTimeNoSeconds, action );
+		startTimeMoment = yield call( toMoment, startTime, TIME_FORMAT, false );
+		endTimeMoment = yield call( toMoment, endTime, TIME_FORMAT, false );
+	}
+
+	const startTimeInput = yield call( toTime, startTimeMoment );
+	const endTimeInput = yield call( toTime, endTimeMoment );
+
+	yield put(
+		actions.sync( action.index, {
+			[ KEY_START_TIME_INPUT ]: startTimeInput,
+			[ KEY_END_TIME_INPUT ]: endTimeInput,
+		} )
+	);
 }
 
 export function* handleMultiDayChange( { actions, selectors }, action, key ) {
@@ -156,6 +200,7 @@ export function* handleMultiDayChange( { actions, selectors }, action, key ) {
 		const endTime = yield select( selectors.getEndTimeNoSeconds, action );
 
 		yield call( preventEndTimeBeforeStartTime, { actions }, { startTime, endTime }, action );
+		yield call( handleTimeInput, { actions, selectors }, action, key );
 	}
 }
 

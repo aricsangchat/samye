@@ -13,11 +13,30 @@ import * as constants from './constants';
 //
 
 export const RECURRENCE_TYPE_RULES_OPTIONS = [
-	{ label: constants.DAILY_LABEL, value: constants.DAILY },
-	{ label: constants.WEEKLY_LABEL, value: constants.WEEKLY },
-	{ label: constants.MONTHLY_LABEL, value: constants.MONTHLY },
-	{ label: constants.YEARLY_LABEL, value: constants.YEARLY },
-	{ label: constants.SINGLE_LABEL, value: constants.SINGLE },
+	{
+		label: constants.DAILY_LABEL,
+		label_plural: constants.DAILY_LABEL_PLURAL,
+		value: constants.DAILY
+	},
+	{
+		label: constants.WEEKLY_LABEL,
+		label_plural: constants.WEEKLY_LABEL_PLURAL,
+		value : constants.WEEKLY
+	},
+	{
+		label: constants.MONTHLY_LABEL,
+		label_plural: constants.MONTHLY_LABEL_PLURAL,
+		value: constants.MONTHLY
+	},
+	{
+		label: constants.YEARLY_LABEL,
+		label_plural: constants.YEARLY_LABEL_PLURAL,
+		value: constants.YEARLY
+	},
+	{
+		label: constants.SINGLE_LABEL,
+		value: constants.SINGLE
+	},
 ];
 
 //

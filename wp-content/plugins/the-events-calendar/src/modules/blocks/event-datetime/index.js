@@ -20,14 +20,14 @@ import './subblocks';
  * Module Code
  */
 
-const timeZone = get( globals.common(), 'timeZone', {} );
+const timeZone = get( globals.tec(), 'timeZone', {} );
 
 export default {
 	id: 'event-datetime',
-	title: __( 'Event Date Time', 'events-gutenberg' ),
+	title: __( 'Event Date Time', 'the-events-calendar' ),
 	description: __(
 		'Define the date, time, and duration for your event.',
-		'events-gutenberg'
+		'the-events-calendar'
 	),
 	icon: <DateTime/>,
 	category: 'tribe-events',

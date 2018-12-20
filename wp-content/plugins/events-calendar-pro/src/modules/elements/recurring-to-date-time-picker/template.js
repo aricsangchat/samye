@@ -10,20 +10,16 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { Select, TimePicker } from '@moderntribe/common/elements';
-import { TribePropTypes, time } from '@moderntribe/common/utils';
+import { time } from '@moderntribe/common/utils';
 import LabeledRow from '@moderntribe/events-pro/elements/labeled-row/element';
 import { options } from '@moderntribe/events-pro/data/blocks/recurring';
 import './style.pcss';
 
-const {
-	START_OF_DAY,
-	END_OF_DAY,
-} = time;
-
 const RecurringToDateTimePicker = ( {
 	className,
-	endTime,
+	endTimeInput,
 	isAllDay,
+	onEndTimeBlur,
 	onEndTimeChange,
 	onEndTimeClick,
 	onRecurringMultiDayChange,
@@ -37,9 +33,10 @@ const RecurringToDateTimePicker = ( {
 		label={ __( 'To', 'events-gutenberg' ) }
 	>
 		<TimePicker
-			current={ endTime }
-			start={ START_OF_DAY }
-			end={ END_OF_DAY }
+			current={ endTimeInput }
+			start={ time.START_OF_DAY }
+			end={ time.END_OF_DAY }
+			onBlur={ onEndTimeBlur }
 			onChange={ onEndTimeChange }
 			onClick={ onEndTimeClick }
 			showAllDay={ true }
@@ -59,8 +56,9 @@ const RecurringToDateTimePicker = ( {
 
 RecurringToDateTimePicker.propTypes = {
 	className: PropTypes.string,
-	endTime: TribePropTypes.timeFormat,
+	endTimeInput: PropTypes.string,
 	isAllDay: PropTypes.bool,
+	onEndTimeBlur: PropTypes.func,
 	onEndTimeChange: PropTypes.func,
 	onEndTimeClick: PropTypes.func,
 	onRecurringMultiDayChange: PropTypes.func,

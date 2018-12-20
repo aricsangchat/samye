@@ -1,3 +1,5 @@
+*3.8.0.2
+*course js version change
 *3.8.0.1
 *wplms default users
 *ptbr updated

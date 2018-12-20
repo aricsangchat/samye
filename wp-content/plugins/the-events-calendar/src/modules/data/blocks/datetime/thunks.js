@@ -4,6 +4,8 @@
 import {
 	setStartDateTime,
 	setEndDateTime,
+	setStartTimeInput,
+	setEndTimeInput,
 	setAllDay as setAllDayAction,
 	setMultiDay as setMultiDayAction,
 	setSeparatorDate,
@@ -21,20 +23,24 @@ const {
 	isSameDay,
 	parseFormats,
 	toDateTime,
+	toTime,
 } = moment;
 
 export const setInitialState = ( { get, attributes } ) => ( dispatch ) => {
 	const timeZone = get( 'timeZone', DEFAULT_STATE.timeZone );
-	const defaultTimeZone = get( 'timeZoneLabel', timeZone );
+	const timeZoneLabel = get( 'timeZoneLabel', timeZone );
 
+	/**
+	 * @todo: remove maybeBuildDispatch, dispatch declaratively instead
+	 */
 	maybeBulkDispatch( attributes, dispatch )( [
 		[ setStartDateTime, 'start', DEFAULT_STATE.start ],
 		[ setEndDateTime, 'end', DEFAULT_STATE.end ],
 		[ setAllDayAction, 'allDay', DEFAULT_STATE.allDay ],
 		[ setSeparatorDate, 'separatorDate', DEFAULT_STATE.dateTimeSeparator ],
 		[ setSeparatorTime, 'separatorTime', DEFAULT_STATE.timeRangeSeparator ],
-		[ setTimeZone, 'timeZone', DEFAULT_STATE.timeZone ],
-		[ setTimeZoneLabel, 'timeZoneLabel', defaultTimeZone ],
+		[ setTimeZone, 'timeZone', timeZoneLabel ],
+		[ setTimeZoneLabel, 'timeZoneLabel', timeZoneLabel ],
 		[ setTimeZoneVisibility, 'showTimeZone', DEFAULT_STATE.showTimeZone ],
 	] );
 
@@ -44,16 +50,20 @@ export const setInitialState = ( { get, attributes } ) => ( dispatch ) => {
 	};
 
 	if ( attributes.start ) {
-		values.start = toDateTime( parseFormats( attributes.start ) );
+		const startMoment = parseFormats( attributes.start );
+		values.start = toDateTime( startMoment );
+		const startTimeInput = toTime( startMoment );
 		dispatch( setStartDateTime( values.start ) );
+		dispatch( setStartTimeInput( startTimeInput ) );
 	}
-
 	if ( attributes.end ) {
-		values.end = toDateTime( parseFormats( attributes.end ) );
+		const endMoment = parseFormats( attributes.end );
+		values.end = toDateTime( endMoment );
+		const endTimeInput = toTime( endMoment );
 		dispatch( setEndDateTime( values.end ) );
+		dispatch( setEndTimeInput( endTimeInput ) );
 	}
 
 	dispatch( setNaturalLanguageLabel( date.rangeToNaturalLanguage( values.start, values.end ) ) );
-
 	dispatch( setMultiDayAction( ! isSameDay( values.start, values.end ) ) );
 };

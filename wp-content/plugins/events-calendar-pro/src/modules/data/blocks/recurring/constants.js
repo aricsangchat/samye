@@ -18,6 +18,12 @@ export const DAILY_LABEL = __( 'Day', 'events-gutenberg' );
 export const WEEKLY_LABEL = __( 'Week', 'events-gutenberg' );
 export const MONTHLY_LABEL = __( 'Month', 'events-gutenberg' );
 export const YEARLY_LABEL = __( 'Year', 'events-gutenberg' );
+
+export const DAILY_LABEL_PLURAL = __( 'Days', 'events-gutenberg' );
+export const WEEKLY_LABEL_PLURAL = __( 'Weeks', 'events-gutenberg' );
+export const MONTHLY_LABEL_PLURAL = __( 'Months', 'events-gutenberg' );
+export const YEARLY_LABEL_PLURAL = __( 'Years', 'events-gutenberg' );
+
 export const SINGLE_LABEL = __( 'Single Recurrence', 'events-gutenberg' );
 
 export const RECURRENCE_TYPES = [ DAILY, WEEKLY, MONTHLY, YEARLY, SINGLE ];
@@ -134,6 +140,13 @@ export const FIFTH_LABEL = __( 'Fifth', 'events-gutenberg' );
 export const LAST_LABEL = __( 'Last', 'events-gutenberg' );
 
 export const WEEKS_OF_THE_MONTH = [ FIRST, SECOND, THIRD, FOURTH, FIFTH, LAST ];
+export const WEEK_NUM_MAPPING_TO_WEEKS_OF_THE_MONTH = {
+	1: FIRST,
+	2: SECOND,
+	3: THIRD,
+	4: FOURTH,
+	5: FIFTH,
+};
 
 //
 // ─── MONTHS OF THE YEAR ─────────────────────────────────────────────────────────

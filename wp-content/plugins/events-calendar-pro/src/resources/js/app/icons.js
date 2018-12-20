@@ -87,6 +87,13 @@ var tribe = typeof tribe === "object" ? tribe : {}; tribe["events-pro"] = tribe[
 /************************************************************************/
 /******/ ({
 
+/***/ 10:
+/***/ (function(module, exports) {
+
+module.exports = React;
+
+/***/ }),
+
 /***/ 102:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -94,7 +101,7 @@ var tribe = typeof tribe === "object" ? tribe : {}; tribe["events-pro"] = tribe[
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: external "React"
-var external_React_ = __webpack_require__(9);
+var external_React_ = __webpack_require__(10);
 var external_React_default = /*#__PURE__*/__webpack_require__.n(external_React_);
 
 // CONCATENATED MODULE: ./src/modules/icons/arrow.svg
@@ -179,13 +186,6 @@ function recurrence_objectWithoutProperties(obj, keys) {
 
 
 
-
-/***/ }),
-
-/***/ 9:
-/***/ (function(module, exports) {
-
-module.exports = React;
 
 /***/ })
 

@@ -40,6 +40,14 @@ describe( '[STORE] - UI types', () => {
 		expect( constants.KEY_END_TIME ).toEqual( 'end_time' );
 	} );
 
+	test( 'key start time input', () => {
+		expect( constants.KEY_START_TIME_INPUT ).toEqual( '_start_time_input' );
+	} );
+
+	test( 'key end time input', () => {
+		expect( constants.KEY_END_TIME_INPUT ).toEqual( '_end_time_input' );
+	} );
+
 	test( 'key start date', () => {
 		expect( constants.KEY_START_DATE ).toEqual( 'start_date' );
 	} );

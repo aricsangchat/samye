@@ -53,6 +53,11 @@ export const getStartTimeNoSeconds = createSelector(
 	( startTime ) => startTime.slice( 0, -3 ),
 );
 
+export const getStartTimeInput = createSelector(
+	[ getRule ],
+	( rule ) => rule[ constants.KEY_START_TIME_INPUT ],
+);
+
 export const getEndDate = createSelector(
 	[ getRule ],
 	( rule ) => rule[ constants.KEY_END_DATE ],
@@ -76,6 +81,11 @@ export const getEndTime = createSelector(
 export const getEndTimeNoSeconds = createSelector(
 	[ getEndTime ],
 	( endTime ) => endTime.slice( 0, -3 ),
+);
+
+export const getEndTimeInput = createSelector(
+	[ getRule ],
+	( rule ) => rule[ constants.KEY_END_TIME_INPUT ],
 );
 
 export const getBetween = createSelector(

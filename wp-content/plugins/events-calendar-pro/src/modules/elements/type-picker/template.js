@@ -26,7 +26,9 @@ const TypePicker = ( {
 	options,
 	rowLabel,
 	selected,
+	isPlural
 } ) => {
+
 	const getFrequencySelect = () => (
 		selected &&
 			selected.value !== recurringConstants.SINGLE &&
@@ -39,6 +41,10 @@ const TypePicker = ( {
 				/>
 			)
 	);
+
+	const getOptionLabel = ( option ) => {
+		return isPlural && option.label_plural ? option.label_plural : option.label;
+	}
 
 	return (
 		<LabeledRow
@@ -53,6 +59,7 @@ const TypePicker = ( {
 				isSearchable={ false }
 				options={ options }
 				onChange={ onChange }
+				getOptionLabel={ getOptionLabel }
 			/>
 		</LabeledRow>
 	);

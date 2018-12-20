@@ -4,7 +4,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import moment from 'moment';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -13,39 +12,31 @@ import { __ } from '@wordpress/i18n';
 import { TimePicker } from '@moderntribe/common/elements';
 import LabeledRow from '@moderntribe/events-pro/elements/labeled-row/element';
 import MultiDayCheckbox from '@moderntribe/events-pro/elements/multi-day-checkbox/element';
-import { TribePropTypes, time, moment as momentUtil } from '@moderntribe/common/utils';
+import { time } from '@moderntribe/common/utils';
 import './style.pcss';
-
-const {
-	MINUTE_IN_SECONDS,
-	HALF_HOUR_IN_SECONDS,
-	DAY_IN_SECONDS,
-	START_OF_DAY,
-	END_OF_DAY,
-	TIME_FORMAT_HH_MM,
-	toSeconds,
-	fromSeconds,
-} = time;
 
 const FromTimeRangePicker = ( {
 	className,
-	endTime,
+	endTimeInput,
 	isAllDay,
 	isMultiDay,
+	onEndTimeBlur,
 	onEndTimeChange,
 	onEndTimeClick,
 	onMultiDayChange,
+	onStartTimeBlur,
 	onStartTimeChange,
 	onStartTimeClick,
-	startTime,
+	startTimeInput,
 } ) => {
 	const getStartTimePickerProps = () => {
 		const props = {
-			current: startTime,
+			current: startTimeInput,
+			onBlur: onStartTimeBlur,
 			onChange: onStartTimeChange,
 			onClick: onStartTimeClick,
-			start: START_OF_DAY,
-			end: END_OF_DAY,
+			start: time.START_OF_DAY,
+			end: time.END_OF_DAY,
 			showAllDay: false,
 			allDay: isAllDay,
 		};
@@ -54,11 +45,12 @@ const FromTimeRangePicker = ( {
 
 	const getEndTimePickerProps = () => {
 		const props = {
-			current: endTime,
+			current: endTimeInput,
+			onBlur: onEndTimeBlur,
 			onChange: onEndTimeChange,
 			onClick: onEndTimeClick,
-			start: START_OF_DAY,
-			end: END_OF_DAY,
+			start: time.START_OF_DAY,
+			end: time.END_OF_DAY,
 			disabled: isMultiDay,
 			showAllDay: false,
 			allDay: isAllDay,
@@ -94,15 +86,17 @@ const FromTimeRangePicker = ( {
 
 FromTimeRangePicker.propTypes = {
 	className: PropTypes.string,
-	endTime: TribePropTypes.timeFormat,
+	endTimeInput: PropTypes.string,
 	isAllDay: PropTypes.bool,
 	isMultiDay: PropTypes.bool,
+	onEndTimeBlur: PropTypes.func,
 	onEndTimeChange: PropTypes.func,
 	onEndTimeClick: PropTypes.func,
 	onMultiDayChange: PropTypes.func,
+	onStartTimeBlur: PropTypes.func,
 	onStartTimeChange: PropTypes.func,
 	onStartTimeClick: PropTypes.func,
-	startTime: TribePropTypes.timeFormat,
+	startTimeInput: PropTypes.string,
 };
 
 export default FromTimeRangePicker;

@@ -2353,9 +2353,9 @@ if ( ! class_exists( 'BP_Course_Rest_Course_Controller' ) ) {
 	        	foreach($comments as $comment)
 	      	 	{	
 	      	 		
-	      	 		if(empty($users[$comment->user_id])){
-	      	 			$this->users[$comment->user_id] = 1;
-	      	 			$comment->user=$this->fetch_user($comment->user_id);	
+	      	 		if(empty($users[$comment->user_id])){	      	 			 
+	      	 			$this->users[$comment->user_id]=$this->fetch_user($comment->user_id);	
+	      	 			$comment->user=$this->users[$comment->user_id];
 	      	 		}else{
 	      	 			$comment->user=$this->users[$comment->user_id];	
 	      	 		}
@@ -2382,10 +2382,11 @@ if ( ! class_exists( 'BP_Course_Rest_Course_Controller' ) ) {
       	 	foreach($comments as $comment)
       	 	{
       	 		if(empty($this->users[$comment->user_id])){
-      	 			$this->users[$comment->user_id] = 1;
-      	 			$comment->user=$this->fetch_user($comment->user_id);	
+      	 			$this->users[$comment->user_id]=$this->fetch_user($comment->user_id);	
+      	 			$comment->user=$this->users[$comment->user_id];
       	 		}else{
-      	 			$comment->user=$this->users[$comment->user_id];	
+      	 			$comment->user = $this->users[$comment->user_id];	
+      	 			
       	 		}
       	 		$comment->comment_date=strtotime($comment->comment_date);
       	 		$comment_tree[]=$comment;
@@ -2454,6 +2455,8 @@ if ( ! class_exists( 'BP_Course_Rest_Course_Controller' ) ) {
 							    'comment_parent'=>$parent_id,
 							    	    
 							);
+							$parent_user_id=get_comment($parent_id, ARRAY_A)['user_id'];
+
 
 							if( $new_comment_id=wp_insert_comment($comment_data) )
 							{	
@@ -2463,6 +2466,18 @@ if ( ! class_exists( 'BP_Course_Rest_Course_Controller' ) ) {
 									'comment_id'=>$new_comment_id, 
 									'message'=>_x('Replied on comment.','API message','vibe'),
 									'comment_data'=>$structured_comment);
+
+								// do_action('wplms_course_unit_comment',$unit_id,$user_id,$comment_id,$args);
+								//for updates in app purpose  start
+								$tracker_object = BP_Course_Rest_Tracker_Controller::init();
+								$tracker = $tracker_object->get_user_tracker($parent_user_id);
+								if(empty($tracker['updates'])){
+									$tracker['updates']=array();
+								}
+								$tracker_object->user_tracker=$tracker;
+								$tracker_object->user_tracker['updates'][] = array('time'=>time(),'content'=>sprintf(_x(' %s replied on your comment on unit %s ','API message','vibe'),bp_core_get_user_displayname($this->user_id),get_the_title($unit_id)));
+								$tracker_object->update_user_tracker($parent_user_id);
+
 
 								return 	new WP_REST_Response( $data, 200 );
 
@@ -2500,6 +2515,9 @@ if ( ! class_exists( 'BP_Course_Rest_Course_Controller' ) ) {
 									'comment_id'=>$new_comment_id, 
 									'message'=>_x('Comment added.','API message','vibe'),
 									'comment_data'=>$structured_comment);
+								
+								do_action('wplms_course_unit_comment',$unit_id,$user_id,$new_comment_id,$args);  
+								
 								return 	new WP_REST_Response( $data, 200 );
 							}
 							else

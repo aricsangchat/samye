@@ -32,11 +32,14 @@ const {
 	KEY_END_DATE_INPUT,
 	KEY_END_DATE_OBJ,
 	KEY_END_TIME,
+	KEY_END_TIME_INPUT,
 } = constants;
 
 const {
 	toMoment,
 	toDatabaseDate,
+	toTime24Hr,
+	TIME_FORMAT,
 } = momentUtil;
 
 const { TIME_FORMAT_HH_MM, fromSeconds } = timeUtil;
@@ -54,8 +57,17 @@ const onEndDateChange = ( ownProps, edit, end ) => (
 	}
 );
 
+const onEndTimeBlur = ( ownProps, edit, endTimeNoSeconds ) => ( e ) => {
+	let endTimeMoment = toMoment( e.target.value, TIME_FORMAT, false );
+	if ( ! endTimeMoment.isValid() ) {
+		endTimeMoment = toMoment( endTimeNoSeconds, TIME_FORMAT, false );
+	}
+	const endTime = toTime24Hr( endTimeMoment );
+	edit( ownProps.index, { [ KEY_END_TIME ]: endTime } );
+};
+
 const onEndTimeChange = ( ownProps, edit ) => ( e ) => (
-	edit( ownProps.index, { [ KEY_END_TIME ]: e.target.value } )
+	edit( ownProps.index, { [ KEY_END_TIME_INPUT ]: e.target.value } )
 );
 
 const onEndTimeClick = ( ownProps, edit ) => ( value, onClose ) => {
@@ -73,6 +85,7 @@ const mapStateToProps = ( state, ownProps ) => {
 		end: blocks.datetime.selectors.getEnd( state ),
 		endDate: selectors.getEndDateInput( state, ownProps ),
 		endTime: selectors.getEndTimeNoSeconds( state, ownProps ),
+		endTimeInput: selectors.getEndTimeInput( state, ownProps ),
 		isAllDay: selectors.getAllDay( state, ownProps ),
 	};
 };
@@ -91,7 +104,7 @@ const mapDispatchToProps = ( dispatch, ownProps ) => {
 };
 
 const mergeProps = ( stateProps, dispatchProps, ownProps ) => {
-	const { end, ...restStateProps } = stateProps;
+	const { end, endTime, ...restStateProps } = stateProps;
 	const { edit, ...restDispatchProps } = dispatchProps;
 
 	return {
@@ -99,6 +112,7 @@ const mergeProps = ( stateProps, dispatchProps, ownProps ) => {
 		...restStateProps,
 		...restDispatchProps,
 		onEndDateChange: onEndDateChange( ownProps, edit, end ),
+		onEndTimeBlur: onEndTimeBlur( ownProps, edit, endTime ),
 	};
 }
 

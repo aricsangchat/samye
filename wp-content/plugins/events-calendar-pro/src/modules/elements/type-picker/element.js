@@ -25,12 +25,28 @@ const getSelected = ( state, ownProps ) => {
 	const selectors = ownProps.blockType === RECURRING
 		? recurringSelectors
 		: exceptionSelectors;
+
 	return selectors.getTypeOption( state, ownProps );
 };
 
-const mapStateToProps = ( state, ownProps ) => ( {
-	selected: getSelected( state, ownProps ),
-} );
+const getFrequency = ( state, ownProps ) => {
+	const selectors = ownProps.blockType === RECURRING
+		? recurringSelectors
+		: exceptionSelectors;
+
+	return selectors.getBetween( state, ownProps );
+}
+
+const mapStateToProps = ( state, ownProps ) => {
+
+	const frequency = getFrequency( state, ownProps );
+	const isPlural  = frequency > 1;
+
+	return {
+		selected : getSelected( state, ownProps ),
+		isPlural : isPlural
+	}
+};
 
 const mapDispatchToProps = ( dispatch, ownProps ) => {
 	const edit = ownProps.blockType === RECURRING

@@ -16,6 +16,8 @@ exports[`shared selectors getEndDateObj 1`] = `Object {}`;
 
 exports[`shared selectors getEndTime 1`] = `"08:00:00"`;
 
+exports[`shared selectors getEndTimeInput 1`] = `"08:00"`;
+
 exports[`shared selectors getEndTimeNoSeconds 1`] = `"08:00"`;
 
 exports[`shared selectors getLimit 1`] = `7`;
@@ -36,10 +38,12 @@ exports[`shared selectors getRule 1`] = `
 Object {
   "_end_date_input": "",
   "_end_date_obj": Object {},
+  "_end_time_input": "08:00",
   "_limit_date_input": "",
   "_limit_date_obj": Object {},
   "_start_date_input": "",
   "_start_date_obj": Object {},
+  "_start_time_input": "07:30",
   "all_day": false,
   "between": 1,
   "day": 1,
@@ -66,6 +70,8 @@ exports[`shared selectors getStartDateInput 1`] = `""`;
 exports[`shared selectors getStartDateObj 1`] = `Object {}`;
 
 exports[`shared selectors getStartTime 1`] = `"07:30:00"`;
+
+exports[`shared selectors getStartTimeInput 1`] = `"07:30"`;
 
 exports[`shared selectors getStartTimeNoSeconds 1`] = `"07:30"`;
 
