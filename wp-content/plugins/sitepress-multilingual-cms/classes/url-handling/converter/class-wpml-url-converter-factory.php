@@ -73,9 +73,6 @@ class WPML_URL_Converter_Factory {
 		$home_url = new WPML_URL_Converter_Url_Helper();
 		$wpml_url_converter->set_url_helper( $home_url );
 
-		$tax_permalink_filters = new WPML_Tax_Permalink_Filters( $wpml_url_converter );
-		$tax_permalink_filters->add_hooks();
-
 		return $wpml_url_converter;
 	}
 
@@ -119,11 +116,11 @@ class WPML_URL_Converter_Factory {
 		$wpml_fix_url_domain = new WPML_Lang_Domain_Filters(
 			$wpml_url_converter,
 			$wpml_wp_api,
-			new WPML_Debug_BackTrace( $wpml_wp_api->phpversion(), 7 )
+			new WPML_Debug_BackTrace( $wpml_wp_api->phpversion(), 10 )
 		);
 		$wpml_fix_url_domain->add_hooks();
 
-		$xdomain_data_parser = new WPML_XDomain_Data_Parser( $this->settings );
+		$xdomain_data_parser = new WPML_XDomain_Data_Parser( $this->settings, new WPML_Data_Encryptor() );
 		$xdomain_data_parser->init_hooks();
 
 		return $wpml_url_converter;

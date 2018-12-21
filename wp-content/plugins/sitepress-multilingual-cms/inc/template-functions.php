@@ -626,7 +626,7 @@ function wpml_cf_translation_preferences( $id, $custom_field = false, $class = '
 			$output .= '
 <fieldset id="wpml_cf_translation_preferences_fieldset_' . $id . '" class="wpml_cf_translation_preferences_fieldset ' . $class . '-form-fieldset form-fieldset fieldset">' . '<legend>' . __( 'Translation preferences', 'sitepress' ) . '</legend>';
 		}
-		$actions  = array( 'ignore' => 0, 'copy' => 1, 'translate' => 2 );
+		$actions  = array( 'ignore' => 0, 'copy' => 1, 'translate' => 2, 'copy-once' => 3 );
 		$action   = isset( $actions[ @strval( $default_value ) ] ) ? $actions[ @strval( $default_value ) ] : 0;
 		$disabled = false;
 		if ( $custom_field ) {
@@ -674,11 +674,13 @@ function wpml_cf_translation_preferences( $id, $custom_field = false, $class = '
 		);
 
 		$output .= '<ul><li>';
-		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_ignore_', '0', __( 'Do nothing', 'sitepress' ) );
+		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_ignore_', WPML_IGNORE_CUSTOM_FIELD, __( "Don't translate", 'sitepress' ) );
 		$output .= '</li><li>';
-		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_copy_', '1', __( 'Copy from original', 'sitepress' ) );
+		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_copy_', WPML_COPY_CUSTOM_FIELD, __( "Copy from original to translation", 'sitepress' ) );
 		$output .= '</li><li>';
-		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_translate_', '2', __( 'Translate', 'sitepress' ) );
+		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_copy_once_', WPML_COPY_ONCE_CUSTOM_FIELD, __( "Copy once", 'sitepress' ) );
+		$output .= '</li><li>';
+		$output .= wpml_translation_preference_input_helper( $args, 'wpml_cf_translation_preferences_option_translate_', WPML_TRANSLATE_CUSTOM_FIELD, __( "Translate", 'sitepress' ) );
 		$output .= '</li></ul>';
 
 		if ( $custom_field && $ajax ) {
@@ -695,40 +697,6 @@ function wpml_cf_translation_preferences( $id, $custom_field = false, $class = '
 	}
 
 	return $output;
-}
-
-/**
- *
- * @deprecated It will be removed in WPML 3.8.0
- *
- * @since 3.7.0
- *
- * @param $id
- * @param $custom_field
- *
- * @return bool
- */
-function wpml_cf_translation_preferences_store( $id, $custom_field ) {
-	if ( defined( 'WPML_TM_VERSION' ) ) {
-		if ( empty( $id ) || empty( $custom_field )
-		     || ! isset( $_POST[ 'wpml_cf_translation_preferences' ][ $id ] )
-		) {
-			return false;
-		}
-		$custom_field = sanitize_text_field( $custom_field );
-		$action       = (int) $_POST[ 'wpml_cf_translation_preferences' ][ $id ];
-		/** @var TranslationManagement $iclTranslationManagement */
-		global $iclTranslationManagement;
-		if ( ! empty( $iclTranslationManagement ) ) {
-			$iclTranslationManagement->settings[ 'custom_fields_translation' ][ $custom_field ] = $action;
-			$iclTranslationManagement->save_settings();
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	return false;
 }
 
 /**
@@ -877,7 +845,7 @@ function wpml_wpcf_meta_box_order_defaults( $boxes ) {
  * @return string
  */
 function wpml_custom_post_translation_options() {
-	global $sitepress, $sitepress_settings;
+	global $sitepress;
 	$type_id = isset( $_GET['wpcf-post-type'] ) ? $_GET['wpcf-post-type'] : '';
 
 	$out = '';
@@ -885,22 +853,20 @@ function wpml_custom_post_translation_options() {
 	$type = get_post_type_object( $type_id );
 
 	$translated = $sitepress->is_translated_post_type( $type_id );
-	if ( defined( 'WPML_TM_VERSION' ) ) {
-		$link  = admin_url( 'admin.php?page=' . WPML_TM_FOLDER . '/menu/main.php&sm=mcsetup#icl_custom_posts_sync_options' );
-		$link2 = admin_url( 'admin.php?page=' . WPML_TM_FOLDER . '/menu/main.php&sm=mcsetup#icl_slug_translation' );
-	} else {
-		$link  = admin_url( 'admin.php?page=' . ICL_PLUGIN_FOLDER . '/menu/translation-options.php#icl_custom_posts_sync_options' );
-		$link2 = admin_url( 'admin.php?page=' . ICL_PLUGIN_FOLDER . '/menu/translation-options.php#icl_slug_translation' );
-	}
+
+	$link  = WPML_Admin_URL::multilingual_setup( 7 );
+	$link2 = WPML_Admin_URL::multilingual_setup( 4 );
 
 	if ( $translated ) {
 
 		$out .= sprintf( __( '%s is translated via WPML. %sClick here to change translation options.%s', 'sitepress' ), '<strong>' . $type->labels->singular_name . '</strong>', '<a href="' . $link . '">', '</a>' );
 
-		if ( $type->rewrite['enabled'] ) {
+		if ( $type->rewrite['enabled'] && class_exists( 'WPML_ST_Post_Slug_Translation_Settings' ) ) {
 
-			if ( $sitepress_settings['posts_slug_translation']['on'] ) {
-				if ( empty( $sitepress_settings['posts_slug_translation']['types'][ $type_id ] ) ) {
+			$settings = new WPML_ST_Post_Slug_Translation_Settings( $sitepress );
+
+			if ( $settings->is_enabled() ) {
+				if ( ! $settings->is_translated( $type_id ) ) {
 					$out .= '<ul><li>' . __( 'Slugs are currently not translated.', 'sitepress' ) . '<li></ul>';
 				} else {
 					$out .= '<ul><li>' . __( 'Slugs are currently translated. Click the link above to edit the translations.', 'sitepress' ) . '<li></ul>';
@@ -1365,20 +1331,20 @@ function wpml_elements_without_translations_filter($element_ids = array(), $args
 }
 
 /**
+ * @deprecated Use the filter hook `wpml_permalink` instead
+ *
  * Filters a WordPress permalink and converts it to a language specific permalink based on plugin settings
- * @since            3.2.2
- * @type string      $url The WordPress generated url to filter
- * @type null|string $language_code
- *                   (if null, it falls back to default language for root page, or current language in all other cases)
+ *
+ * @since 3.2.2
+ *
+ * @param string      $url           The WordPress generated url to filter
+ * @param null|string $language_code if null, it falls back to default language for root page,
+ *                                   or current language in all other cases.
+ *
  * @return string
- * @use \SitePress::api_hooks
  */
-function wpml_permalink_filter($permalink, $language_code = null) {
-	global $sitepress;
-	if(isset($sitepress)) {
-		$permalink = $sitepress->convert_url( $permalink, $language_code );
-	}
-	return $permalink;
+function wpml_permalink_filter( $url, $language_code = null ) {
+	return apply_filters( 'wpml_permalink', $url, $language_code );
 }
 
 /**

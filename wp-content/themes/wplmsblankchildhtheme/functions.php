@@ -11,7 +11,7 @@ function meta_wp_enqueue_scripts() {
     wp_register_script( 'slickslider', '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js', array('jquery'), META_VER, true );
     wp_enqueue_script( 'slickslider' );
 
-    wp_enqueue_style( 'customstyles', get_stylesheet_directory_uri() . 'assets/css/source.css' );
+    wp_enqueue_style( 'customstyles', get_stylesheet_directory_uri() . '/assets/css/source.css' );
 }
 
 add_action( 'wp_enqueue_scripts', 'meta_wp_enqueue_scripts', 20 );

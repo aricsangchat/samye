@@ -97,22 +97,15 @@ class WPML_Term_Translation extends WPML_Element_Translation {
 	 * @since 3.2.3
 	 */
 	public function get_taxonomy_post_types( $taxonomy ) {
-		global $wp_taxonomies;
-
-		$post_types = array();
-		if ( isset( $wp_taxonomies[ $taxonomy ] ) && isset( $wp_taxonomies[ $taxonomy ]->object_type ) ) {
-			$post_types = $wp_taxonomies[ $taxonomy ]->object_type;
-		}
-
-		return $post_types;
+		return WPML_WP_Taxonomy::get_linked_post_types( $taxonomy );
 	}
 
 	protected function get_element_join() {
 
-		return "FROM {$this->wpdb->prefix}icl_translations t
+		return "FROM {$this->wpdb->prefix}icl_translations wpml_translations
 				JOIN {$this->wpdb->term_taxonomy} tax
-					ON t.element_id = tax.term_taxonomy_id
-						AND t.element_type = CONCAT('tax_', tax.taxonomy)";
+					ON wpml_translations.element_id = tax.term_taxonomy_id
+						AND wpml_translations.element_type = CONCAT('tax_', tax.taxonomy)";
 	}
 
 	protected function get_type_prefix() {
@@ -122,7 +115,7 @@ class WPML_Term_Translation extends WPML_Element_Translation {
 	private function maybe_warm_term_id_cache() {
 
 		if ( ! isset( $this->ttids ) || ! isset( $this->term_ids ) ) {
-			$data           = $this->wpdb->get_results( "	SELECT t.element_id, tax.term_id, tax.taxonomy
+			$data           = $this->wpdb->get_results( "	SELECT wpml_translations.element_id, tax.term_id, tax.taxonomy
 													 " . $this->get_element_join() . "
 													 JOIN {$this->wpdb->terms} terms
 													  ON terms.term_id = tax.term_id
@@ -137,5 +130,20 @@ class WPML_Term_Translation extends WPML_Element_Translation {
 				$this->term_ids[ $row['element_id'] ]               = $row['term_id'];
 			}
 		}
+	}
+
+	/**
+	 * @param $term
+	 * @param string $slug
+	 * @param $taxonomy
+	 * @param $lang_code
+	 *
+	 * @return string
+	 */
+	public function generate_unique_term_slug( $term, $slug = '', $taxonomy, $lang_code ) {
+		if ( '' === trim( $slug ) ) {
+			$slug = sanitize_title( $term );
+		}
+		return WPML_Terms_Translations::term_unique_slug( $slug, $taxonomy, $lang_code );
 	}
 }

@@ -20,11 +20,11 @@ class icl_cache{
                 $this->data = array();
             }
 			
-			add_action( 'shutdown', array( $this, 'save_cache_if_requred' ) );
+			add_action( 'shutdown', array( $this, 'save_cache_if_required' ) );
         }
     }
 	
-	function save_cache_if_requred( ) {
+	function save_cache_if_required( ) {
 		if( $this->cache_needs_saving ) {
 	        icl_cache_set($this->name.'_cache_class', $this->data);
 			$this->cache_needs_saving = false;
@@ -115,7 +115,7 @@ if ( ! function_exists( 'icl_cache_set' ) ) {
 
 if ( ! function_exists( 'icl_cache_clear' ) ) {
 	function icl_cache_clear( $key = false, $key_as_prefix = false ) {
-		if ( empty( $switched ) && ! icl_disable_cache() ) {
+		if ( ! icl_disable_cache() ) {
 			/**
 			 * @var WPML_Term_Translation $wpml_term_translations
 			 * @var WPML_Post_Translation $wpml_post_translations

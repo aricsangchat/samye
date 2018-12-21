@@ -9,8 +9,10 @@
  * @abstract
  */
 
-abstract class WPML_Request extends WPML_URL_Converter_User {
+abstract class WPML_Request {
 
+	/** @var  WPML_URL_Converter */
+	protected $url_converter;
 	protected $active_languages;
 	protected $default_language;
 	protected $qs_lang_cache;
@@ -24,8 +26,8 @@ abstract class WPML_Request extends WPML_URL_Converter_User {
 	 * @param WPML_Cookie        $cookie
 	 * @param WPML_WP_API        $wp_api
 	 */
-	public function __construct( &$url_converter, $active_languages, $default_language, $cookie, $wp_api ) {
-		parent::__construct( $url_converter );
+	public function __construct( $url_converter, $active_languages, $default_language, $cookie, $wp_api ) {
+		$this->url_converter    = $url_converter;
 		$this->active_languages = $active_languages;
 		$this->default_language = $default_language;
 		$this->cookie           = $cookie;
@@ -101,22 +103,36 @@ abstract class WPML_Request extends WPML_URL_Converter_User {
 	/**
 	 * Sets the language code of the current screen in the User's _icl_current_language cookie
 	 *
+	 * When user is not logged we must set cookie with JS to avoid issues with cached pages
+	 *
 	 * @param string $lang_code
 	 */
 	public function set_language_cookie( $lang_code ) {
-		$cookie_name = $this->get_cookie_name();
-		if ( ! $this->cookie->headers_sent() ) {
-			if ( preg_match( '@\.(css|js|png|jpg|gif|jpeg|bmp)@i',
-					basename( preg_replace( '@\?.*$@', '', $_SERVER['REQUEST_URI'] ) ) )
-			     || isset( $_POST['icl_ajx_action'] ) || isset( $_POST['_ajax_nonce'] ) || defined( 'DOING_AJAX' )
-			) {
-				return;
-			}
+		global $sitepress;
 
-			$cookie_domain = $this->get_cookie_domain();
-			$cookie_path   = defined( 'COOKIEPATH' ) ? COOKIEPATH : '/';
-			$this->cookie->set_cookie( $cookie_name, $lang_code, time() + DAY_IN_SECONDS, $cookie_path, $cookie_domain );
+		$cookie_name = $this->get_cookie_name();
+
+		if ( is_user_logged_in() ) {
+			if ( ! $this->cookie->headers_sent() ) {
+				if ( preg_match( '@\.(css|js|png|jpg|gif|jpeg|bmp)@i',
+						basename( preg_replace( '@\?.*$@', '', $_SERVER['REQUEST_URI'] ) ) )
+				     || isset( $_POST['icl_ajx_action'] ) || isset( $_POST['_ajax_nonce'] ) || defined( 'DOING_AJAX' )
+				) {
+					return;
+				}
+
+				$current_cookie_value = $this->cookie->get_cookie( $cookie_name );
+				if ( ! $current_cookie_value || $current_cookie_value !== $lang_code) {
+					$cookie_domain = $this->get_cookie_domain();
+					$cookie_path   = defined( 'COOKIEPATH' ) ? COOKIEPATH : '/';
+					$this->cookie->set_cookie( $cookie_name, $lang_code, time() + DAY_IN_SECONDS, $cookie_path, $cookie_domain );
+				}
+			}
+		} else if ( $sitepress->get_setting( WPML_Cookie_Setting::COOKIE_SETTING_FIELD ) ) {
+			$wpml_cookie_scripts = new WPML_Cookie_Scripts( $cookie_name, $sitepress->get_current_language() );
+			$wpml_cookie_scripts->add_hooks();
 		}
+
 		$_COOKIE[ $cookie_name ] = $lang_code;
 
 		do_action( 'wpml_language_cookie_added', $lang_code );

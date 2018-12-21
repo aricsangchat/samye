@@ -28,7 +28,7 @@
 		$dir         = dirname( $file );
 
 		echo '<tr>';
-		echo '<td><i class="icon18 ' . esc_attr( $plugin_data['slug'] ) . '"></i>' . esc_html( $plugin_name ) . '</td>';
+		echo '<td><i class="otgs-ico-' . esc_attr( $plugin_data['slug'] ) . '"></i> ' . esc_html( $plugin_name ) . '</td>';
 		echo '<td align="right">';
 		if ( empty( $plugin_data['plugin'] ) ) {
 			echo esc_html__( 'Not installed', 'sitepress' );
@@ -54,13 +54,25 @@
 	?>
 
     <p style="margin-top: 20px;">
-		<?php printf( esc_html__( 'For advanced access or to completely uninstall WPML and remove all language information, use the %stroubleshooting%s page.', 'sitepress' ), '<a href="' . esc_url( admin_url( 'admin.php?page=' . ICL_PLUGIN_FOLDER . '/menu/troubleshooting.php' ) ) . '">', '</a>' ); ?>
+		<?php printf( esc_html__( 'For advanced access or to completely uninstall WPML and remove all language information, use the %stroubleshooting%s page.', 'sitepress' ), '<a href="' . esc_url( admin_url( 'admin.php?page=' . WPML_PLUGIN_FOLDER . '/menu/troubleshooting.php' ) ) . '">', '</a>' ); ?>
     </p>
 
     <p style="margin-top: 20px;">
-		<?php printf( esc_html__( 'For retrieving debug information if asked by support person, use the %sdebug information%s page.', 'sitepress' ), '<a href="' . esc_url( admin_url( 'admin.php?page=' . ICL_PLUGIN_FOLDER . '/menu/debug-information.php' ) ) . '">', '</a>' ); ?>
+		<?php printf( esc_html__( 'For retrieving debug information if asked by support person, use the %sdebug information%s page.', 'sitepress' ), '<a href="' . esc_url( admin_url( 'admin.php?page=' . WPML_PLUGIN_FOLDER . '/menu/debug-information.php' ) ) . '">', '</a>' ); ?>
     </p>
 
-	<?php do_action( 'wpml_support_page_after' ); ?>
+	<?php
+	$support_info_factory = new WPML_Support_Info_UI_Factory();
+	$support_info_ui      = $support_info_factory->create();
+	echo $support_info_ui->show();
+
+  $xml_config_log_factory = new WPML_XML_Config_Log_Factory();
+	$xml_config_log_ui = $xml_config_log_factory->create_ui();
+	echo $xml_config_log_ui->show();
+
+	do_action( 'wpml_support_page_after' );
+
+	do_action( 'otgs_render_installer_support_link' );
+	?>
 
 </div>

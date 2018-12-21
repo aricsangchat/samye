@@ -9,9 +9,9 @@ class WPML_Taxonomy_Element_Language_Dropdown {
 		<div id="dashboard-widgets" class="metabox-holder">
 		<div class="postbox-container" style="width: 99%;line-height:normal;">
 
-	<div id="icl_<?php echo $type ?>_lang" class="postbox" style="line-height:normal;">
+	<div id="icl_<?php echo esc_attr( $type ); ?>_lang" class="postbox" style="line-height:normal;">
 		<h3 class="hndle">
-			<span><?php echo __ ( 'Language', 'sitepress' ) ?></span>
+			<span><?php echo esc_html__( 'Language', 'sitepress' ) ?></span>
 		</h3>
 		<div class="inside" style="padding: 10px;">
 
@@ -22,7 +22,7 @@ class WPML_Taxonomy_Element_Language_Dropdown {
 		$disabled         = count ( $active_languages ) === 1 ? ' disabled="disabled" ' : '';
 		?>
 
-		<select name="icl_<?php echo $type ?>_language" <?php echo $disabled ?>>
+		<select name="icl_<?php echo esc_attr( $type ); ?>_language" <?php echo $disabled ?>>
 
 			<?php
 			echo $this->add_options ( $active_languages, $selected_language );
@@ -33,10 +33,13 @@ class WPML_Taxonomy_Element_Language_Dropdown {
 					continue;
 				} ?>
 				<option
-					value="<?php echo $lang[ 'code' ] ?>"<?php if ( $selected_language === $lang[ 'code' ] ): ?> selected="selected"<?php endif; ?>><?php echo $lang[ 'display_name' ] ?></option>
+					value="<?php echo esc_attr( $lang[ 'code' ] ); ?>"<?php if ( $selected_language === $lang[ 'code' ] ): ?> selected="selected"<?php endif; ?>><?php echo esc_html( $lang[ 'display_name' ] ); ?></option>
 			<?php endforeach; ?>
 		</select>
-		<?php
+		<?php if ( $disabled ) { ?>
+			<input type="hidden" name="icl_<?php echo esc_attr( $type ) ?>_language"
+			       value="<?php echo esc_attr( $selected_language ); ?>"/>
+		<?php }
 	}
 
 	private function filter_allowed_languages( $active_languages, $selected_language ) {
@@ -52,7 +55,7 @@ class WPML_Taxonomy_Element_Language_Dropdown {
 
 		foreach ( $active_languages as $lang ) {
 			if ( $lang[ 'code' ] === $selected_language ) {
-				$html .= '<option value="' . $selected_language . '" selected="selected">' . $lang[ 'display_name' ] . '</option>';
+				$html .= '<option value="' . esc_attr( $selected_language ) . '" selected="selected">' . esc_html( $lang[ 'display_name' ] ) . '</option>';
 			}
 		}
 

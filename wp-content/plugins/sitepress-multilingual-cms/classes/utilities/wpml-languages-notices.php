@@ -30,24 +30,28 @@ class WPML_Languages_Notices {
 	}
 
 	public function missing_languages( $not_found_languages ) {
+		$list_items = array();
 		if ( $not_found_languages ) {
+			$list_item_pattern = __( '%s (current locale: %s) - suggested locale(s): %s', 'sitepress' );
+
+			foreach ( (array) $not_found_languages as $not_found_language ) {
+				$suggested_codes = $this->get_suggestions( $not_found_language );
+				if ( $suggested_codes ) {
+					$suggestions = '<strong>' . implode( '</strong>, <strong>', $suggested_codes ) . '</strong>';
+					$current     = $not_found_language['code'];
+					if ( $not_found_language['default_locale'] ) {
+						$current = $not_found_language['default_locale'];
+					}
+					$list_items[] = sprintf( $list_item_pattern, $not_found_language['display_name'], $current, $suggestions );
+				}
+			}
+		}
+		if ( $list_items ) {
 			$text = '';
 
 			$text .= '<p>';
 			$text .= __( 'WordPress cannot automatically download translations for the following languages:', 'sitepress' );
 			$text .= '</p>';
-
-			$list_items        = array();
-			$list_item_pattern = __( '%s (current locale: %s) - suggested locale(s): %s', 'sitepress' );
-
-			foreach ( (array) $not_found_languages as $not_found_language ) {
-				$suggestions = '<strong>' . implode( '</strong>, <strong>', $this->get_suggestions( $not_found_language ) ) . '</strong>';
-				$current     = $not_found_language['code'];
-				if ( $not_found_language['default_locale'] ) {
-					$current = $not_found_language['default_locale'];
-				}
-				$list_items[] = sprintf( $list_item_pattern, $not_found_language['display_name'], $current, $suggestions );
-			}
 
 			$text .= '<ul>';
 			$text .= '<li>';
@@ -55,7 +59,7 @@ class WPML_Languages_Notices {
 			$text .= '</li>';
 			$text .= '</ul>';
 
-			$languages_edit_url  = admin_url( '?page=sitepress-multilingual-cms/menu/languages.php&trop=1' );
+			$languages_edit_url = admin_url( '?page=' . WPML_PLUGIN_FOLDER . '/menu/languages.php&trop=1' );
 			$languages_edit_link = '<a href="' . $languages_edit_url . '">';
 			$languages_edit_link .= __( 'Edit Languages', 'sitepress' );
 			$languages_edit_link .= '</a>';
@@ -66,15 +70,16 @@ class WPML_Languages_Notices {
 
 			$notice = new WPML_Notice( self::NOTICE_ID_MISSING_DOWNLOADED_LANGUAGES, $text, self::NOTICE_GROUP );
 			$notice->set_css_class_types( 'warning' );
-			$notice->add_display_callback( array( $this, 'is_languages_edit_page' ) );
+			$notice->add_display_callback( array( $this, 'is_not_languages_edit_page' ) );
+			$notice->set_dismissible( true );
 			$this->admin_notices->add_notice( $notice, true );
 		} else {
 			$this->admin_notices->remove_notice( self::NOTICE_GROUP, self::NOTICE_ID_MISSING_DOWNLOADED_LANGUAGES );
 		}
 	}
 
-	public function is_languages_edit_page() {
-		$result = isset( $_GET['page'], $_GET['trop'] ) && 'sitepress-multilingual-cms/menu/languages.php' === $_GET['page'] && 1 === (int) $_GET['trop'];
+	public function is_not_languages_edit_page() {
+		$result = isset( $_GET['page'], $_GET['trop'] ) && WPML_PLUGIN_FOLDER . '/menu/languages.php' === $_GET['page'] && 1 === (int) $_GET['trop'];
 
 		return ! $result;
 	}
@@ -98,10 +103,6 @@ class WPML_Languages_Notices {
 					$suggestions[] = $default_locale;
 				}
 			}
-		}
-
-		if ( ! $suggestions ) {
-			$suggestions[] = _x( 'None', 'Suggested default locale', 'sitepress' );
 		}
 
 		return $suggestions;

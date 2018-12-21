@@ -14,7 +14,7 @@ class WPML_Simple_Language_Selector extends WPML_SP_User {
 															'id'                 => '',
 															'name'               => '',
 															'show_please_select' => true,
-															'please_select_text' => __( '-- Please select --', 'wpml-string-translation' ),
+															'please_select_text' => __( '-- Please select --', 'sitepress' ),
 															'selected'           => '',
 															'echo'               => false,
 															'class'              => '',
@@ -22,7 +22,7 @@ class WPML_Simple_Language_Selector extends WPML_SP_User {
 															'show_flags'         => true,
 															'languages'          => null,
 															'disabled'           => false,
-															'style'              => 'width:80%',
+															'style'              => '',
 														), $options );
 
 		if ( $options['languages'] ) {

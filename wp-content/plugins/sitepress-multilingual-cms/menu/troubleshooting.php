@@ -1,6 +1,6 @@
 <?php
 
-include_once ICL_PLUGIN_PATH . '/inc/functions-troubleshooting.php';
+include_once WPML_PLUGIN_PATH . '/inc/functions-troubleshooting.php';
 
 /* DEBUG ACTION */
 /**
@@ -299,9 +299,10 @@ if ( isset( $action ) && wp_verify_nonce( $nonce, $action ) ) {
 		case 'icl_fix_terms_count':
 			global $sitepress;
 
-			remove_filter('get_terms_args', array($sitepress, 'get_terms_args_filter'));
-			$has_get_term_filter = remove_filter('get_term', array($sitepress,'get_term_adjust_id'), 1);
-			remove_filter('terms_clauses', array($sitepress,'terms_clauses'));
+			$has_get_terms_args_filter = remove_filter( 'get_terms_args', array( $sitepress, 'get_terms_args_filter' ) );
+			$has_get_term_filter       = remove_filter( 'get_term', array( $sitepress, 'get_term_adjust_id' ), 1 );
+			$has_terms_clauses_filter  = remove_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ) );
+
 			foreach ( get_taxonomies( array(), 'names' ) as $taxonomy ) {
 
 				$terms_objects = get_terms( $taxonomy, 'hide_empty=0'  );
@@ -311,11 +312,17 @@ if ( isset( $action ) && wp_verify_nonce( $nonce, $action ) ) {
 				}
 
 			}
-			add_filter('terms_clauses', array($sitepress,'terms_clauses'));
+
+			if ( $has_terms_clauses_filter) {
+				add_filter( 'terms_clauses', array( $sitepress, 'terms_clauses' ), 10, 3 );
+			}
 			if ( $has_get_term_filter ) {
 				add_filter( 'get_term', array( $sitepress, 'get_term_adjust_id' ), 1, 1 );
 			}
-			add_filter('get_terms_args', array($sitepress, 'get_terms_args_filter'), 10, 2);
+			if ( $has_get_terms_args_filter ) {
+				add_filter( 'get_terms_args', array( $sitepress, 'get_terms_args_filter' ), 10, 2 );
+			}
+
 			exit;
 		case 'icl_remove_st_db_cache_logs' :
 			delete_option( 'wpml-st-persist-errors' );
@@ -603,9 +610,9 @@ echo '</textarea>';
 	  <?php
     $twig_cache_disabled  = (bool) get_option( $otgs_twig_cache_disable_key, false );
 	  $twig_cache_new_value = ! $twig_cache_disabled;
-	  $twig_cache_label     = __( 'Disable cache for language switcher templates' );
+	  $twig_cache_label     = __( 'Disable cache for language switcher templates' , 'sitepress' );
 	  if ( $twig_cache_disabled ) {
-		  $twig_cache_label = __( 'Enable cache for language switcher templates' );
+		  $twig_cache_label = __( 'Enable cache for language switcher templates' , 'sitepress' );
 	  }
 	  ?>
 		<input type="hidden" id="otgs_twig_cache_new_value" class="otgs_twig_cache_new_value" value="<?php echo $twig_cache_new_value; ?>"/>
@@ -633,6 +640,15 @@ echo '</textarea>';
 	<?php if(SitePress_Setup::setup_complete()) { ?>
 		<?php do_action('wpml_troubleshooting_after_setup_complete_cleanup_begin'); ?>
 		<?php do_action('before_setup_complete_troubleshooting_functions'); ?>
+	<p>
+		<select name="wpml_post_type">
+			<?php foreach ( $sitepress->get_translatable_documents() as $key => $translatable_document ) : ?>
+			<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $translatable_document->label ); ?></option>
+			<?php endforeach; ?>
+		</select>
+		<input id="wpml_sync_posts_taxonomies" type="button" class="button-secondary" value="<?php esc_html_e( 'Synchronize posts taxonomies', 'sitepress' ); ?>"/> <span class="wpml-notice"></span><br/>
+		<small style="margin-left:10px;"><?php esc_html_e( 'This will assign the same taxonomy terms as the source for each post translation.', 'sitepress' ); ?></small>
+	</p>
 	<p>
 		<input id="icl_cache_clear" type="button" class="button-secondary" value="<?php _e( 'Clear the cache in WPML', 'sitepress' ) ?>"/><br/>
 		<small style="margin-left:10px;"><?php _e( 'This may solve issues like missing languages in the language switcher.', 'sitepress' ) ?></small>
@@ -796,7 +812,7 @@ echo WPML_Troubleshooting_Terms_Menu::display_terms_with_suffix();
 			<p><?php _e( 'This function is available through the Network Admin section.', 'sitepress' ); ?></p>
 			<?php if ( current_user_can( 'manage_sites' ) ) { ?>
 				<a href="<?php echo esc_url(
-					network_admin_url( 'admin.php?page=' . ICL_PLUGIN_FOLDER . '/menu/network.php' )
+					network_admin_url( 'admin.php?page=' . WPML_PLUGIN_FOLDER . '/menu/network.php' )
 				) ?>"><?php _e( 'Go to WPML Network settings.', 'sitepress' ) ?></a>
 				<p><small><?php _e( 'Note: WPML must be activated on the primary site or must be network activated.', 'sitepress' ); ?></small></p>
 			<?php } else { ?>

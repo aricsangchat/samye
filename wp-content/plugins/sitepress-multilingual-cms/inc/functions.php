@@ -46,13 +46,29 @@ function wpml_site_uses_icl() {
  *
  * @return bool|mixed
  * @since      3.1
- * @deprecated 3.2 use 'wpml_setting' filter instead
+ * @deprecated 3.2 use `\wpml_setting` or 'wpml_get_setting_filter' filter instead
  */
 function icl_get_setting( $key, $default = false ) {
-    global $sitepress_settings;
-    $sitepress_settings = isset($sitepress_settings) ? $sitepress_settings : get_option('icl_sitepress_settings');
+	return wpml_get_setting( $key, $default );
+}
 
-    return isset( $sitepress_settings[ $key ] ) ? $sitepress_settings[ $key ] : $default;
+/**
+ * Get a WPML setting value
+ * If the Main SitePress Class cannot be accessed by the function it will read the setting from the database
+ * It will return `$default` if the requested key is not set
+ *
+ * @param mixed|null $default      Required. The value to return if the settings key does not exist.
+ *                                 (typically it's false, but you may want to use something else)
+ * @param string     $key          The settings name key to return the value of
+ *
+ * @return mixed The value of the requested setting, or `$default`
+ * @since 4.1
+ */
+function wpml_get_setting( $key, $default = null ) {
+	global $sitepress_settings;
+	$sitepress_settings = isset( $sitepress_settings ) ? $sitepress_settings : get_option( 'icl_sitepress_settings' );
+
+	return isset( $sitepress_settings[ $key ] ) ? $sitepress_settings[ $key ] : $default;
 }
 
 /**
@@ -64,18 +80,18 @@ function icl_get_setting( $key, $default = false ) {
  * @param mixed|false $default     Required. The value to return if the settings key does not exist.
  *                                 (typically it's false, but you may want to use something else)
  * @param string      $key         The settings name key to return the value of
- * @param mixed       $deprecated  Deprecated param.
- *
- * @todo  [WPML 3.3] Remove deprecated argument
  *
  * @return mixed The value of the requested setting, or $default
  * @since 3.2
  * @use \SitePress::api_hooks
  */
-function wpml_get_setting_filter( $default, $key, $deprecated = null ) {
-    $default = $deprecated !== null && !$default ? $deprecated : $default;
+function wpml_get_setting_filter( $default, $key ) {
+	$args = func_get_args();
+	if ( count( $args ) > 2 && $args[2] !== null ) {
+		$default = $args[2];
+	}
 
-    return icl_get_setting($key, $default);
+	return wpml_get_setting( $key, $default );
 }
 
 /**
@@ -121,17 +137,23 @@ function wpml_get_sub_setting_filter( $default, $key, $sub_key, $deprecated = nu
  * @param string $key
  * @param mixed  $value
  * @param bool   $save_now Must call icl_save_settings() to permanently store the value
+ *
+ * @return bool Always True. If `$save_now === true`, it returns the result of `update_option`
  */
 function icl_set_setting( $key, $value, $save_now = false ) {
 	global $sitepress_settings;
+
+	$result = true;
 
 	$sitepress_settings[ $key ] = $value;
 
 	if ( $save_now === true ) {
 		//We need to save settings anyway, in this case
-		update_option( 'icl_sitepress_settings', $sitepress_settings );
+	  $result = update_option( 'icl_sitepress_settings', $sitepress_settings );
 		do_action( 'icl_save_settings', $sitepress_settings );
 	}
+
+	return $result;
 }
 
 function icl_save_settings() {
@@ -154,9 +176,8 @@ function icl_get_settings() {
  * @return array
  */
 function icl_plugin_action_links( $links, $file ) {
-	$this_plugin = basename( ICL_PLUGIN_PATH ) . '/sitepress.php';
-	if ( $file == $this_plugin ) {
-		$links[ ] = '<a href="admin.php?page=' . basename( ICL_PLUGIN_PATH ) . '/menu/languages.php">' . __( 'Configure', 'sitepress' ) . '</a>';
+	if ( $file == WPML_PLUGIN_BASENAME ) {
+		$links[ ] = '<a href="admin.php?page=' . WPML_PLUGIN_FOLDER . '/menu/languages.php">' . __( 'Configure', 'sitepress' ) . '</a>';
 	}
 
 	return $links;
@@ -177,6 +198,15 @@ if ( ! function_exists( 'icl_js_escape' ) ) {
 
 		return $str;
 	}
+}
+
+function wpml_get_site_id() {
+	static $site_id;
+
+	if ( ! $site_id ) {
+		$site_id = new WPML_Site_ID();
+	}
+	return $site_id->get_site_id();
 }
 
 function _icl_tax_has_objects_recursive( $id, $term_id = - 1, $rec = 0 ) {
@@ -241,31 +271,20 @@ function _icl_trash_restore_prompt() {
 function icl_pop_info( $message, $icon = 'info', $args = array() ) {
 	switch ( $icon ) {
 		case 'info':
-			$icon = ICL_PLUGIN_URL . '/res/img/info.png';
+			$icon = 'otgs-ico-info';
 			break;
 		case 'question':
-			$icon = ICL_PLUGIN_URL . '/res/img/question1.png';
+			$icon = 'otgs-ico-help';
 			break;
 	}
 
-	$defaults = array(
-		'icon_size' => 16,
-		'but_style' => array()
-	);
-	extract( $defaults );
 	extract( $args, EXTR_OVERWRITE );
-
-	/** @var $but_style array */
-	/** @var $icon_size string */
-
-	$close_icon = ICL_PLUGIN_URL . '/res/img/ico-close.png';
 	?>
 	<div class="icl_pop_info_wrap">
-		<img class="icl_pop_info_but <?php echo esc_attr( join( ' ', $but_style ) ); ?>" src="<?php echo esc_url( $icon ); ?>"
-		     width="<?php echo esc_attr( $icon_size ) ?>" height="<?php echo esc_attr( $icon_size ); ?>" alt="info"/>
+		<a class="<?php echo $icon ;?> icl_pop_info_but"></a>
 
 		<div class="icl_cyan_box icl_pop_info">
-			<img class="icl_pop_info_but_close" align="right" src="<?php echo esc_url( $close_icon ); ?>" width="12" height="12" alt="x"/>
+			<span class="icl_pop_info_but_close otgs-ico-close"></span>
 			<?php echo $message; ?>
 		</div>
 	</div>
@@ -508,9 +527,9 @@ function is_not_installing_plugins() {
 		return true;
 	} elseif ( $_REQUEST[ 'action' ] != 'activate' && $_REQUEST[ 'action' ] != 'activate-selected' ) {
 		return true;
-	} elseif ( ( ! isset( $_REQUEST[ 'plugin' ] ) || $_REQUEST[ 'plugin' ] != basename( ICL_PLUGIN_PATH ) . '/' . basename( __FILE__ ) ) && ! in_array( ICL_PLUGIN_FOLDER . '/' . basename( __FILE__ ), $checked ) ) {
+	} elseif ( ( ! isset( $_REQUEST[ 'plugin' ] ) || $_REQUEST[ 'plugin' ] != WPML_PLUGIN_FOLDER . '/' . basename( __FILE__ ) ) && ! in_array( WPML_PLUGIN_FOLDER . '/' . basename( __FILE__ ), $checked ) ) {
 		return true;
-	} elseif ( in_array( ICL_PLUGIN_FOLDER . '/' . basename( __FILE__ ), $checked ) && ! isset( $sitepress ) ) {
+	} elseif ( in_array( WPML_PLUGIN_FOLDER . '/' . basename( __FILE__ ), $checked ) && ! isset( $sitepress ) ) {
 		return true;
 	}
 
@@ -550,14 +569,14 @@ function wpml_version_is( $version_to_check, $comparison = '==' ) {
  */
 function icl_suppress_activation() {
 	$active_plugins    = get_option( 'active_plugins' );
-	$icl_sitepress_idx = array_search( ICL_PLUGIN_FOLDER . '/sitepress.php', $active_plugins );
+	$icl_sitepress_idx = array_search( WPML_PLUGIN_BASENAME, $active_plugins );
 	if ( false !== $icl_sitepress_idx ) {
 		unset( $active_plugins[ $icl_sitepress_idx ] );
 		update_option( 'active_plugins', $active_plugins );
 		unset( $_GET[ 'activate' ] );
 		$recently_activated = get_option( 'recently_activated' );
-		if ( ! isset( $recently_activated[ ICL_PLUGIN_FOLDER . '/sitepress.php' ] ) ) {
-			$recently_activated[ ICL_PLUGIN_FOLDER . '/sitepress.php' ] = time();
+		if ( ! isset( $recently_activated[ WPML_PLUGIN_BASENAME ] ) ) {
+			$recently_activated[ WPML_PLUGIN_BASENAME ] = time();
 			update_option( 'recently_activated', $recently_activated );
 		}
 	}
@@ -568,11 +587,9 @@ function icl_suppress_activation() {
  */
 function activate_installer( $sitepress = null ) {
 	// installer hook - start
-	include_once ICL_PLUGIN_PATH . '/vendor/otgs/installer/loader.php'; //produces global variable $wp_installer_instance
+	include_once WPML_PLUGIN_PATH . '/vendor/otgs/installer/loader.php'; //produces global variable $wp_installer_instance
 	$args = array(
 		'plugins_install_tab' => 1,
-		'high_priority'       => 1,
-
 	);
 
 	if ( $sitepress ) {
@@ -722,4 +739,52 @@ if ( ! function_exists( 'wp_parse_url' ) ) {
  */
 function wpml_http_build_query( $query_data ) {
 	return http_build_query( $query_data, '', '&' );
+}
+
+/**
+ * @param array $array
+ * @param int   $sort_flags
+ *
+ * @uses \wpml_array_unique_fallback
+ *
+ * @return array
+ */
+function wpml_array_unique( $array, $sort_flags = SORT_REGULAR ) {
+	if ( version_compare( phpversion(), '5.2.9', '>=' ) ) {
+		return array_unique( $array, $sort_flags );
+	}
+
+	return wpml_array_unique_fallback( $array, true );
+}
+
+/**
+ * @param $array
+ * @param $keep_key_assoc
+ *
+ * @see \wpml_array_unique
+ *
+ * @return array
+ */
+function wpml_array_unique_fallback( $array, $keep_key_assoc ) {
+	$duplicate_keys = array();
+	$tmp            = array();
+
+	foreach ( $array as $key => $val ) {
+		// convert objects to arrays, in_array() does not support objects
+		if ( is_object( $val ) ) {
+			$val = (array) $val;
+		}
+
+		if ( ! in_array( $val, $tmp ) ) {
+			$tmp[] = $val;
+		} else {
+			$duplicate_keys[] = $key;
+		}
+	}
+
+	foreach ( $duplicate_keys as $key ) {
+		unset( $array[ $key ] );
+	}
+
+	return $keep_key_assoc ? $array : array_values( $array );
 }

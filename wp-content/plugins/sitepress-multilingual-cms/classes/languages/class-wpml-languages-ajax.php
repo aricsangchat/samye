@@ -78,9 +78,16 @@ class WPML_Languages_AJAX {
 					$wpml_languages_notices = new WPML_Languages_Notices( wpml_get_admin_notices() );
 					$wpml_languages_notices->maybe_create_notice_missing_menu_items( count( $lang_codes ) );
 					$wpml_languages_notices->missing_languages( $wpml_localization->get_not_founds() );
+
+					if( class_exists( 'WPML_TM_Translation_Priorities' ) && $this->sitepress->is_setup_complete() ){
+						WPML_TM_Translation_Priorities::insert_missing_default_terms();
+					}
+
 				}
 				$failed = false;
 			}
+
+			icl_cache_clear();
 
 			/** @deprecated Use `wpml_update_active_languages` instead */
 			do_action( 'icl_update_active_languages' );

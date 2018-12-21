@@ -7,12 +7,12 @@ class WPML_URL_Converter_Subdir_Strategy extends WPML_URL_Converter_Abstract_Str
 	/** @var array copy of $sitepress->get_settings( 'urls' ) */
 	private $urls_settings;
 
-	/** @var string */
+	/** @var string|bool */
 	private $root_url;
 
 	/** @var array map of wpml codes to custom codes*/
-	private $language_codes_map = array();
-	private $language_codes_reverse_map = array();
+	private $language_codes_map;
+	private $language_codes_reverse_map;
 
 	/**
 	 * @param string $dir_default
@@ -105,7 +105,33 @@ class WPML_URL_Converter_Subdir_Strategy extends WPML_URL_Converter_Abstract_Str
 			}
 		}
 
-		return $this->slash_helper->maybe_user_trailingslashit( $source_url, 'untrailingslashit' );
+		return $this->slash_helper->maybe_user_trailingslashit( $source_url );
+	}
+
+	public function convert_admin_url_string( $source_url, $lang ) {
+		return $source_url; // Admin strings should not be converted with language in directories
+	}
+
+	/**
+	 * @param string $url
+	 * @param string $language
+	 *
+	 * @return string
+	 */
+	public function get_home_url_relative( $url, $language ) {
+
+		$language = ! $this->dir_default && $language === $this->default_language ? '' : $language;
+		$language = isset( $this->language_codes_map[ $language ] ) ? $this->language_codes_map[ $language ] : $language;
+
+		if ( $language ) {
+			$parts = parse_url( get_option( 'home' ) );
+			$path  = isset( $parts['path'] ) ? $parts['path'] : '';
+			$url   = preg_replace( '@^' . $path . '@', '', $url );
+
+			return rtrim( $path, '/' ) . '/' . $language . $url;
+		} else {
+			return $url;
+		}
 	}
 
 	/**
@@ -123,21 +149,31 @@ class WPML_URL_Converter_Subdir_Strategy extends WPML_URL_Converter_Abstract_Str
 			! empty( $this->urls_settings['directory_for_default_language'] )
 		) {
 
-			if ( ! $this->root_url ) {
-				$root_post = get_post( $this->urls_settings['root_page'] );
-
-				if ( $root_post ) {
-					$this->root_url = trailingslashit( $this->get_url_helper()->get_abs_home() ) . $root_post->post_name;
-					$this->root_url = trailingslashit( $this->root_url );
-				} else {
-					$this->root_url = false;
-				}
+			$root_url = $this->get_root_url();
+			if ( $root_url ) {
+				$result = strpos( trailingslashit( $url ), $root_url ) === 0;
 			}
-
-			$result = strpos( trailingslashit( $url ), $this->root_url ) === 0;
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @return string|bool
+	 */
+	private function get_root_url() {
+		if ( null === $this->root_url ) {
+			$root_post = get_post( $this->urls_settings['root_page'] );
+
+			if ( $root_post ) {
+				$this->root_url = trailingslashit( $this->get_url_helper()->get_abs_home() ) . $root_post->post_name;
+				$this->root_url = trailingslashit( $this->root_url );
+			} else {
+				$this->root_url = false;
+			}
+		}
+
+		return $this->root_url;
 	}
 
 	/**
