@@ -1,4 +1,102 @@
 header {
     box-shadow: none !important;
     background-color: $primary-color !important;
+    height: 75px;
+
+    @media only screen and (min-width: 768px) {
+        height: 100px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.menu-main-menu-container {
+    position: relative;
+    left: 25px;
+    
+    #menu-main-menu-1 {
+        position: relative;
+        top: 28px;
+    }
+
+    #new_searchicon {
+        font-size: 29px;
+        position: relative;
+        top: -13px;
+    }
+    
+    ul {
+        a {
+            color: $white !important;
+        }
+    }
+}
+
+.login-menu {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+
+    li {
+        display: inline-block;
+    }
+}
+
+header #trigger {
+    top: 24px;
+
+    @media only screen and (min-width: 768px) {
+        top: 34px;
+    }
+}
+
+#trigger .lines {
+    width: 35px;
+}
+
+#trigger .lines:after, #trigger .lines:before {
+    width: 35px;
+}
+
+#trigger .lines:before {
+    top: 10px;
+}
+
+#trigger .lines:after {
+    top: -10px;
+}
+
+#trigger .lines, #trigger .lines:before, #trigger .lines:after {
+    background: $white !important;
+}
+
+.logo-wrapper {
+    background-color: $white;
+    width: 150px;
+    height: 75px;
+    position: absolute;
+    border-bottom: 0px solid $secondary-color;
+    z-index: 1;
+    padding: 24px 20px;
+    
+    @media only screen and (min-width: 768px) {
+        background-color: $white;
+        width: 220px;
+        height: 144px;
+        position: absolute;
+        border-bottom: 5px solid $secondary-color;
+        z-index: 1;
+        padding: 45px 20px;
+    }
+
+    .logo {
+
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    
 }

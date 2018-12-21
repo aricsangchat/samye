@@ -3,8 +3,30 @@
 
 ?>
 <div class="pagesidebar">
-    <div class="sidebarcontent">    
-        <a id="close_menu_sidebar" title="Close"><span></span></a>
+    <div class="sidebarcontent">   
+        <?php
+            if ( function_exists('bp_loggedin_user_link') && is_user_logged_in() ) :
+                ?>
+                <ul class="login-menu">
+                    <li><a href="<?php bp_loggedin_user_link(); ?>" class="smallimg vbplogin"><?php $n=vbp_current_user_notification_count(); echo ((isset($n) && $n)?'<em></em>':''); bp_loggedin_user_avatar( 'type=full' ); ?></a></li>
+                    <?php do_action('wplms_header_top_login'); ?>
+                </ul>
+            <?php
+            else :
+                ?>
+                <ul class="login-menu">
+                    <li><a href="#login" class="vbplogin"><?php _e('Login','vibe'); ?></a></li>
+                    <li><?php 
+                        $enable_signup = apply_filters('wplms_enable_signup',0);
+                        if ( $enable_signup ) : 
+                        $registration_link = apply_filters('wplms_buddypress_registration_link',site_url( BP_REGISTER_SLUG . '/' ));
+                        printf( __( '<a href="%s" class="vbpregister" title="'.__('Create an account','vibe').'">'.__('Sign Up','vibe').'</a> ', 'vibe' ), $registration_link );
+                    endif; ?>
+                    </li>
+                </ul>
+            <?php
+            endif;
+        ?> 
         <?php
             $args = apply_filters('wplms-mobile-menu',array(
                 'theme_location'  => 'mobile-menu',

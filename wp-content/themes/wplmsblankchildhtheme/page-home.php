@@ -5,27 +5,7 @@ get_header(vibe_get_header());
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 ?>
-<section id="title">
-    <?php do_action('wplms_before_title'); ?>
-    <div class="<?php echo vibe_get_container(); ?>">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="pagetitle">
-                    <?php
-                        $breadcrumbs=get_post_meta(get_the_ID(),'vibe_breadcrumbs',true);
-                        if(vibe_validate($breadcrumbs) || empty($breadcrumbs))
-                            vibe_breadcrumbs(); 
 
-                        $title=get_post_meta(get_the_ID(),'vibe_title',true);
-                        if(vibe_validate($title) || empty($title)){
-                    ?>
-                    <h1><?php the_title(); ?></h1>
-                    <?php the_sub_title(); }?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <?php
 
     $v_add_content = get_post_meta( $post->ID, '_add_content', true );
@@ -37,22 +17,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-            <img src="http://placehold.jp/1500x500.png" alt="...">
-            <div class="carousel-caption">
-                <p>Caption</p>
-            </div>
+                <div class="carousel-image" style="background-image: url(http://placehold.jp/1500x480.png)"></div>
+                <div class="carousel-caption">
+                    <p>Caption</p>
+                </div>
             </div>
             <div class="item">
-            <img src="http://placehold.jp/1500x500.png" alt="...">
-            <div class="carousel-caption">
-            <p>Caption</p>
-            </div>
+                <div class="carousel-image" style="background-image: url(http://placehold.jp/1500x480.png)"></div>
+                <div class="carousel-caption">
+                    <p>Caption</p>
+                </div>
             </div>
         </div>
 

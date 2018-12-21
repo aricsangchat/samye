@@ -16,5 +16,4 @@ function meta_wp_enqueue_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'meta_wp_enqueue_scripts', 20 );
 
-
 ?>

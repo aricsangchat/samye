@@ -24,25 +24,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-4">
                         <?php
-
-                            if(is_front_page()){
-                                echo '<h1 id="logo">';
-                            }else{
-                                echo '<h2 id="logo">';
-                            }
-
                             $url = apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header');
-                            if(!empty($url)){
                         ?>
-                            <a href="<?php echo vibe_site_url(); ?>"><img src="<?php  echo $url; ?>" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a>
-                        <?php
-                            }
-                            if(is_front_page()){
-                                echo '</h1>';
-                            }else{
-                                echo '</h2>';
-                            }
-                        ?>
+                        <div class="logo-wrapper">
+                            <a class="logo" href="<?php echo vibe_site_url(); ?>"><img src="<?php  echo $url; ?>" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a>
+                        </div>
                     </div>
                     <div class="col-md-9 col-sm-9 col-xs-8">
                         <?php
@@ -55,6 +41,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                                  'fallback_cb'     => 'vibe_set_menu'
                              ));
                             wp_nav_menu( $args ); 
+
+                            
+                            
                         ?>
 
                         <?php
@@ -79,7 +68,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                                 </ul>
                             <?php
                             endif;
-                                
                             ?>
                         <a id="trigger">
                             <span class="lines"></span>
