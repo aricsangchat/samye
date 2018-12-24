@@ -1,1 +1,116 @@
-body{background-color:#fff !important}.button-wrapper{width:100%;text-align:center}.primary-btn{background-color:#b83029;color:#fff;text-transform:uppercase;padding:12px 35px}.secondary-btn{background-color:#fff;color:#b83029;text-transform:uppercase;padding:12px 35px;display:inline-block}header{box-shadow:none !important;background-color:#b83029 !important;height:75px}@media only screen and (min-width: 768px){header{height:100px}}header img{width:100%;height:auto}.menu-main-menu-container{position:relative;left:25px}.menu-main-menu-container #menu-main-menu-1,.menu-main-menu-container #menu-main-menu{position:relative;top:28px}.menu-main-menu-container #new_searchicon{font-size:29px;position:relative;top:-13px}.menu-main-menu-container ul a{color:#fff !important}.login-menu{position:absolute;top:10px;right:0px}.login-menu li{display:inline-block}header #trigger{top:24px}@media only screen and (min-width: 768px){header #trigger{top:34px}}#trigger .lines{width:35px}#trigger .lines:after,#trigger .lines:before{width:35px}#trigger .lines:before{top:10px}#trigger .lines:after{top:-10px}#trigger .lines,#trigger .lines:before,#trigger .lines:after{background:#fff !important}.logo-wrapper{background-color:#fff;width:150px;height:75px;position:absolute;border-bottom:0px solid #ffb931;z-index:1;padding:24px 20px}@media only screen and (min-width: 768px){.logo-wrapper{background-color:#fff;width:220px;height:144px;position:absolute;border-bottom:5px solid #ffb931;z-index:1;padding:45px 20px}}.carousel-image{width:100%;height:480px;background-repeat:no-repeat;background-size:cover;background-position:center}.default-text-block{padding:95px 0}.default-text-block .primary-btn{float:right}.program-group-block{background-color:#b83029;padding:55px 0}.program-group-block h2,.program-group-block p{color:#fff}
+body {
+  background-color: #fff !important; }
+
+.button-wrapper {
+  width: 100%;
+  text-align: center; }
+
+.primary-btn {
+  background-color: #b83029;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 12px 35px; }
+
+.secondary-btn {
+  background-color: #fff;
+  color: #b83029;
+  text-transform: uppercase;
+  padding: 12px 35px;
+  display: inline-block; }
+
+header {
+  box-shadow: none !important;
+  background-color: #b83029 !important;
+  height: 75px; }
+  @media only screen and (min-width: 768px) {
+    header {
+      height: 100px; } }
+  header img {
+    width: 100%;
+    height: auto; }
+
+.menu-main-menu-container {
+  position: relative;
+  left: 25px; }
+  .menu-main-menu-container #menu-main-menu-1, .menu-main-menu-container #menu-main-menu {
+    position: relative;
+    top: 28px; }
+  .menu-main-menu-container #new_searchicon {
+    font-size: 29px;
+    position: relative;
+    top: -13px; }
+  .menu-main-menu-container ul a {
+    color: #fff !important; }
+
+.login-menu {
+  position: absolute;
+  top: 10px;
+  right: 0px; }
+  .login-menu li {
+    display: inline-block; }
+
+header #trigger {
+  top: 24px; }
+  @media only screen and (min-width: 768px) {
+    header #trigger {
+      top: 34px; } }
+
+#trigger .lines {
+  width: 35px; }
+
+#trigger .lines:after, #trigger .lines:before {
+  width: 35px; }
+
+#trigger .lines:before {
+  top: 10px; }
+
+#trigger .lines:after {
+  top: -10px; }
+
+#trigger .lines, #trigger .lines:before, #trigger .lines:after {
+  background: #fff !important; }
+
+.logo-wrapper {
+  background-color: #fff;
+  width: 150px;
+  height: 75px;
+  position: absolute;
+  border-bottom: 0px solid #ffb931;
+  z-index: 1;
+  padding: 24px 20px; }
+  @media only screen and (min-width: 768px) {
+    .logo-wrapper {
+      background-color: #fff;
+      width: 220px;
+      height: 144px;
+      position: absolute;
+      border-bottom: 5px solid #ffb931;
+      z-index: 1;
+      padding: 45px 20px; } }
+
+.carousel-image {
+  width: 100%;
+  height: 480px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; }
+
+.default-text-block {
+  padding: 95px 0; }
+  .default-text-block .primary-btn {
+    float: right; }
+  .default-text-block img {
+    width: 100%;
+    height: auto; }
+
+.program-group-block {
+  background-color: #b83029;
+  padding: 55px 0; }
+  .program-group-block h2, .program-group-block p {
+    color: #fff; }
+  .program-group-block img {
+    width: 100%;
+    height: auto; }
+
+.featured-post-block {
+  padding: 50px 0 60px 0; }

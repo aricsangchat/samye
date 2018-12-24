@@ -11,3 +11,4 @@
 
 import './block/block.js';
 import './grd-home-block/block.js';
+import './featured-post-block/block.js';

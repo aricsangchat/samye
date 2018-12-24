@@ -102,6 +102,51 @@ function cgb_grd_home_block_posts( $attributes ) {
 	return $block_content;
 }
 
+function cgb_featured_post_block_posts( $attributes ) {
+	var_dump($attributes);
+	$recent_posts = wp_get_recent_posts(
+		array(
+			'numberposts' => 3,
+			'post_stats'  => 'publish',
+			'post_type' => 'grd-teaching',
+		)
+	);
+
+	$dynamic_block_title =  isset( $attributes['content']) ? sprintf( '<h2>%1$s</h2>', $attributes['content'] ) : '';
+	$dynamic_block_description =  isset( $attributes['description']) ? sprintf( '<p>%1$s</p>', $attributes['description'] ) : '';
+	$dynamic_block_dropdown =  isset( $attributes['dropdown']) ? sprintf( '<p>%1$s</p>', $attributes['dropdown'] ) : '';
+
+	$list_item_markup = '';
+
+	foreach ( $recent_posts as $post ) {
+		$post_id = $post['ID'];
+
+		$title = get_the_title( $post_id );
+
+		$list_item_markup .= sprintf(
+			'<li><a href="%1$s">%2$s</a></li>',
+			esc_url( get_permalink( $post_id ) ),
+			esc_html( $title )
+		);
+	}
+
+	$class = 'cgb-grd-home-block';
+	if ( isset( $attributes['className'] ) ) {
+		$class .= ' ' . $attributes['className'];
+	}
+
+	$block_content = sprintf(
+		'<div class="%1$s">%2$s%3$s<ul>%4$s</ul></div>',
+		esc_attr( $class ),
+		$dynamic_block_title,
+		$dynamic_block_description,
+		$list_item_markup,
+		$dynamic_block_dropdown
+	);
+
+	return $block_content;
+}
+
 function register_dynamic_blocks() {
 	register_block_type(
 		'cgb/grd-home-block',
@@ -118,6 +163,26 @@ function register_dynamic_blocks() {
 				),
 			),
 			'render_callback' => 'cgb_grd_home_block_posts',
+		)
+	);
+	register_block_type(
+		'cgb/featured-post-block',
+		array(
+			'attributes' => array(
+				'content' => array(
+					'type' => 'string',
+				),
+				'dropdown' => array(
+					'type' => 'string',
+				),
+				'description' => array(
+					'type' => 'string',
+				),
+				'className' => array(
+					'type' => 'string',
+				),
+			),
+			'render_callback' => 'cgb_featured_post_block_posts',
 		)
 	);
 }
