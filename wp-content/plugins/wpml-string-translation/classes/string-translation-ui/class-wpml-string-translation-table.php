@@ -1,12 +1,15 @@
 <?php
 
 class WPML_String_Translation_Table {
+
+	/** @var  array $strings */
+	private $strings;
+
 	/** @var array */
 	private $active_languages;
 
 	public function __construct( $strings ) {
-		global $WPML_String_Translation, $sitepress;
-		$this->string_settings = $WPML_String_Translation->get_strings_settings();
+		global $sitepress;
 
 		$this->strings = $strings;
 		if ( ! empty( $strings ) ) {
@@ -14,7 +17,6 @@ class WPML_String_Translation_Table {
 		}
 
 		$this->active_languages = $sitepress->get_active_languages();
-
 	}
 
 	public function render() {
@@ -87,25 +89,27 @@ class WPML_String_Translation_Table {
 				<?php $this->render_view_column( $string_id ) ?>
 			</td>
 			<td class="wpml-st-col-string">
-				<div class="icl-st-original"<?php _icl_string_translation_rtl_div( $this->string_settings['strings_language'] ) ?>>
+				<div class="icl-st-original"<?php _icl_string_translation_rtl_div( $icl_string['string_language'] ) ?>>
 					<img src="<?php echo esc_url( $sitepress->get_flag_url( $icl_string['string_language'] ) ) ?>"> <?php echo esc_html( $icl_string['value'] ) ?>
 				</div>
 				<div style="float:right;">
-					<a href="#icl-st-toggle-translations"><?php esc_html_e( 'translations', 'wpml-string-translation' ) ?></a>
+					<a href="#icl-st-toggle-translations" class="js-wpml-st-toggle-translations"><?php esc_html_e( 'translations', 'wpml-string-translation' ) ?></a>
 				</div>
 				<br clear="all"/>
-				<div class="icl-st-inline">
+				<div class="icl-st-inline"
+					 data-original="<?php echo esc_attr( $icl_string['value'] ); ?>"
+					 data-source-lang="<?php echo esc_attr( $icl_string['string_language'] ); ?>">
 					<?php foreach ( $this->active_languages as $lang ): if ( $lang['code'] === $icl_string['string_language'] ) {
 						continue;
 					} ?>
 
 						<?php
-						if ( isset( $icl_string['translations'][ $lang['code'] ] ) && ICL_TM_COMPLETE == $icl_string['translations'][ $lang['code'] ]['status'] ) {
+						if ( isset( $icl_string['translations'][ $lang['code'] ] ) && ICL_TM_COMPLETE == $icl_string['translations'][ $lang['code'] ]['status']	) {
 							$tr_complete_checked = 'checked="checked"';
 						} else {
 							if ( icl_st_is_translator() ) {
 								$user_lang_pairs = get_user_meta( get_current_user_id(), $wpdb->prefix . 'language_pairs', true );
-								if ( empty( $user_lang_pairs[ $this->string_settings['strings_language'] ][ $lang['code'] ] ) ) {
+								if ( empty( $user_lang_pairs[ $icl_string['string_language'] ][ $lang['code'] ] ) ) {
 									continue;
 								}
 							}
@@ -127,6 +131,11 @@ class WPML_String_Translation_Table {
 									<td style="border:none">
 										<?php echo esc_html( $lang['display_name'] ) ?>
 										<br/>
+										<?php if ( isset( $icl_string['translations'][ $lang['code'] ]['mo_string'] ) && $icl_string['translations'][ $lang['code'] ]['mo_string'] ) { ?>
+                                            <span class="wpml-st-mo-translation" title="<?php esc_attr_e( 'Imported translation', 'wpml-string-translation' ); ?>">
+                                                <?php echo esc_html( $icl_string['translations'][ $lang['code'] ]['mo_string'] ); ?>
+                                            </span>
+										<?php } ?>
 										<img class="icl_ajx_loader"
 											 src="<?php echo WPML_ST_URL ?>/res/img/ajax-loader.gif"
 											 style="float:left;display:none;position:absolute;margin:5px" alt=""/>
@@ -135,10 +144,17 @@ class WPML_String_Translation_Table {
 										$temp_line_array = preg_split( '/\n|\r/', $icl_string['value'] );
 										$temp_num_lines  = count( $temp_line_array );
 										$rows += $temp_num_lines;
+
+
+										$string_value = '';
+										$placeholder = $icl_string['value'];
 										if ( isset( $icl_string['translations'][ $lang['code'] ] ) && null !== $icl_string['translations'][ $lang['code'] ]['value'] ) {
 											$string_value = $icl_string['translations'][ $lang['code'] ]['value'];
-										} else {
-											$string_value = $icl_string['value'];
+											if ( $string_value ) {
+												$placeholder = $string_value;
+											} elseif ( $icl_string['translations'][ $lang['code'] ]['mo_string'] ) {
+												$placeholder = $icl_string['translations'][ $lang['code'] ]['mo_string'];
+											}
 										}
 
 										?>
@@ -146,31 +162,39 @@ class WPML_String_Translation_Table {
 										_icl_string_translation_rtl_textarea( $lang['code'] ); ?>
 												rows="<?php echo esc_attr( $rows ) ?>" cols="40"
 												name="icl_st_translation"
+ 												placeholder="<?php echo esc_attr( $placeholder ); ?>"
+ 												data-lang="<?php echo $lang['code']; ?>"
 												<?php if ( isset( $icl_string['translations'][ $lang['code'] ] ) ): ?>id="icl_st_ta_<?php echo esc_attr( $icl_string['translations'][ $lang['code'] ]['id'] ) ?>"<?php endif; ?>
 										><?php echo esc_html( $string_value ) ?></textarea>
 									</td>
 								</tr>
 								<tr>
 									<td align="right" style="border:none">
-										<?php
-
-										?>
 										<?php if ( isset( $icl_string['translations'][ $lang['code'] ]['value'] ) && preg_match( '#<([^>]*)>#im', $icl_string['translations'][ $lang['code'] ]['value'] ) ): ?>
 											<br clear="all"/>
 											<div style="text-align:left;display:none" class="icl_html_preview"></div>
 											<a href="#" class="alignleft icl_htmlpreview_link">HTML preview</a>
 										<?php endif; ?>
 										<label>
-											<input<?php echo $form_disabled ?> type="checkbox"
-																			   name="icl_st_translation_complete"
-																			   value="1"
+											<input<?php echo $form_disabled ?> 
+														type="checkbox"
+														name="icl_st_translation_complete"
+ 														data-lang="<?php echo $lang['code']; ?>"
+														value="1"
 												<?php echo $tr_complete_checked ?>
 																			   <?php if ( isset( $icl_string['translations'][ $lang['code'] ] ) ): ?>id="icl_st_cb_<?php echo esc_attr( $icl_string['translations'][ $lang['code'] ]['id'] ) ?>"<?php endif; ?>
 											/>
-											<?php esc_html_e( 'Translation is complete', 'wpml-string-translation' ) ?>
+											<?php
+												if ( isset( $icl_string['translations'][ $lang['code'] ]['mo_string'] ) && $icl_string['translations'][ $lang['code'] ]['mo_string'] ) {
+													esc_html_e( 'Use my translation', 'wpml-string-translation' );
+												} else {
+													esc_html_e( 'Translation is complete', 'wpml-string-translation' );
+												}
+											?>
 										</label>&nbsp;
 										<input<?php echo $form_disabled ?> type="submit" class="button-secondary action"
-																		   value="<?php esc_attr_e( 'Save', 'wpml-string-translation' ) ?>"/>
+														data-lang="<?php echo $lang['code']; ?>"
+														value="<?php esc_attr_e( 'Save', 'wpml-string-translation' ) ?>"/>
 										<?php if ( $form_disabled_reason ): ?>
 											<br clear="all"/>
 											<p><?php echo esc_html( $form_disabled_reason ) ?></p>
@@ -191,7 +215,7 @@ class WPML_String_Translation_Table {
 				?>
 				</span>
 				<input type="hidden" id="icl_st_wc_<?php echo esc_attr( $string_id ) ?>" value="<?php
-				echo $WPML_String_Translation->estimate_word_count( $icl_string['value'], $this->string_settings['strings_language'] ) ?>"/>
+				echo $WPML_String_Translation->estimate_word_count( $icl_string['value'], $icl_string['string_language'] ) ?>"/>
 			</td>
 		</tr>
 		<?php
@@ -206,29 +230,54 @@ class WPML_String_Translation_Table {
 		$class = 'icl_st_row_cb' . ( ! empty( $string['string_package_id'] ) ? ' icl_st_row_package' : '' );
 
 		return '<td><input class="' . esc_attr( $class ) . '" type="checkbox" value="' . esc_attr( $string['string_id'] )
-		       . '" data-language="' . esc_attr( $string['string_language'] ) . '" /></td>';
+		       . '" data-language="' . esc_attr( $string['string_language'] ) .'" /></td>';
 	}
 
 	private function render_view_column( $string_id ) {
 		if ( isset( $this->strings_in_page[ ICL_STRING_TRANSLATION_STRING_TRACKING_TYPE_SOURCE ][ $string_id ] ) ) {
+
+			$thickbox_url = $this->get_thickbox_url( WPML_ST_String_Tracking_AJAX_Factory::ACTION_POSITION_IN_SOURCE, $string_id );
+
 			?>
 			<a class="thickbox" title="<?php esc_attr_e( 'view in source', 'wpml-string-translation' ) ?>"
-			   href="admin.php?page=<?php echo WPML_ST_FOLDER ?>%2Fmenu%2Fstring-translation.php&amp;icl_action=view_string_in_source&amp;string_id=<?php
-			   echo $string_id ?>&amp;width=810&amp;height=600"><img
-						src="<?php echo WPML_ST_URL ?>/res/img/view-in-source.png" width="16" height="16"
-						alt="<?php esc_attr_e( 'view in page', 'wpml-string-translation' ) ?>"/></a>
+			   href="<?php echo esc_url( $thickbox_url ); ?>">
+				<img src="<?php echo WPML_ST_URL ?>/res/img/view-in-source.png" width="16" height="16"
+						alt="<?php esc_attr_e( 'view in page', 'wpml-string-translation' ) ?>"/>
+			</a>
 			<?php
 		}
 
 		if ( isset( $this->strings_in_page[ ICL_STRING_TRANSLATION_STRING_TRACKING_TYPE_PAGE ][ $string_id ] ) ) {
+			$thickbox_url = $this->get_thickbox_url( WPML_ST_String_Tracking_AJAX_Factory::ACTION_POSITION_IN_PAGE, $string_id );
+
 			?>
 			<a class="thickbox" title="<?php esc_attr_e( 'view in page', 'wpml-string-translation' ) ?>"
-			   href="admin.php?page=<?php echo WPML_ST_FOLDER ?>%2Fmenu%2Fstring-translation.php&icl_action=view_string_in_page&string_id=<?php
-			   echo $string_id ?>&width=810&height=600"><img src="<?php echo WPML_ST_URL ?>/res/img/view-in-page.png"
-															 width="16" height="16"
-															 alt="<?php esc_attr_e( 'view in page', 'wpml-string-translation' ) ?>"/></a>
+			   href="<?php echo esc_url( $thickbox_url ); ?>">
+				<img src="<?php echo WPML_ST_URL ?>/res/img/view-in-page.png" width="16" height="16"
+					 alt="<?php esc_attr_e( 'view in page', 'wpml-string-translation' ) ?>"/>
+			</a>
 			<?php
 		}
+	}
+
+	/**
+	 * @param string $action
+	 * @param int    $string_id
+	 *
+	 * @return string
+	 */
+	private function get_thickbox_url( $action, $string_id ) {
+		return add_query_arg(
+			array(
+				'page'      => WPML_ST_FOLDER . '/menu/string-translation.php',
+				'action'    => $action,
+				'nonce'     => wp_create_nonce( $action ),
+				'string_id' => $string_id,
+				'width'     => 810,
+				'height'    => 600,
+			),
+			'admin-ajax.php'
+		);
 	}
 
 	private function get_translation_form_status( $icl_string, $lang ) {
@@ -260,7 +309,7 @@ class WPML_String_Translation_Table {
 
 			if ( $can_translate &&
 				 0 == $translator_id &&
-				 ICL_TM_WAITING_FOR_TRANSLATOR === (int) $icl_string['translations'][ $lang['code'] ]['status'] &&
+			     ICL_TM_WAITING_FOR_TRANSLATOR === (int) $icl_string['translations'][ $lang['code'] ]['status'] &&
 				 $translation_proxy_status
 			) {
 				$can_translate        = false;

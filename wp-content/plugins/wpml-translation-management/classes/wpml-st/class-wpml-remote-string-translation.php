@@ -1,19 +1,15 @@
 <?php
 
 class WPML_Remote_String_Translation {
-	/**
-	 * @var WPML_String_Translation_Job_Email_Notification
-	 */
-	private static $email_notification;
 
 	/**
 	 * @param $item_type_name
 	 * @param $item_type
 	 * @param $strings_basket_items
 	 * @param $translators
-	 * @param $basket_name
+	 * @param array $batch_options
 	 */
-	public static function send_strings_jobs( $item_type_name, $item_type, $strings_basket_items, $translators, $basket_name ) {
+	public static function send_strings_jobs( $item_type_name, $item_type, $strings_basket_items, $translators, $batch_options ) {
 		/** @var $iclTranslationManagement TranslationManagement */
 		global $iclTranslationManagement, $wpdb, $wpml_translation_job_factory;
 		$strings_local = array();
@@ -65,8 +61,10 @@ class WPML_Remote_String_Translation {
 				}
 			}
 
+			$batch_name = isset( $batch_options['basket_name'] ) ? $batch_options['basket_name'] : null;
+
 			foreach ( $strings_local as $target => $string_ids ) {
-				self::translation_send_strings_local( $string_ids, $target, $translators[ $target ], $basket_name );
+				self::translation_send_strings_local( $string_ids, $target, $translators[ $target ], $batch_name );
 			}
 		}
 	}
@@ -94,11 +92,10 @@ class WPML_Remote_String_Translation {
 	}
 
 	public static function translation_send_strings_local( $string_ids, $target, $translator_id = null, $basket_name = null ) {
-		$added = 0;
 		$batch_id = TranslationProxy_Batch::update_translation_batch( $basket_name );
 
 		foreach ( $string_ids as $string_id ) {
-			$result = icl_add_string_translation( $string_id,
+			$string_translation_id = icl_add_string_translation( $string_id,
 				$target,
 				null,
 				ICL_TM_WAITING_FOR_TRANSLATOR,
@@ -107,35 +104,14 @@ class WPML_Remote_String_Translation {
 				$batch_id
 			);
 
-			if ( $result ) {
-				$added ++;
+			if ( $string_translation_id ) {
+				$job = new WPML_String_Translation_Job( $string_translation_id );
+				do_action( 'wpml_tm_local_string_sent', $job );
 			}
-		}
-
-		if ( $added ) {
-			$source_lang = TranslationProxy_Basket::get_source_language();
-			self::create_email_notification()->notify( $source_lang, $target, $translator_id );
 		}
 
 		return 1;
 	}
-
-	/**
-	 * @return WPML_String_Translation_Job_Email_Notification
-	 */
-	private static function create_email_notification() {
-		if ( ! self::$email_notification ) {
-			global $sitepress, $wpdb;
-			self::$email_notification = new WPML_String_Translation_Job_Email_Notification(
-				$sitepress,
-				$wpdb,
-				wpml_tm_load_blog_translators()
-			);
-		}
-
-		return self::$email_notification;
-	}
-
 
 	public static function display_string_menu( $lang_filter ) {
 		global $sitepress;

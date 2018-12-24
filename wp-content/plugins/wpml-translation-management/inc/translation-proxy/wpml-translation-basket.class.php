@@ -80,6 +80,15 @@ class WPML_Translation_Basket {
 		TranslationProxy_Basket::set_basket_name( $basket_name );
 	}
 
+	function set_options( array $batch_options ) {
+		TranslationProxy_Basket::set_options( $batch_options );
+	}
+
+	/** @return array */
+	function get_options() {
+		return TranslationProxy_Basket::get_options();
+	}
+
 	/**
 	 * @param string $basket_name
 	 * @param int    $basket_name_max_length
@@ -91,14 +100,14 @@ class WPML_Translation_Basket {
 		$result              = array( 'modified' => false, 'valid' => true, 'message' => '', 'new_value' => '' );
 		$old_value           = $basket_name;
 		$basket_name         = strip_tags( $basket_name );
-		$result['new_value'] = $old_value !== $basket_name ? $basket_name : $result['new_value'];
 
-		if ( strlen( $basket_name ) > $basket_name_max_length ) {
-			$result['valid']   = false;
+		if ( mb_strlen( $basket_name ) > $basket_name_max_length ) {
+			$result['valid']   = true;
 			$result['message'] = sprintf(
 				__( 'The length of the batch name exceeds the maximum length of %s', 'wpml-translation-management' ),
 				$basket_name_max_length
 			);
+			$result['new_value'] = $this->get_unique_basket_name( $basket_name, $basket_name_max_length );
 		} elseif ( $this->get_batch_id_from_name( $basket_name ) ) {
 			$result['valid']     = true;
 			$result['new_value'] = $this->get_unique_basket_name( $basket_name, $basket_name_max_length );
@@ -137,15 +146,15 @@ class WPML_Translation_Basket {
 		                          && $basket_name_array[ count( $basket_name_array ) - 2 ] !== $this->get_source_language() )
 			? $name . '|' . $this->get_source_language() : $name;
 
-		$name = strlen( $name ) > $max_length
+		$name = mb_strlen( $name ) > $max_length
 			? $this->sanitize_basket_name( $name, $max_length ) : $name;
 
 		if ( $this->get_batch_id_from_name( $name ) ) {
 			$suffix = 2;
-			$name   = $this->sanitize_basket_name( $name, $max_length - strlen( (string) $suffix ) - 1 );
+			$name   = $this->sanitize_basket_name( $name, $max_length - mb_strlen( (string) $suffix ) - 1 );
 			while ( $this->get_batch_id_from_name( $name . '|' . $suffix ) ) {
 				$suffix ++;
-				$name = $this->sanitize_basket_name( $name, $max_length - strlen( (string) $suffix ) - 1 );
+				$name = $this->sanitize_basket_name( $name, $max_length - mb_strlen( (string) $suffix ) - 1 );
 			}
 			$name .= '|' . $suffix;
 		}
@@ -170,9 +179,24 @@ class WPML_Translation_Basket {
 		TranslationProxy_Basket::add_strings_to_basket( $string_ids, $source_language, $target_languages );
 	}
 
+	/**
+	 * @param int $package_id
+	 */
+	public function remove_package( $package_id ) {
+		TranslationProxy_Basket::delete_item_from_basket( $package_id, 'package' );
+	}
+
+	/**
+	 * @param int $id
+	 * @param string $kind
+	 */
+	public function remove_item( $id, $kind ) {
+		TranslationProxy_Basket::delete_item_from_basket( $id, $kind );
+	}
+
 	private function sanitize_basket_name( $basket_name, $max_length ) {
 		//input basket name is separated by pipes so we explode it
-		$to_trim = strlen( $basket_name ) - $max_length;
+		$to_trim = mb_strlen( $basket_name ) - $max_length;
 		if ( $to_trim <= 0 ) {
 			return $basket_name;
 		}
@@ -181,7 +205,7 @@ class WPML_Translation_Basket {
 
 		if ( $wpml_flag === false && count( $basket_name_array ) < 2 ) {
 
-			return substr( $basket_name, $max_length - 1 );
+			return mb_substr( $basket_name, $max_length - 1 );
 		}
 
 		//first we trim the middle part holding the "WPML"
@@ -203,12 +227,12 @@ class WPML_Translation_Basket {
 	}
 
 	private function shorten_basket_name( $name_array, $index, $to_trim ) {
-		if ( strlen( $name_array [ $index ] ) > $to_trim ) {
-			$name_array[ $index ] = substr( $name_array[ $index ], 0, strlen( $name_array [ $index ] ) - $to_trim - 1 );
+		if ( mb_strlen( $name_array [ $index ] ) > $to_trim ) {
+			$name_array[ $index ] = mb_substr( $name_array[ $index ], 0, mb_strlen( $name_array [ $index ] ) - $to_trim - 1 );
 			$name_array           = array_filter( $name_array );
 			$to_trim              = 0;
 		} else {
-			$to_trim = $to_trim - strlen( $name_array [ $index ] ) - 1; //subtract one here since we lose a downstroke
+			$to_trim = $to_trim - mb_strlen( $name_array [ $index ] ) - 1; //subtract one here since we lose a downstroke
 			unset( $name_array [ $index ] );
 		}
 

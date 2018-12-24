@@ -57,8 +57,15 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 				self::$basket = false;
 			}
 			self::sync_target_languages();
-			update_option( self::ICL_TRANSLATION_JOBS_BASKET, self::$basket );
+			self::update_basket_option( self::$basket );
 			self::update_basket_notifications();
+		}
+
+		/**
+		 * @param array $basket
+		 */
+		private static function update_basket_option( $basket ) {
+			update_option( self::ICL_TRANSLATION_JOBS_BASKET, $basket, false );
 		}
 
 		private static function merge_baskets($from, $to) {
@@ -142,9 +149,13 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 			self::get_basket();
 			$basket_items_count = self::get_basket_items_count(true);
 
+			$limit_to_page = array();
+			if ( defined( 'WPML_ST_FOLDER' ) ) {
+				$limit_to_page[] = WPML_ST_FOLDER . '/menu/string-translation.php';
+			}
 
 			// if we have something in the basket
-			if ( $basket_items_count > 0 && ( !isset($_GET['clear_basket']) || $_GET['clear_basket'] != 1 ) && ( !isset($_GET['action']) || $_GET['action'] != 'delete' ) ){
+			if ( self::is_st_page() && $basket_items_count > 0 && ( !isset($_GET['clear_basket']) || $_GET['clear_basket'] != 1 ) && ( !isset($_GET['action']) || $_GET['action'] != 'delete' ) ){
 
 				$text =  __( 'The items you have selected are now in the translation basket &ndash;', 'wpml-translation-management' );
 				$text .= ' ' . sprintf( __( '<a href="%s">Send to translation &raquo;</a>', 'wpml-translation-management' ), $basket_link );
@@ -159,6 +170,7 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 					'admin_notice'		=> false,
 					'hide_per_user'		=> false,
 					'dismiss_per_user'	=> false,
+					'limit_to_page'     => $limit_to_page,
 					'capability'		=> 'manage_options',
 				);
 				ICL_AdminNotifier::add_message( $message_args );
@@ -168,7 +180,7 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 			}
 
 			$admin_basket_message_id = $positions[ 'admin_notice' ];
-			if ( self::$messages || $basket_items_count > 0 ) {
+			if ( ( self::$messages || $basket_items_count > 0 ) && self::is_st_page() ) {
 
 				$additional_messages = array();
 				if ( isset( self::$messages ) && is_array( self::$messages ) ) {
@@ -180,9 +192,6 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 				if ( count( $additional_messages ) > 0 ) {
 					$additional_messages_text = '<ul><li>' . implode( '</li><li>', $additional_messages ) . '</li></ul>';
 				}
-                
-				$limit_to_page = array();
-				$limit_to_page[] = WPML_TM_FOLDER . '/menu/main.php';
 
 				$message_args = array(
 					'id'               => $admin_basket_message_id,
@@ -204,6 +213,10 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 			} else {
 				ICL_AdminNotifier::remove_message( $admin_basket_message_id );
 			}
+		}
+
+		private static function is_st_page() {
+			return defined( 'WPML_ST_FOLDER' ) && array_key_exists( 'page', $_GET ) && false !== strpos( $_GET['page'], WPML_ST_FOLDER );
 		}
 
 		/**
@@ -353,19 +366,10 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 							if ( $job_id ) {
 								/** @var stdClass $job_details */
 								$job_details = $wpml_translation_job_factory->get_translation_job( $job_id );
-								if ( $job_details->status == ICL_TM_IN_PROGRESS ) {
+								if ( ICL_TM_IN_PROGRESS === $job_details->status && ! $job_details->needs_update ) {
 									self::$messages[ ] = array(
 										'type' => 'update',
 										'text' => sprintf( __( 'Post "%s" will be ignored for %s, because translation is already in progress.',
-										                       'wpml-translation-management' ),
-										                   $post_title,
-										                   $language_name )
-									);
-									$send_to_basket    = false;
-								} elseif ( $job_details->status == ICL_TM_WAITING_FOR_TRANSLATOR ) {
-									self::$messages[ ] = array(
-										'type' => 'update',
-										'text' => sprintf( __( 'Post "%s" will be ignored for %s, because translation is already waiting for translator.',
 										                       'wpml-translation-management' ),
 										                   $post_title,
 										                   $language_name )
@@ -567,7 +571,7 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 		}
 
 		/**
-		 * @param $batch TranslationProxy_Batch
+		 * @param WPML_TP_Batch|null $batch
 		 */
 		public static function set_batch_data( $batch ) {
 			self::get_basket();
@@ -576,7 +580,7 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 		}
 
 		/**
-		 * @return bool|TranslationProxy_Batch
+		 * @return false|null|WPML_TP_Batch
 		 */
 		public static function get_batch_data() {
 			self::get_basket();
@@ -593,6 +597,15 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 			self::get_basket();
 
 			return isset( self::$basket[ 'name' ] ) ? self::$basket[ 'name' ] : false;
+		}
+
+		public static function set_options( array $options ) {
+			self::$basket['options'] = $options;
+		}
+
+		/** @return array */
+		public static function get_options() {
+			return isset( self::$basket['options'] ) ? self::$basket['options'] : array();
 		}
 		
 		public static function get_basket_extra_fields() {
@@ -810,6 +823,7 @@ if ( ! class_exists( 'TranslationProxy_Basket' ) ) {
 				$networking   = wpml_tm_load_tp_networking();
 				$project      = TranslationProxy::get_current_project();
 				$extra_fields = $networking->get_extra_fields_remote( $project );
+				TranslationProxy::save_extra_fields( $extra_fields );
 			} else {
 				$extra_fields = TranslationProxy::get_extra_fields_local();
 			}

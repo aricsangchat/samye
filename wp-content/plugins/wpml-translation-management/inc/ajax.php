@@ -90,30 +90,6 @@ function icl_pickup_translations_complete() {
 	$sitepress->set_setting( 'last_picked_up', time(), true );
 }
 
-function icl_get_blog_users_not_translators() {
-	global $iclTranslationManagement;
-	$translator_drop_down_options = array();
-
-	$nonce = filter_input( INPUT_POST, 'get_users_not_trans_nonce' );
-	if ( ! wp_verify_nonce( $nonce, 'get_users_not_trans_nonce' ) ) {
-		die( 'Wrong Nonce' );
-	}
-
-	$blog_users_nt = $iclTranslationManagement->get_blog_not_translators();
-
-	foreach ( (array) $blog_users_nt as $u ) {
-		$label                           = $u->display_name . ' (' . $u->user_login . ')';
-		$value                           = esc_attr( $u->display_name );
-		$translator_drop_down_options[ ] = array(
-			'label' => $label,
-			'value' => $value,
-			'id'    => $u->ID
-		);
-	}
-
-	wp_send_json_success( $translator_drop_down_options );
-}
-
 /**
  * Ajax handler for canceling translation Jobs.
  */
@@ -134,35 +110,3 @@ function icl_cancel_translation_jobs() {
 
 	wp_send_json_success( $job_ids );
 }
-
-/**
- * Ajax action for authenticating and invalidating a translation service
- */
-function wpml_tm_translation_service_authentication_ajax() {
-	if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'],
-			'translation_service_authentication' )
-	) {
-		die( 'Wrong Nonce' );
-	}
-	/** @var SitePress $sitepress */
-	global $sitepress;
-
-	$networking      = wpml_tm_load_tp_networking();
-	$project_factory = new WPML_TP_Project_Factory();
-	$auth_factory    = new WPML_TP_Service_Authentication_Factory( $sitepress,
-		$networking, $project_factory );
-	if ( empty( $_POST['invalidate'] ) && isset( $_POST['service_id'] ) && isset( $_POST['custom_fields'] ) ) {
-		$authentication_action = new WPML_TP_Service_Authentication_Ajax_Action( $auth_factory,
-			$_POST['custom_fields'] );
-	} elseif ( ! empty( $_POST['invalidate'] ) ) {
-		$authentication_action = new WPML_TP_Service_Invalidation_Ajax_Action( $auth_factory );
-	}
-
-	if ( ! isset( $authentication_action ) ) {
-		die( 'Invalid Request' );
-	}
-	wp_send_json_success( $authentication_action->run() );
-}
-
-add_action( 'wp_ajax_translation_service_authentication',
-	'wpml_tm_translation_service_authentication_ajax' );

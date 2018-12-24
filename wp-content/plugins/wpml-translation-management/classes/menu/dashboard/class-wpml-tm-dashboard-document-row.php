@@ -2,37 +2,55 @@
 
 class WPML_TM_Dashboard_Document_Row {
 
+    /** @var stdClass $data */
     private $data;
     private $post_types;
     private $translation_filter;
     private $active_languages;
     private $selected;
     private $note_text;
-    private $note_icon;
+    private $note_icon_class;
     private $post_statuses;
+	/** @var SitePress $sitepress */
+    private $sitepress;
+    /** @var WPML_TM_Translatable_Element_Provider $translatable_element_provider */
+    private $translatable_element_provider;
 
-	public function __construct( $doc_data, $translation_filter, $post_types, $post_statuses, $active_languages, $selected, &$sitepress, &$wpdb ) {
-		$this->data               = $doc_data;
-		$this->post_statuses      = $post_statuses;
-		$this->selected           = $selected;
-		$this->post_types         = $post_types;
-		$this->active_languages   = $active_languages;
-		$this->translation_filter = $translation_filter;
-		$this->sitepress          = &$sitepress;
-		$this->wpdb               = &$wpdb;
+	public function __construct(
+		$doc_data,
+		$translation_filter,
+		$post_types,
+		$post_statuses,
+		$active_languages,
+		$selected,
+		SitePress $sitepress,
+		WPML_TM_Translatable_Element_Provider $translatable_element_provider
+	) {
+		$this->data                          = $doc_data;
+		$this->post_statuses                 = $post_statuses;
+		$this->selected                      = $selected;
+		$this->post_types                    = $post_types;
+		$this->active_languages              = $active_languages;
+		$this->translation_filter            = $translation_filter;
+		$this->sitepress                     = $sitepress;
+		$this->translatable_element_provider = $translatable_element_provider;
 	}
 
 	public function get_word_count() {
 		$current_document = $this->data;
+		$type             = 'post';
 
-		$count     = 0;
-		if ( ! $this->is_external_type() ) {
-			$wpml_post = new WPML_TM_Post( $current_document->ID, $this->sitepress, $this->wpdb );
-			$count += $wpml_post->get_words_count();
+		if ( $this->is_external_type() ) {
+			$type = 'package';
 		}
-		$count = apply_filters( 'wpml_tm_estimated_words_count', $count, $current_document );
 
-		return $count;
+		$translatable_element = $this->translatable_element_provider->get_from_type( $type, $current_document->ID );
+
+		return apply_filters(
+			'wpml_tm_estimated_words_count',
+			$translatable_element->get_words_count(),
+			$current_document
+		);
 	}
 
     public function get_title() {
@@ -66,9 +84,8 @@ class WPML_TM_Dashboard_Document_Row {
         return $type;
     }
 
-	public function display( $odd_row ) {
+	public function display() {
 		global $iclTranslationManagement;
-		$alternate         = $odd_row ? 'class="alternate"' : '';
 		$current_document  = $this->data;
 		$count             = $this->get_word_count();
 		$post_actions      = array();
@@ -81,24 +98,31 @@ class WPML_TM_Dashboard_Document_Row {
 		$post_edit_link = '';
 		if ( ! $this->is_external_type() ) {
 			$post_link_factory = new WPML_TM_Post_Link_Factory($this->sitepress);
-			$post_view_link = $post_link_factory->view_link_anchor( $current_document->ID, __( 'View', 'wpml-translation-management' ));
-			$post_edit_link = $post_link_factory->edit_link_anchor( $current_document->ID, __( 'Edit', 'wpml-translation-management' ));
+		$post_edit_link = $post_link_factory->edit_link_anchor( $current_document->ID, __( 'Edit', 'wpml-translation-management' ));
+		$post_view_link = $post_link_factory->view_link_anchor( $current_document->ID, __( 'View', 'wpml-translation-management' ));
 		}
+
+	  $post_edit_link = apply_filters( 'wpml_document_edit_item_link', $post_edit_link, __( 'Edit', 'wpml-translation-management' ), $current_document, $element_type, $this->get_type() );
+	  if ( $post_edit_link ) {
+		  $post_actions[ ] = "<span class='edit'>" . $post_edit_link . "</span>";
+	  }
 
 		$post_view_link = apply_filters( 'wpml_document_view_item_link', $post_view_link, __( 'View', 'wpml-translation-management' ), $current_document, $element_type, $this->get_type());
 		if ( $post_view_link ) {
 			$post_actions[ ] = "<span class='view'>" . $post_view_link . "</span>";
 		}
-		$post_edit_link = apply_filters( 'wpml_document_edit_item_link', $post_edit_link, __( 'Edit', 'wpml-translation-management' ), $current_document, $element_type, $this->get_type() );
-		if ( $post_edit_link ) {
-			$post_actions[ ] = "<span class='edit'>" . $post_edit_link . "</span>";
-		}
 
 		if ( $post_actions ) {
 			$post_actions_link .= '<div class="row-actions">' . implode( ' | ', $post_actions ) . '</div>';
 		}
+
+		$row_data = apply_filters( 'wpml_translation_dashboard_row_data', array( 'word_count' => $count ), $this->data );
+		$row_data_str = '';
+		foreach( $row_data as $key => $value ){
+			$row_data_str .= 'data-' . esc_attr( $key ) . '="' . esc_attr( $value ) . '" ';
+		}
 		?>
-		<tr id="row_<?php echo sanitize_html_class( $current_document->ID ); ?>" data-word_count="<?php echo $count; ?>" <?php echo $alternate; ?>>
+		<tr id="row_<?php echo sanitize_html_class( $current_document->ID ); ?>" <?php echo $row_data_str; ?>>
 			<td scope="row">
 				<?php
 				$checked = checked( true, isset( $_GET[ 'post_id' ] ) || $this->selected, false );
@@ -118,11 +142,11 @@ class WPML_TM_Dashboard_Document_Row {
 						$note            = get_post_meta( $current_document->ID, '_icl_translator_note', true );
 						$this->note_text = '';
 						if ( $note ) {
-							$this->note_text = __( 'Edit note for the translators', 'wpml-translation-management' );
-							$this->note_icon = 'edit_translation.png';
+							$this->note_text       = __( 'Edit note for the translators', 'wpml-translation-management' );
+							$this->note_icon_class = 'otgs-ico-note-edit-o';
 						} else {
-							$this->note_text = __( 'Add note for the translators', 'wpml-translation-management' );
-							$this->note_icon = 'add_translation.png';
+							$this->note_text       = __( 'Add note for the translators', 'wpml-translation-management' );
+							$this->note_icon_class = 'otgs-ico-note-add-o';
 						}
 					}
 					?>
@@ -133,7 +157,7 @@ class WPML_TM_Dashboard_Document_Row {
 					<table width="100%">
 						<tr>
 							<td style="border-bottom:none">
-								<input type="button" class="icl_tn_clear button" value="<?php _e( 'Clear', 'wpml-translation-management' ) ?>" <?php if ( ! $note): ?>disabled="disabled"<?php endif; ?> />
+								<input type="button" class="icl_tn_cancel button" value="<?php _e( 'Cancel', 'wpml-translation-management' ) ?>" />
 								<input class="icl_tn_post_id" type="hidden" value="<?php echo $current_document->ID ?>"/>
 							</td>
 							<td align="right" style="border-bottom:none">
@@ -143,26 +167,7 @@ class WPML_TM_Dashboard_Document_Row {
 					</table>
 				</div>
 			</td>
-			<td scope="row" class="post-date column-date">
-				<?php
-				$element_date = $this->get_date();
-				if ( $element_date ) {
-					echo date( 'Y-m-d', strtotime( $element_date ) );
-				}
-				?>
-			</td>
-			<td scope="row" class="icl_tn_link" id="icl_tn_link_<?php echo $current_document->ID ?>">
-				<?php
-				if ( ! $current_document->is_translation ) {
-					?>
-					<a title="<?php echo $this->note_text ?>" href="#">
-						<img src="<?php echo WPML_TM_URL ?>/res/img/<?php echo $this->note_icon ?>" width="16" height="16"/>
-					</a>
-				<?php
-				}
-				?>
-			</td>
-			<td scope="row" class="manage-column column-date">
+            <td scope="row" class="manage-column wpml-column-type">
 				<?php
 				if ( isset( $this->post_types[ $this->get_type() ] ) ) {
 					$custom_post_type_labels = $this->post_types[ $this->get_type() ]->labels;
@@ -175,11 +180,8 @@ class WPML_TM_Dashboard_Document_Row {
 					echo $this->get_type();
 				}
 				?>
-			</td>
-			<td scope="row" class="manage-column column-date">
-				<?php echo $this->get_general_status(); ?>
-			</td>
-			<td scope="row" class="manage-column column-active-languages wpml-col-languages">
+            </td>
+            <td scope="row" class="manage-column column-active-languages wpml-col-languages">
 				<?php
 				foreach ( $this->active_languages as $code => $lang ) {
 					if ( $code == $this->data->language_code ) {
@@ -213,16 +215,34 @@ class WPML_TM_Dashboard_Document_Row {
 							$translation_status_text = '';
 					}
 
-					$status_image_file_name = $iclTranslationManagement->status2img_filename( $status, ICL_TM_NEEDS_UPDATE === (int) $status );
+					$status_icon_class = $iclTranslationManagement->status2icon_class( $status, ICL_TM_NEEDS_UPDATE === (int) $status );
 					?>
 
-					<span data-document_status="<?php echo $status; ?>">
-                    <img title="<?php echo $lang[ 'display_name' ]; ?>: <?php echo $translation_status_text ?>"
-                         src="<?php echo WPML_TM_URL ?>/res/img/<?php echo $status_image_file_name; ?>"
-                         width="16"
-                         height="16"
-                         alt="<?php echo $lang[ 'display_name' ]; ?>: <?php echo $translation_status_text ?>"/>
+                    <span data-document_status="<?php echo $status; ?>">
+                        <i class="<?php echo esc_attr( $status_icon_class ); ?>"
+                           title="<?php echo esc_attr( $lang[ 'display_name' ] ); ?>: <?php echo $translation_status_text ?>"></i>
                 	</span>
+					<?php
+				}
+				?>
+            </td>
+			<td scope="row" class="post-date column-date">
+				<?php
+				$element_date = $this->get_date();
+				if ( $element_date ) {
+					echo date( 'Y-m-d', strtotime( $element_date ) );
+				}
+				echo '<br />';
+				echo $this->get_general_status();
+				?>
+			</td>
+			<td scope="row" class="icl_tn_link" id="icl_tn_link_<?php echo $current_document->ID ?>">
+				<?php
+				if ( ! $current_document->is_translation ) {
+					?>
+					<a title="<?php echo $this->note_text ?>" href="#">
+                        <i class="<?php echo $this->note_icon_class; ?>"></i>
+					</a>
 				<?php
 				}
 				?>

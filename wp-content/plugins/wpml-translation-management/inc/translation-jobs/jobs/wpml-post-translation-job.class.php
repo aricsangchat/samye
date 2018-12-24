@@ -105,17 +105,17 @@ class WPML_Post_Translation_Job extends WPML_Element_Translation_Job {
 		$delete = isset( $delete ) ? $delete : $sitepress->get_setting( 'tm_block_retranslating_terms' );
 		$this->set_translated_term_values( $delete );
 	}
-
-	public function maybe_load_terms_from_post_into_job( $delete ) {
-		if ( $delete || $this->get_status_value() != ICL_TM_IN_PROGRESS ) {
-			$this->load_terms_from_post_into_job( $delete );
-		}
-	}
 	
 	/**
 	 * @return string
 	 */
 	public function get_title() {
+		$title = $this->get_title_from_db();
+
+		if ( $title ) {
+			return $title;
+		}
+
 		$original_post = $this->get_original_document();
 
 		return is_object( $original_post ) && isset( $original_post->post_title )

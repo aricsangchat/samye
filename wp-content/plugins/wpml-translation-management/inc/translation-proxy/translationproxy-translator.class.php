@@ -39,7 +39,10 @@ class TranslationProxy_Translator {
 		}
 
 		$translator_status = array();
-		$website_details   = self::get_website_details( new TranslationProxy_Project( TranslationProxy::get_current_service() ), $force );
+		$website_details   = self::get_website_details(
+			new TranslationProxy_Project( TranslationProxy::get_current_service(), 'xmlrpc', TranslationProxy::get_tp_client() ),
+			$force
+		);
 
 		if ( false === (bool) $website_details ) {
 			return array();
@@ -97,7 +100,7 @@ class TranslationProxy_Translator {
 			$translator_status['icl_html_status'] = html_entity_decode( $res['html_status']['value'] );
 			$translator_status['icl_html_status'] = preg_replace_callback(
 				'#<a([^>]*)href="([^"]+)"([^>]*)>#i',
-				create_function( '$matches', 'global $sitepress; return TranslationProxy_Popup::get_link($matches[2]);' ),
+				'self::get_popup_link',
 				$translator_status['icl_html_status']
 			);
 		}
@@ -106,7 +109,7 @@ class TranslationProxy_Translator {
 			$translator_status['translators_management_info'] = html_entity_decode( $res['translators_management_info']['value'] );
 			$translator_status['translators_management_info'] = preg_replace_callback(
 				'#<a([^>]*)href="([^"]+)"([^>]*)>#i',
-				create_function( '$matches', 'global $sitepress; return TranslationProxy_Popup::get_link($matches[2]);' ),
+				'self::get_popup_link',
 				$translator_status['translators_management_info']
 			);
 		}
@@ -118,6 +121,12 @@ class TranslationProxy_Translator {
 		wp_cache_set( $cache_key, $translator_status, $cache_group );
 
 		return $translator_status;
+	}
+
+	private static function get_popup_link( $matches ){
+		global $sitepress;
+
+		return TranslationProxy_Popup::get_link( $matches[2] );
 	}
 
 	/**
@@ -185,67 +194,6 @@ class TranslationProxy_Translator {
 		return $icl_query->get_website_details( $force );
 	}
 
-	/**
-	 * Returns array of remote translators. Works only with ICL as a Translation Service
-	 *
-	 * @return array
-	 */
-	public static function translation_service_translators_list() {
-
-		$translators = array();
-
-		if ( ! TranslationProxy::translator_selection_available() ) {
-			return $translators;
-		}
-
-		$project = TranslationProxy::get_current_project();
-
-		if ( ! $project ) {
-			return $translators;
-		}
-
-		$lang_status = TranslationProxy_Translator::get_language_pairs();
-
-		if ( ! $lang_status ) {
-			return $translators;
-		}
-
-		$action_link_args = array(
-			'title'     => __( 'Contact translator', 'sitepress' ),
-			'unload_cb' => 'icl_thickbox_refresh',
-			'ar'        => 1
-		);
-
-		foreach ( $lang_status as $language_pair ) {
-
-			$language_from = $language_pair['from'];
-
-			$language_pair_translators = $language_pair['translators'];
-
-			if ( $language_pair_translators ) {
-				foreach ( $language_pair_translators as $translator ) {
-					$translator_item = array();
-					if ( isset( $translators[ $translator['id'] ] ) ) {
-						$translator_item                              = $translators[ $translator['id'] ];
-						$translator_item['langs'][ $language_from ][] = $language_pair['to'];
-					} else {
-						$translator_item['name']                      = $translator['nickname'];
-						$translator_item['langs'][ $language_from ][] = $language_pair['to'];
-						$translator_item['type']                      = $project->service->name;
-						$url                                          = $project->translator_contact_iframe_url( $translator['id'] );
-						$action_link                                  = '';
-						if ( $url ) {
-							$action_link = TranslationProxy_Popup::get_link( $url, $action_link_args ) . __( 'Contact translator', 'sitepress' ) . '</a>';
-						}
-						$translator_item['action'] = $action_link;
-					}
-					$translators[ $translator['id'] ] = $translator_item;
-				}
-			}
-		}
-
-		return $translators;
-	}
 
 	/**
 	 * @param $translator_id
@@ -331,7 +279,7 @@ class TranslationProxy_Translator {
 		if ( $nonce_is_valid ) {
 			self::flush_website_details_cache();
 			$query_args = array(
-				'page' => urlencode( 'wpml-translation-management/menu/main.php' ),
+				'page' => urlencode( WPML_TM_FOLDER . '/menu/main.php' ),
 				'sm'   => urlencode( 'translators' ),
 			);
 			$link_url   = add_query_arg( $query_args, get_admin_url( null, 'admin.php' ) );

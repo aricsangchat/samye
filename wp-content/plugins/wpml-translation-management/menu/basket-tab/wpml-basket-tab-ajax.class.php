@@ -50,10 +50,15 @@ class WPML_Basket_Tab_Ajax {
 		 * @var array $translators
 		 */
 		$translators = isset( $_POST['translators'] ) ? $_POST['translators'] : array();
-		/** @var string $basket_name */
-		$basket_name = isset( $_POST['basket_name'] ) ? $_POST['basket_name'] : '';
 
-		list( $has_error, $data, $error ) = $this->networking->commit_basket_chunk( $batch, $basket_name, $translators );
+		$batch_options = array(
+			'basket_name'   => isset( $_POST['basket_name'] )
+				? filter_var( $_POST['basket_name'], FILTER_SANITIZE_STRING ) : '',
+			'deadline_date' => isset( $_POST['deadline_date'] )
+				? filter_var( $_POST['deadline_date'], FILTER_SANITIZE_STRING ) : null,
+		);
+
+		list( $has_error, $data, $error ) = $this->networking->commit_basket_chunk( $batch, $translators, $batch_options );
 
 		if ( $has_error === true ) {
 			wp_send_json_error( $data );
@@ -69,7 +74,7 @@ class WPML_Basket_Tab_Ajax {
 	 * @uses \WPML_Basket_Tab_Ajax::create_remote_batch_message
 	 */
 	function begin_basket_commit() {
-		$basket_name = filter_input( INPUT_POST, 'basket_name', FILTER_SANITIZE_STRING );
+		$basket_name = filter_input( INPUT_POST, 'basket_name', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES );
 
 		wp_send_json_success( $this->create_remote_batch_message( $basket_name ) );
 	}
@@ -87,13 +92,21 @@ class WPML_Basket_Tab_Ajax {
 			$response               = $this->project && $has_remote_translators ? $this->project->commit_batch_job() : true;
 			$response               = ! empty( $this->project->errors ) ? false : $response;
 			if ( $response !== false && is_object( $response ) ) {
-				$response->call_to_action = '<strong>' . sprintf(
+				$response->call_to_action = sprintf(
 						__(
-							'You have sent items to %s. Please check if additional steps are required on their end',
+							'You\'ve sent the content for translation to %s. Please continue to their site, to make sure that the translation starts.',
 							'wpml-translation-management'
 						),
 						$this->project->current_service_name()
-					) . '</strong>';
+				);
+				$batch_url                = OTG_TRANSLATION_PROXY_URL . sprintf( '/projects/%d/external', $this->project->get_batch_job_id() );
+				$response->ts_batch_link  = array(
+					'href' => $batch_url,
+					'text' => sprintf( __( 'Continue to %s', 'wpml-translation-management' ),
+						$this->project->current_service_name()
+					),
+				);
+
 			}
 
 			$errors = $response === false && $this->project ? $this->project->errors : $errors;
@@ -101,6 +114,8 @@ class WPML_Basket_Tab_Ajax {
 			$response = false;
 			$errors[] = $e->getMessage();
 		}
+
+		do_action( 'wpml_tm_basket_committed' );
 
 		$this->send_json_response( $response, $errors );
 	}
@@ -112,7 +127,7 @@ class WPML_Basket_Tab_Ajax {
 	 * @uses \WPML_Translation_Basket::check_basket_name
 	 */
 	function check_basket_name() {
-		$basket_name            = filter_input( INPUT_POST, 'basket_name', FILTER_SANITIZE_STRING );
+		$basket_name            = filter_input( INPUT_POST, 'basket_name', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES );
 		$basket_name_max_length = TranslationProxy::get_current_service_batch_name_max_length();
 
 		wp_send_json_success( $this->basket->check_basket_name( $basket_name, $basket_name_max_length ) );
@@ -157,7 +172,8 @@ class WPML_Basket_Tab_Ajax {
 		if ( ! empty( $errors ) ) {
 			$this->networking->rollback_basket_commit( filter_input( INPUT_POST,
 			                                                         'basket_name',
-			                                                         FILTER_SANITIZE_STRING ) );
+			                                                         FILTER_SANITIZE_STRING,
+			                                                         FILTER_FLAG_NO_ENCODE_QUOTES ) );
 			wp_send_json_error( self::sanitize_errors( $result ) );
 		} else {
 			$this->basket->delete_all_items();
@@ -182,19 +198,21 @@ class WPML_Basket_Tab_Ajax {
 		$basket             = $this->basket->get_basket();
 		$basket_items_types = $this->basket->get_item_types();
 		if ( ! $basket ) {
-			$message_content = __( 'No items found in basket', 'sitepress' );
+			$message_content = __( 'No items found in basket', 'wpml-translation-management' );
 		} else {
 			$total_count             = 0;
-			$message_content_details = '';
+			$message_content_details = '<ul>';
 			foreach ( $basket_items_types as $item_type_name => $item_type ) {
 				if ( isset( $basket[ $item_type_name ] ) ) {
 					$count_item_type = count( $basket[ $item_type_name ] );
 					$total_count += $count_item_type;
-					$message_content_details .= '<br/>';
-					$message_content_details .= '- ' . $item_type_name . '(s): ' . $count_item_type;
+
+					$message_content_details .= '<li>' . $item_type_name . 's: ' . $count_item_type . '</li>';
 				}
 			}
-			$message_content = sprintf( __( '%s items in basket:', 'sitepress' ), $total_count );
+			$message_content_details .= '</ul>';
+
+			$message_content = sprintf( __( '%s items in basket:', 'wpml-translation-management' ), $total_count );
 			$message_content .= $message_content_details;
 		}
 		$container = $message_content;

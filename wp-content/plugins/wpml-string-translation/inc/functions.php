@@ -1,6 +1,7 @@
 <?php
+/** @todo: Move the functions code to classes and keep the functions as wrappers only */
 
-add_action('plugins_loaded', 'icl_st_init');
+add_action( 'plugins_loaded', 'icl_st_init' );
 
 function icl_st_init(){
     global $sitepress_settings, $sitepress, $wpdb, $icl_st_err_str, $pagenow, $authordata;
@@ -10,16 +11,6 @@ function icl_st_init(){
     add_action('icl_update_active_languages', 'icl_update_string_status_all');
     add_action('update_option_blogname', 'icl_st_update_blogname_actions',5,2);
     add_action('update_option_blogdescription', 'icl_st_update_blogdescription_actions',5,2);
-
-    if(isset($_GET['icl_action']) && $_GET['icl_action'] == 'view_string_in_page'){
-        icl_st_string_in_page($_GET['string_id']);
-        exit;
-    }
-
-    if(isset($_GET['icl_action']) && $_GET['icl_action'] == 'view_string_in_source'){
-        icl_st_string_in_source($_GET['string_id']);
-        exit;
-    }
 
     if ( get_magic_quotes_gpc() && isset($_GET['page']) && $_GET['page'] === WPML_ST_FOLDER . '/menu/string-translation.php'){
         $_POST = stripslashes_deep( $_POST );
@@ -39,6 +30,8 @@ function icl_st_init(){
     if(!isset($sitepress_settings['st']['icl_st_auto_reg'])){
         $sitepress_settings['st']['icl_st_auto_reg'] = 'disable';
         $sitepress->save_settings($sitepress_settings);
+
+	    do_action( 'wpml_st_auto_register_default' );
     }
     if(empty($sitepress_settings['st']['strings_language'])){
         $iclsettings['st']['strings_language'] = $sitepress_settings['st']['strings_language'] = 'en';
@@ -90,16 +83,6 @@ function icl_st_init(){
 	$blog_name_and_desc_hooks->init_hooks();
 	add_filter('widget_title', 'icl_sw_filters_widget_title', 0);  //highest priority
 	add_filter('widget_text', 'icl_sw_filters_widget_text', 0); //highest priority
-
-	$setup_complete = apply_filters('WPML_get_setting', false, 'setup_complete' );
-	$theme_localization_type = new WPML_Theme_Localization_Type( $sitepress );
-
-	if ( $setup_complete && $theme_localization_type->is_st_type() ) {
-		add_filter( 'gettext', 'icl_sw_filters_gettext', 9, 3 );
-		add_filter( 'gettext_with_context', 'icl_sw_filters_gettext_with_context', 1, 4 );
-		add_filter( 'ngettext', 'icl_sw_filters_ngettext', 9, 5 );
-		add_filter( 'ngettext_with_context', 'icl_sw_filters_nxgettext', 9, 6 );
-	}
 
     $widget_groups = $wpdb->get_results("SELECT option_name, option_value FROM {$wpdb->options} WHERE option_name LIKE 'widget\\_%'");
     foreach($widget_groups as $w){
@@ -190,11 +173,11 @@ function wpml_get_default_widget_title($id){
 /**
  * Registers a string for translation
  *
- * @param string  $context              The context for the string
- * @param string  $name                 A name to help the translator understand what’s being translated
- * @param string  $value                The string value
- * @param bool    $allow_empty_value    This param is not being used
- * @param string  $source_lang          The language of the registered string. Defaults to 'en'
+ * @param string|array $context           The context for the string
+ * @param string       $name              A name to help the translator understand what’s being translated
+ * @param string       $value             The string value
+ * @param bool         $allow_empty_value This param is not being used
+ * @param string       $source_lang       The language of the registered string. Defaults to 'en'
  *
  * @return int string_id of the just registered string or the id found in the database corresponding to the
  *             input parameters
@@ -255,15 +238,49 @@ function icl_translate( $context, $name, $value = false, $allow_empty_value = fa
 	if ( $lock ) {
 		return $value;
 	}
-
 	$lock = true;
-	if ( ! ( is_multisite() && ms_is_switched() ) || $GLOBALS['blog_id'] === end( $GLOBALS['_wp_switched_stack'] ) ) {
-		/** @var WPML_String_Translation $WPML_String_Translation */
-		global $WPML_String_Translation;
-		$filter = $WPML_String_Translation->get_string_filter( $target_lang ? $target_lang : $WPML_String_Translation->get_current_string_language( $name ) );
-		$value  = $filter ? $filter->translate_by_name_and_context( $value, $name, $context, $has_translation ) : $value;
+
+	$is_requested_blog = ! ( is_multisite() && ms_is_switched() ) || (int)$GLOBALS['blog_id'] === (int)end( $GLOBALS['_wp_switched_stack'] );
+
+	if ( $is_requested_blog ) {
+		if ( is_translated_admin_string( $name ) ) {
+			$value = wpml_get_string_current_translation( $value, $context, $name );
+		} else {
+			/** @var WPML_ST_Gettext_Hooks $st_gettext_hooks */
+			global $st_gettext_hooks;
+
+			$filter = $st_gettext_hooks->get_filter( $target_lang, $name );
+				
+			if ( $filter ) {
+				$new_value = $filter->translate_by_name_and_context( $value, $name, $context, $has_translation );
+				if ( $has_translation ) {
+					$value = $new_value;
+				}
+			}
+		}
 	}
+
 	$lock = false;
+
+	return $value;
+}
+
+/**
+ * @param string $value
+ * @param mixed $context
+ * @param string $name
+ *
+ * @return string
+ */
+function wpml_get_string_current_translation( $value, $context, $name ) {
+	$string_id = icl_get_string_id( $value, $context, $name );
+
+	/** @var WPML_String_Translation $WPML_String_Translation */
+	global $WPML_String_Translation;
+	$current_lang = $WPML_String_Translation->get_current_string_language( $name );
+	$translation        = icl_get_string_by_id( $string_id, $current_lang );
+
+	$value = $translation ? $translation : $value;
 
 	return $value;
 }
@@ -501,35 +518,38 @@ function icl_get_string_translations() {
 	return $WPML_ST_Strings->get_string_translations();
 }
 
-/**
- * Returns indexed array with language code and value of string
+/** *
+ * @param int          $string_id     ID of string in icl_strings DB table
+ * @param string|false $language_code false, or language code
  *
- * @param int         $string_id     ID of string in icl_strings DB table
- * @param bool|string $language_code false, or language code
- *
- * @return string
+ * @return string|false
  */
 function icl_get_string_by_id( $string_id, $language_code = false ) {
 	global $wpdb, $sitepress_settings;
 
-	if ( !$language_code ) {
+	if ( ! $language_code && isset( $sitepress_settings['st']['strings_language'] ) ) {
 		$language_code = $sitepress_settings[ 'st' ][ 'strings_language' ];
 	}
 
-	if ( $language_code == $sitepress_settings[ 'st' ][ 'strings_language' ] ) {
+	if ( isset( $sitepress_settings['st']['strings_language'] ) && $language_code == $sitepress_settings['st']['strings_language'] ) {
 
-		$result_prepared = $wpdb->prepare( "SELECT language, value FROM {$wpdb->prefix}icl_strings WHERE id=%d", $string_id );
+		$result_prepared = $wpdb->prepare(
+			"SELECT value FROM {$wpdb->prefix}icl_strings WHERE id=%d AND language=%s",
+			$string_id,
+			$language_code
+		);
+
 		$result = $wpdb->get_row( $result_prepared );
 
 		if ( $result ) {
 			return $result->value;
 		}
 
-	} else {
-		$translations = icl_get_string_translations_by_id( $string_id );
-		if ( isset( $translations[ $language_code ] ) ) {
-			return $translations[ $language_code ]['value'];
-		}
+	}
+
+	$translations = icl_get_string_translations_by_id( $string_id );
+	if ( isset( $translations[ $language_code ] ) ) {
+		return $translations[ $language_code ]['value'];
 	}
 
 	return false;
@@ -552,37 +572,12 @@ function icl_get_string_translations_by_id($string_id){
 }
 
 function icl_get_relative_translation_status( $string_id ) {
-	global $wpdb, $sitepress, $sitepress_settings;
+	global $wpdb, $sitepress;
 
-    $current_user = $sitepress->get_current_user();
-    $user_lang_pairs = get_user_meta($current_user->ID, $wpdb->prefix.'language_pairs', true);
-	$src_langs = array_intersect( array_keys( $sitepress->get_active_languages() ),
-	                              array_keys( $user_lang_pairs[ $sitepress_settings[ 'st' ][ 'strings_language' ] ] ) );
+	$string_factory              = wpml_st_load_string_factory();
+	$relative_translation_status = new WPML_ST_Relative_Translation_Status( $wpdb, $sitepress, $string_factory );
 
-    if(empty($src_langs)) return ICL_TM_NOT_TRANSLATED;
-
-    $sql = "SELECT st.status
-            FROM {$wpdb->prefix}icl_strings s 
-            JOIN {$wpdb->prefix}icl_string_translations st ON s.id = st.string_id
-            WHERE st.language IN (" . wpml_prepare_in( $src_langs ) . ") AND s.id = %d
-    ";
-    $statuses = $wpdb->get_col($wpdb->prepare($sql, $string_id));
-
-    $status = ICL_TM_NOT_TRANSLATED;
-    $one_incomplete = false;
-    foreach($statuses as $s){
-        if($s == ICL_TM_COMPLETE){
-            $status = ICL_TM_COMPLETE;
-        }elseif($s == ICL_TM_NOT_TRANSLATED){
-            $one_incomplete = true;
-        }
-    }
-
-    if($status == ICL_TM_COMPLETE && $one_incomplete){
-        $status = ICL_STRING_TRANSLATION_PARTIAL;
-    }
-
-    return $status;
+	return $relative_translation_status->get( $string_id );
 }
 
 function icl_get_strings_tracked_in_pages($string_translations){
@@ -614,69 +609,90 @@ function icl_sw_filters_widget_text($val){
 }
 
 /**
- * @param      $translation String This parameter is not important to the filter since we filter before other filters.
- * @param      $text
- * @param      $domain
- * @param bool $name
+ * @param string $translation String This parameter is not important to the filter since we filter before other filters.
+ * @param string $text
+ * @param string|array $domain
+ * @param bool|string $name
  *
- * @return bool|mixed|string
+ * @return string
  */
 function icl_sw_filters_gettext( $translation, $text, $domain, $name = false ) {
-    global $sitepress_settings;
+	/** @var WPML_ST_Gettext_Hooks $st_gettext_hooks */
+	global $sitepress_settings, $st_gettext_hooks;
 
-	// We need to check for recursion just in case another function called 
-	// from this function has a call to translate something else.
-	// We'll end up in an infinite loop if this happens
-	// https://onthegosystems.myjetbrains.com/youtrack/issue/wpmlst-473
-	static $stop_recursion = false;
-	if ( $stop_recursion ) {
-		return $translation;
-	}
-	$stop_recursion = true;
+	list( $domain_key, $context_key ) = wpml_st_extract_context_parameters( $domain );
+	$key = md5( $translation . $text . $domain_key . $context_key . $name );
 
-    $has_translation = null;
+	$found           = false;
+	$ret_translation = WPML_Non_Persistent_Cache::get( $key, 'icl_sw_filters_gettext', $found );
 
-    if ( ! defined( 'ICL_STRING_TRANSLATION_DYNAMIC_CONTEXT' ) ) {
-        define( 'ICL_STRING_TRANSLATION_DYNAMIC_CONTEXT', 'wpml_string' );
-    }
+	if ( $found ) {
 
-	if ( isset( $sitepress_settings[ 'st' ][ 'track_strings' ] ) && $sitepress_settings[ 'st' ][ 'track_strings' ] && did_action( 'after_setup_theme' ) && current_user_can( 'edit_others_posts' ) ) {
-		if ( ! is_admin( ) ) {
-            // track strings if the user has enabled this and if it's and editor or admin
-            icl_st_track_string( $text, $domain, ICL_STRING_TRANSLATION_STRING_TRACKING_TYPE_PAGE );
-        }
+		return $ret_translation;
 	}
 
+	$has_translation = null;
+	$ret_translation = null;
 
-    $register_dynamic_string = false;
-    if ( $domain == ICL_STRING_TRANSLATION_DYNAMIC_CONTEXT ) {
-        $register_dynamic_string = true;
-    }
+	if ( ! defined( 'ICL_STRING_TRANSLATION_DYNAMIC_CONTEXT' ) ) {
+		define( 'ICL_STRING_TRANSLATION_DYNAMIC_CONTEXT', 'wpml_string' );
+	}
 
-    if ( $register_dynamic_string ) {
-        // register strings if the user has used ICL_STRING_TRANSLATION_DYNAMIC_CONTEXT (or it's value) as a text domain
-        icl_register_string( $domain, $name, $text );
-    }
+	if ( icl_sw_must_track_strings( $sitepress_settings ) ) {
+		// track strings if the user has enabled this and if it's and editor or admin
+		icl_st_track_string( $text, $domain, ICL_STRING_TRANSLATION_STRING_TRACKING_TYPE_PAGE );
+	}
 
-    if ( ! $name ) {
-        $name = md5( $text );
-    }
+	$register_dynamic_string = false;
+	if ( $domain == ICL_STRING_TRANSLATION_DYNAMIC_CONTEXT ) {
+		$register_dynamic_string = true;
+	}
 
-    $ret_translation = icl_translate( $domain, $name, $text, false, $has_translation );
+	if ( $register_dynamic_string ) {
+		// register strings if the user has used ICL_STRING_TRANSLATION_DYNAMIC_CONTEXT (or it's value) as a text domain
+		icl_register_string( $domain, $name, $text );
+	}
 
-    if ( ! $has_translation ) {
-        $ret_translation = $translation;
-    }
+	if ( ! $name ) {
+		$name = md5( $text );
+	}
 
-    if ( isset( $_GET[ 'icl_string_track_value' ] ) && isset( $_GET[ 'icl_string_track_context' ] )
-         && stripslashes( $_GET[ 'icl_string_track_context' ] ) == $domain && stripslashes( $_GET[ 'icl_string_track_value' ] ) == $text
-    ) {
-        $ret_translation = '<span style="background-color:' . $sitepress_settings[ 'st' ][ 'hl_color' ] . '">' . $ret_translation . '</span>';
-    }
+	if ( $st_gettext_hooks->should_gettext_filters_be_turned_on() ) {
+		$ret_translation = icl_translate( $domain, $name, $text, false, $has_translation );
+	}
 
-    $stop_recursion = false;
+	if ( ! $has_translation ) {
+		$ret_translation = $translation;
+	}
 
-    return $ret_translation;
+	if ( isset( $_GET['icl_string_track_value'], $_GET['icl_string_track_context'] )
+	     && stripslashes( $_GET['icl_string_track_context'] ) === $domain
+	     && stripslashes( $_GET['icl_string_track_value'] ) === $text ) {
+		$ret_translation = '<span style="background-color:' . esc_attr( $sitepress_settings['st']['hl_color'] ) . '">' . $ret_translation . '</span>';
+	}
+
+	WPML_Non_Persistent_Cache::set( $key, $ret_translation, 'icl_sw_filters_gettext' );
+
+	return $ret_translation;
+}
+
+/**
+ * @param $sitepress_settings
+ *
+ * @return bool
+ */
+function icl_sw_must_track_strings( $sitepress_settings ) {
+	static $checking_if_must_track_strings;
+	$found  = false;
+	$result = wp_cache_get( 'must_track_strings', 'wpml_st', false, $found );
+	if ( ! $found && ! $checking_if_must_track_strings && did_action( 'after_setup_theme' ) ) {
+	    $checking_if_must_track_strings = true;
+		$result = isset( $sitepress_settings['st']['track_strings'] ) && $sitepress_settings['st']['track_strings'] && current_user_can( 'edit_others_posts' ) && ! is_admin();
+		wp_cache_set( 'must_track_strings', $result, 'wpml_st' );
+	    $checking_if_must_track_strings = false;
+	}
+
+	return $result;
 }
 
 function icl_st_track_string( $text, $domain, $kind = ICL_STRING_TRANSLATION_STRING_TRACKING_TYPE_PAGE ) {
@@ -691,7 +707,7 @@ function icl_st_track_string( $text, $domain, $kind = ICL_STRING_TRANSLATION_STR
     if ( ! $string_scanner ) {
         try {
             $wp_filesystem = wp_filesystem_init();
-            $string_scanner = new WPML_String_Scanner( $wp_filesystem );
+            $string_scanner = new WPML_String_Scanner( $wp_filesystem, new WPML_ST_File_Hashing() );
         } catch( Exception $e ) {
             trigger_error($e->getMessage(), E_USER_WARNING);
         }
@@ -818,44 +834,6 @@ function icl_st_generate_po_file( $strings ) {
 	return $po;
 }
 
-function icl_st_string_in_page($string_id){
-    global $wpdb;
-    // get urls
-    $urls = $wpdb->get_col($wpdb->prepare("SELECT position_in_page 
-                            FROM {$wpdb->prefix}icl_string_positions 
-                            WHERE string_id = %d AND kind = %d", $string_id, ICL_STRING_TRANSLATION_STRING_TRACKING_TYPE_PAGE));
-    if(!empty($urls)){
-        $string = $wpdb->get_row($wpdb->prepare("SELECT context, value FROM {$wpdb->prefix}icl_strings WHERE id=%d", $string_id));
-        echo '<div id="icl_show_source_top">';
-        for($i = 0; $i < count($urls); $i++){
-            $c = $i+1;
-            if(strpos($urls[$i], '?') !== false){
-                $urls[$i] .= '&icl_string_track_value=' . $string->value;
-            }else{
-                $urls[$i] .= '?icl_string_track_value=' . $string->value;
-            }
-            $urls[$i] .= '&icl_string_track_context=' . $string->context;
-
-            echo '<a href="#" onclick="jQuery(\'#icl_string_track_frame_wrap iframe\').attr(\'src\',\''.esc_url($urls[$i]).'\');jQuery(\'#icl_string_track_url a\').html(\''.esc_url($urls[$i]).'\').attr(\'href\',  \''.esc_url($urls[$i]).'\'); return false;">'.$c.'</a><br />';
-
-        }
-        echo '</div>';
-        echo '<div id="icl_string_track_frame_wrap">';
-        echo '<iframe onload="iclResizeIframe()" src="'.$urls[0].'" width="10" height="10" frameborder="0" marginheight="0" marginwidth="0"></iframe>';
-        echo '<div id="icl_string_track_url" class="icl_string_track_url"><a href="'.esc_url($urls[0]).'">' . esc_html($urls[0]) . "</a></div>\n";
-        echo '</div>';
-    }else{
-        _e('No records found', 'wpml-string-translation');
-    }
-}
-
-function icl_st_string_in_source( $string_id ){
-	global $sitepress;
-
-	$positions_in_source = new WPML_ST_String_Positions_In_Source( $sitepress );
-	$positions_in_source->dialog_render( $string_id );
-}
-
 function _icl_st_get_options_writes($path){
     static $found_writes = array();
     if(is_dir($path)){
@@ -960,11 +938,11 @@ You can view your other translation jobs here: %s
  This email is not monitored for replies.
 
  - The WPML team
-", 'sitepress');
+", 'wpml-string-translation');
 
 
     $to = $user->user_email;
-    $subject = sprintf(__("You have been assigned to a new translation job on %s.", 'sitepress'), get_bloginfo('name'));
+    $subject = sprintf(__("You have been assigned to a new translation job on %s.", 'wpml-string-translation'), get_bloginfo('name'));
     $body = sprintf($message,
         $source_en, $target_en, admin_url('admin.php?page='.WPML_ST_FOLDER.'/menu/string-translation.php'),
             admin_url('admin.php?page='.WPML_TM_FOLDER.'/menu/translations-queue.php'), home_url());
@@ -1071,7 +1049,7 @@ function get_wp_filesystem() {
     }
 
     if ( ! WP_Filesystem() ) {
-        throw new RuntimeException( __( 'Unable to get filesystem access', 'sitepress' ) );
+        throw new RuntimeException( __( 'Unable to get filesystem access', 'wpml-string-translation' ) );
     }
 
     return $wp_filesystem;

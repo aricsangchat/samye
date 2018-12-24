@@ -6,8 +6,6 @@ abstract class WPML_Element_Translation_Job extends WPML_Translation_Job {
 
 	protected $original_del_text;
 
-	protected $asian_languages = array( 'ja', 'ko', 'zh-hans', 'zh-hant', 'mn', 'ne', 'hi', 'pa', 'ta', 'th' );
-
 	/** @var  WPML_Translation_Job_Factory $job_factory */
 	protected $job_factory;
 
@@ -55,13 +53,10 @@ abstract class WPML_Element_Translation_Job extends WPML_Translation_Job {
 
 	function get_original_element_id() {
 		if ( ! $this->original_doc_id ) {
-			$original_element_id   = $this->get_iclt_field( 'element_id', false );
-			$this->original_doc_id = $original_element_id;
-		} else {
-			$original_element_id = $this->original_doc_id;
+			$this->original_doc_id = $this->get_iclt_field( 'element_id', false );
 		}
 
-		return $original_element_id;
+		return $this->original_doc_id;
 	}
 
 	function get_translation_id() {
@@ -97,16 +92,10 @@ abstract class WPML_Element_Translation_Job extends WPML_Translation_Job {
 	 * @return int
 	 */
 	function estimate_word_count() {
-		$words           = 0;
-		$lang_code       = $this->get_source_language_code();
-		$is_asian_lang   = in_array( $lang_code, $this->asian_languages, true );
 		$fields          = $this->get_original_fields();
 		$combined_string = join( ' ', $fields );
-		$words += $is_asian_lang === true
-			? strlen( strip_tags( $combined_string ) ) / 6
-			: count( preg_split( '/[\s\/]+/', $combined_string, 0, PREG_SPLIT_NO_EMPTY ) );
-
-		return (int) $words;
+		$calculator      = new WPML_TM_Word_Calculator( new WPML_PHP_Functions() );
+		return $calculator->count_words( $combined_string, $this->get_source_language_code() );
 	}
 
 	function get_original_fields() {
@@ -173,12 +162,12 @@ abstract class WPML_Element_Translation_Job extends WPML_Translation_Job {
 		$url             = $this->get_url( true );
 		$word_count      = $this->estimate_word_count();
 		$note            = isset( $note ) ? $note : '';
-		$is_update       = intval( $this->get_resultant_element_id() );
 		$source_language = $this->get_source_language_code();
 		$target_language = $this->get_language_code();
+		$uuid            = $this->get_uuid();
 
 		try {
-			$res = $project->send_to_translation_batch_mode( $file, $title, $cms_id, $url, $source_language, $target_language, $word_count, $translator_id, $note, $is_update );
+			$res = $project->send_to_translation_batch_mode( $file, $title, $cms_id, $url, $source_language, $target_language, $word_count, $translator_id, $note, $uuid );
 		} catch ( Exception $err ) {
 			// The translation entry will be removed
 			$project->errors[] = $err;
@@ -289,9 +278,6 @@ abstract class WPML_Element_Translation_Job extends WPML_Translation_Job {
 			"(SELECT job_id FROM {$wpdb->prefix}icl_translate_job trans_job WHERE trans_job.rid = {$table}.rid LIMIT 1)"
 		);
 	}
-
-	public function maybe_load_terms_from_post_into_job( $delete ) {
-	}
 	
 	private function get_iclt_field( $field_name, $translation ) {
 		global $wpdb;
@@ -311,10 +297,64 @@ abstract class WPML_Element_Translation_Job extends WPML_Translation_Job {
 							LIMIT 1";
 		$args           = array( $this->get_id() );
 		$prepared_query = $wpdb->prepare( $query, $args );
-		$value          = $wpdb->get_var( $prepared_query );
-
-		return $value;
+		return $wpdb->get_var( $prepared_query );
 	}
-	
 
+	/**
+	 * If the job does not have deadline date,
+	 * we consider that the job was completed on time.
+	 *
+	 * @return bool
+	 */
+	public function is_completed_on_time() {
+		return $this->get_number_of_days_overdue() <= 0;
+	}
+
+	/**
+	 * @return false|int Negative integer if the job was completed before the deadline, or positive either.
+	 *                   False is the job has no deadline date
+	 */
+	public function get_number_of_days_overdue() {
+		$deadline  = $this->get_deadline_date();
+		$completed = $this->get_completed_date();
+
+		if ( ! $deadline ) {
+			return false;
+		}
+
+		if ( ! $completed ) {
+			$completed = strtotime( 'now' );
+		} else {
+			$completed = strtotime( $completed );
+		}
+
+		$deadline  = strtotime( $deadline );
+
+		return (int) floor( ( $completed - $deadline ) / DAY_IN_SECONDS );
+	}
+
+	/** @return string|null */
+	public function get_deadline_date() {
+		return $this->get_basic_data_property( 'deadline_date' );
+	}
+
+	/** @return string|null */
+	public function get_completed_date() {
+		return $this->get_basic_data_property( 'completed_date' );
+	}
+
+	/** @return string|null */
+	public function get_manager_id() {
+		return $this->get_basic_data_property( 'manager_id' );
+	}
+
+	/** @return string|null */
+	protected function get_title_from_db() {
+		return $this->get_basic_data_property( 'title' );
+	}
+
+	/** @return string|null */
+	protected function get_uuid() {
+		return $this->get_basic_data_property( 'uuid' );
+	}
 }

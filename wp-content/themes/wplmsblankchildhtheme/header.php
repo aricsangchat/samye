@@ -68,6 +68,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                                 </ul>
                             <?php
                             endif;
+
+                            do_action( 'wpml_add_language_selector' );
                             ?>
                         <a id="trigger">
                             <span class="lines"></span>

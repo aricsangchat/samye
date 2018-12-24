@@ -9,7 +9,9 @@
  * do any caching, etc.
  *
  */
-class WPML_ST_String extends WPML_WPDB_User {
+class WPML_ST_String {
+
+	protected $wpdb;
 
 	private $string_id;
 
@@ -23,8 +25,8 @@ class WPML_ST_String extends WPML_WPDB_User {
 	 * @param int $string_id
 	 * @param wpdb $wpdb
 	 */
-	public function __construct( $string_id, &$wpdb ) {
-		parent::__construct( $wpdb );
+	public function __construct( $string_id, wpdb $wpdb ) {
+		$this->wpdb = $wpdb;
 
 		$this->string_id = $string_id;
 	}
@@ -76,7 +78,7 @@ class WPML_ST_String extends WPML_WPDB_User {
 	public function set_language( $language ) {
 		if ( $language !== $this->get_language() ) {
 			$this->language = $language;
-		$this->set_property( 'language', $language );
+			$this->set_property( 'language', $language );
 			$this->update_status();
 		}
 	}
@@ -86,7 +88,20 @@ class WPML_ST_String extends WPML_WPDB_User {
 	 */
 	public function get_translation_statuses() {
 
-		return $this->wpdb->get_results( "SELECT language, status " . $this->from_where_snippet( true ) );
+		$statuses = $this->wpdb->get_results( "SELECT language, status, mo_string " . $this->from_where_snippet( true ) );
+		foreach ( $statuses as &$status ) {
+			if ( ! empty( $status->mo_string ) ) {
+				$status->status = ICL_TM_COMPLETE;
+			}
+			unset( $status->mo_string );
+		}
+
+		return $statuses;
+	}
+
+	public function get_translations() {
+
+		return $this->wpdb->get_results( "SELECT * " . $this->from_where_snippet( true ) );
 	}
 
 	/**
@@ -152,6 +167,10 @@ class WPML_ST_String extends WPML_WPDB_User {
 	 * @return bool|int id of the translation
 	 */
 	public function set_translation( $language, $value = null, $status = false, $translator_id = null, $translation_service = null, $batch_id = null ) {
+		if ( ! $this->exists() ) {
+			return false;
+		}
+
 		/** @var $ICL_Pro_Translation WPML_Pro_Translation */
 		global $ICL_Pro_Translation;
 
@@ -176,6 +195,8 @@ class WPML_ST_String extends WPML_WPDB_User {
 		if ( $translator_id ) {
 			$translation_data['translator_id'] = $translator_id;
 		}
+
+		$translation_data = apply_filters( 'wpml_st_string_translation_before_save', $translation_data, $language, $this->string_id );
 
 		if ( $res ) {
 			$st_id = $res->id;
@@ -205,9 +226,17 @@ class WPML_ST_String extends WPML_WPDB_User {
 		}
 
 		icl_update_string_status( $this->string_id );
+		/**
+		 * @deprecated Use wpml_st_add_string_translation instead
+		 */
 		do_action( 'icl_st_add_string_translation', $st_id );
+		do_action( 'wpml_st_add_string_translation', $st_id );
 
 		return $st_id;
+	}
+
+	public function set_location( $location ) {
+		$this->set_property( 'location', $location );
 	}
 
 	/**
@@ -234,5 +263,16 @@ class WPML_ST_String extends WPML_WPDB_User {
 		}
 
 		return $this->wpdb->prepare( "FROM {$this->wpdb->prefix}{$table} WHERE {$id_column}=%d", $this->string_id );
+	}
+
+	public function exists() {
+		$sql = $this->wpdb->prepare( "SELECT id FROM {$this->wpdb->prefix}icl_strings WHERE id = %d", $this->string_id );
+
+		return $this->wpdb->get_var( $sql ) > 0;
+	}
+
+	/** @return string|null */
+	public function get_context() {
+		return $this->wpdb->get_var( "SELECT context " . $this->from_where_snippet() . " LIMIT 1" );
 	}
 }
