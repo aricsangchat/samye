@@ -3,8 +3,22 @@ header {
     background-color: $primary-color !important;
     height: 75px;
 
+    nav .menu li a {
+        padding: 0px !important;
+    }
+
     @media only screen and (min-width: 768px) {
         height: 100px;
+
+        .container, .row, .col-xs-4, .col-xs-8 {
+            height: 100px;
+        }
+
+        nav {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
     }
 
     img {
@@ -14,14 +28,6 @@ header {
 }
 
 .menu-main-menu-container {
-    position: relative;
-    left: 25px;
-    
-    #menu-main-menu-1, #menu-main-menu {
-        position: relative;
-        top: 28px;
-    }
-
     #new_searchicon {
         font-size: 29px;
         position: relative;
@@ -97,6 +103,13 @@ header #trigger {
     }
 }
 
-@media only screen and (min-width: 768px) {
+// @media only screen and (min-width: 768px) {
     
+// }
+
+.wpml-ls-statics-shortcode_actions {
+    width: 50px;
+    position: absolute;
+    right: 100px;
+    text-indent: -9999px;
 }

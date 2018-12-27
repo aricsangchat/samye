@@ -2,6 +2,30 @@ body {
     background-color: $white !important;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: $heading !important;
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    color: inherit !important;
+}
+
+p, li {
+    font-family: $body !important;
+}
+
+a, span, strong  {
+    font-family: inherit !important;
+}
+
+a {
+
+    &:hover {
+        color: inherit !important;
+        text-decoration: underline;
+    }
+}
+
 .button-wrapper {
     width: 100%;
     text-align: center;
@@ -12,6 +36,7 @@ body {
     color: $white;
     text-transform: uppercase;
     padding: 12px 35px;
+    display: inline-block;
 
 }
 

@@ -1,3 +1,50 @@
+@font-face {
+    font-family: 'marcellus_scregular';
+    src: url('../fonts/marcellussc-regular-webfont.woff2') format('woff2'),
+         url('../fonts/marcellussc-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'hindlight';
+    src: url('../fonts/hind-light-webfont.woff2') format('woff2'),
+         url('../fonts/hind-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'hindmedium';
+    src: url('../fonts/hind-medium-webfont.woff2') format('woff2'),
+         url('../fonts/hind-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'hindregular';
+    src: url('../fonts/hind-regular-webfont.woff2') format('woff2'),
+         url('../fonts/hind-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'hindsemibold';
+    src: url('../fonts/hind-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/hind-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 $primary-color: #b83029;
 $secondary-color: #ffb931;
 $white: #fff;
+$heading: 'marcellus_scregular';
+$body: 'hindregular';
