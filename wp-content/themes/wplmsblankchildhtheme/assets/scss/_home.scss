@@ -96,9 +96,13 @@
     }
 
     h2 {
-        margin-bottom: 35px;
+        margin-bottom: 20px;
         color: $dark-font;
         font-size: 32px;
+
+        @media only screen and (min-width: 768px) {
+            margin-bottom: 35px;
+        }
     }
 
     p {
@@ -135,24 +139,102 @@
         padding: 55px 0;
     }
 
-
     h2, p {
         color: $white;
     }
 
     h2 {
         font-size: 32px;
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: 768px) {
+            margin-bottom: 35px;
+        }
+    }
+
+    p {
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: 768px) {
+            margin-bottom: 30px;
+        }
     }
 
     h3 {
         color: $white;
-        font-family: $body !important;
+        font-family: $semi-bold !important;
         font-size: 16px;
         line-height: 22px;
+        margin-top: 15px;
     }
 
     img {
         width: 100%;
         height: auto;
+    }
+
+    .row-programs {
+        margin-bottom: 30px;
+    }
+
+    .icon-map {
+        max-height: 267px;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        display: block;
+        margin-bottom: 35px;
+    }
+
+    .col-study-programs {
+        margin-bottom: 30px;
+        border-bottom: 3px solid $secondary-color;
+        padding-bottom: 50px;
+
+        @media only screen and (min-width: 768px) {
+            border-bottom: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            padding-right: 40px;
+        }
+    }
+
+    .col-groups {
+        @media only screen and (min-width: 768px) {
+            padding-left: 40px;
+            border-left: 3px solid $secondary-color;
+        }
+    }
+}
+
+.latest-learning-resources {
+    padding-top: 50px;
+    padding-bottom: 60px;
+
+    .course-image {
+        height: 353px;
+        width: 353px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .center-images {
+        width: 100%;
+        height: 180px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+    }
+
+    .article-image {
+        width: 150px;
+        height: 150px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
     }
 }

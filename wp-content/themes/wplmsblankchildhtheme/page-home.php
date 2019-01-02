@@ -2,7 +2,7 @@
 
 get_header(vibe_get_header());
 
-if ( have_posts() ) : while ( have_posts() ) : the_post();
+// if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 ?>
 
@@ -106,10 +106,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     <div class="program-group-block">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12 col-sm-6 col-study-programs">
                     <h2>At home study programs</h2>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                    <div class="row">
+                    <p>Enroll in one of our short-term or long-term study programs and receive guidance from authentic tibetan teachers. Follow your sincere aspiration and blablabla The standard chunk of Lorem Ipsum used since the 1500s.</p>
+                    <div class="row row-programs">
                         <div class="col-xs-6 col-sm-4">
                             <img src="<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>" alt="<?php echo get_post_meta( get_post_thumbnail_id( 17234 ), '_wp_attachment_image_alt', true ); ?>">
                             <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
@@ -128,12 +128,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     </div>
 
                 </div>
-                <div class="col-xs-12 col-sm-6">
-                    <h2>At home study programs</h2>
-                    <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                        <img src="http://placehold.jp/1000x700.png" alt="...">
+                <div class="col-xs-12 col-sm-6 col-groups">
+                    <h2>Dharma Groups - Practice Together</h2>
+                    <p>Practicing together is a real blessing for all of us. Etc. The standard chunk of Lorem Ipsum used since the 1500s is reproduced.</p>
+                    <img class="icon-map" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-map.png" alt="dharma groups">
                     <div class="button-wrapper">
-                        <a class="secondary-btn" href="#">Link</a>
+                        <a class="secondary-btn" href="#">Explore Groups</a>
                     </div>
                 </div>
             </div>
@@ -141,7 +141,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     </div>
 
 
-    <div class="container featured-post-block">
+    <div class="container latest-learning-resources">
         <div class="row">
             <div class="col-xs-12">
                 <h2>Latest Learning Resources</h2>
@@ -150,7 +150,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         <div class="row">
             <div class="col-xs-12 col-md-5">
             <?php
-                $args = array(
+                $args1 = array(
                     'numberposts' => 1,
                     'offset' => 0,
                     'category' => 0,
@@ -164,9 +164,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     'post_status' => 'publish',
                     'suppress_filters' => true
                 );
-                $recent_posts = wp_get_recent_posts($args);
+                $recent_posts = wp_get_recent_posts($args1);
                 foreach( $recent_posts as $recent ){
-                    echo '<img src="'.get_the_post_thumbnail_url( $recent["ID"], 'full' ).'" alt="">';
+                    echo '<div class="course-image" style="background-image: url('.get_the_post_thumbnail_url( $recent["ID"], 'full' ).');"><div class="overlay-category"><p>Learning Program</p></div></div>';
                     echo '<h2><a href="' . get_permalink($recent["ID"]) . '">'.(__($recent["post_title"])).'</a></h2> ';
 
                 }
@@ -175,7 +175,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             </div>
             <div class="col-xs-12 col-md-4">
                 <?php
-                    $args = array(
+                    $args2 = array(
                         'orderby' => 'post_date',
                         'order' => 'DESC',
                         'post_type' => 'post',
@@ -191,12 +191,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                         )
                     );
                     // The Query
-                    $query1 = new WP_Query( $args );
+                    $query1 = new WP_Query( $args2 );
 
                     if ( $query1->have_posts() ) {
                         // The Loop
                         while ( $query1->have_posts() ) {
                             $query1->the_post();
+                            $format = get_post_format() ? : 'Article';
+                            echo '<div class="center-images" style="background-image: url('.get_the_post_thumbnail_url().');"><div class="overlay-category"><p>'.$format.'</p></div></div>';
                             echo '<h2><a href="'. get_the_permalink() .'">' . get_the_title() . '</a></h2>';
                         }
                         
@@ -212,12 +214,19 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             </div>
             <div class="col-xs-12 col-md-3">
                 <?php
-                        $args = array(
+                        $args1 = array(
+                            'numberposts' => 3,
+                            'offset' => 0,
+                            'category' => 0,
                             'orderby' => 'post_date',
                             'order' => 'DESC',
+                            'include' => '',
+                            'exclude' => '',
+                            'meta_key' => '',
+                            'meta_value' =>'',
                             'post_type' => 'post',
-                            'posts_per_page' => 4,
                             'post_status' => 'publish',
+                            'suppress_filters' => true,
                             'tax_query' => array(
                                 array(
                                     'taxonomy' => 'post_format',
@@ -227,24 +236,14 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                                 )
                             )
                         );
-                        // The Query
-                        $query1 = new WP_Query( $args );
-
-                        if ( $query1->have_posts() ) {
-                            // The Loop
-                            while ( $query1->have_posts() ) {
-                                $query1->the_post();
-                                echo '<h2>' . get_the_title() . '</h2>';
-                            }
-                            
-                            /* Restore original Post Data 
-                            * NB: Because we are using new WP_Query we aren't stomping on the 
-                            * original $wp_query and it does not need to be reset with 
-                            * wp_reset_query(). We just need to set the post data back up with
-                            * wp_reset_postdata().
-                            */
-                            wp_reset_postdata();
+                        $recent_posts = wp_get_recent_posts($args1);
+                        foreach( $recent_posts as $recent ){
+                            $format = get_post_format($recent["ID"]) ? : 'Article';
+                            echo '<div class="article-image" style="background-image: url('.get_the_post_thumbnail_url( $recent["ID"], 'full' ).');"><div class="overlay-category"><p>'.$format.'</p></div></div>';
+                            echo '<h2><a href="' . get_permalink($recent["ID"]) . '">'.(__($recent["post_title"])).'</a></h2> ';
+        
                         }
+                        wp_reset_query();
                     ?>
             </div>
         </div>
@@ -341,8 +340,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     </div>
 </section>
 <?php
-endwhile;
-endif; 
+// endwhile;
+// endif; 
 ?>
 <?php
 get_footer( vibe_get_footer() );
