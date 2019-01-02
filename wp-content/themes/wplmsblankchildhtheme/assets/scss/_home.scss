@@ -3,6 +3,22 @@
         width: 100%;
     }
 
+    .glyphicon-chevron-left:before {
+        content: "";
+        height: 36px;
+        width: 36px;
+        display: block;
+        background-image: url('../images/icon-prev.png');
+    }
+
+    .glyphicon-chevron-right:before {
+        content: "";
+        height: 36px;
+        width: 36px;
+        display: block;
+        background-image: url('../images/icon-next.png');
+    }
+
     .hero-caption {
         display: table-cell;
         vertical-align: middle;
@@ -16,7 +32,24 @@
 
         h2 {
             color: $white;
-            font-size: 32px;
+            font-size: 36px;
+
+            @media only screen and (min-width: 768px) {
+                font-size: 48px;
+            }
+
+            @media only screen and (min-width: 992px) {
+                font-size: 64px;
+            }
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+
+            @media only screen and (min-width: 992px) {
+                width: 75%;
+            }
         }
     }
 
@@ -27,5 +60,99 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
+    }
+
+    .carousel-indicators .active {
+        background-color: $secondary-color;
+    }
+
+    .carousel-indicators li {
+        border: none;
+        background-color: $white;
+    }
+}
+
+.about-section {
+    .default-text-block {
+        padding: 25px 0 60px;
+
+        @media only screen and (min-width: 768px) {
+            padding: 95px 0;
+        }
+    
+        .primary-btn {
+            float: right;
+            margin-bottom: 50px;
+            
+            @media only screen and (min-width: 768px) {
+                margin-bottom: 0px;
+            }
+        }
+    
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    h2 {
+        margin-bottom: 35px;
+        color: $dark-font;
+        font-size: 32px;
+    }
+
+    p {
+        margin-bottom: 33px;
+        color: $gray-font;
+
+        @media only screen and (min-width: 768px) {
+            width: 90%;
+            float: right;
+        }
+    }
+    
+    .about-image {
+        height: 350px;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        @media only screen and (min-width: 768px) {
+            width: 90%;
+            float: right;
+        }
+    }
+}
+
+.program-group-block {
+    background-color: $primary-color;
+    padding: 30px 0 55px;
+
+    @media only screen and (min-width: 768px) {
+        padding: 55px 0;
+    }
+
+
+    h2, p {
+        color: $white;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+
+    h3 {
+        color: $white;
+        font-family: $body !important;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
     }
 }

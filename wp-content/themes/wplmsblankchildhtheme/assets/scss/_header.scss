@@ -1,38 +1,131 @@
+#wpadminbar {
+    display: none;
+
+    @media only screen and (min-width: 768px) {
+        display: block;
+    }
+}
+
+.pagesidebar {
+    .login-menu {
+        background-color: $primary-color;
+        padding: 15px;
+
+        li {
+            margin: 0 auto;
+            display: block;
+            width: 30px;
+
+            .smallimg {
+                grid-template-columns: 30px 1fr;
+
+                img {
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    .mobile_icons {
+        background-color: $primary-color;
+    }
+
+    .sidemenu {
+        li {
+            border-bottom: 1px solid rgba(0,0,0,.1);
+            border-top: 0;
+        }
+    }
+}
+
 header {
     box-shadow: none !important;
     background-color: $primary-color !important;
     height: 75px;
 
-    nav .menu li a {
-        padding: 0px !important;
-    }
-
     @media only screen and (min-width: 768px) {
         height: 100px;
+    }
 
-        .container, .row, .col-xs-4, .col-xs-8 {
-            height: 100px;
-        }
+    nav .menu li a {
+        padding: 0px !important;
+        font-size: 14px;
+        letter-spacing: 0.04em;
 
-        nav {
-            position: absolute;
-            right: 0;
-            bottom: 0;
+        strong {
+            font-weight: normal;
         }
     }
 
-    img {
-        width: 100%;
-        height: auto;
+    nav {
+        @media only screen and (min-width: 992px) {
+            position: absolute;
+            bottom: -75px;
+            right: 0px;
+
+            .fa-search:before {
+                content: none;
+            }
+
+            .fa-search:after {
+                content: "";
+                height: 16px;
+                width: 16px;
+                display: block;
+                background-image: url('../images/icon-search.png');
+                position: relative;
+                top: 2px;
+            }
+        }
+    }
+
+    .top-nav {
+        display: none;
+
+        @media only screen and (min-width: 992px) {
+            display: block;
+            position: absolute;
+            right: 0px;
+            top: 17px;
+        }
+
+        .login-menu {
+            display: inline-block;
+        }
+
+        .wpml-ls-statics-shortcode_actions {
+            display: inline-block;
+
+            position: relative;
+            bottom: 5px;
+        }
+    }
+    
+    .logo-wrapper {
+        padding-top: 18px;
+
+        @media only screen and (min-width: 768px) {
+            padding-top: 16px;
+        }
+
+        img {
+            width: auto;
+            height: 38px;
+
+            @media only screen and (min-width: 768px) {
+                width: auto;
+                height: 63px;
+            }
+        }
     }
 }
 
 .menu-main-menu-container {
-    #new_searchicon {
-        font-size: 29px;
-        position: relative;
-        top: -13px;
-    }
+    // #new_searchicon {
+    //     font-size: 29px;
+    //     position: relative;
+    //     top: -13px;
+    // }
     
     ul {
         a {
@@ -42,12 +135,18 @@ header {
 }
 
 .login-menu {
-    position: absolute;
-    top: 10px;
-    right: 0px;
+    // position: absolute;
+    // top: 17px;
+    // right: 127px;
 
     li {
         display: inline-block;
+
+        a {
+            color: $white;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+        }
     }
 }
 
@@ -79,37 +178,25 @@ header #trigger {
     background: $white !important;
 }
 
-.logo-wrapper {
-    background-color: $white;
-    width: 150px;
-    height: 75px;
-    position: absolute;
-    border-bottom: 0px solid $secondary-color;
-    z-index: 1;
-    padding: 24px 20px;
-    
-    @media only screen and (min-width: 768px) {
+.wpml-ls-legacy-dropdown {
+    width: 4.5em;
+
+    a {
+        background-color: transparent;
+        border: 0;
+    }
+
+    a.wpml-ls-item-toggle:after {
+        border-top: .5em solid #fff;
+        right: 20px;
+        top: 9px;
+    }
+
+    a:hover, a:focus, .wpml-ls-current-language:hover>a {
+        background: none;
+    }
+
+    .wpml-ls-sub-menu {
         background-color: $white;
-        width: 220px;
-        height: 144px;
-        position: absolute;
-        border-bottom: 5px solid $secondary-color;
-        z-index: 1;
-        padding: 45px 20px;
     }
-
-    .logo {
-
-    }
-}
-
-// @media only screen and (min-width: 768px) {
-    
-// }
-
-.wpml-ls-statics-shortcode_actions {
-    width: 50px;
-    position: absolute;
-    right: 100px;
-    text-indent: -9999px;
 }

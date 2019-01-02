@@ -10,6 +10,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: inherit !important;
 }
 
+h2 {
+    font-size: 32px;
+}
+
 p, li {
     font-family: $body !important;
 }
@@ -34,6 +38,8 @@ a {
 .primary-btn {
     background-color: $primary-color;
     color: $white;
+    font-size: 18px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     padding: 12px 35px;
     display: inline-block;
@@ -43,7 +49,15 @@ a {
 .secondary-btn {
     background-color: $white;
     color: $primary-color;
+    font-size: 18px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     padding: 12px 35px;
     display: inline-block;
+}
+
+.image-dropshadow {
+    -webkit-box-shadow: 10px 10px 0px 0px $secondary-color;
+    -moz-box-shadow: 10px 10px 0px 0px $secondary-color;
+    box-shadow: 10px 10px 0px 0px $secondary-color;
 }

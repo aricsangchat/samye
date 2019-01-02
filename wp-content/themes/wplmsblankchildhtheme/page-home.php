@@ -75,7 +75,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 endif;
 
             elseif( get_row_layout() == '2_column_content_default' ): 
-                echo '<div class="container">
+                echo '<div class="container about-section">
                 <div class="row default-text-block">
                     <div class="col-xs-12 col-sm-6">
                         <h2>'.get_sub_field('title').'</h2>
@@ -83,7 +83,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                         <a class="primary-btn" href="'.get_sub_field('button_url').'">'.get_sub_field('button_text').'</a>
                     </div>
                     <div class="col-xs-12 col-sm-6">
-                        <img src="'.get_sub_field('image')['url'].'" alt="'.get_sub_field('title').'">
+                        <div class="about-image image-dropshadow" style="background-image: url('. get_sub_field('image')['url'] .')"></div>
                     </div>
                 </div>
             </div>';
@@ -103,19 +103,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
     ?>
 
-    <div class="container">
-        <div class="row default-text-block">
-            <div class="col-xs-12 col-sm-6">
-                <h2>Can't make the retreat? Check out our at home study programs</h2>
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                <a class="primary-btn" href="#">Link</a>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <img src="http://placehold.jp/1000x700.png" alt="...">
-            </div>
-        </div>
-    </div>
-
     <div class="program-group-block">
         <div class="container">
             <div class="row">
@@ -123,21 +110,21 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     <h2>At home study programs</h2>
                     <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
                     <div class="row">
-                        <div class="col-xs-12 col-sm-4">
+                        <div class="col-xs-6 col-sm-4">
                             <img src="<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>" alt="<?php echo get_post_meta( get_post_thumbnail_id( 17234 ), '_wp_attachment_image_alt', true ); ?>">
                             <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
                         </div>
-                        <div class="col-xs-12 col-sm-4">
+                        <div class="col-xs-6 col-sm-4">
                             <img src="<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>" alt="<?php echo get_post_meta( get_post_thumbnail_id( 17234 ), '_wp_attachment_image_alt', true ); ?>">
                             <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
                         </div>
-                        <div class="col-xs-12 col-sm-4">
+                        <div class="col-xs-6 col-sm-4">
                             <img src="<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>" alt="<?php echo get_post_meta( get_post_thumbnail_id( 17234 ), '_wp_attachment_image_alt', true ); ?>">
                             <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <a class="secondary-btn" href="#">Link</a>
+                        <a class="secondary-btn" href="/courses">Explore Programs</a>
                     </div>
 
                 </div>
