@@ -365,14 +365,49 @@ get_header(vibe_get_header());
         <div class="row">
             <div class="col-xs-12">
                 <h3>Weekly Reflections</h2>
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum"</p>
                 <h4>Weekly Reflections</h2>
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-knot.png" />
             </div>
         </div>
     </div>
 
-    
+    <div class="footer-newsletter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>Join Our Mailing List</h2>
+                    <p>To receive the latest teachings and information from Samye Institute, including Phakchok Rinpoche’s monthly Guru Rinpoche Day message.</p>
+                    <!-- Begin Mailchimp Signup Form -->
+                    <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+                    <style type="text/css">
+                        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
+                        /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+                        We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                    </style>
+                    <style type="text/css">
+                        #mc-embedded-subscribe-form input[type=checkbox]{display: inline; width: auto;margin-right: 10px;}
+                        #mergeRow-gdpr {margin-top: 20px;}
+                        #mergeRow-gdpr fieldset label {font-weight: normal;}
+                        #mc-embedded-subscribe-form .mc_fieldset{border:none;min-height: 0px;padding-bottom:0px;}
+                    </style>
+                    <div id="mc_embed_signup">
+                    <form action="https://samyedharma.us12.list-manage.com/subscribe/post?u=e199539057d67dc9afa4d34da&amp;id=4026ab410e" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                        
+                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_e199539057d67dc9afa4d34da_4026ab410e" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                        </div>
+                    </form>
+                    </div>
+
+                    <!--End mc_embed_signup-->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="<?php echo vibe_get_container(); ?>">
         <div class="row">
