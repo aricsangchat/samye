@@ -379,13 +379,24 @@
 
 .grd-section {
     background-color: $primary-color;
-    padding: 25px 0 55px;
+    padding: 25px 0 130px;
 
     @media only screen and (min-width: 992px) {
-        padding: 40px 0 65px
+        padding: 40px 0 140px
+    }
+
+    .button-wrapper {
+        position: relative;
+        top: 80px;
     }
 
     .grd-section-intro {
+        margin-bottom: 40px;
+
+        @media only screen and (min-width: 992px) {
+            margin-bottom: 60px;
+        } 
+
         h2 {
             font-size: 30px;
             text-align: center;
@@ -396,21 +407,154 @@
         p {
             text-align: center;
             color: $white;
+
+            @media only screen and (min-width: 992px) {
+                width: 70%;
+                display: block;
+                margin: 0 auto;
+            } 
         }
     }
 
     #grd-carousel {
-        .post-image {
-            height: 362px;
-            width: 380px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        .item {
+            width: 100%;
+        }
+
+        .carousel-control {
+            background-image: none;
+            top: -50px;
+
+            @media only screen and (min-width: 768px) {
+                top: auto;
+                bottom: -25px;
+            }
+        }
+
+        .carousel-inner {
+            .row {
+                margin: 0;
+            }
+        }
+
+        .glyphicon-chevron-left:before {
+            content: "";
+            height: 36px;
+            width: 36px;
+            display: block;
+            background-image: url('../images/icon-prev.png');
+        }
+    
+        .glyphicon-chevron-right:before {
+            content: "";
+            height: 36px;
+            width: 36px;
+            display: block;
+            background-image: url('../images/icon-next.png');
+        }
+
+        .carousel-indicators {
+            bottom: -50px;
+        }
+
+        .col-xs-12.col-sm-6:first-child {
+            @media only screen and (min-width: 768px) {
+                padding: 20px 0 20px;
+            }
+        }
+
+        .col-xs-12.col-sm-6 {
+            padding: 0;
+
+            .post-image {
+                width: 100%;
+                height: 362px;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+
+                @media only screen and (min-width: 768px) {
+                    height: 324px;
+                }
+
+                @media only screen and (min-width: 1200px) {
+                    width: 80%;
+                    float: right;
+                }
+            }
+
+            .post-content {
+                padding: 30px;
+                border-top: 20px solid $secondary-color;
+
+                @media only screen and (min-width: 768px) {
+                    border-top: 0px;
+                    border-left: 20px solid $secondary-color;
+                    height: 100%;
+                } 
+                
+                .date {
+                    line-height: 19px;
+                    font-size: 14px;
+                    letter-spacing: 0.04em;
+                    color: $primary-color;
+                    text-transform: uppercase;
+                    margin-bottom: 0;
+                }
+
+                p:nth-child(3) {
+                    margin-bottom: 25px;
+                }
+
+                h2 {
+                    line-height: 33px;
+                    font-size: 24px;
+                    font-family: $semi-bold !important;
+                    color: $dark-font;
+                    margin-top: 0;
+                }
+            }
         }
     }
 
     .col-xs-12.col-sm-6:last-child {
         background-color: $white;
+
+        @media only screen and (min-width: 768px) {
+            height: 365px;
+            display: table;
+        }
+
+        .post-content {
+            display: table-cell;
+            vertical-align: middle;
+        }
     }
 
+}
+
+.weekly-reflection {
+    padding-top: 50px;
+    padding-bottom: 60px;
+
+    h3 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    h4 {
+        font-size: 24px;
+        text-align: center;
+    }
+
+    p {
+        line-height: 49px;
+        font-size: 36px;
+        color: $primary-color;
+    }
+
+    img {
+        margin: 0 auto;
+        display: block;
+    }
 }

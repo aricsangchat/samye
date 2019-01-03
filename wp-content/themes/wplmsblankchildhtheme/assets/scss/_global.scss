@@ -46,6 +46,18 @@ a {
 
 }
 
+.primary-btn-inverted {
+    background-color: transparent;
+    border: 2px solid $primary-color;
+    color: $primary-color;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 12px 35px;
+    display: inline-block;
+
+}
+
 .secondary-btn {
     background-color: $white;
     color: $primary-color;

@@ -300,30 +300,46 @@ get_header(vibe_get_header());
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
-                            <div class="item active">
+                            <?php
+                                $args4 = array(
+                                    'numberposts' => 3,
+                                    'offset' => 0,
+                                    'category' => 0,
+                                    'orderby' => 'post_date',
+                                    'order' => 'DESC',
+                                    'include' => '',
+                                    'exclude' => '',
+                                    'meta_key' => '',
+                                    'meta_value' =>'',
+                                    'post_type' => 'grd-teaching',
+                                    'post_status' => 'publish',
+                                    'suppress_filters' => true
+                                );
+                                $lastposts = get_posts( $args4 );
+                                $i = -1;
+                                foreach ( $lastposts as $post ) :
+                                $i++;
+                                setup_postdata( $post );
+                            ?>
+                            <div class="item <?php echo $i == 0 ? 'active' : '' ?>">
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-6">
-                                        <div class="post-image" style="background-image: url(http://placehold.jp/500x150.png)"></div>
+                                        <div class="post-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>')"></div>
                                     </div>
                                     <div class="col-xs-12 col-sm-6">
-                                    <div class="post-content">
-                                            <h2>Test 2</h2>
-                                            <p>asfasflsjdjls alsdfljksdjlkfs lksfkjlsdfjlkdsjl</p>
+                                        <div class="post-content">
+                                            <p class="date"><?php the_date(); ?></p>
+                                            <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
+                                            <?php the_excerpt(); ?>
+                                            <a class="primary-btn-inverted" href="<?php the_permalink() ?>">Read more</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                    <div class="col-xs-12 col-sm-6">
-                                    <div class="post-image" style="background-image: url(http://placehold.jp/500x150.png)"></div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="post-content">
-                                            <h2>Test 2</h2>
-                                            <p>asfasflsjdjls alsdfljksdjlkfs lksfkjlsdfjlkdsjl</p>
-                                        </div>
-                                    </div>
-                            </div>
+                            <?php 
+                                endforeach; 
+                                wp_reset_postdata(); 
+                            ?>
                         </div>
 
                         <!-- Controls -->
@@ -336,17 +352,22 @@ get_header(vibe_get_header());
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
+                    <div class="button-wrapper">
+                        <a class="secondary-btn" href="#">View All</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div class="container">
+    <div class="container weekly-reflection">
         <div class="row">
             <div class="col-xs-12">
-                <h2>Weekly Reflections</h2>
+                <h3>Weekly Reflections</h2>
                 <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                <h4>Weekly Reflections</h2>
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-knot.png" />
             </div>
         </div>
     </div>

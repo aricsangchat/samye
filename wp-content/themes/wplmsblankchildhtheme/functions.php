@@ -16,6 +16,19 @@ function meta_wp_enqueue_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'meta_wp_enqueue_scripts', 20 );
 
+function isacustom_excerpt_length($length) {
+    global $post;
+    if ($post->post_type == 'post')
+    return 32;
+    else if ($post->post_type == 'grd-teaching')
+    return 30;
+    else if ($post->post_type == 'course')
+    return 75;
+    else
+    return 80;
+}
+add_filter('excerpt_length', 'isacustom_excerpt_length', 100);
+
 function excerpt($num) {
     $limit = $num+1;
     $excerpt = explode(' ', get_the_excerpt(), $limit);
