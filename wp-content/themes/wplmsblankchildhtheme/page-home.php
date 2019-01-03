@@ -1,5 +1,5 @@
 <?php
-
+global $post;
 get_header(vibe_get_header());
 
 // if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -148,74 +148,83 @@ get_header(vibe_get_header());
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-md-5">
-            <?php
-                $args1 = array(
-                    'numberposts' => 1,
-                    'offset' => 0,
-                    'category' => 0,
-                    'orderby' => 'post_date',
-                    'order' => 'DESC',
-                    'include' => '',
-                    'exclude' => '',
-                    'meta_key' => '',
-                    'meta_value' =>'',
-                    'post_type' => 'course',
-                    'post_status' => 'publish',
-                    'suppress_filters' => true
-                );
-                $recent_posts = wp_get_recent_posts($args1);
-                foreach( $recent_posts as $recent ){
-                    echo '<div class="course-image" style="background-image: url('.get_the_post_thumbnail_url( $recent["ID"], 'full' ).');"><div class="overlay-category"><p>Learning Program</p></div></div>';
-                    echo '<h2><a href="' . get_permalink($recent["ID"]) . '">'.(__($recent["post_title"])).'</a></h2> ';
-
-                }
-                wp_reset_query();
-            ?>
-            </div>
-            <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-sm-6 col-md-4">
                 <?php
-                    $args2 = array(
+                    $args1 = array(
+                        'numberposts' => 1,
+                        'offset' => 0,
+                        'category' => 0,
                         'orderby' => 'post_date',
                         'order' => 'DESC',
-                        'post_type' => 'post',
-                        'posts_per_page' => 2,
+                        'include' => '',
+                        'exclude' => '',
+                        'meta_key' => '',
+                        'meta_value' =>'',
+                        'post_type' => 'course',
                         'post_status' => 'publish',
-                        'tax_query' => array(
-                            array(
-                                'taxonomy' => 'post_format',
-                                'field' => 'slug',
-                                'terms' => array('post-format-audio', 'post-format-video'),
-                                'operator' => 'IN'
-                            )
-                        )
+                        'suppress_filters' => true
                     );
-                    // The Query
-                    $query1 = new WP_Query( $args2 );
-
-                    if ( $query1->have_posts() ) {
-                        // The Loop
-                        while ( $query1->have_posts() ) {
-                            $query1->the_post();
-                            $format = get_post_format() ? : 'Article';
-                            echo '<div class="center-images" style="background-image: url('.get_the_post_thumbnail_url().');"><div class="overlay-category"><p>'.$format.'</p></div></div>';
-                            echo '<h2><a href="'. get_the_permalink() .'">' . get_the_title() . '</a></h2>';
-                        }
-                        
-                        /* Restore original Post Data 
-                        * NB: Because we are using new WP_Query we aren't stomping on the 
-                        * original $wp_query and it does not need to be reset with 
-                        * wp_reset_query(). We just need to set the post data back up with
-                        * wp_reset_postdata().
-                        */
-                        wp_reset_postdata();
-                    }
+                    $lastposts = get_posts( $args1 );
+                    foreach ( $lastposts as $post ) :
+                    setup_postdata( $post );
+                    $category = get_the_category();
+                    $category_id = get_cat_ID( $category[0]->cat_name );
+                    $category_link = get_category_link( $category_id );
+                ?>
+                <div class="course-image" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');"><div class="overlay-category"><p><span>Learning Program</span></p></div></div>
+                <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Additional Courses';  ?></a></h3>
+                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                <?php excerpt('22'); ?>
+                <?php 
+                    endforeach; 
+                    wp_reset_postdata(); 
                 ?>
             </div>
-            <div class="col-xs-12 col-md-3">
-                <?php
-                        $args1 = array(
-                            'numberposts' => 3,
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="row">
+                    <?php
+                        $args2 = array(
+                            'orderby' => 'post_date',
+                            'order' => 'DESC',
+                            'post_type' => 'post',
+                            'posts_per_page' => 2,
+                            'post_status' => 'publish',
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'post_format',
+                                    'field' => 'slug',
+                                    'terms' => array('post-format-audio', 'post-format-video'),
+                                    'operator' => 'IN'
+                                )
+                            )
+                        );
+                        $lastposts = get_posts( $args2 );
+                        foreach ( $lastposts as $post ) :
+                        setup_postdata( $post );
+                        $format = get_post_format() ? : 'Article';
+                        $category = get_the_category();
+                        $category_id = get_cat_ID( $category[0]->cat_name );
+                        $category_link = get_category_link( $category_id );
+                    ?>
+                    <div class="col-xs-6 col-sm-12 center-grid">
+                        <div class="center-images" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');">
+                            <div class="overlay-category"><p><span><?php echo $format ?></span></p></div>
+                        </div>
+                        <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
+                        <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+                        <?php excerpt('22'); ?>
+                    </div>
+                    <?php 
+                        endforeach; 
+                        wp_reset_postdata(); 
+                    ?>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="row">
+                    <?php
+                        $args3 = array(
+                            'numberposts' => 4,
                             'offset' => 0,
                             'category' => 0,
                             'orderby' => 'post_date',
@@ -236,81 +245,102 @@ get_header(vibe_get_header());
                                 )
                             )
                         );
-                        $recent_posts = wp_get_recent_posts($args1);
-                        foreach( $recent_posts as $recent ){
-                            $format = get_post_format($recent["ID"]) ? : 'Article';
-                            echo '<div class="article-image" style="background-image: url('.get_the_post_thumbnail_url( $recent["ID"], 'full' ).');"><div class="overlay-category"><p>'.$format.'</p></div></div>';
-                            echo '<h2><a href="' . get_permalink($recent["ID"]) . '">'.(__($recent["post_title"])).'</a></h2> ';
-        
-                        }
-                        wp_reset_query();
+                        $lastposts = get_posts( $args3 );
+                        foreach ( $lastposts as $post ) :
+                        setup_postdata( $post );
+                        $format = get_post_format() ? : 'Article';
+                        $category = get_the_category();
+                        $category_id = get_cat_ID( $category[0]->cat_name );
+                        $category_link = get_category_link( $category_id );
                     ?>
+                    <div class="col-xs-6 col-sm-4 col-md-12 col-articles">
+                        <div class="article-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>');">
+                            <div class="overlay-category"><p><span><?php echo $format ?></span></p></div>
+                        </div>
+                        <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
+                        <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
+                        <?php excerpt('12'); ?>
+                    </div>
+                    <?php 
+                        endforeach; 
+                        wp_reset_postdata(); 
+                    ?>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
                 <div class="button-wrapper">
-                    <a class="primary-btn" href="#">Link</a>
+                    <a class="primary-btn" href="#">View All</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2>Explore by Topic</h2>
+    <div class="grd-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="grd-section-intro">
+                        <h2>Guru Rinpoche Day Teachings</h2>
+                        <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-3">
-                <h2>Topic</h2>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <h2>Topic</h2>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <h2>Topic</h2>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <h2>Topic</h2>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <h2>Topic</h2>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <h2>Topic</h2>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <h2>Topic</h2>
-            </div>
-            <div class="col-xs-12 col-sm-3">
-                <h2>Topic</h2>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2>Guru Rinpoche Day Teachings</h2>
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                <a href="#">2008 | 2009 | 2010 | 2011 | 2012 | 2013 | 2014 | 2015 | 2016 | 2017 | 2018</a>
-            </div>
-        </div>
 
             <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <img src="http://placehold.jp/500x500.png" alt="...">
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <h2>Guru Rinpoche Day Teachings</h2>
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-                <a href="#">Link</a>
+                <div class="col-xs-12">
+                    <div id="grd-carousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#grd-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#grd-carousel" data-slide-to="1"></li>
+                            <li data-target="#grd-carousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="post-image" style="background-image: url(http://placehold.jp/500x150.png)"></div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                    <div class="post-content">
+                                            <h2>Test 2</h2>
+                                            <p>asfasflsjdjls alsdfljksdjlkfs lksfkjlsdfjlkdsjl</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                    <div class="col-xs-12 col-sm-6">
+                                    <div class="post-image" style="background-image: url(http://placehold.jp/500x150.png)"></div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="post-content">
+                                            <h2>Test 2</h2>
+                                            <p>asfasflsjdjls alsdfljksdjlkfs lksfkjlsdfjlkdsjl</p>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#grd-carousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#grd-carousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
     <div class="container">
         <div class="row">

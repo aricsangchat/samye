@@ -16,4 +16,12 @@ function meta_wp_enqueue_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'meta_wp_enqueue_scripts', 20 );
 
+function excerpt($num) {
+    $limit = $num+1;
+    $excerpt = explode(' ', get_the_excerpt(), $limit);
+    array_pop($excerpt);
+    $excerpt = implode(" ",$excerpt)."...";
+    echo '<p>'.$excerpt.'</p>';
+}
+
 ?>
