@@ -81,11 +81,20 @@
         }
     
         .primary-btn {
-            float: right;
             margin-bottom: 50px;
             
             @media only screen and (min-width: 768px) {
                 margin-bottom: 0px;
+            }
+
+            @media only screen and (min-width: 1200px) {
+                float: right;
+                position: relative;
+                right: 70px;
+            }
+
+            @media only screen and (min-width: 1400px) {
+                right: 140px;
             }
         }
     
@@ -99,9 +108,14 @@
         margin-bottom: 20px;
         color: $dark-font;
         font-size: 30px;
-
+        
         @media only screen and (min-width: 768px) {
             margin-bottom: 35px;
+            margin-top: 0;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            width: 506px;
         }
     }
 
@@ -109,9 +123,14 @@
         margin-bottom: 33px;
         color: $gray-font;
 
-        @media only screen and (min-width: 768px) {
-            width: 90%;
+        @media only screen and (min-width: 1200px) {
+            width: 520px;
             float: right;
+        }
+
+        @media only screen and (min-width: 1400px) {
+            position: relative;
+            right: 70px;
         }
     }
     
@@ -125,8 +144,9 @@
         background-position: center;
 
         @media only screen and (min-width: 768px) {
-            width: 90%;
-            float: right;
+            // width: 90%;
+            // float: right;
+            max-width: 90%;
         }
     }
 }
@@ -575,16 +595,65 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 50px;
+    padding: 50px 0 60px;
 
     h3 {
         font-size: 30px;
         color: $white;
         text-align: center;
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: 768px) {
+            margin-bottom: 25px;
+        }
     }
 
     p {
         color: $white; 
         text-align: center;
+        width: 610px;
+        margin: 0 auto 20px;
+    }
+
+    #mc_embed_signup_scroll {
+        @media only screen and (min-width: 768px) {
+            width: 591px;
+            margin: 0 auto;
+        }
+
+        input[type=email] {
+            opacity: 0.64;
+            padding: 10px;
+            width: 100%;
+
+            @media only screen and (min-width: 768px) {
+                width: 406px;
+                display: inline-block;
+            }
+        }
+    }
+
+    .clear {
+        @media only screen and (min-width: 768px) {
+            display: inline-block;
+        }
+
+        input {
+            background-color: $primary-color;
+            border-radius: 0px;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-weight: normal;
+            width: 100%;
+
+            @media only screen and (min-width: 768px) {
+                padding: 8px 25px;
+                position: relative;
+                top: 1px;
+                left: 20px;
+            }
+        }
     }
 }
