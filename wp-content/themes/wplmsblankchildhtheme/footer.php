@@ -23,8 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                     <li><a target="_blank" href="#">Dakini Day Digest</a></li>
                     <li><a href="#">FAQ</a></li>
                     <li><a href="/contact-us/">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="/privacy-policy/">Privacy Policy</a></li>
                     <li><a href="#">Donate</a></li>
                     <li><a href="#">Volunteer</a></li>
                 </ul>

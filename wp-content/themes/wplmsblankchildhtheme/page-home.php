@@ -105,16 +105,16 @@ get_header(vibe_get_header());
                     <p>Enroll in one of our short-term or long-term study programs and receive guidance from authentic tibetan teachers. Follow your sincere aspiration and blablabla The standard chunk of Lorem Ipsum used since the 1500s.</p>
                     <div class="row row-programs">
                         <div class="col-xs-6 col-sm-4">
-                            <img src="<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>" alt="<?php echo get_post_meta( get_post_thumbnail_id( 17234 ), '_wp_attachment_image_alt', true ); ?>">
+                            <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>)"></div>
                             <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
                         </div>
                         <div class="col-xs-6 col-sm-4">
-                            <img src="<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>" alt="<?php echo get_post_meta( get_post_thumbnail_id( 17234 ), '_wp_attachment_image_alt', true ); ?>">
-                            <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
+                            <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17055, 'full' )?>)"></div>
+                            <h3><a href="<?php echo get_permalink( 17055 ); ?>"><?php $post = get_post( 17055 ); echo $post->post_title;?></a></h3>
                         </div>
                         <div class="col-xs-6 col-sm-4">
-                            <img src="<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>" alt="<?php echo get_post_meta( get_post_thumbnail_id( 17234 ), '_wp_attachment_image_alt', true ); ?>">
-                            <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
+                            <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 2585, 'full' )?>)"></div>
+                            <h3><a href="<?php echo get_permalink( 2585 ); ?>"><?php $post = get_post( 2585 ); echo $post->post_title;?></a></h3>
                         </div>
                     </div>
                     <div class="button-wrapper">
