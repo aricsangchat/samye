@@ -98,6 +98,10 @@ header {
 
             position: relative;
             bottom: 5px;
+
+            .wpml-ls-native {
+                display: none;
+            }
         }
     }
     

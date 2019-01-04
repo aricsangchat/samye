@@ -657,3 +657,76 @@
         }
     }
 }
+
+footer {
+    background-color: $dark-font !important;
+    padding: 40px 0;
+
+    h4 {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    div.container > div > div:nth-child(3) > h4:nth-child(3) {
+        margin-bottom: 15px;
+    }
+
+    li {
+        margin-bottom: 5px;
+
+        a {
+            font-size: 16px;
+            color: $light-gray-font;
+        }
+    }
+
+    .social-icon-menu {
+        margin-bottom: 25px;
+
+        li {
+            display: inline;
+            margin-right: 5px;
+        }
+    }
+
+    .wpml-ls-statics-shortcode_actions {
+        width: 10em;
+
+        .wpml-ls-sub-menu {
+            bottom: 100%;
+            top: auto;
+
+            li a .wpml-ls-native {
+                color: $dark-font;
+            }
+        }
+
+        a.wpml-ls-item-toggle:after {
+            top: 8px;
+        }
+
+        .wpml-ls-flag {
+            position: relative;
+            top: -1px;
+            margin-right: 5px;
+        }
+
+        .wpml-ls-native {
+            display: inline;
+            font-size: 16px;
+            color: $light-gray-font;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.copyright {
+    background-color: $light-gray-font;
+    padding: 15px 0 3px;
+
+    p {
+        font-size: 14px;
+        text-align: center;
+        color: $dark-font;
+    }
+}
