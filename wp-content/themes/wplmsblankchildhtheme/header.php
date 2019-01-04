@@ -35,14 +35,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                             <?php
                                 if ( function_exists('bp_loggedin_user_link') && is_user_logged_in() ) :
                             ?>
-                                <ul class="login-menu">
+                                <ul class="login-menu logged-in">
                                     <li><a href="<?php bp_loggedin_user_link(); ?>" class="smallimg vbplogin"><?php $n=vbp_current_user_notification_count(); echo ((isset($n) && $n)?'<em></em>':''); bp_loggedin_user_avatar( 'type=full' ); ?></a></li>
                                     <?php do_action('wplms_header_top_login'); ?>
                                 </ul>
                                 <?php
                                     else :
                                 ?>
-                                    <ul class="login-menu">
+                                    <ul class="login-menu logged-out">
                                         <li><a href="#login" class="vbplogin"><?php _e('Sign In','vibe'); ?></a></li>
                                         <li><?php 
                                             $enable_signup = apply_filters('wplms_enable_signup',0);

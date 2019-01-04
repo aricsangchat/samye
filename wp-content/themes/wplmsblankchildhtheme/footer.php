@@ -8,24 +8,25 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <h4>Our Mandala</h4>
                 <ul>
                     <li><a target="_blank" href="http://www.phakchokrinpoche.org/">Phakchok Rinpoche’s Site</a></li>
-                    <li><a target="_blank" href="https://shedrub.org/">Ka-Nying Shedrub Ling</a></li>
+                    <li><a target="_blank" href="https://www.nekhor.org/">Nekhor</a></li>
                     <li><a target="_blank" href="https://www.cglf.org/">Chokgyur Lingpa Foundation</a></li>
                     <li><a target="_blank" href="https://www.lotuslightdharmainstitute.org/">Lotus Light Dharma Institute</a></li>
                     <li><a target="_blank" href="https://lhaseylotsawa.org/">Lhasey Lotsawa Translations and Publications</a></li>
                     <li><a target="_blank" href="https://radicallyhappy.org/">Radically Happy</a></li>
                     <li><a target="_blank" href="https://akaracollection.com/">Akara Collection – Dharma Shop</a></li>
+                    <li><a target="_blank" href="https://basic-goodness.org/">Basic Goodness Foundation</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4">
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a target="_blank" href="#">Dakini Day Digest</a></li>
-                    <li><a target="_blank" href="#">FAQ</a></li>
-                    <li><a target="_blank" href="#">Contact Us</a></li>
-                    <li><a target="_blank" href="#">Privacy Policy</a></li>
-                    <li><a target="_blank" href="#">Sitemap</a></li>
-                    <li><a target="_blank" href="#">Donate</a></li>
-                    <li><a target="_blank" href="#">Volunteer</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="/contact-us/">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="#">Volunteer</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4">

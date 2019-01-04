@@ -276,7 +276,7 @@ get_header(vibe_get_header());
                 <div class="col-xs-12">
                     <div class="grd-section-intro">
                         <h2>Guru Rinpoche Day Teachings</h2>
-                        <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+                        <p>Phakchok Rinpoche sends out short inspiring teachings to all students via email on every Guru Rinpoche day. Rinpoche often uses these teachings to answer frequently asked questions.  Also, he suggests topics that remind us to bring our minds home in the midst of our busy lives.</p>
                     </div>
                 </div>
             </div>
@@ -357,7 +357,7 @@ get_header(vibe_get_header());
         <div class="row">
             <div class="col-xs-12">
                 <h3>Weekly Reflections</h2>
-                <p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum"</p>
+                <p id="weekly-reflection"></p>
                 <h4>Weekly Reflections</h2>
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-knot.png" />
             </div>

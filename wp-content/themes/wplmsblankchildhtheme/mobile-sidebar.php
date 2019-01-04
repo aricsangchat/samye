@@ -14,8 +14,8 @@
             <?php
             else :
                 ?>
-                <ul class="login-menu">
-                    <li><a href="#login" class="vbplogin"><?php _e('Login','vibe'); ?></a></li>
+                <ul class="login-menu logged-out">
+                    <li><a href="#login" class="vbplogin"><?php _e('Sign In | ','vibe'); ?></a></li>
                     <li><?php 
                         $enable_signup = apply_filters('wplms_enable_signup',0);
                         if ( $enable_signup ) : 
