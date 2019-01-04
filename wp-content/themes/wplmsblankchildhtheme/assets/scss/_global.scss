@@ -53,6 +53,21 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     color: $gray-font;
 }
 
+.gform_wrapper .gform_footer input[type=submit] {
+    background-color: $primary-color;
+    color: $white;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 12px 35px;
+    display: inline-block;
+    border-radius: 0;
+}
+
+.gform_wrapper .field_sublabel_hidden_label .ginput_complex.ginput_container input[type=text] {
+    margin-bottom: 0;
+}
+
 .button-wrapper {
     width: 100%;
     text-align: center;
