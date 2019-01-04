@@ -18,6 +18,10 @@ p, li {
     font-family: $body !important;
 }
 
+p {
+    color: $gray-font;
+}
+
 a, span, strong  {
     font-family: inherit !important;
 }
@@ -28,6 +32,25 @@ a {
         color: inherit !important;
         text-decoration: underline;
     }
+}
+
+.gfield_label {
+    font-family: $semi-bold;
+    color: $gray-font;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-weight: normal !important;
+    font-size: 18px !important;
+}
+
+.ginput_container {
+    margin-top: 0 !important;
+}
+
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=image], input[type=number], input[type=search], input[type=time], textarea {
+    border: 1px solid $light-gray-font;
+    padding: 10px 10px 7px !important;
+    color: $gray-font;
 }
 
 .button-wrapper {
