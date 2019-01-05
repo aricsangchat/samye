@@ -71,7 +71,7 @@
             array_push($totalArr, $sum);
         }
 
-        var_dump($totalArr);
+        //var_dump($totalArr);
 
         
         // Check the response code.
