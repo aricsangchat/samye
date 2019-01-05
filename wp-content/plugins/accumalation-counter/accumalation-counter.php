@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Accumalation Counter
  * Plugin URI: http://www.samye.org
- * Description: Shortcode for Total count for global accumalations.
+ * Description: [totalAccumalations] Shortcode for Total count for global accumalations.
  * Version: 1.0
  * Author: Aric Sangchat
  * Author URI: http://www.samye.org

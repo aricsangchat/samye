@@ -357,8 +357,36 @@ get_header(vibe_get_header());
         <div class="row">
             <div class="col-xs-12">
                 <h3>Weekly Reflections</h2>
-                <p id="weekly-reflection"></p>
-                <h4>Weekly Reflections</h2>
+                <?php
+                    $currentWeekNumber = date('W');
+                ?>
+                <?php
+                    $args5 = array(
+                        'numberposts' => 1,
+                        'offset' => $currentWeekNumber,
+                        'category' => 0,
+                        'orderby' => 'post_date',
+                        'order' => 'DESC',
+                        'include' => '',
+                        'exclude' => '',
+                        'meta_key' => '',
+                        'meta_value' =>'',
+                        'post_type' => 'reflection_quotes',
+                        'post_status' => 'publish',
+                        'suppress_filters' => true
+                    );
+                    $lastposts = get_posts( $args5 );
+                    foreach ( $lastposts as $post ) :
+                    setup_postdata( $post );
+                ?>
+
+                <p id="weekly-reflection"><?php the_field('quote'); ?></p>
+                <h4 id="author"><?php the_field('author'); ?></h2>
+
+                <?php 
+                    endforeach; 
+                    wp_reset_postdata(); 
+                ?>
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-knot.png" />
             </div>
         </div>

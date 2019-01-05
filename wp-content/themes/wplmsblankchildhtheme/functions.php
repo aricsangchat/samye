@@ -36,4 +36,5 @@ function excerpt($num) {
     $excerpt = implode(" ",$excerpt)."...";
     echo '<p>'.$excerpt.'</p>';
 }
+
 ?>
