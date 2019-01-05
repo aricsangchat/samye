@@ -66,6 +66,15 @@ header {
     }
 
     nav {
+
+        .sub-menu {
+            padding: 10px;
+
+            li a {
+                color: $dark-font !important;
+            }
+        }
+
         @media only screen and (min-width: 992px) {
             position: absolute;
             bottom: -75px;

@@ -111,3 +111,27 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     -moz-box-shadow: 10px 10px 0px 0px $secondary-color;
     box-shadow: 10px 10px 0px 0px $secondary-color;
 }
+
+#page-title {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px 0;
+
+    @media only screen and (min-width: 992px) {
+        padding: 95px 0;
+    }
+
+    h2 {
+        text-align: center;
+        color: $white;
+        font-size: 30px;
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.36);
+        -webkit-text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.36);
+        -moz-text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.36);
+        
+        @media only screen and (min-width: 992px) {
+            font-size: 64px;
+        }
+    }
+}
