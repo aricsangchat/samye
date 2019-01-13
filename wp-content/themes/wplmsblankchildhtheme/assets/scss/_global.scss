@@ -1,4 +1,4 @@
-body, #content {
+body, #content, section {
     background-color: $white !important;
 }
 
@@ -12,6 +12,10 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 h2 {
     font-size: 30px;
+}
+
+p strong {
+    font-family: $semi-bold !important;
 }
 
 p, li {
@@ -120,6 +124,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 
     @media only screen and (min-width: 992px) {
         padding: 95px 0;
+        margin-bottom: 50px;
     }
 
     h2 {
