@@ -116,6 +116,33 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     </div>
 </section>
 
+<section id="teacher-bios">
+    <h2 class="header">Teachers Biographies</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tulku.png" />
+                <h2 class="author">Tulku Migmar Tsering</h2>
+                <p class="bio">Tulku Migmar Tsering is a master of the Chokling New Treasures lineage of the Nyingma tradition of Tibetan Buddhism.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tulku.png" />
+                <h2 class="author">Tulku Migmar Tsering</h2>
+                <p class="bio">Tulku Migmar Tsering is a master of the Chokling New Treasures lineage of the Nyingma tradition of Tibetan Buddhism.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tulku.png" />
+                <h2 class="author">Tulku Migmar Tsering</h2>
+                <p class="bio">Tulku Migmar Tsering is a master of the Chokling New Treasures lineage of the Nyingma tradition of Tibetan Buddhism.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tulku.png" />
+                <h2 class="author">Tulku Migmar Tsering</h2>
+                <p class="bio">Tulku Migmar Tsering is a master of the Chokling New Treasures lineage of the Nyingma tradition of Tibetan Buddhism.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <?php
 endwhile;

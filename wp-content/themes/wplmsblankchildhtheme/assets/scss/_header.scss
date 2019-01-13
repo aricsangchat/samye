@@ -55,10 +55,21 @@ header {
         height: 100px;
     }
 
+    nav .menu li.current-menu-item {
+        a {
+            border-bottom: 2px solid $secondary-color;
+        }
+    }
+    
     nav .menu li a {
         padding: 0px !important;
         font-size: 14px;
         letter-spacing: 0.04em;
+        text-decoration: none;
+
+        &:hover {
+            border-bottom: 2px solid $secondary-color;
+        }
 
         strong {
             font-weight: normal;
