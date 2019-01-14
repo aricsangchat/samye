@@ -86,6 +86,9 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     padding: 12px 35px;
     display: inline-block;
 
+    &:hover {
+        color: $white !important;
+    }
 }
 
 .primary-btn-inverted {

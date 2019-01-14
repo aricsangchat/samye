@@ -234,7 +234,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <?php
              if($template != 'full'){
             ?>
-            <div class="col-md-3 col-sm-3">
+            <div class="col-md-3 col-sm-4">
                 <?php get_template_part( 'sidebar' ); ?>
             </div>
             <?php

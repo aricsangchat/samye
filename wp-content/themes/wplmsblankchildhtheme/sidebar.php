@@ -34,6 +34,13 @@
         ?>
     </div>
 
+    <div class="sidebar-widget-resources">
+        <h3 class="sidebar-section-header">Learning Resources</h3>
+        <a href="#">Quick Links</a>
+        <a href="#">Category</a>
+        <a href="#">Link</a>
+    </div>
+
     <div class="sidebar-widget-latest-courses">
         <h3 class="sidebar-section-header">Recent Blog Posts</h3>
         <?php 
@@ -64,6 +71,14 @@
     <div class="sidebar-widget-facebook">
         <h3 class="sidebar-section-header">See you on facebook</h3>
         <div class="fb-page" data-href="https://www.facebook.com/samyeinstitute/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/samyeinstitute/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/samyeinstitute/">Samye Institute</a></blockquote></div>
+    </div>
+
+    <div class="sidebar-widget-support">
+        <h3 class="sidebar-section-header">Support Samye</h3>
+        <p>All Rinpoche's online activities are volunteer-based and rely on your kind funding to progress. Please consider making a donation to help fund further online courses, live streaming teachings, webinars and more downloadable teachings.</p>
+        <div class="button-wrapper">
+            <a class="primary-btn" href="#">View All</a>
+        </div>
     </div>
 </div>
 
