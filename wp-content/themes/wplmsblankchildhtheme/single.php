@@ -235,12 +235,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
              if($template != 'full'){
             ?>
             <div class="col-md-3 col-sm-3">
-                <div class="sidebar">
-                    <?php
-                    $sidebar = apply_filters('wplms_sidebar','mainsidebar',get_the_ID());
-                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
-                    <?php endif; ?>
-                </div>
+                <?php get_template_part( 'sidebar' ); ?>
             </div>
             <?php
                 }

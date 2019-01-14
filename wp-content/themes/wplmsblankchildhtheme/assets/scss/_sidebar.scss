@@ -1,0 +1,93 @@
+.sidebar {
+    .sidebar-section-header {
+        text-align: center;
+        font-size: 24px;
+        color: $dark-font;
+    }
+}
+
+.sidebar-widget-about {
+    margin-bottom: 35px;
+
+    img {
+        margin: 0 auto;
+        display: block;
+    }
+
+    p {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    a {
+        text-align: center;
+        color: $primary-color;
+        font-size: 16px;
+        letter-spacing: 0.04em;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+.sidebar-widget-latest-courses {
+    margin-bottom: 45px;
+    
+    .sidebar-section-header {
+        margin-bottom: 25px;
+    }
+
+    .sidebar-widget-latest-course-wrapper {
+        display: table;
+        max-width: 320px;
+        margin-bottom: 10px;
+
+        .sidebar-widget-latest-course-image {
+            display: table-cell;
+            width: 100px;
+            height: 100px;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: $light-gray-font;
+
+            @media only screen and (min-width: 768px) {
+                display: none;
+            }
+
+            @media only screen and (min-width: 1200px) {
+                width: 100px;
+                height: 90px;
+                display: table-cell;
+            }
+
+            @media only screen and (min-width: 1440px) {
+                width: 130px;
+                height: 90px;
+                display: table-cell;
+            }
+        }
+
+        .sidebar-widget-latest-course-details {
+            display: table-cell;
+            vertical-align: middle;
+            padding-left: 15px;
+
+            .sidebar-widget-latest-course-title {
+                font-size: 16px;
+                font-family: $semi-bold !important;
+                color: $dark-font;
+                margin-bottom: 5px;
+                margin-top: 0px;
+            }
+
+            p {
+                font-size: 12px;
+                letter-spacing: 0.04em;
+                color: $gray-font;
+                text-transform: uppercase;
+                margin-top: 0px;
+                margin-bottom: 0;
+            }
+        }
+    }
+}

@@ -11,6 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
 </head>
 <body <?php body_class(); ?>>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2&appId=439066266484127&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="global" class="global">
     <?php
         get_template_part('mobile','sidebar');
