@@ -97,6 +97,10 @@
     margin-top: 0;
     border-top: 0;
 
+    @media only screen and (min-width: 1200px) {
+        margin-bottom: 10px;
+    }
+
     .tag-header {
         text-transform: uppercase;
         color: $dark-font;
@@ -123,6 +127,115 @@
             &:before {
                 content: '';
             }
+        }
+    }
+}
+
+.social_sharing {
+    margin-bottom: 45px;
+
+    @media only screen and (min-width: 1200px) {
+        margin-bottom: 60px;
+    }
+
+    h3 {
+        font-size: 24px;
+        color: $dark-font;
+    }
+}
+
+.related-articles {
+    .related-article-wrapper {
+        display: inline-table;
+        margin-bottom: 15px;
+        max-width: 320px;
+
+        @media only screen and (min-width: 768px) {
+            max-width: 100%;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            display: block;
+        }
+    }
+
+    .related-article-image {
+        width: 100px;
+        height: 100px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: table-cell;
+        margin-right: 10px;
+        background-color: $light-gray-bg;
+
+        @media only screen and (min-width: 1200px) {
+            height: 174px;
+            width: 100%;
+            display: block;
+        }
+
+        @media only screen and (min-width: 1440px) {
+            height: 220px;
+        }
+    }
+
+    h3 {
+        font-size: 24px;
+        color: $dark-font;
+    }
+
+    h4 {
+        line-height: 16px;
+        font-size: 16px;
+        text-align: left;
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: 10px;
+        color: $dark-font;
+        font-family: $semi-bold !important;
+
+        @media only screen and (min-width: 1200px) {
+            display: block;
+            text-align: center;
+            line-height: 22px;
+        }
+    }
+}
+
+#comments-title {
+    font-size: 24px;
+    color: $dark-font;
+}
+
+#reply-title {
+    font-size: 24px;
+    color: $dark-font;
+}
+
+#comments {
+    @media only screen and (min-width: 768px) {
+        margin-bottom: 50px;
+    }
+
+    @media only screen and (min-width: 768px) {
+        margin-bottom: 80px;
+    }
+
+    #commentform {
+        #comment {
+            font-size: 16px;
+            font-family: $body !important;
+        }
+    
+        #submit {
+            background-color: $primary-color;
+            color: $white;
+            font-size: 18px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 12px 35px;
+            display: inline-block;
         }
     }
 }

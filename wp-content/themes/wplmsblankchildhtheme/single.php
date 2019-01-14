@@ -70,6 +70,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+                
                 <div class="content">
                     <?php if(has_post_thumbnail()){ ?>
                     <div class="featured">
@@ -101,12 +102,39 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     </div>
 
                     <div class="social_sharing">
-                        <?php 
-                            if(function_exists('social_sharing'))
-                            echo social_sharing(); 
-                        ?>   
+                        <h3>Share This Article</h3>
+                        <?php echo do_shortcode('[Sassy_Social_Share]') ?>  
+                    </div>
+
+                    <div class="related-articles">
+                        <h3>Related Articles</h3>
+                        <div class="row">
+                            <?php 
+                                $relatedArgs = array(
+                                    'numberposts' => 4,
+                                    'orderby' =>  'RAND('.rand(1,100).')',
+                                    'category__in' => $categories[0]->term_id,
+                                    'post_type' => array('post', 'grd-teaching'),
+                                    'post_status' => 'publish',
+                                );
+                                $lastposts = get_posts( $relatedArgs );
+                                foreach ( $lastposts as $post ) :
+                            ?>
+                            <div class="col-xs-12 col-sm-6 col-lg-3">
+                                <div class="related-article-wrapper">
+                                    <div class="related-article-image" style="background-image: url(<?php the_post_thumbnail_url( 'medium' ) ?>);"></div>
+                                    <h4><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h4>
+                                </div>
+                            </div>
+                            <?php 
+                                endforeach; 
+                                wp_reset_postdata(); 
+                            ?>      
+                        </div>
                     </div>
                 </div>
+
+
                 <?php
                         $prenex=get_post_meta(get_the_ID(),'vibe_prev_next',true);
                         if(vibe_validate($prenex)){
