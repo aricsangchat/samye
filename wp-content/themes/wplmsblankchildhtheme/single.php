@@ -6,11 +6,6 @@ get_header(vibe_get_header());
 
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-
-$title=get_post_meta(get_the_ID(),'vibe_title',true);
-
-if(!isset($title) || !$title || (vibe_validate($title))){
-
 ?>
 
 <section id="page-title" style="background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/bg-page-title.png);">
@@ -23,44 +18,6 @@ if(!isset($title) || !$title || (vibe_validate($title))){
     </div>
 </section>
 
-<section id="breadcrumbs">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-            <?php 
-                $breadcrumbs=get_post_meta(get_the_ID(),'vibe_breadcrumbs',true);
-                if(!isset($breadcrumbs) || !$breadcrumbs || vibe_validate($breadcrumbs)){
-                    vibe_breadcrumbs();
-                }   
-            ?>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="title">
-    <?php do_action('wplms_before_title'); ?>
-    <div class="<?php echo vibe_get_container(); ?>">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="pagetitle">
-                    <?php 
-                        $breadcrumbs=get_post_meta(get_the_ID(),'vibe_breadcrumbs',true);
-                        if(!isset($breadcrumbs) || !$breadcrumbs || vibe_validate($breadcrumbs)){
-                            vibe_breadcrumbs();
-                        }   
-                    ?>
-                    <h1><?php the_title(); ?></h1>
-                    <?php the_sub_title(); ?>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<?php
-}
-
-?>
 <section id="content">
     <div class="<?php echo vibe_get_container(); ?>">
         
@@ -76,6 +33,42 @@ if(!isset($title) || !$title || (vibe_validate($title))){
                 }
 
             ?>
+
+                <section id="breadcrumbs">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-xs-12">
+                            <?php 
+                                $breadcrumbs=get_post_meta(get_the_ID(),'vibe_breadcrumbs',true);
+                                if(!isset($breadcrumbs) || !$breadcrumbs || vibe_validate($breadcrumbs)){
+                                    vibe_breadcrumbs();
+                                }   
+                            ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="post-title">
+                    <?php do_action('wplms_before_title'); ?>
+                    <div class="">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="date">~ <?php echo the_modified_date(); ?> ~</p>
+                                <h1><?php the_title(); ?></h1>
+                                <?php 
+                                $postType = get_post_format(get_the_ID()) ? : "Article";
+                                $categories = get_the_category();
+                                if ( ! empty( $categories ) ) {
+                                    echo '<h2 class="category"><a href="' . esc_url( get_category_link( $categories[0]->term_id ) ) . '">' . esc_html( $categories[0]->name ) . ' • </a>'. $postType .'</h2>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <div class="content">
                     <?php if(has_post_thumbnail()){ ?>
@@ -84,17 +77,34 @@ if(!isset($title) || !$title || (vibe_validate($title))){
                     </div>
                     <?php
                     }
-                    the_content();
-                     ?>
-                     <div class="tags">
-                    <?php echo '<div class="indate"><i class="icon-clock"></i> ';the_modified_date();echo '</div>';the_tags('<ul><li>','</li><li>','</li></ul>'); ?>
-                    <?php wp_link_pages('before=<div class="page-links"><ul>&link_before=<li>&link_after=</li>&after=</ul></div>'); ?>
-                        <div class="social_sharing">
-                            <?php 
-                             if(function_exists('social_sharing'))
-                                echo social_sharing(); 
-                            ?>   
-                        </div>
+                    ?>
+
+                    <div class="teaching-prep-msg">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-quote-red.png);" alt="">
+                        <p>Please take a few moments before you begin this teaching to settle yourself. Sit upright, yet naturally relaxed. Before listening to and/ or reading the teaching make aspirations such as: "I am extremely fortunate to have the opportunity to listen to the precious Dharma. I am doing this for the benefit of all sentient beings so that they may be free from suffering and attain complete awakening".</p>
+                    </div>
+
+                    <div class="content-body">
+                        <?php
+                            the_content();
+                        ?>
+                    </div>
+
+                    <div class="teaching-prep-msg">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-quote-red.png);" alt="">
+                        <p>At the end of the teaching, please remember to dedicate the merit of receiving a Dharma teaching. As you go through your day, take a few moments from time to time to recall these instructions.</p>
+                    </div>
+
+                    <div class="tags">
+                        <p class="tag-header">Tags:</p>
+                        <?php echo  the_tags('<ul><li>','</li><li>','</li></ul>'); ?>
+                    </div>
+
+                    <div class="social_sharing">
+                        <?php 
+                            if(function_exists('social_sharing'))
+                            echo social_sharing(); 
+                        ?>   
                     </div>
                 </div>
                 <?php
