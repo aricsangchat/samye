@@ -101,6 +101,10 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     padding: 12px 35px;
     display: inline-block;
 
+    &:hover {
+        color: $primary-color !important;
+    }
+
 }
 
 .secondary-btn {

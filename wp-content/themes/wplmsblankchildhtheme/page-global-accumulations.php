@@ -28,9 +28,11 @@ get_header(vibe_get_header());
                 <p class="total-count">Total: <?php echo do_shortcode( '[6VajraCount]' ); ?></p>
                 <?php if (is_user_logged_in()) : ?>
                     <p class="user-count">Your Total: <?php echo do_shortcode( '[gravitywp_count formid="42" number_field="1" created_by="current" decimals="0" ]' ); ?></p>
+                    <h3>Add Your Accumulations</h3>
                     <?php echo do_shortcode( '[gravityform id="42" title="false" description="false" ajax="false"]' ); ?>
+                    <p class="or">OR</p>
                     <div class="button-wrapper">
-                        <a class="primary-btn" href="#">Enter Practice</a>
+                        <a class="primary-btn-inverted" href="#">Enter Practice</a>
                     </div>
                 <?php else : ?>
                     <div class="button-wrapper">
@@ -48,9 +50,11 @@ get_header(vibe_get_header());
                 
                 <?php if (is_user_logged_in()) : ?>
                     <p class="user-count">Your Total: <?php echo do_shortcode( ' [gravitywp_count formid="40" number_field="1" created_by="current" decimals="0" ]' ); ?></p>
+                    <h3>Add Your Accumulations</h3>
                     <?php echo do_shortcode( '[gravityform id="40" title="false" description="false" ajax="false"]' ); ?>
+                    <p class="or">OR</p>
                     <div class="button-wrapper">
-                        <a class="primary-btn" href="#">Enter Practice</a>
+                        <a class="primary-btn-inverted" href="#">Enter Practice</a>
                     </div>
                 <?php else : ?>
                     <div class="button-wrapper">
