@@ -79,8 +79,8 @@
             // If not a 200, HTTP request failed.
             return 'There was an error getting total count for Global Accumulations, please check back later.';
         }
-
-        return array_sum($totalArr);
+        
+        return number_format(array_sum($totalArr));
     }
 
     function cloudBlessingCountAccumulations() {
@@ -153,7 +153,7 @@
             return 'There was an error getting total count for Global Accumulations, please check back later.';
         }
 
-        return array_sum($totalArr);
+        return number_format(array_sum($totalArr));
     }
 
     add_shortcode( '6VajraCount', 'countAccumulations' );
