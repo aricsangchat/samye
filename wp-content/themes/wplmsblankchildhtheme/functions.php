@@ -37,4 +37,52 @@ function excerpt($num) {
     echo '<p>'.$excerpt.'</p>';
 }
 
+// Removing Menus from admin panel
+function remove_menus(){
+    // $user_meta=get_userdata(get_current_user_id());
+    // $user_roles=$user_meta->roles;
+    $current_user = wp_get_current_user();
+    // var_dump( $current_user->user_login);
+
+    if ($current_user->user_login != 'aric.sangchat' || $current_user->user_login != 'mattgoult') {
+    } else {
+        remove_menu_page( 'index.php' );                 //Dashboard
+        // remove_menu_page( 'edit.php' );                   //Posts
+        // remove_menu_page( 'upload.php' );                 //Media
+        // remove_menu_page( 'edit.php?post_type=page' );   //Pages
+        // remove_menu_page( 'edit-comments.php' );         //Comments
+        remove_menu_page( 'themes.php' );                 //Appearance
+        remove_menu_page( 'plugins.php' );               //Plugins
+        // remove_menu_page( 'users.php' );                 //Users
+        remove_menu_page( 'tools.php' );                 //Tools
+        remove_menu_page( 'options-general.php' );       //Settings
+        remove_menu_page( 'wpengine-common' );
+        remove_menu_page( 'jetpack' );
+        remove_menu_page( 'wplms_options' );
+        remove_menu_page( 'vc-general' );
+        remove_menu_page( 'wpseo_dashboard' );
+        remove_menu_page( 'mailchimp-for-wp' );
+        remove_menu_page( 'pmxe-admin-home' );
+        remove_menu_page( 'cptui_main_menu' );
+        remove_menu_page( 'instant-articles-wizard' );
+        remove_menu_page( 'sb-instagram-feed' );
+        remove_menu_page( 'pixel-your-site' );
+        remove_menu_page( 'heateor-sss-options' );
+        remove_menu_page( 'edit.php?post_type=lazyblocks' );
+        remove_menu_page( 'edit.php?post_type=acf-field-group' );
+        remove_menu_page( 'WP-Lightbox-2' );
+        remove_menu_page( 'smush' );
+        remove_menu_page( 'master-slider' );
+        remove_menu_page( 'mailchimp-woocommerce' );
+    }
+}
+    
+add_action( 'admin_init', 'remove_menus' );
+
+// Debug Function for Removing Menus
+// add_action( 'admin_init', 'wpse_136058_debug_admin_menu' );
+// function wpse_136058_debug_admin_menu() {
+//     echo '<pre>' . print_r( $GLOBALS[ 'menu' ], TRUE) . '</pre>';
+// }
+
 ?>

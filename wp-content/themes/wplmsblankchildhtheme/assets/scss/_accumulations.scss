@@ -1,0 +1,15 @@
+.accumulations-wrapper {
+    h2 {
+        font-size: 30px;
+        color: $dark-font;
+    }
+
+    .total-count, .user-count {
+        font-family: $semi-bold !important;
+        font-size: 35px;
+        text-align: center;
+        color: $dark-font;
+    }
+}
+
+#more {display: none;}

@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Accumalation Counter
+ * Plugin Name: Accumulation Counter
  * Plugin URI: http://www.samye.org
- * Description: [totalAccumalations] Shortcode for Total count for global accumalations.
+ * Description: [6VajraCount] & [CloudBlessingCount] Shortcode for Total count for global accumalations.
  * Version: 1.0
  * Author: Aric Sangchat
  * Author URI: http://www.samye.org
@@ -10,7 +10,7 @@
 
     defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-    function countAccumalations() {
+    function countAccumulations() {
         $consumer_key = 'ck_732b61dcc89b1d74eedaad93df6a2d56892de9b2';
         $consumer_secret = 'cs_b93f17ceec46d463f0c5064a6bbe0c963e3c6db1';
         $url = 'https://samyeinstitute.org/wp-json/gf/v2/forms/42/entries';
@@ -57,7 +57,7 @@
 
             if ( wp_remote_retrieve_response_code( $response2 ) != 200 || ( empty( wp_remote_retrieve_body( $response2 ) ) ) ){
                 // If not a 200, HTTP request failed.
-                return 'There was an error getting total count for Global Accumalations, please check back later.';
+                return 'There was an error getting total count for Global Accumulations, please check back later.';
             }
 
             $sum = 0;
@@ -77,13 +77,13 @@
         // Check the response code.
         if ( wp_remote_retrieve_response_code( $response1 ) != 200 || ( empty( wp_remote_retrieve_body( $response1 ) ) ) ){
             // If not a 200, HTTP request failed.
-            return 'There was an error getting total count for Global Accumalations, please check back later.';
+            return 'There was an error getting total count for Global Accumulations, please check back later.';
         }
 
         return array_sum($totalArr);
     }
 
-    function cloudBlessingCountAccumalations() {
+    function cloudBlessingCountAccumulations() {
         $consumer_key = 'ck_732b61dcc89b1d74eedaad93df6a2d56892de9b2';
         $consumer_secret = 'cs_b93f17ceec46d463f0c5064a6bbe0c963e3c6db1';
         $url = 'https://samyeinstitute.org/wp-json/gf/v2/forms/40/entries';
@@ -130,7 +130,7 @@
 
             if ( wp_remote_retrieve_response_code( $response2 ) != 200 || ( empty( wp_remote_retrieve_body( $response2 ) ) ) ){
                 // If not a 200, HTTP request failed.
-                return 'There was an error getting total count for Global Accumalations, please check back later.';
+                return 'There was an error getting total count for Global Accumulations, please check back later.';
             }
 
             $sum = 0;
@@ -150,12 +150,12 @@
         // Check the response code.
         if ( wp_remote_retrieve_response_code( $response1 ) != 200 || ( empty( wp_remote_retrieve_body( $response1 ) ) ) ){
             // If not a 200, HTTP request failed.
-            return 'There was an error getting total count for Global Accumalations, please check back later.';
+            return 'There was an error getting total count for Global Accumulations, please check back later.';
         }
 
         return array_sum($totalArr);
     }
 
-    add_shortcode( '6VajraCount', 'countAccumalations' );
-    add_shortcode( 'CloudBlessingCount', 'CloudBlessingCountAccumalations' );
+    add_shortcode( '6VajraCount', 'countAccumulations' );
+    add_shortcode( 'CloudBlessingCount', 'CloudBlessingCountAccumulations' );
 

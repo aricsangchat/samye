@@ -46,7 +46,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
             <div class="col-xs-12 col-sm-4">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a target="_blank" href="#">Dakini Day Digest</a></li>
+                    <li><a href="/global-accumulations">Add Accumulations</a></li>
+                    <li><a href="#">Discussion Groups</a></li>
                     <li><a href="/faq">FAQ</a></li>
                     <li><a href="/contact-us/">Contact Us</a></li>
                     <li><a href="/privacy-policy/">Privacy Policy</a></li>
