@@ -142,6 +142,8 @@
     // }
 
     .pagination {
+        margin-bottom: 50px;
+
         span, a {
             font-size: 14px;
             letter-spacing: 0.04em;
@@ -151,8 +153,16 @@
             padding: 8px 14px;
         }
 
+        span:nth-child(1) {
+            display: none;
+        }
+
         .current {
             color: $white;
         }
+    }
+
+    .social_sharing {
+        margin-bottom: 0px;
     }
 }

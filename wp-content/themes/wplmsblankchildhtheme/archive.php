@@ -67,6 +67,11 @@ get_header(vibe_get_header());
                         endif;
                         pagination();
                     ?>
+
+                    <div class="social_sharing">
+                        <h3>Share This Page</h3>
+                        <?php echo do_shortcode('[Sassy_Social_Share]') ?>  
+                    </div>
     			</div>
     		</div>
     		<div class="col-md-3 col-sm-4">
