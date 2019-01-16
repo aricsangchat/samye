@@ -117,28 +117,29 @@
     }
     .cats {
         border: 0;
-        height: 32px;
+        // height: 32px;
         margin: 0;
-
-        @media only screen and (min-width: 992px) {
-            height: 34px;
-        }
-
-        .post-categories {
-            margin-bottom: 6px;
-
-            @media only screen and (min-width: 992px) {
-                margin-bottom: 0px;
-            }
-        }
-    }
-
-    .post-categories li a {
-        font-size: 14px;
-        letter-spacing: 0.04em;
         color: $primary-color;
-        font-weight: normal;
+
+        // @media only screen and (min-width: 992px) {
+        //     height: 34px;
+        // }
+
+        a {
+            //margin-right: 10px;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            color: $primary-color;
+            font-weight: normal;
+        }
     }
+
+    // .post-categories li a {
+    //     font-size: 14px;
+    //     letter-spacing: 0.04em;
+    //     color: $primary-color;
+    //     font-weight: normal;
+    // }
 
     .pagination {
         span, a {

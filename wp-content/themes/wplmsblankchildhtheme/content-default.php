@@ -40,7 +40,7 @@ echo ' <div class="blogpost">
         </div>
         <div class="excerpt thumb">
             <div class="cats">
-                '.get_the_category_list('','').'
+                '.get_the_tag_list('',' | ').'
             </div>
             <h3><a href="'.get_permalink().'">'.get_the_title().'</a></h3>
             <p class="date">'.get_the_time('M j, Y').'</p>

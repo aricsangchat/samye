@@ -32,9 +32,16 @@ get_header(vibe_get_header());
         <div class="row">
     		<div class="col-md-9 col-sm-8">
     			<div class="content">
-                    <div class="term-description">
-                        <?php echo term_description(); ?>
-                    </div>
+
+                    <?php 
+                        if (term_description()) {
+                            echo '<div class="term-description">
+                                    '.term_description().'
+                                </div>';
+                        }
+                    ?>
+
+                    
     				<?php
                         
                         if ( have_posts() ) : while ( have_posts() ) : the_post();
