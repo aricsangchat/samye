@@ -34,7 +34,7 @@ function excerpt($num) {
     $excerpt = explode(' ', get_the_excerpt(), $limit);
     array_pop($excerpt);
     $excerpt = implode(" ",$excerpt)."...";
-    echo '<p>'.$excerpt.'</p>';
+    return $excerpt;
 }
 
 // Removing Menus from admin panel

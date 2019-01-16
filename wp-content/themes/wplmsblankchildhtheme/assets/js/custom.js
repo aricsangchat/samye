@@ -33,9 +33,9 @@
     // });
 
     // Handle read more links on Global Accumulations Page
-    function readMoreLessBtn() {
+    function readMoreLessBtn(elements) {
         var selectorArr = [];
-        var descriptionElements = document.getElementsByClassName("accumulations-description");
+        var descriptionElements = elements;
         //var btnSelector = '';
         // console.log(descriptionElements);
         for(var i=0; i < descriptionElements.length; i++) {
@@ -85,6 +85,11 @@
             }
         };
     }
-    readMoreLessBtn();
+
+    if (document.getElementsByClassName("accumulations-description").length > 0) {
+        readMoreLessBtn(document.getElementsByClassName("accumulations-description"));
+    } else if (document.getElementsByClassName("term-description")[0].childNodes.length > 1){
+        readMoreLessBtn([document.getElementsByClassName("term-description")[0].childNodes[1]]);
+    }
     
 })(jQuery);

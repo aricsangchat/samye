@@ -77,7 +77,7 @@
         <h3 class="sidebar-section-header">Support Samye</h3>
         <p>All Rinpoche's online activities are volunteer-based and rely on your kind funding to progress. Please consider making a donation to help fund further online courses, live streaming teachings, webinars and more downloadable teachings.</p>
         <div class="button-wrapper">
-            <a class="primary-btn" href="#">View All</a>
+            <a class="primary-btn" href="/donate">Donate</a>
         </div>
     </div>
 </div>

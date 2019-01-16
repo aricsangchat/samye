@@ -1,0 +1,157 @@
+
+.archive {
+    .content {
+        margin-top: 0;
+        padding: 50px 0;
+
+        @media only screen and (min-width: 992px) {
+            margin-top: 0;
+            padding-top: 0;
+            padding-right: 15px;
+        }
+    }
+
+    .link {
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        color: $primary-color;
+        font-weight: normal;
+        font-family: $semi-bold !important;
+
+        @media only screen and (min-width: 992px) {
+            display: none;
+        }
+    }
+
+    .term-description {
+        background-color: $light-gray-bg;
+        padding: 15px 30px;
+        border-left: 10px solid $primary-color;
+        margin-bottom: 50px;
+
+        p {
+            font-style: italic;
+            font-family: $light !important;
+        }
+
+        button {
+            background-color: initial;
+            border: 0;
+            color: $primary-color;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.04em;
+            font-family: $semi-bold !important
+        }
+    }
+
+    .blogpost {
+        margin-bottom: 45px;
+
+        @media only screen and (min-width: 992px) {
+            display: table;
+            margin-bottom: 60px;
+        }
+
+        .featured {
+            width: 100%;
+            max-width: 312px;
+            margin: 0 auto;
+            float: initial;
+    
+            @media only screen and (min-width: 992px) {
+                max-width: 294px;
+                margin: 0 0px;
+                float: left;
+            }
+    
+            div {
+                width: 100%;
+                height: 180px;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-color: $light-gray-bg;
+    
+                @media only screen and (min-width: 992px) {
+                    width: 294px;
+                    height: 180px;
+                    margin: 0 0px;
+                }
+            }
+        }
+    }
+
+    .blogpost .excerpt.thumb {
+        margin-top: 15px;
+
+        @media only screen and (min-width: 992px) {
+            margin-left: 315px;
+            margin-top: 0px;
+        }
+
+        h3 {
+            color: $dark-font;
+            font-family: $body !important;
+            margin-bottom: 5px;
+
+            a {
+                font-size: 22px;
+                line-height: 30px;
+            }
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        .date {
+            line-height: 27px;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: $light-gray-font;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+    }
+    .cats {
+        border: 0;
+        height: 32px;
+        margin: 0;
+
+        @media only screen and (min-width: 992px) {
+            height: 34px;
+        }
+
+        .post-categories {
+            margin-bottom: 6px;
+
+            @media only screen and (min-width: 992px) {
+                margin-bottom: 0px;
+            }
+        }
+    }
+
+    .post-categories li a {
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        color: $primary-color;
+        font-weight: normal;
+    }
+
+    .pagination {
+        span, a {
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            color: $dark-font;
+            border: 0px;
+            font-weight: normal;
+            padding: 8px 14px;
+        }
+
+        .current {
+            color: $white;
+        }
+    }
+}
