@@ -29,7 +29,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 <h2 class="video-title">A word from Phakchok Rinpoche</h2>
                 <div class="video-outer-wrapper image-dropshadow">
                     <div class="video-wrapper">
-                        <iframe class="vimeo-video" src="https://vimeo.com/138857111" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        <iframe class="vimeo-video" src="https://player.vimeo.com/video/138857111" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
