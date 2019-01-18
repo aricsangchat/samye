@@ -23,6 +23,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
  
 ?>
 
+<div class="text-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="title">A subtitle here</h2>
+                <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container community-dharma-groups">
     <div class="row">
         <div class="col-xs-12">
@@ -128,6 +139,90 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         </div>
     </div>
 </section>
+
+<div class="community-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="title">Join The Online Samye Platform</h2>
+                <h3 class="sub-title">Lorem ipsum dolor sit amet</h3>
+                <ul class="facts">
+                    <li>Follow one of our Online Dharma Programs lorem ipsum dolor sit amet</li>
+                    <li>Follow one of our Online Dharma Programs lorem ipsum dolor sit amet</li>
+                    <li>Follow one of our Online Dharma Programs lorem ipsum dolor sit amet</li>
+                </ul>
+                <a class="primary-btn" href="/signup">Join the Platform</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="talk-with-teacher">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-buddha.png" alt="">
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <h2 class="title">Need Help With Your Practice?</h2>
+                <h3 class="sub-title">Talk with a teacher</h3>
+                <?php echo do_shortcode('[gravityform id="46" title="false" description="true" ajax="true"]') ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="volunteer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                    <h2 class="title">Be a Volunteer!</h2>
+                    <h3 class="sub-title">And help spreading the Dharma...</h3>
+                    <p class="text">We’re looking for talented people to help us with our activities. Do you know Web Design? Or you’re good at writing? You know how to organize events, or you just want to help?<br /><br />We’d be glad to get in touch!</p>
+                    <a class="secondary-btn" href="/volunteer">Find Out More</a>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner-volunteer.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="support-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="title">Or Support the Activities</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner-puja.png" alt="">
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <h3 class="sub-title">Sponsor a Puja</h3>
+                        <p class="text">We’re looking for talented people to help us with our activities. Do you know Web Design? Or you’re good at writing? You know how to.</p>
+                        <a href="/sponsor-puja">FIND OUT MORE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner-donation.png" alt="">
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <h3 class="sub-title">Make a Donation</h3>
+                        <p class="text">We’re looking for talented people to help us with our activities. Do you know Web Design? Or you’re good at writing? You know how to.</p>
+                        <a href="/donate">FIND OUT MORE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
 endwhile;

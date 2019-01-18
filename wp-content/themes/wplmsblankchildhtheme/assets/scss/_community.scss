@@ -367,3 +367,356 @@
         }
     }
 }
+
+.community-banner {
+    background-image: url('../images/community-banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 15px 0 40px;
+    margin-bottom: 40px;
+    
+    @media only screen and (min-width: 768px) {
+        padding: 25px 0 55px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        padding: 50px 0 55px;
+    }
+
+    .title {
+        color: $white;
+        font-size: 24px;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 36px;
+            margin-bottom: 5px;
+        }
+    }
+
+    .sub-title {
+        color: $secondary-color;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-family: $body !important;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 30px;
+        }
+    }
+
+    .facts {
+        margin-bottom: 30px;
+
+        li {
+            color: $white;
+            margin-bottom: 15px;
+
+            @media only screen and (min-width: 768px) {
+                font-size: 22px;
+            }
+
+            &:before {
+                content: '';
+                display: inline-block;
+                height: 10px;
+                width: 10px;
+                background-image: url('../images/icon-li-carot.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: relative;
+                left: -5px;
+
+                @media only screen and (min-width: 768px) {
+                    height: 18px;
+                    width: 18px;
+                    top: 2px;
+                }
+            }
+        }
+    }
+}
+
+.talk-with-teacher {
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: 768px) {
+        margin-bottom: 40px;
+    }
+
+    @media only screen and (min-width: 992px) {
+        margin-bottom: 50px;
+    }
+
+    img {
+        width: 50%;
+        margin: 0 auto;
+        display: block;
+
+        @media only screen and (min-width: 768px) {
+            width: 100%;
+        }
+    }
+
+    .title {
+        text-align: center;
+        font-size: 24px;
+        color: $dark-font;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 36px;
+        }
+    }
+    
+    .sub-title {
+        text-align: center;
+        margin-top: 0;
+        font-family: $body !important;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 30px;
+        }
+    }
+
+    #gform_wrapper_46 {
+        margin-top: 0;
+        
+        @media only screen and (min-width: 768px) {
+            padding: 10px 0px 8px 15px;
+            background-color: $light-gray-bg;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            padding: 25px 15px 20px 30px;
+            background-color: $light-gray-bg;
+        }
+
+        .gform_heading {
+            margin-bottom: 5px;
+        }
+
+        .gform_description {
+            margin-bottom: 0;
+
+            @media only screen and (min-width: 768px) {
+                line-height: 24px;
+                font-size: 18px;
+            }
+        }
+
+        li {
+            margin-bottom: 15px;
+
+            input {
+                margin-top: 0;
+
+                @media only screen and (min-width: 768px) {
+                    border: 0;
+                }
+            }
+
+            textarea {
+                @media only screen and (min-width: 768px) {
+                    border: 0;
+                }
+            }
+
+            &:nth-child(1) {
+                @media only screen and (min-width: 768px) {
+                    display: inline-block;
+                    width: 50%;
+                }
+
+                input {
+                    width: 100%
+                }
+            }
+
+            &:nth-child(2) {
+                @media only screen and (min-width: 768px) {
+                    display: inline-block;
+                    width: 50%;
+                }
+
+                input {
+                    width: 100%
+                }
+            }
+
+            &:nth-child(3) {
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.volunteer-section {
+    background-color: $primary-color;
+    padding: 15px 0 50px;
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: 768px) {
+        padding: 50px 0 20px;
+        margin-bottom: 40px;
+    }
+
+    @media only screen and (min-width: 992px) {
+        margin-bottom: 50px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        padding: 50px 0;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .title {
+        color: $secondary-color;
+        font-size: 24px;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 36px;
+            margin-top: 0;
+        }
+    }
+
+    .sub-title {
+        font-family: $semi-bold !important;
+        color: $white;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 24px;
+        }
+    }
+
+    .text {
+        color: $white;
+        margin-bottom: 25px;
+    }
+
+    .secondary-btn {
+        background-color: $secondary-color;
+        margin-bottom: 30px;
+    }
+}
+
+.support-section {
+    @media only screen and (min-width: 992px) {
+        margin-bottom: 15px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        margin-bottom: 30px;
+    }
+
+    @media only screen and (min-width: 1440px) {
+        margin-bottom: 60px;
+    }
+
+
+    img {
+        display: block;
+        margin: 0 auto;
+
+        @media only screen and (min-width: 1200px) {
+            float: right;
+        }
+    }
+
+    .title {
+        text-align: center;
+        font-size: 24px;
+        color: $dark-font;
+        margin-bottom: 40px;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 36px;
+        }
+    }
+
+    .sub-title {
+        color: $primary-color;
+        font-family: $semi-bold !important;
+        font-size: 20px;
+        text-align: center;
+
+        @media only screen and (min-width: 768px) {
+            line-height: 33px;
+            font-size: 24px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            text-align: left;
+            position: relative;
+            right: 15px;
+        }
+    }
+
+    .text {
+        color: $dark-font;
+        text-align: center;
+        max-width: 320px;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 30px;
+
+        @media only screen and (min-width: 768px) {
+            line-height: 25px;
+            font-size: 18px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+    }
+
+    a {
+        color: $primary-color;
+        text-transform: uppercase;
+        text-align: center;
+        display: block;
+        margin-bottom: 40px;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 18px;
+            letter-spacing: 0.04em;
+        }
+
+        @media only screen and (min-width: 992px) {
+            text-align: left;
+        }
+    }
+}
+
+.text-section {
+    margin-bottom: 5px;
+    
+    .title {
+        text-align: center;
+        font-size: 24px;
+        color: $dark-font;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 36px;
+        }
+    }
+
+    .text {
+        color: $dark-font;
+        text-align: center;
+        max-width: 711px;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 30px;
+
+        @media only screen and (min-width: 768px) {
+            line-height: 25px;
+            font-size: 18px;
+        }
+    }
+}
