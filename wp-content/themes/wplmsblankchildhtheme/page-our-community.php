@@ -166,7 +166,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12 col-sm-8">
                 <h2 class="title">Need Help With Your Practice?</h2>
                 <h3 class="sub-title">Talk with a teacher</h3>
-                <?php echo do_shortcode('[gravityform id="46" title="false" description="true" ajax="true"]') ?>
+                <?php echo do_shortcode('[gravityform id="47" title="false" description="true" ajax="true"]') ?>
             </div>
         </div>
     </div>
