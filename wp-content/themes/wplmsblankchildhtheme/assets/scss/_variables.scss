@@ -43,13 +43,70 @@
 
 }
 
+@font-face {
+    font-family: 'hind_siliguribold';
+    src: url('../fonts/hindsiliguri-bold-webfont.woff2') format('woff2'),
+         url('../fonts/hindsiliguri-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'hind_siligurilight';
+    src: url('../fonts/hindsiliguri-light-webfont.woff2') format('woff2'),
+         url('../fonts/hindsiliguri-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'hind_siligurimedium';
+    src: url('../fonts/hindsiliguri-medium-webfont.woff2') format('woff2'),
+         url('../fonts/hindsiliguri-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'hind_siliguriregular';
+    src: url('../fonts/hindsiliguri-regular-webfont.woff2') format('woff2'),
+         url('../fonts/hindsiliguri-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'hind_siligurisemibold';
+    src: url('../fonts/hindsiliguri-semibold-webfont.woff2') format('woff2'),
+         url('../fonts/hindsiliguri-semibold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 $primary-color: #b83029;
 $secondary-color: #ffb931;
 $white: #ffffff;
 $heading: 'marcellus_scregular';
-$semi-bold: 'hindsemibold';
-$body: 'hindregular';
-$light: 'hindlight';
+$semi-bold: 'hind_siligurisemibold';
+$body: 'hind_siliguriregular';
+$light: 'hind_siligurilight';
 $dark-font: #282828;
 $gray-font: #575757;
 $light-gray-font: #C3C3C3;

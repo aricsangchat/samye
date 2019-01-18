@@ -118,7 +118,7 @@ get_header(vibe_get_header());
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <a class="secondary-btn" href="/courses">Explore Programs</a>
+                        <a class="secondary-btn" href="/programs">Explore Programs</a>
                     </div>
 
                 </div>
@@ -127,7 +127,7 @@ get_header(vibe_get_header());
                     <p>Practicing together is a real blessing for all of us. Etc. The standard chunk of Lorem Ipsum used since the 1500s is reproduced.</p>
                     <img class="icon-map" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-map.png" alt="dharma groups">
                     <div class="button-wrapper">
-                        <a class="secondary-btn" href="#">Explore Groups</a>
+                        <a class="secondary-btn" href="/dharma-groups">Explore Groups</a>
                     </div>
                 </div>
             </div>
@@ -264,7 +264,7 @@ get_header(vibe_get_header());
         <div class="row">
             <div class="col-xs-12">
                 <div class="button-wrapper">
-                    <a class="primary-btn" href="#">View All</a>
+                    <a class="primary-btn" href="/study-practice">View All</a>
                 </div>
             </div>
         </div>
@@ -346,7 +346,7 @@ get_header(vibe_get_header());
                         </a>
                     </div>
                     <div class="button-wrapper">
-                        <a class="secondary-btn" href="#">View All</a>
+                        <a class="secondary-btn" href="/guru-rinpoche-day-teachings">View All</a>
                     </div>
                 </div>
             </div>

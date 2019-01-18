@@ -1,0 +1,369 @@
+.community-dharma-groups {
+    margin-bottom: 30px;
+
+    @media only screen and (min-width: 1200px) {
+        margin-bottom: 60px;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 30px;
+        }
+    }
+
+    .community-dharma-groups-facts {
+        @media only screen and (min-width: 992px) {
+            margin-bottom: 30px;
+        }
+
+        h3.number {
+            color: $primary-color;
+            text-align: center;
+            font-family: $semi-bold !important;
+            font-size: 30px;
+            margin-bottom: 0;
+
+            @media only screen and (min-width: 992px) {
+                font-size: 50px;
+            }
+
+            @media only screen and (min-width: 1200px) {
+                font-size: 92px;
+            }
+        }
+        p.description {
+            text-align: center;
+            text-transform: uppercase;
+            margin-top: 0;
+            color: $dark-font;
+
+            @media only screen and (min-width: 992px) {
+                font-size: 18px;
+            }
+
+            @media only screen and (min-width: 1200px) {
+                font-size: 24px;
+            }
+        }
+    }
+}
+
+#community-dharma-facts {
+    margin-bottom: 30px;
+
+    .dharma-facts-col-1 {
+        background-color: $primary-color;
+        padding-bottom: 20px;
+
+        @media only screen and (min-width: 992px) {
+            display: inline-block;
+            width: 50%;
+            padding-bottom: 30px;
+        }
+        @media only screen and (min-width: 1200px) {
+            width: 55%;
+            padding-bottom: 40px;
+        }
+
+        .secondary-btn {
+            background-color: $secondary-color !important;
+        }
+    }
+
+    .dharma-facts-col-1-title-wrapper {
+        background-color: $secondary-color;
+        padding: 5px;
+
+        @media only screen and (min-width: 992px) {
+            width: 60%;
+            margin: 0 auto;
+            position: relative;
+            top: -10px;
+            padding-top: 15px;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            width: 462px;
+            padding-top: 30px;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: $primary-color;
+            margin: 0;
+
+            @media only screen and (min-width: 768px) {
+                font-size: 36px;
+            }
+
+            @media only screen and (min-width: 992px) {
+                font-size: 24px;
+            }
+
+            @media only screen and (min-width: 1200px) {
+                font-size: 36px;
+            }
+        }
+    }
+
+    .dharma-facts-col-1-description {
+        padding: 15px 15px 0;
+
+        p {
+            color: $white;
+            font-family: $semi-bold !important;
+            text-align: center;
+
+            @media only screen and (min-width: 992px) {
+                font-size: 22px;
+            }
+
+            @media only screen and (min-width: 1200px) {
+                font-size: 30px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .dharma-facts-col-1-bullets {
+        padding: 0px 15px 15px;
+        max-width: 320px;
+        margin: 0 auto;
+
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            li {
+                color: $white;
+                margin-bottom: 5px;
+
+                @media only screen and (min-width: 992px) {
+                    font-size: 18px;   
+                }
+
+                @media only screen and (min-width: 1200px) {
+                    font-size: 22px;   
+                }
+
+                &::before {
+                    content: '';
+                    height: 20px;
+                    width: 20px;
+                    background-image: url('../images/icon-li-knot.png');
+                    background-position: center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    display: inline-block;
+                    position: relative;
+                    top: 5px;
+                    right: 3px;   
+                    
+                    @media only screen and (min-width: 992px) {
+                        right: 5px;   
+                    }
+
+                    @media only screen and (min-width: 1200px) {
+                        height: 28px;
+                        width: 28px; 
+                        top: 6px;
+                        right: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .dharma-facts-col-2 {
+        height: 180px;
+        background-image: url('../images/indonesia-dharma-group.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        @media only screen and (min-width: 992px) {
+            display: inline-block;
+            width: 50%;
+            float: right;
+            height: 301px;
+        }
+        @media only screen and (min-width: 1200px) {
+            width: 45%;
+            height: 403px;
+
+        }
+    }
+}
+
+#community-news {
+    .post-list-title {
+        color: $dark-font;
+        font-size: 24px;
+        text-align: center;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 36px;
+        }
+        @media only screen and (min-width: 992px) {
+            text-align: left;
+        }
+    }
+
+    .post-list-subtitle {
+        margin-top: 0;
+        color: $gray-font;
+        font-family: $body !important;
+        margin-bottom: 30px;
+        text-align: center;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 30px;
+        }
+        @media only screen and (min-width: 992px) {
+            text-align: left;
+        }
+    }
+
+    .post-wrapper {
+        margin: 0 auto 15px;
+        max-width: 320px;
+
+        @media only screen and (min-width: 768px) {
+            max-width: 440px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            display: table;
+            max-width: 100%;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            margin: 0 auto 40px;
+        }
+    
+        .post-image {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 15px;
+
+            @media only screen and (min-width: 768px) {
+                height: 240px;
+            }
+
+            @media only screen and (min-width: 992px) {
+                display: table-cell;
+                width: 200px;
+                height: 135px;
+            }
+
+            @media only screen and (min-width: 1200px) {
+                width: 295px;
+                height: 180px;
+            }
+        }
+
+        .post-text {
+            @media only screen and (min-width: 992px) {
+                display: table-cell;
+                padding-left: 15px;
+                vertical-align: middle;
+            }
+
+            .post-tags {
+                display: none;
+                font-size: 12px;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                color: $primary-color;
+                font-family: $body !important;
+                margin-top: 0;
+                margin-bottom: 5px;
+
+                @media only screen and (min-width: 1200px) {
+                    display: block;
+                }
+            }
+
+            .post-date {
+                display: none;
+                font-size: 12px;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                color: $light-gray-font;
+                font-family: $body !important;
+                margin-top: 5px;
+                margin-bottom: 8px;
+
+                @media only screen and (min-width: 1200px) {
+                    display: block;
+                }
+            }
+
+            .post-title {
+                margin: 0;
+                font-family: $semi-bold !important;
+                color: $gray-font;
+
+                @media only screen and (min-width: 1200px) {
+                    line-height: 24px;
+                    font-size: 18px;
+                }
+            }
+
+            .post-excerpt {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.dakini-day-sidebar-widget {
+    max-width: 320px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+
+    img {
+        margin-bottom: 15px;
+    }
+
+
+    h2 {
+        color: $dark-font;
+        font-size: 24px;
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 36px;
+        }
+    }
+
+    h4 {
+        font-family: $body !important;
+        color: $gray-font;
+        font-size: 24px;
+
+
+        @media only screen and (min-width: 768px) {
+            line-height: 41px;
+            font-size: 30px;
+            text-align: center;        
+        }
+    }
+
+    p {
+        margin-bottom: 30px;
+
+        @media only screen and (min-width: 992px) {
+            margin-bottom: 40px;
+        }
+    }
+}
