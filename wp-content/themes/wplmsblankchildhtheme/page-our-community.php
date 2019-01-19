@@ -7,7 +7,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
 ?>
-<section id="page-title" style="background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/bg-page-title.png);">
+<section id="page-title" style="background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/bg-page-community.png);">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">

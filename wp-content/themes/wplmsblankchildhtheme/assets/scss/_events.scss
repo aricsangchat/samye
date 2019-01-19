@@ -1,0 +1,199 @@
+.events-intro {
+    .title {
+        font-size: 24px;
+        margin-bottom: 30px;
+
+        @media only screen and (min-width: 768px) {
+            font-size: 30px;
+        }
+    }
+}
+
+.event-item-wrapper {
+    @media only screen and (min-width: 992px) {
+        margin-bottom: 30px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        margin-bottom: 40px;
+    }
+
+    .event-image {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 317px;
+        width: 235px;
+        margin-bottom: 15px;
+
+        .date {
+            background-color: $secondary-color;
+            width: 75px;
+            padding: 29px 0 14px;
+            position: relative;
+            left: 10px;
+            bottom: 5px;
+
+            p {
+                color: $dark-font;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .month {
+                font-size: 16px;
+                margin-bottom: 0;
+            }
+
+            .year {
+                font-size: 20px;
+                margin-top: 0;
+            }
+        }
+    }
+
+    .category {
+        text-transform: uppercase;
+        color: $primary-color;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        margin-bottom: 5px;
+    }
+
+    .event-title {
+        font-size: 22px;
+        font-family: $semi-bold !important;
+        margin-top: 0;
+
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 25px;
+        }
+    }
+
+    .excerpt {
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .location {
+        span {
+            color: $primary-color;
+        }
+
+        &:before {
+            content: '';
+            display: inline-block;
+            height: 16px;
+            width: 25px;
+            background-image: url('../images/icon-location.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+    .time {
+        margin-bottom: 20px;
+
+        span {
+            color: $primary-color;
+        }
+
+        &:before {
+            content: '';
+            display: inline-block;
+            height: 16px;
+            width: 25px;
+            background-image: url('../images/icon-calendar.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+    .primary-btn {
+        // margin-bottom: 50px;
+
+        @media only screen and (min-width: 992px) {
+            margin-bottom: 0;
+        }
+    }
+
+    .col-md-8 {
+        @media only screen and (min-width: 992px) {
+            padding-left: 30px;
+            height: 316px;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            padding-left: 70px;
+        }
+
+        @media only screen and (min-width: 1440px) {
+            padding-left: 30px;
+        }
+
+        .event-info {
+            @media only screen and (min-width: 992px) {
+                position: absolute;
+                bottom: 0;
+            }
+        }
+    }
+}
+
+#tribe-events-header {
+    bottom: 20px;
+
+    @media only screen and (min-width: 992px) {
+        bottom: 30px;
+    }
+}
+
+#tribe-bar-views {
+    display: none;
+}
+
+#tribe-bar-form .tribe-bar-submit input[type=submit], #tribe-bar-collapse-toggle:focus, #tribe-bar-collapse-toggle:hover {
+    background: $primary-color;
+}
+
+#tribe-bar-form.tribe-bar-full.tribe-events-bar--has-views #tribe-bar-filters-wrap {
+    width: 97%;
+}
+
+.tribe-bar-submit {
+    float: right;
+}
+
+ul.tribe-events-sub-nav a {
+    font-size: 18px;
+    color: $primary-color;
+    font-weight: normal;
+    font-family: $semi-bold !important;
+}
+
+#tribe-events-bar {
+    @media only screen and (min-width: 768px) {
+        margin-bottom: 50px;
+    }
+}
+
+#tribe-events-footer .tribe-events-sub-nav .tribe-events-nav-previous {
+    width: 100%;
+
+    a {
+        background: none;
+    }
+}
+
+#tribe-events-footer {
+    margin-top: 0;
+}
+
+.tribe-events-ical.tribe-events-button {
+    @media only screen and (min-width: 768px) {
+        margin-bottom: 20px;
+    }
+}

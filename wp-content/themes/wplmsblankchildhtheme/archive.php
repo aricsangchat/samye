@@ -60,7 +60,7 @@ get_header(vibe_get_header());
                             if(!empty($default_archive)){
                                 get_template_part('content',$default_archive);
                             }else{
-                               get_template_part('content','default');
+                               get_template_part('content','default-cat');
                             }
                         }
                         endwhile;
