@@ -32,11 +32,11 @@ get_header(vibe_get_header());
                     <?php echo do_shortcode( '[gravityform id="42" title="false" description="false" ajax="false"]' ); ?>
                     <p class="or">OR</p>
                     <div class="button-wrapper">
-                        <a class="primary-btn-inverted" href="#">Enter Practice</a>
+                        <a class="primary-btn-inverted" href="/6-vajra-lines-accumulations/">Enter Practice</a>
                     </div>
                 <?php else : ?>
                     <div class="button-wrapper">
-                        <a class="primary-btn" href="#">Login to Add Accumulations</a>
+                        <a class="primary-btn" href="/wp-login.php?redirect_to=6-vajra-lines-accumulations/">Login to Add Accumulations</a>
                     </div>
                 <?php endif; ?> 
             </div>
@@ -54,11 +54,11 @@ get_header(vibe_get_header());
                     <?php echo do_shortcode( '[gravityform id="40" title="false" description="false" ajax="false"]' ); ?>
                     <p class="or">OR</p>
                     <div class="button-wrapper">
-                        <a class="primary-btn-inverted" href="#">Enter Practice</a>
+                        <a class="primary-btn-inverted" href="/giant-cloud-blessings-supplication-magnetize-appearance-existence">Enter Practice</a>
                     </div>
                 <?php else : ?>
                     <div class="button-wrapper">
-                        <a class="primary-btn" href="#">Login to Add Accumulations</a>
+                        <a class="primary-btn" href="/wp-login.php?redirect_to=giant-cloud-blessings-supplication-magnetize-appearance-existence/">Login to Add Accumulations</a>
                     </div>
                 <?php endif; ?>                
             </div>
