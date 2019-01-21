@@ -88,7 +88,7 @@
 
     if (document.getElementsByClassName("accumulations-description").length > 0) {
         readMoreLessBtn(document.getElementsByClassName("accumulations-description"));
-    } else if (document.getElementsByClassName("term-description")[0].childNodes.length > 1){
+    } else if (document.getElementsByClassName("term-description").length > 0){
         readMoreLessBtn([document.getElementsByClassName("term-description")[0].childNodes[1]]);
     }
     

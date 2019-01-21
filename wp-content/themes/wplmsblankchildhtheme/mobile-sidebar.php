@@ -8,7 +8,7 @@
             if ( function_exists('bp_loggedin_user_link') && is_user_logged_in() ) :
                 ?>
                 <ul class="login-menu">
-                    <li><a href="<?php bp_loggedin_user_link(); ?>" class="smallimg vbplogin"><?php $n=vbp_current_user_notification_count(); echo ((isset($n) && $n)?'<em></em>':''); bp_loggedin_user_avatar( 'type=full' ); ?></a></li>
+                    <li><a href="<?php bp_loggedin_user_link(); ?>" class="loggedin-icon"><?php $n=vbp_current_user_notification_count(); echo ((isset($n) && $n)?'<em></em>':''); bp_loggedin_user_avatar( 'type=full' ); ?></a></li>
                     <?php do_action('wplms_header_top_login'); ?>
                 </ul>
             <?php

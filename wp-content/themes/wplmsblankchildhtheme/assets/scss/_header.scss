@@ -66,6 +66,7 @@ header {
         font-size: 14px;
         letter-spacing: 0.04em;
         text-decoration: none;
+        border-bottom: 2px solid $primary-color;
 
         &:hover {
             border-bottom: 2px solid $secondary-color;
@@ -183,6 +184,13 @@ header {
             color: $white;
             font-size: 13px;
             letter-spacing: 0.04em;
+            border-bottom: 2px solid $primary-color;
+
+            &:hover {
+                border-bottom: 2px solid $secondary-color;
+                color: $white !important;
+                text-decoration: none;
+            }
         }
     }
 }
@@ -235,5 +243,18 @@ header #trigger {
 
     .wpml-ls-sub-menu {
         background-color: $white;
+    }
+}
+
+.loggedin-icon {
+    img {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+
+        @media only screen and (min-width: 992px) {
+            position: relative;
+            bottom: 5px;
+        }
     }
 }

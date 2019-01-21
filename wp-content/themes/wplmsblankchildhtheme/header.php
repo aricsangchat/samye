@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
         <header>
             <div class="<?php echo vibe_get_container(); ?>">
                 <div class="row">
-                    <div class="col-xs-6 col-sm-4">
+                    <div class="col-xs-6 col-sm-3 col-lg-4">
                         <?php
                             $url = apply_filters('wplms_logo_url',VIBE_URL.'/assets/images/logo.png','header');
                         ?>
@@ -38,13 +38,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                             <a class="logo" href="<?php echo vibe_site_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo-white.png" width="100" height="48" alt="<?php echo get_bloginfo('name'); ?>" /></a>
                         </div>
                     </div>
-                    <div class="col-xs-6 col-sm-8">
+                    <div class="col-xs-6 col-sm-9 col-lg-8">
                         <div class="top-nav">
                             <?php
                                 if ( function_exists('bp_loggedin_user_link') && is_user_logged_in() ) :
                             ?>
                                 <ul class="login-menu logged-in">
-                                    <li><a href="<?php bp_loggedin_user_link(); ?>" class="smallimg vbplogin"><?php $n=vbp_current_user_notification_count(); echo ((isset($n) && $n)?'<em></em>':''); bp_loggedin_user_avatar( 'type=full' ); ?></a></li>
+                                    <li><a href="<?php bp_loggedin_user_link(); ?>" class="loggedin-icon"><?php bp_loggedin_user_avatar( 'type=full' ); ?></a></li>
                                     <?php do_action('wplms_header_top_login'); ?>
                                 </ul>
                                 <?php
