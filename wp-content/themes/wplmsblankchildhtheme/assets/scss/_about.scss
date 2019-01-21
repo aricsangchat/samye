@@ -318,5 +318,15 @@
         max-width: 320px;
         display: block;
         margin: 0 auto;
+        margin-bottom: 15px;
+    }
+
+    a {
+        font-size: 14px;
+        text-align: center;
+        letter-spacing: 0.04em;
+        color: $primary-color;
+        display: block;
+        text-transform: uppercase;
     }
 }

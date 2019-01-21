@@ -84,7 +84,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-seal.png" />
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-official-seal.jpg" />
             </div>
             <div class="col-xs-12 col-sm-6">
                 <h2 class="header">About The Samye Seal</h2>
@@ -117,29 +117,38 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 </section>
 
 <section id="teacher-bios">
-    <h2 class="header">Teachers Biographies</h2>
+    <h2 class="header">Teachers</h2>
     <div class="container">
         <div class="row">
+            <?php
+                $instructorArgs = array(
+                    'numberposts' => -1,
+                    'offset' => 0,
+                    'category' => 0,
+                    'orderby' => 'post_date',
+                    'order' => 'DESC',
+                    'include' => '',
+                    'exclude' => '',
+                    'meta_key' => '',
+                    'meta_value' =>'',
+                    'post_type' => 'instructors',
+                    'post_status' => 'publish',
+                    'suppress_filters' => true,
+                );
+                $lastposts = get_posts( $instructorArgs );
+                foreach ( $lastposts as $post ) :
+                setup_postdata( $post );
+            ?>
             <div class="col-xs-12 col-sm-6 col-md-3">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tulku.png" />
-                <h2 class="author">Tulku Migmar Tsering</h2>
-                <p class="bio">Tulku Migmar Tsering is a master of the Chokling New Treasures lineage of the Nyingma tradition of Tibetan Buddhism.</p>
+                <img src="<?php the_post_thumbnail_url( 'full' ) ?>" />
+                <h2 class="author"><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
+                <p class="bio"><?php echo excerpt('20'); ?></p>
+                <a href="<?php the_permalink() ?>">Read More</a>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tulku.png" />
-                <h2 class="author">Tulku Migmar Tsering</h2>
-                <p class="bio">Tulku Migmar Tsering is a master of the Chokling New Treasures lineage of the Nyingma tradition of Tibetan Buddhism.</p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tulku.png" />
-                <h2 class="author">Tulku Migmar Tsering</h2>
-                <p class="bio">Tulku Migmar Tsering is a master of the Chokling New Treasures lineage of the Nyingma tradition of Tibetan Buddhism.</p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-3">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/tulku.png" />
-                <h2 class="author">Tulku Migmar Tsering</h2>
-                <p class="bio">Tulku Migmar Tsering is a master of the Chokling New Treasures lineage of the Nyingma tradition of Tibetan Buddhism.</p>
-            </div>
+            <?php 
+                endforeach; 
+                wp_reset_postdata(); 
+            ?>
         </div>
     </div>
 </section>

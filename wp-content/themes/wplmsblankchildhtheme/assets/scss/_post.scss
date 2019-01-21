@@ -246,3 +246,19 @@
         }
     }
 }
+
+.content.instructors {
+    max-width: 768px;
+    margin: 0 auto;
+    display: block;
+
+    .featured {
+        img {
+            width: 262px;
+            height: 262px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: none;
+        }
+    }
+}

@@ -60,7 +60,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                                 $postType = get_post_format(get_the_ID()) ? : "Article";
                                 $categories = get_the_category();
                                 if ( ! empty( $categories ) ) {
-                                    echo '<h2 class="category"><a href="' . esc_url( get_category_link( $categories[0]->term_id ) ) . '">' . esc_html( $categories[0]->name ) . ' • </a>'. $postType .'</h2>';
+                                    echo '<h2 class="category"><a href="' . esc_url( get_category_link( $categories[0]->term_id ) ) . '">' . esc_html( $categories[0]->name ) . '</a> • '. $postType .'</h2>';
                                 }
                                 ?>
                             </div>
@@ -71,7 +71,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
                 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
-                <div class="content">
+                <div class="content <?php echo get_post_type(get_the_ID()); ?>">
                     <?php if(has_post_thumbnail()){ ?>
                     <div class="featured">
                         <?php the_post_thumbnail(get_the_ID(),'full'); ?>
@@ -79,11 +79,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     <?php
                     }
                     ?>
+                    
+                    <?php if($categories[0]->name === "wisdom-blogs"){ ?>
 
                     <div class="teaching-prep-msg">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-quote-red.png);" alt="">
                         <p>Please take a few moments before you begin this teaching to settle yourself. Sit upright, yet naturally relaxed. Before listening to and/ or reading the teaching make aspirations such as: "I am extremely fortunate to have the opportunity to listen to the precious Dharma. I am doing this for the benefit of all sentient beings so that they may be free from suffering and attain complete awakening".</p>
                     </div>
+
+                    <?php
+                    }
+                    ?>
 
                     <div class="content-body">
                         <?php
@@ -91,10 +97,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                         ?>
                     </div>
 
+                    <?php if($categories[0]->name === "wisdom-blogs"){ ?>
+
                     <div class="teaching-prep-msg">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-quote-red.png);" alt="">
                         <p>At the end of the teaching, please remember to dedicate the merit of receiving a Dharma teaching. As you go through your day, take a few moments from time to time to recall these instructions.</p>
                     </div>
+
+                    <?php 
+                    }
+                    ?>
 
                     <div class="tags">
                         <p class="tag-header">Tags:</p>

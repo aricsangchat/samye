@@ -167,7 +167,7 @@ get_header(vibe_get_header());
                 <div class="course-image" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');"><div class="overlay-category"><p><span>Learning Program</span></p></div></div>
                 <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Additional Courses';  ?></a></h3>
                 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <?php excerpt('22'); ?>
+                <p><?php echo excerpt('22'); ?></p>
                 <?php 
                     endforeach; 
                     wp_reset_postdata(); 
@@ -205,7 +205,7 @@ get_header(vibe_get_header());
                         </div>
                         <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
                         <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
-                        <?php excerpt('22'); ?>
+                        <p><?php echo excerpt('22'); ?></p>
                     </div>
                     <?php 
                         endforeach; 
@@ -252,7 +252,7 @@ get_header(vibe_get_header());
                         </div>
                         <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
                         <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
-                        <?php excerpt('12'); ?>
+                        <p><?php echo excerpt('12'); ?></p>
                     </div>
                     <?php 
                         endforeach; 
