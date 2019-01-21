@@ -147,6 +147,15 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
             font-size: 64px;
         }
     }
+
+    h5 {
+        color: $white;
+        text-align: center;
+        
+        @media only screen and (min-width: 992px) {
+            font-size: 30px;
+        }
+    }
 }
 
 // Donation Form 
