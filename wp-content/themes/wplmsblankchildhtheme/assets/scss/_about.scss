@@ -63,6 +63,9 @@
 
             @media only screen and (min-width: 992px) {
                 margin-bottom: 20px;
+                max-width: 944px;
+                margin-left: auto;
+                margin-right: auto;
             }
 
             @media only screen and (min-width: 1200px) {
@@ -82,7 +85,11 @@
                     display: initial;
                     position: absolute;
                     top: 35px;
-                    left: 0px;
+                    left: 93px;
+                }
+
+                @media only screen and (min-width: 1440px) {
+                    left: 214px;
                 }
             }
         }
@@ -110,6 +117,11 @@
 
     .header {
         font-size: 30px;
+        color: $dark-font;
+
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 25px;
+        }
     }
 
     img {
@@ -118,30 +130,135 @@
         width: 100%;
         height: auto;
     }
+
+    .text {
+        color: $dark-font;
+        
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 25px;
+        }
+    }
 }
 
 #about-vision {
     background-color: $primary-color !important;
-    padding-top: 45px;
-    padding-bottom: 25px;
+    margin-bottom: 30px;
+    // padding-top: 45px;
+    // padding-bottom: 25px;
 
     @media only screen and (min-width: 992px) {
-        padding-top: 60px;
-        padding-bottom: 50px;
+        // padding-top: 60px;
+        // padding-bottom: 50px;
     }
 
     @media only screen and (min-width: 1200px) {
-        padding-bottom: 85px;
-        padding-top: 85px;
+        // padding-bottom: 85px;
+        // padding-top: 85px;
+    }
+
+    .col-xs-12 {
+        padding: 0;
+    }
+
+    .col-sm-pull-6 {
+        padding-left: 15px;
+        padding-right: 15px;
+
+        @media only screen and (min-width: 1200px) {
+            padding-top: 45px;
+        }
+    }
+
+    .text-wrapper {
+        margin-bottom: 30px;
+
+        @media only screen and (min-width: 768px) {
+            max-width: 418px;
+            float: right;
+            margin-bottom: 0px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            max-width: 545px;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            max-width: 439px;
+            position: relative;
+            right: 50px;
+        }
+
+        @media only screen and (min-width: 1440px) {
+            max-width: 521px;
+        }
+    }
+
+    .vision-image {
+        background-image: url('../images/about-vision.png');
+        height: 200px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+
+        @media only screen and (min-width: 768px) {
+            height: 580px;
+        }
+
+        @media only screen and (min-width: 992px) {
+            height: 490px;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            height: 611px;
+        }
     }
 
     .header {
         font-size: 30px;
         color: $secondary-color;
+
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 25px;
+        }
+    }
+
+    .text:nth-child(3) {
+        @media only screen and (min-width: 1200px) {
+            left: -65px;
+        }
+
+        &:before {
+            @media only screen and (min-width: 1200px) {
+                right: -105px;
+                left: auto !important;
+                top: 20px;
+            }
+        }
     }
 
     .text {
         color: $white;
+
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        &:before {
+            @media only screen and (min-width: 1200px) {
+                content: '';
+                display: inline-block;
+                height: 90px;
+                width: 90px;
+                background-image: url('../images/icon-knot-gold.png');
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+                position: absolute;
+                left: -105px;
+            }
+        }
     }
 
     img {
@@ -171,6 +288,11 @@
 
     .header {
         font-size: 30px;
+        color: $dark-font;
+
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 25px;
+        }
     }
 
     img {
@@ -180,6 +302,14 @@
         height: auto;
         max-width: 459px;
     }
+
+    .text {
+        color: $dark-font;
+
+        @media only screen and (min-width: 1200px) {
+            margin-bottom: 25px;
+        }
+    }
 }
 
 #more-about {
@@ -187,6 +317,7 @@
 
     @media only screen and (min-width: 992px) {
         margin-bottom: 60px;
+        border-bottom: 10px solid $secondary-color;
     }
 
     @media only screen and (min-width: 1200px) {
@@ -217,6 +348,8 @@
         }
 
         h2 {
+            color: $dark-font;
+
             @media only screen and (min-width: 768px) {
                 font-size: 30px;
             }
@@ -231,6 +364,8 @@
             }
 
             a {
+                color: $dark-font !important;
+
                 &:hover {
                     text-decoration: underline;
                 }
@@ -301,6 +436,7 @@
     .header {
         font-size: 30px;
         text-align: center;
+        color: $dark-font;
 
         @media only screen and (min-width: 992px) {
             margin-bottom: 30px;
@@ -311,6 +447,10 @@
         font-family: $semi-bold !important;
         color: $primary-color;
         text-align: center;
+
+        a {
+            font-size: 22px;
+        }
     }
 
     .bio {

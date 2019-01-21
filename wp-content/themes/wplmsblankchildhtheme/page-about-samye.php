@@ -65,16 +65,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 </section>
 
 <section id="about-vision">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-6 col-sm-push-6">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-vision.png" />
+            <div class="col-xs-12 col-sm-6 col-sm-push-6">
+                <div class="vision-image"></div>
             </div>
             <div class="col-xs-12 col-sm-6 col-sm-pull-6">
-                <h2 class="header">Our Vision</h2>
-                <p class="text"><strong>Samye Institute includes both online and live teachings, instruction, retreats, and events derived from authentic Buddhist wisdom traditions.</strong> On the online platform individuals seeking answers as to how to live a meaningful life can explore how to work with their minds.</p>
-                <p class="text"><strong>Our aspiration is to offer tools and training to enable practitioners of all levels to practice authentically and confidently.</strong> Buddhist practitioners, both newer and long-term students, will find resources here to support their study, reflection, and meditation. Here you may find teachings on working with the emotions and the mind, introduction to meditation, training in compassion, Mahāmudrā meditation, and special practices unique to our tradition.</p>
-                <p class="text"><strong>Samye is a platform for sangha and community building.</strong> Here, students from around the globe can gather in forums to discuss their practices. This builds a strong sense of community and teaches us to care for others. In caring for others, we also care for ourselves. Together we build a community.</p>
+                <div class="text-wrapper">
+                    <h2 class="header">Our Vision</h2>
+                    <p class="text"><strong>Samye Institute includes both online and live teachings, instruction, retreats, and events derived from authentic Buddhist wisdom traditions.</strong> On the online platform individuals seeking answers as to how to live a meaningful life can explore how to work with their minds.</p>
+                    <p class="text"><strong>Our aspiration is to offer tools and training to enable practitioners of all levels to practice authentically and confidently.</strong> Buddhist practitioners, both newer and long-term students, will find resources here to support their study, reflection, and meditation. Here you may find teachings on working with the emotions and the mind, introduction to meditation, training in compassion, Mahāmudrā meditation, and special practices unique to our tradition.</p>
+                    <p class="text"><strong>Samye is a platform for sangha and community building.</strong> Here, students from around the globe can gather in forums to discuss their practices. This builds a strong sense of community and teaches us to care for others. In caring for others, we also care for ourselves. Together we build a community.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -103,13 +105,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12 col-md-6">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-rinpoche.png" />
                 <div class="more-about-rinpoche">
-                    <h2><a href="#" >More about<br />Phakchok Rinpoche</a></h2>
+                    <h2><a href="/kyabgon-phakchok-rinpoche/" >More about<br />Phakchok Rinpoche</a></h2>
                 </div>
             </div>
             <div class="col-xs-12 col-md-6">
                 <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/about-lineage.png" />
                 <div class="more-about-lineage">
-                    <h2><a href="#" >More about<br />The Lineage</a></h2>
+                    <h2><a href="/kyabgon-phakchok-rinpoche/lineage-information/" >More about<br />The Lineage</a></h2>
                 </div>
             </div>
         </div>
