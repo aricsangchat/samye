@@ -151,9 +151,9 @@
     }
 }
 
-#tribe-bar-views {
-    display: none;
-}
+// #tribe-bar-views {
+//     display: none;
+// }
 
 #tribe-bar-form .tribe-bar-submit input[type=submit], #tribe-bar-collapse-toggle:focus, #tribe-bar-collapse-toggle:hover {
     background: $primary-color;
@@ -161,6 +161,10 @@
 
 #tribe-bar-form.tribe-bar-full.tribe-events-bar--has-views #tribe-bar-filters-wrap {
     width: 97%;
+
+    @media only screen and (min-width: 1200px) {
+        width: 83%;
+    }
 }
 
 .tribe-bar-submit {
@@ -195,5 +199,28 @@ ul.tribe-events-sub-nav a {
 .tribe-events-ical.tribe-events-button {
     @media only screen and (min-width: 768px) {
         margin-bottom: 20px;
+    }
+}
+
+.tribe-bar-views-inner {
+    @media only screen and (min-width: 1200px) {
+        background-color: transparent;
+    }
+}
+
+#tribe-bar-form {
+    @media only screen and (min-width: 1200px) {
+        border-left: 10px solid $primary-color;
+    }
+    @media only screen and (min-width: 1440px) {
+        padding: 20px;
+    }
+
+    label {
+        @media only screen and (min-width: 1200px) {
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            color: $primary-color;
+        }
     }
 }
