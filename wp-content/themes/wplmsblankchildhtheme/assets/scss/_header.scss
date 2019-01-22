@@ -78,12 +78,53 @@ header {
     }
 
     nav {
+        li:hover>.sub-menu {
+            @media only screen and (min-width: 992px) {
+                width: 200px !important;
+            }
+        }
+
+        li.menu-item-has-children:hover>a:before {
+            @media only screen and (min-width: 992px) {
+                bottom: -2px !important;
+            }
+        }
 
         .sub-menu {
             padding: 10px;
 
+            @media only screen and (min-width: 992px) {
+                padding: 20px 15px 0px;
+                width: 200px;
+            }
+        
             li a {
                 color: $dark-font !important;
+
+                @media only screen and (min-width: 992px) {
+                    color: $dark-font;
+                    padding-bottom: 10px !important;
+                    margin-bottom: 15px;
+                    font-size: 14px;
+                    letter-spacing: 0.04em;
+                    font-family: $light !important;
+                }
+
+                &:hover {
+                    border-bottom: 2px solid $primary-color;
+                    text-decoration: none;
+                }
+            }
+
+            li:last-child {
+                a {
+                    margin-bottom: 5px;
+
+                    &:hover {
+                        border-bottom: 0px solid $primary-color;
+                        text-decoration: none;
+                    }
+                }
             }
         }
 
@@ -258,3 +299,4 @@ header #trigger {
         }
     }
 }
+

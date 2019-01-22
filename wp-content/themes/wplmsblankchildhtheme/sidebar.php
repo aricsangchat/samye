@@ -34,11 +34,10 @@
         ?>
     </div>
 
-    <div class="sidebar-widget-resources">
-        <h3 class="sidebar-section-header">Learning Resources</h3>
-        <a href="#">Quick Links</a>
-        <a href="#">Category</a>
-        <a href="#">Link</a>
+    <div class="sidebar-ad">
+        <a href="#">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/sidebar-ad-radically-happy.jpg" alt="radically happy">
+        </a>
     </div>
 
     <div class="sidebar-widget-latest-courses">
@@ -66,6 +65,13 @@
             endforeach; 
             wp_reset_postdata(); 
         ?>
+    </div>
+
+    <div class="sidebar-widget-resources">
+        <h3 class="sidebar-section-header">Quick Links</h3>
+        <a href="#">Quick Links</a>
+        <a href="#">Category</a>
+        <a href="#">Link</a>
     </div>
 
     <div class="sidebar-widget-facebook">

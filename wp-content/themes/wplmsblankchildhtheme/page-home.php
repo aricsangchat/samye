@@ -270,6 +270,18 @@ get_header(vibe_get_header());
         </div>
     </div>
 
+    <div class="home-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="#">
+                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner-home-radically-happy.jpg" alt="radically happy">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="grd-section">
         <div class="container">
             <div class="row">

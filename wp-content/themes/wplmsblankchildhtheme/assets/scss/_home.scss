@@ -757,3 +757,15 @@ footer {
         color: $dark-font;
     }
 }
+
+.home-banner {
+    .col-xs-12 {
+        padding: 0;
+        margin-bottom: 50px;
+
+        @media only screen and (min-width: 768px) {
+            padding: 0 15px;
+            margin-bottom: 75px;
+        }
+    }
+}

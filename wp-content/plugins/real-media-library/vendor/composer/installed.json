@@ -1,0 +1,41 @@
+[
+    {
+        "name": "matthiasweb/wordpress-plugin-updater",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/matzeeable/wordpress-plugin-updater.git",
+            "reference": "d324e74ba36e2d536f7a7ab65eba3971fee7faf4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/matzeeable/wordpress-plugin-updater/zipball/d324e74ba36e2d536f7a7ab65eba3971fee7faf4",
+            "reference": "d324e74ba36e2d536f7a7ab65eba3971fee7faf4",
+            "shasum": ""
+        },
+        "time": "2018-11-12T13:38:55+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "MatthiasWeb\\WPU\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Lukas Mateffy",
+                "email": "info@smoolabs.com"
+            },
+            {
+                "name": "Matthias Günter",
+                "email": "support@matthias-web.com"
+            }
+        ],
+        "description": "A library for WordPress plugins, to utilize license verification and auto-updating using WordPress License Server."
+    }
+]
