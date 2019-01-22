@@ -94,7 +94,7 @@ function populate_posts( $form ) {
  
     foreach ( $form['fields'] as &$field ) {
  
-        if ( $field->type != 'select' || strpos( $field->cssClass, 'instructor-select' ) === false ) {
+        if ( $field->type != 'select' || strpos( $field->cssClass, 'select-instructor' ) === false ) {
             continue;
         }
  
