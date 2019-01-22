@@ -35,7 +35,7 @@
     </div>
 
     <div class="sidebar-ad">
-        <a href="#">
+        <a href="https://radicallyhappy.org/">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/sidebar-ad-radically-happy.jpg" alt="radically happy">
         </a>
     </div>

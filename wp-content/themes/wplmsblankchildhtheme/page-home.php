@@ -274,7 +274,7 @@ get_header(vibe_get_header());
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <a href="#">
+                    <a href="https://radicallyhappy.org/">
                         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner-home-radically-happy.jpg" alt="radically happy">
                     </a>
                 </div>
