@@ -85,4 +85,36 @@ add_action( 'admin_init', 'remove_menus' );
 //     echo '<pre>' . print_r( $GLOBALS[ 'menu' ], TRUE) . '</pre>';
 // }
 
+// Prepopulate instructors drop down for contact form
+add_filter( 'gform_pre_render_47', 'populate_posts' );
+add_filter( 'gform_pre_validation_47', 'populate_posts' );
+add_filter( 'gform_pre_submission_filter_47', 'populate_posts' );
+add_filter( 'gform_admin_pre_render_47', 'populate_posts' );
+function populate_posts( $form ) {
+ 
+    foreach ( $form['fields'] as &$field ) {
+ 
+        if ( $field->type != 'select' || strpos( $field->cssClass, 'instructor-select' ) === false ) {
+            continue;
+        }
+ 
+        // you can add additional parameters here to alter the posts that are retrieved
+        // more info: http://codex.wordpress.org/Template_Tags/get_posts
+        $posts = get_posts( 'numberposts=-1&post_status=publish&post_type=instructors' );
+ 
+        $choices = array();
+ 
+        foreach ( $posts as $post ) {
+            $choices[] = array( 'text' => $post->post_title, 'value' => $post->post_title );
+        }
+ 
+        // update 'Select Instructor' to whatever you'd like the instructive option to be
+        $field->placeholder = 'Select Instructor';
+        $field->choices = $choices;
+ 
+    }
+ 
+    return $form;
+}
+
 ?>
