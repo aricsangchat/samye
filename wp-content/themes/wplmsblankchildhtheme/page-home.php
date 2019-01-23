@@ -18,29 +18,16 @@ get_header(vibe_get_header());
                     echo '    <div class="hero-slider">';
                     
                     while ( have_rows('hero_slide') ) : the_row();
-                        if (get_row_index() === 1 ) {
-                            echo '<div class="item">
-                            <div class="carousel-image" style="background-image: url('. get_sub_field('hero_image') .')">
-                                <div class="hero-caption">
-                                    <h2>'.get_sub_field('hero_title').'</h2>
-                                    <p>'.get_sub_field('hero_text_area').'</p>
-                                    <a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>
-                                </div>
+                        echo '<div class="item">
+                        <div class="carousel-image" style="background-image: url('. get_sub_field('hero_image') .')">
+                            <div class="hero-caption">
+                                <h2>'.get_sub_field('hero_title').'</h2>
+                                <p>'.get_sub_field('hero_text_area').'</p>
+                                <a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>
                             </div>
-                            </div>';
-                        } else {
-                            echo '<div class="item">
-                            <div class="carousel-image" style="background-image: url('. get_sub_field('hero_image') .')">
-                                <div class="hero-caption">
-                                    <h2>'.get_sub_field('hero_title').'</h2>
-                                    '.get_sub_field('hero_text_area').'
-                                    <a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>
-                                </div>
-                            </div>
-                            </div>';
-                        }
+                        </div>
+                        </div>';
                         
-
                     endwhile;
 
                     echo '</div>';
