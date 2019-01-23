@@ -309,14 +309,14 @@ get_header(vibe_get_header());
                                 $args4 = array(
                                     'numberposts' => 3,
                                     'offset' => 0,
-                                    'category' => 0,
+                                    'category_name' => 'guru-rinpoche-day',
                                     'orderby' => 'post_date',
                                     'order' => 'DESC',
                                     'include' => '',
                                     'exclude' => '',
                                     'meta_key' => '',
                                     'meta_value' =>'',
-                                    'post_type' => 'grd-teaching',
+                                    'post_type' => 'post',
                                     'post_status' => 'publish',
                                     'suppress_filters' => true
                                 );
