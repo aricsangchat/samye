@@ -92,13 +92,12 @@
         readMoreLessBtn([document.getElementsByClassName("term-description")[0].childNodes[1]]);
     }
 
-    $(document).ready(function() {  
-        $("#grd-carousel").swiperight(function() {  
-           $(this).carousel('prev');  
-             });  
-        $("#grd-carousel").swipeleft(function() {  
-           $(this).carousel('next');  
-        });  
-    });
+    $('.hero-slider').slick({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear'
+      });
     
 })(jQuery);

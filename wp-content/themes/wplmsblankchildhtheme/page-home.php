@@ -15,19 +15,11 @@ get_header(vibe_get_header());
             if( get_row_layout() == 'hero_slider' ):
                 
                 if( have_rows('hero_slide') ):
-                    echo '    <div id="hero-carousel" class="carousel slide" data-ride="carousel">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#chero-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#hero-carousel" data-slide-to="1"></li>
-                    </ol>
-            
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner" role="listbox">';
+                    echo '    <div class="hero-slider">';
                     
                     while ( have_rows('hero_slide') ) : the_row();
                         if (get_row_index() === 1 ) {
-                            echo '<div class="item active">
+                            echo '<div class="item">
                             <div class="carousel-image" style="background-image: url('. get_sub_field('hero_image') .')">
                                 <div class="hero-caption">
                                     <h2>'.get_sub_field('hero_title').'</h2>
@@ -51,18 +43,7 @@ get_header(vibe_get_header());
 
                     endwhile;
 
-                    echo '        </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#hero-carousel" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#hero-carousel" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>';
+                    echo '</div>';
 
                 endif;
 

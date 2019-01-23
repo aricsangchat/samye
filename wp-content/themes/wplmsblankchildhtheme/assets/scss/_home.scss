@@ -1,22 +1,77 @@
-#hero-carousel {
+.hero-slider {
     .item {
         width: 100%;
     }
 
-    .glyphicon-chevron-left:before {
-        content: "";
-        height: 36px;
-        width: 36px;
-        display: block;
-        background-image: url('../images/icon-prev.png');
+    .slick-list {
+        height: auto;
     }
 
-    .glyphicon-chevron-right:before {
-        content: "";
-        height: 36px;
-        width: 36px;
-        display: block;
-        background-image: url('../images/icon-next.png');
+    .slick-dots {
+        position: absolute;
+        bottom: 7px;
+        left: 50%;
+        transform: translatex(-50%);
+
+        li {
+            display: inline-block;
+            margin-right: 5px;
+
+            button {
+                text-indent: -99999px;
+                border: 0;
+                border-radius: 50%;
+                height: 14px;
+                display: block;
+                background-color: $light-gray-bg;
+                opacity: 0.7;
+            }
+        }
+
+        li.slick-active {
+            button {
+                background-color: $secondary-color;
+            }
+        }
+    }
+
+    .slick-prev {
+        left: 4px;
+        
+        &:before {
+            content: "";
+            height: 36px;
+            width: 36px;
+            display: block;
+            background: transparent;
+            background-image: url('../images/icon-prev.png');
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        &:after {
+            content: none;
+        }
+    }
+
+    .slick-next {
+
+        &:before {
+            content: "";
+            height: 36px;
+            width: 36px;
+            display: block;
+            background: transparent;
+            background-image: url('../images/icon-next.png');
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        &:after {
+            content: none;
+        }
     }
 
     .hero-caption {
@@ -63,14 +118,14 @@
         background-position: center;
     }
 
-    .carousel-indicators .active {
-        background-color: $secondary-color;
-    }
+    // .carousel-indicators .active {
+    //     background-color: $secondary-color;
+    // }
 
-    .carousel-indicators li {
-        border: none;
-        background-color: $white;
-    }
+    // .carousel-indicators li {
+    //     border: none;
+    //     background-color: $white;
+    // }
 }
 
 .about-section {
