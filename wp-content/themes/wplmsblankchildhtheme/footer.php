@@ -81,5 +81,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 <?php
 wp_footer(); 
 ?>
+<!-- Jira Bug Reporter -->
+<script type="text/javascript" src="https://samyeinstitute.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/kz8e2e/b/16/a44af77267a987a660377e5c46e0fb64/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=bdba7d6b"></script>
 </body>
 </html>
