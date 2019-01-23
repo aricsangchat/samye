@@ -110,10 +110,13 @@
         }
 
         .primary-btn {
-            background-color: $secondary-color;
+            background-color: $white;
+            color: #b83029;
 
             @media only screen and (min-width: 768px) {
                 background-color: $primary-color;
+                color: $white;
+
             }
         }
 
@@ -414,6 +417,12 @@
     }
 
     .center-grid {
+        height: 394px;
+
+        @media only screen and (min-width: 768px) {
+            height: auto;
+        }
+
         .center-images {
             width: 100%;
             height: 180px;
@@ -469,6 +478,12 @@
     }
 
     .col-articles {
+        height: 394px;
+
+        @media only screen and (min-width: 768px) {
+            height: auto;
+        }
+
         @media only screen and (min-width: 992px) {
             margin-bottom: 25px;
         }
@@ -502,22 +517,17 @@
 
 .grd-section {
     background-color: $primary-color;
-    padding: 25px 0 130px;
+    padding: 25px 0 30px;
 
     @media only screen and (min-width: 992px) {
-        padding: 40px 0 140px
-    }
-
-    .button-wrapper {
-        position: relative;
-        top: 80px;
+        padding: 40px 0 30px
     }
 
     .grd-section-intro {
         margin-bottom: 40px;
 
         @media only screen and (min-width: 992px) {
-            margin-bottom: 60px;
+            margin-bottom: 55px;
         } 
 
         h2 {
@@ -539,9 +549,86 @@
         }
     }
 
-    #grd-carousel {
+    .grd-carousel {
+        margin-bottom: 116px;
+
         .item {
             width: 100%;
+        }
+
+        .slick-list {
+            height: auto;
+        }
+
+        .slick-dots {
+            position: absolute;
+            bottom: -68px;
+            left: 50%;
+            transform: translatex(-50%);
+    
+            li {
+                display: inline-block;
+                margin-right: 5px;
+    
+                button {
+                    text-indent: -99999px;
+                    border: 0;
+                    border-radius: 50%;
+                    height: 14px;
+                    display: block;
+                    background-color: $light-gray-bg;
+                    opacity: 0.7;
+                }
+            }
+    
+            li.slick-active {
+                button {
+                    background-color: $secondary-color;
+                }
+            }
+        }
+
+        .slick-prev {
+            left: 4px;
+            bottom: -108px;
+            top: initial;
+    
+            &:before {
+                content: "";
+                height: 36px;
+                width: 36px;
+                display: block;
+                background: transparent;
+                background-image: url('../images/icon-prev.png');
+                -webkit-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+    
+            &:after {
+                content: none;
+            }
+        }
+    
+        .slick-next {
+            bottom: -108px;
+            top: initial;
+
+            &:before {
+                content: "";
+                height: 36px;
+                width: 36px;
+                display: block;
+                background: transparent;
+                background-image: url('../images/icon-next.png');
+                -webkit-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+    
+            &:after {
+                content: none;
+            }
         }
 
         .carousel-control {
@@ -560,30 +647,14 @@
             }
         }
 
-        .glyphicon-chevron-left:before {
-            content: "";
-            height: 36px;
-            width: 36px;
-            display: block;
-            background-image: url('../images/icon-prev.png');
-        }
-    
-        .glyphicon-chevron-right:before {
-            content: "";
-            height: 36px;
-            width: 36px;
-            display: block;
-            background-image: url('../images/icon-next.png');
-        }
-
         .carousel-indicators {
             bottom: -50px;
         }
 
         .col-xs-12.col-sm-6:first-child {
-            @media only screen and (min-width: 768px) {
-                padding: 20px 0 20px;
-            }
+            // @media only screen and (min-width: 768px) {
+            //     padding: 20px 0 20px;
+            // }
         }
 
         .col-xs-12.col-sm-6 {
@@ -591,18 +662,18 @@
 
             .post-image {
                 width: 100%;
-                height: 362px;
+                height: 257px;
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
 
                 @media only screen and (min-width: 768px) {
-                    height: 324px;
+                    height: 365px;
                 }
 
                 @media only screen and (min-width: 1200px) {
-                    width: 80%;
-                    float: right;
+                    //width: 80%;
+                    //float: right;
                 }
             }
 

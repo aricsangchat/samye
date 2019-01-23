@@ -263,70 +263,50 @@ get_header(vibe_get_header());
 
             <div class="row">
                 <div class="col-xs-12">
-                    <div id="grd-carousel" class="carousel slide" data-ride="carousel">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#grd-carousel" data-slide-to="0" class="active"></li>
-                            <li data-target="#grd-carousel" data-slide-to="1"></li>
-                            <li data-target="#grd-carousel" data-slide-to="2"></li>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
-                            <?php
-                                $args4 = array(
-                                    'numberposts' => 3,
-                                    'offset' => 0,
-                                    'category_name' => 'guru-rinpoche-day',
-                                    'orderby' => 'post_date',
-                                    'order' => 'DESC',
-                                    'include' => '',
-                                    'exclude' => '',
-                                    'meta_key' => '',
-                                    'meta_value' =>'',
-                                    'post_type' => 'post',
-                                    'post_status' => 'publish',
-                                    'suppress_filters' => true
-                                );
-                                $lastposts = get_posts( $args4 );
-                                $i = -1;
-                                foreach ( $lastposts as $post ) :
-                                $i++;
-                                setup_postdata( $post );
-                            ?>
-                            <div class="item <?php echo $i == 0 ? 'active' : '' ?>">
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="post-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>')"></div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6">
-                                        <div class="post-content">
-                                            <p class="date"><?php the_date(); ?></p>
-                                            <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
-                                            <?php the_excerpt(); ?>
-                                            <a class="primary-btn-inverted" href="<?php the_permalink() ?>">Read more</a>
-                                        </div>
+                    <div class="grd-carousel" role="listbox">
+                        <?php
+                            $args4 = array(
+                                'numberposts' => 3,
+                                'offset' => 0,
+                                'category_name' => 'guru-rinpoche-day',
+                                'orderby' => 'post_date',
+                                'order' => 'DESC',
+                                'include' => '',
+                                'exclude' => '',
+                                'meta_key' => '',
+                                'meta_value' =>'',
+                                'post_type' => 'post',
+                                'post_status' => 'publish',
+                                'suppress_filters' => true
+                            );
+                            $lastposts = get_posts( $args4 );
+                            $i = -1;
+                            foreach ( $lastposts as $post ) :
+                            $i++;
+                            setup_postdata( $post );
+                        ?>
+                        <div class="item <?php echo $i == 0 ? 'active' : '' ?>">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="post-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>')"></div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="post-content">
+                                        <p class="date"><?php the_date(); ?></p>
+                                        <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
+                                        <?php the_excerpt(); ?>
+                                        <a class="primary-btn-inverted" href="<?php the_permalink() ?>">Read more</a>
                                     </div>
                                 </div>
                             </div>
-                            <?php 
-                                endforeach; 
-                                wp_reset_postdata(); 
-                            ?>
                         </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#grd-carousel" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#grd-carousel" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
+                        <?php 
+                            endforeach; 
+                            wp_reset_postdata(); 
+                        ?>
                     </div>
                     <div class="button-wrapper">
-                        <a class="secondary-btn" href="/guru-rinpoche-day-teachings">View All</a>
+                        <a class="secondary-btn" href="/guru-rinpoche-day-teachings">See All Teachings</a>
                     </div>
                 </div>
             </div>
