@@ -167,7 +167,7 @@ get_header(vibe_get_header());
                         $category_id = get_cat_ID( $category[0]->cat_name );
                         $category_link = get_category_link( $category_id );
                     ?>
-                    <div class="col-xs-6 col-sm-12 center-grid">
+                    <div class="col-xs-12 col-sm-12 center-grid">
                         <div class="center-images" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');">
                             <div class="overlay-category"><p><span><?php echo $format ?></span></p></div>
                         </div>
@@ -214,7 +214,7 @@ get_header(vibe_get_header());
                         $category_id = get_cat_ID( $category[0]->cat_name );
                         $category_link = get_category_link( $category_id );
                     ?>
-                    <div class="col-xs-6 col-sm-4 col-md-12 col-articles">
+                    <div class="col-xs-12 col-sm-4 col-md-12 col-articles">
                         <div class="article-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>');">
                             <div class="overlay-category"><p><span><?php echo $format ?></span></p></div>
                         </div>
