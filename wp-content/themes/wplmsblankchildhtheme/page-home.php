@@ -20,11 +20,11 @@ get_header(vibe_get_header());
                     while ( have_rows('hero_slide') ) : the_row();
                         echo '<div class="item">
                         <div class="carousel-image" style="background-image: url('. get_sub_field('hero_image') .')">
-                            <div class="hero-caption">
-                                <h2>'.get_sub_field('hero_title').'</h2>
-                                <p>'.get_sub_field('hero_text_area').'</p>
-                                <a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>
-                            </div>
+                        </div>
+                        <div class="hero-caption">
+                        <h2>'.get_sub_field('hero_title').'</h2>
+                        <p>'.get_sub_field('hero_text_area').'</p>
+                        <a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>
                         </div>
                         </div>';
                         
