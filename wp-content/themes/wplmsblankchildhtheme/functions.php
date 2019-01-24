@@ -117,4 +117,27 @@ function populate_posts( $form ) {
     return $form;
 }
 
+
+//add extra fields to category edit form hook
+add_action ( 'category_edit_form_fields', 'extra_category_fields');
+//add extra fields to category edit form callback function
+function extra_category_fields( $tag ) {    //check for existing featured ID
+    // Check for existing taxonomy meta for the term you're editing  
+    $t_id = $tag->term_id; // Get the ID of the term you're editing  
+    $term_meta = get_option( "taxonomy_term_$t_id" ); // Do the check 
+    ?>  
+  
+<tr class="form-field">  
+    <th scope="row" valign="top">  
+        <label for="presenter_id"><?php _e('When Writing Descriptions'); ?></label>  
+    </th>  
+    <td>  
+        <br />  
+        <span class="description"><?php  _e('Wrap the description between a P tag like this 	&#60;p&#62;Description goes here&#60;/p&#62; and use &#60;br /&#62; for line breaks.'); ?></span>  
+    </td>  
+</tr>  
+  
+<?php
+}
+
 ?>
