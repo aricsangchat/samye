@@ -108,5 +108,50 @@
         fade: true,
         cssEase: 'linear'
     });
+
+    $('.post-carousel').slick({
+        dots: true,
+        infinite: false,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        responsive: [
+            {
+              breakpoint: 992,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                }
+              }
+          ]
+      });
+
+    $( ".filter-item button" ).click(function() {
+        var className = this.classList[0];
+        console.log(className);
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+        } else if (!$(this).hasClass("active")) {
+            $(".filter-item button" ).removeClass("active");
+            $(".carousel-container .active").removeClass("active");
+            $(this).addClass("active");
+            $(".carousel-container ." + className).addClass("active");
+
+        }
+    });
+
+    $( ".select-nav select" )
+    .change(function () {
+        //console.log($( this ).val());
+        $(".carousel-container .active").removeClass("active");
+        $(".carousel-container ." + $( this ).val()).addClass("active");
+    })
+    .change();
     
 })(jQuery);

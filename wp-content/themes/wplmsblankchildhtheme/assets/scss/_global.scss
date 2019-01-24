@@ -10,7 +10,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: inherit !important;
 }
 
-h2 {
+h2.h2 {
     font-size: 30px;
 }
 
@@ -189,4 +189,71 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 
 #atlwdg-trigger {
     z-index: 999;
+}
+
+.slick-list {
+    height: auto;
+}
+
+.slick-dots {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+
+    li {
+        display: inline-block;
+        margin-right: 5px;
+
+        button {
+            text-indent: -99999px;
+            border: 0;
+            border-radius: 50%;
+            height: 16px;
+            width: 16px;
+            display: block;
+            background-color: $light-gray-font;
+        }
+    }
+
+    li.slick-active {
+        button {
+            background-color: $secondary-color;
+        }
+    }
+}
+
+.slick-prev {
+    &:before {
+        content: "";
+        height: 36px;
+        width: 36px;
+        display: block;
+        background: transparent;
+        background-image: url('../images/icon-prev.png');
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    &:after {
+        content: none;
+    }
+}
+
+.slick-next {
+    &:before {
+        content: "";
+        height: 36px;
+        width: 36px;
+        display: block;
+        background: transparent;
+        background-image: url('../images/icon-next.png');
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    &:after {
+        content: none;
+    }
 }
