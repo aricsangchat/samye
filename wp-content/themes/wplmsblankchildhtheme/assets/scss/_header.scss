@@ -78,6 +78,30 @@ header {
     }
 
     nav {
+        @media only screen and (min-width: 992px) {
+            position: absolute;
+            bottom: -80px;
+            right: 0px;
+        }
+
+        .fa-search:before {
+            @media only screen and (min-width: 992px) {
+                content: none;
+            }
+        }
+
+        .fa-search:after {
+            @media only screen and (min-width: 992px) {
+                content: "";
+                height: 16px;
+                width: 16px;
+                display: block;
+                background-image: url('../images/icon-search.png');
+                position: relative;
+                top: 2px;
+            }
+        }
+
         li:hover>.sub-menu {
             @media only screen and (min-width: 992px) {
                 width: 200px !important;
@@ -119,32 +143,13 @@ header {
             li:last-child {
                 a {
                     margin-bottom: 5px;
+                    border-bottom: 0px solid $primary-color;
 
                     &:hover {
                         border-bottom: 0px solid $primary-color;
                         text-decoration: none;
                     }
                 }
-            }
-        }
-
-        @media only screen and (min-width: 992px) {
-            position: absolute;
-            bottom: -75px;
-            right: 0px;
-
-            .fa-search:before {
-                content: none;
-            }
-
-            .fa-search:after {
-                content: "";
-                height: 16px;
-                width: 16px;
-                display: block;
-                background-image: url('../images/icon-search.png');
-                position: relative;
-                top: 2px;
             }
         }
     }
@@ -156,7 +161,7 @@ header {
             display: block;
             position: absolute;
             right: 0px;
-            top: 17px;
+            top: 23px;
         }
 
         .login-menu {

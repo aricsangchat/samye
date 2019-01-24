@@ -56,12 +56,12 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4">
-                <h4>Follow Us on Social Media</h4>
+                <h4>Follow Samye &<br />Phakchok Rinpoche</h4>
                 <ul class="social-icon-menu">
-                    <li><a target="_blank" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-fb.png" /></a></li>
-                    <li><a target="_blank" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-vm.png" /></a></li>
-                    <li><a target="_blank" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-yt.png" /></a></li>
-                    <li><a target="_blank" href="#"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-ig.png" /></a></li>
+                    <li><a target="_blank" href="https://www.facebook.com/samyeinstitute"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-fb.png" /></a></li>
+                    <li><a target="_blank" href="https://vimeo.com/phakchokrinpoche"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-vm.png" /></a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/channel/UCIUVekjlG97pi5NFah97lDQ"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-yt.png" /></a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/phakchokrinpoche/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-ig.png" /></a></li>
                 </ul>
                 <h4>Select Language</h4>
                 <?php do_action( 'wpml_add_language_selector' ); ?>

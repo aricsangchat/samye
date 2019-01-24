@@ -22,7 +22,7 @@ if ( function_exists('get_coauthors')) {
 
 
 $post_id = get_the_ID();
-
+$format = get_post_format() ? : 'Article';
 
 if(!empty($instructors)){
     $instructor = implode(',', $instructors);
@@ -36,7 +36,7 @@ if(!empty($instructors)){
 
 echo ' <div class="blogpost">
         <div class="featured">
-            <div style="background-image: url('.get_the_post_thumbnail_url( $post_id, 'full' ).');"></div>
+            <div class="image" style="background-image: url('.get_the_post_thumbnail_url( $post_id, 'full' ).');"><div class="post-format"><p>'.$format.'</p></div></div>
         </div>
         <div class="excerpt thumb">
             <div class="cats">
