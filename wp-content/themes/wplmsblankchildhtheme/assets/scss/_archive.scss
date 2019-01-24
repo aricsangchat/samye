@@ -143,6 +143,8 @@
 
     .pagination {
         margin-bottom: 50px;
+        display: flex;
+        flex-wrap: wrap;
 
         span, a {
             font-size: 14px;
@@ -151,6 +153,7 @@
             border: 0px;
             font-weight: normal;
             padding: 8px 14px;
+            margin-bottom: 5px;
         }
 
         span:nth-child(1) {

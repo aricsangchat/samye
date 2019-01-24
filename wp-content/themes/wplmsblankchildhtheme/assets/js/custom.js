@@ -132,6 +132,7 @@
           ]
       });
 
+    // handle explore topic pagination desktop
     $( ".filter-item button" ).click(function() {
         var className = this.classList[0];
         console.log(className);
@@ -146,6 +147,7 @@
         }
     });
 
+    // handle explore topic pagination mobile
     $( ".select-nav select" )
     .change(function () {
         //console.log($( this ).val());
@@ -153,5 +155,10 @@
         $(".carousel-container ." + $( this ).val()).addClass("active");
     })
     .change();
+
+    // search icon focus
+    $('#new_searchicon').click(function(){
+        setTimeout(function(){ $('#s').focus(); }, 500);        
+    });
     
 })(jQuery);
