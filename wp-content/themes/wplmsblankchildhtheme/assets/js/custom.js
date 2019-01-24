@@ -34,6 +34,7 @@
 
     // Handle read more links on Global Accumulations Page
     function readMoreLessBtn(elements) {
+        //console.log(elements);
         var selectorArr = [];
         var descriptionElements = elements;
         //var btnSelector = '';
@@ -55,7 +56,7 @@
 
                 var readLess = descriptionElements[i].innerHTML.slice(0, 300);
                 var readMore = descriptionElements[i].innerHTML.slice(300, descriptionElements[i].innerHTML.length);
-                descriptionElements[i].innerHTML = readLess+ "<span id='"+selectorArr[i].dotsSelector+"'>...</span><span id='"+selectorArr[i].readMoreSelector+"'>"+readMore+"</span>";
+                descriptionElements[i].innerHTML = "<p>"+readLess+ "<span id='"+selectorArr[i].dotsSelector+"'>...</span><span id='"+selectorArr[i].readMoreSelector+"'>"+readMore+"</span></p>";
                 
                 // var readMoreSelector = 'more'+i;
                 // var dotsSelector = 'dots'+i;
