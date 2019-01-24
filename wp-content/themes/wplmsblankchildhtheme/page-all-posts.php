@@ -246,7 +246,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                             $tags = get_tags();
                             
                             foreach ( $tags as $tag ) {
-                                if ($tag->count > 6) {                            
+                                if ($tag->count > 20) {                            
                         ?>
                                     
                                     <option value="<?php echo $tag->slug; ?>"><?php echo $tag->name; ?></option>
@@ -264,7 +264,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     $filterNavIndex = 0;
 
                     foreach ( $tags as $tag ) {
-                        if ($tag->count > 6) {
+                        if ($tag->count > 20) {
                             $filterNavIndex++;
                             $tag_link = get_tag_link( $tag->term_id );
                             array_push($tagsArr, $tag->slug);
