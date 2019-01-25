@@ -9,11 +9,11 @@
 
     .slick-dots {
         bottom: 7px;
-        display: none !important;
+        // display: none !important;
 
-        @media only screen and (min-width: 768px) {
-            display: block !important;
-        }
+        // @media only screen and (min-width: 768px) {
+        //     display: block !important;
+        // }
 
         li {
             button {

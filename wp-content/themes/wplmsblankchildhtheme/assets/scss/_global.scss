@@ -208,10 +208,18 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
             text-indent: -99999px;
             border: 0;
             border-radius: 50%;
-            height: 16px;
-            width: 16px;
+            height: 14px;
+            width: 14px;
             display: block;
             background-color: $light-gray-font;
+            font-size: 6px;
+
+            @media only screen and (min-width: 768px) {
+                height: 16px;
+                width: 16px;
+                font-size: 16px;
+            }
+
         }
     }
 
