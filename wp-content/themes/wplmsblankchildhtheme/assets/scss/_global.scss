@@ -80,11 +80,18 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 .primary-btn {
     background-color: $primary-color;
     color: $white;
-    font-size: 18px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding: 12px 35px;
     display: inline-block;
+    font-size: 13px;
+    padding: 4px 15px;
+
+    @media only screen and (min-width: 768px) {
+        padding: 12px 35px;
+        font-size: 18px;
+    }
+
+
 
     &:hover {
         color: $white !important;

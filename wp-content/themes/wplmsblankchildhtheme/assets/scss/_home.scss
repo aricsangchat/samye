@@ -9,11 +9,11 @@
 
     .slick-dots {
         bottom: 7px;
-        // display: none !important;
+        display: none !important;
 
-        // @media only screen and (min-width: 768px) {
-        //     display: block !important;
-        // }
+        @media only screen and (min-width: 768px) {
+            display: block !important;
+        }
 
         li {
             button {
@@ -113,7 +113,7 @@
     .carousel-image {
         display: table;
         width: 100%;
-        height: 160px;
+        height: 237px;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -139,7 +139,7 @@
 
 .about-section {
     .default-text-block {
-        padding: 25px 0 60px;
+        padding: 5px 0 60px;
 
         @media only screen and (min-width: 768px) {
             padding: 95px 0;
@@ -187,6 +187,11 @@
     p {
         margin-bottom: 33px;
         color: $gray-font;
+        display: none;
+
+        @media only screen and (min-width: 768px) {
+            display: block;
+        }
 
         @media only screen and (min-width: 1200px) {
             width: 520px;
