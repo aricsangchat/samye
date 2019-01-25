@@ -9,6 +9,12 @@
 
     .slick-dots {
         bottom: 7px;
+        display: none !important;
+
+        @media only screen and (min-width: 768px) {
+            display: block !important;
+        }
+
         li {
             button {
                 opacity: 0.7;
@@ -18,26 +24,35 @@
 
     .slick-prev {
         left: 4px;
+        top: 50%;
     }
 
     .slick-next {
+        top: 50%;
     }
 
     .hero-caption {
-        display: table-cell;
-        vertical-align: middle;
+        display: block;
         padding: 0 15%;
         text-align: center;
         color: $white;
-        background-color: $primary-color;
-        padding-bottom: 55px;
+        //padding-bottom: 55px;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translatey(-50%);
 
         @media only screen and (min-width: 768px) {
+            display: table-cell;
+            vertical-align: middle;
             padding-bottom: 0;
             position: absolute;
             top: 50%;
             background-color: transparent;
             transform: translatey(-50%);
+            //position: relative;
+            //top: 0;
+            //background-color: $primary-color;
         }
 
         @media only screen and (min-width: 992px) {
@@ -47,6 +62,7 @@
         h2 {
             color: $white;
             font-size: 24px;
+            margin-top: 0;
 
             @media only screen and (min-width: 768px) {
                 font-size: 36px;
@@ -59,13 +75,20 @@
         }
 
         .primary-btn {
-            background-color: $white;
-            color: #b83029;
+            //background-color: transparent;
+            //color: #b83029;
+            //border: 1px solid $primary-color;
+            //opacity: 0.5;
+            font-size: 13px;
+            padding: 4px 15px;
 
             @media only screen and (min-width: 768px) {
-                background-color: $primary-color;
-                color: $white;
-
+                //background-color: $primary-color;
+                //color: $white;
+                //border: 0;
+                //opacity: 1;
+                font-size: 18px;
+                padding: 12px 35px;
             }
         }
 
@@ -73,6 +96,12 @@
             font-size: 16px;
             margin-bottom: 20px;
             color: $white;
+            
+            display: none;
+
+            @media only screen and (min-width: 768px) {
+                display: block;
+            }
 
             @media only screen and (min-width: 992px) {
                 width: 75%;

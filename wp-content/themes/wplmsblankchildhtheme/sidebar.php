@@ -69,9 +69,10 @@
 
     <div class="sidebar-widget-resources">
         <h3 class="sidebar-section-header">Quick Links</h3>
-        <a href="#">Quick Links</a>
-        <a href="#">Category</a>
-        <a href="#">Link</a>
+        <a href="#">Dharma Stream Groups</a>
+        <a href="#">Upcoming Events</a>
+        <a href="#">Global Accumulations</a>
+        <a href="#">Community News</a>
     </div>
 
     <div class="sidebar-widget-facebook">
