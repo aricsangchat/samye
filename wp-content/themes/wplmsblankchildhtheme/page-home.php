@@ -22,7 +22,7 @@ get_header(vibe_get_header());
                         <div class="carousel-image" style="background-image: url('. get_sub_field('hero_image') .')">
                         </div>
                         <div class="hero-caption">
-                        <h2>'.get_sub_field('hero_title').'</h2>
+                        <h2 class="hero-header">'.get_sub_field('hero_title').'</h2>
                         <p>'.get_sub_field('hero_text_area').'</p>
                         <a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>
                         </div>
@@ -39,7 +39,7 @@ get_header(vibe_get_header());
                 <div class="row default-text-block">
                     <div class="col-xs-12 col-sm-6">
                         <div class="about-section-text">
-                            <h2>'.get_sub_field('title').'</h2>
+                            <h2 class="section-header">'.get_sub_field('title').'</h2>
                                 '.get_sub_field('text_area').'
                             <a class="primary-btn" href="'.get_sub_field('button_url').'">'.get_sub_field('button_text').'</a>
                         </div>
@@ -69,20 +69,39 @@ get_header(vibe_get_header());
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-study-programs">
-                    <h2>At home study programs</h2>
+                    <h2 class="section-header">At home study programs</h2>
                     <p>Enroll in one of our short-term or long-term study programs and receive guidance from authentic tibetan teachers. Follow your sincere aspiration and blablabla The standard chunk of Lorem Ipsum used since the 1500s.</p>
                     <div class="row row-programs">
-                        <div class="col-xs-6 col-sm-4">
-                            <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>)"></div>
-                            <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="row row-programs-item">
+                                <div class="col-xs-4 col-sm-12">
+                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 17234 ); ?>"></a></div>
+                                </div>
+                                <div class="col-xs-8 col-sm-12">
+                                    <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
+                                </div>
+                            </div>
+
                         </div>
-                        <div class="col-xs-6 col-sm-4">
-                            <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17055, 'full' )?>)"></div>
-                            <h3><a href="<?php echo get_permalink( 17055 ); ?>"><?php $post = get_post( 17055 ); echo $post->post_title;?></a></h3>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="row row-programs-item">
+                                <div class="col-xs-4 col-sm-12">
+                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17055, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 17055 ); ?>"></a></div>
+                                </div>
+                                <div class="col-xs-8 col-sm-12">
+                                    <h3><a href="<?php echo get_permalink( 17055 ); ?>"><?php $post = get_post( 17055 ); echo $post->post_title;?></a></h3>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-xs-6 col-sm-4">
-                            <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 2585, 'full' )?>)"></div>
-                            <h3><a href="<?php echo get_permalink( 2585 ); ?>"><?php $post = get_post( 2585 ); echo $post->post_title;?></a></h3>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="row row-programs-item">
+                                <div class="col-xs-4 col-sm-12">
+                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 2585, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 2585 ); ?>"></a></div>
+                                </div>
+                                <div class="col-xs-8 col-sm-12">
+                                    <h3><a href="<?php echo get_permalink( 2585 ); ?>"><?php $post = get_post( 2585 ); echo $post->post_title;?></a></h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="button-wrapper">
@@ -91,7 +110,7 @@ get_header(vibe_get_header());
 
                 </div>
                 <div class="col-xs-12 col-sm-6 col-groups">
-                    <h2>Dharma Groups - Practice Together</h2>
+                    <h2 class="section-header">Dharma Groups - Practice Together</h2>
                     <p>Practicing together is a real blessing for all of us. Etc. The standard chunk of Lorem Ipsum used since the 1500s is reproduced.</p>
                     <img class="icon-map" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-map.png" alt="dharma groups">
                     <div class="button-wrapper">
@@ -105,11 +124,11 @@ get_header(vibe_get_header());
     <div class="container latest-learning-resources">
         <div class="row">
             <div class="col-xs-12">
-                <h2>Latest Learning Resources</h2>
+                <h2 class="section-header">Latest Learning Resources</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="row block-row">
+            <div class="col-xs-12 col-sm-6 col-md-4 course-block">
                 <?php
                     $args1 = array(
                         'numberposts' => 1,
@@ -132,16 +151,22 @@ get_header(vibe_get_header());
                     $category_id = get_cat_ID( $category[0]->cat_name );
                     $category_link = get_category_link( $category_id );
                 ?>
-                <div class="course-image" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');"><div class="overlay-category"><p><span>Learning Program</span></p></div></div>
-                <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Additional Courses';  ?></a></h3>
-                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                <p><?php echo excerpt('22'); ?></p>
+                <div class="row content-row">
+                    <div class="col-xs-4 col-sm-12">
+                        <div class="course-image" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');"><a href="<?php the_permalink(); ?>" class="bg-a-link"></a><div class="overlay-category"><p><span>Learning Program</span></p></div></div>
+                    </div>
+                    <div class="col-xs-8 col-sm-12">
+                        <h3 class="category"><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Additional Courses';  ?></a></h3>
+                        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                        <p class="excerpt"><?php echo excerpt('22'); ?></p>
+                    </div>
+                </div>
                 <?php 
                     endforeach; 
                     wp_reset_postdata(); 
                 ?>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-xs-12 col-sm-6 col-md-4 media-block">
                 <div class="row">
                     <?php
                         $args2 = array(
@@ -168,12 +193,19 @@ get_header(vibe_get_header());
                         $category_link = get_category_link( $category_id );
                     ?>
                     <div class="col-xs-12 col-sm-12 center-grid">
-                        <div class="center-images" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');">
-                            <div class="overlay-category"><p><span><?php echo $format ?></span></p></div>
+                        <div class="row content-row">
+                            <div class="col-xs-4 col-sm-12">
+                                <div class="center-images" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');">
+                                    <a href="<?php the_permalink(); ?>" class="bg-a-link"></a>
+                                    <div class="overlay-category"><p><span><?php echo $format ?></span></p></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-8 col-sm-12">
+                                <h3 class="category"><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
+                                <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
+                                <p class="excerpt"><?php echo excerpt('22'); ?></p>
+                            </div>
                         </div>
-                        <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
-                        <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
-                        <p><?php echo excerpt('22'); ?></p>
                     </div>
                     <?php 
                         endforeach; 
@@ -181,8 +213,8 @@ get_header(vibe_get_header());
                     ?>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-                <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-4 article-block">
+                <div class="row article-row">
                     <?php
                         $args3 = array(
                             'numberposts' => 4,
@@ -215,12 +247,19 @@ get_header(vibe_get_header());
                         $category_link = get_category_link( $category_id );
                     ?>
                     <div class="col-xs-12 col-sm-4 col-md-12 col-articles">
-                        <div class="article-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>');">
-                            <div class="overlay-category"><p><span><?php echo $format ?></span></p></div>
+                        <div class="row content-row">
+                            <div class="col-xs-4 col-sm-12 col-md-6 col-lg-5">
+                                <div class="article-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>');">
+                                    <a href="<?php the_permalink(); ?>" class="bg-a-link"></a>
+                                    <div class="overlay-category"><p><span><?php echo $format ?></span></p></div>
+                                </div>
+                            </div>
+                            <div class="col-xs-8 col-sm-12 col-md-6 col-lg-7">
+                                <h3 class="category"><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
+                                <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
+                                <p class="excerpt"><?php echo excerpt('12'); ?></p>
+                            </div>
                         </div>
-                        <h3><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
-                        <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
-                        <p><?php echo excerpt('12'); ?></p>
                     </div>
                     <?php 
                         endforeach; 
@@ -243,7 +282,10 @@ get_header(vibe_get_header());
             <div class="row">
                 <div class="col-xs-12">
                     <a href="https://radicallyhappy.org/">
-                        <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner-home-radically-happy.jpg" alt="radically happy">
+                        <picture>
+                            <source media="(min-width: 768px)" srcset="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner-home-radically-happy.jpg">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/banner-sidebar-radically-happy.jpg" alt="IfItDoesntMatchAnyMedia">
+                        </picture>
                     </a>
                 </div>
             </div>
@@ -255,7 +297,7 @@ get_header(vibe_get_header());
             <div class="row">
                 <div class="col-xs-12">
                     <div class="grd-section-intro">
-                        <h2>Guru Rinpoche Day Teachings</h2>
+                        <h2 class="section-header">Guru Rinpoche Day Teachings</h2>
                         <p>Phakchok Rinpoche sends out short inspiring teachings to all students via email on every Guru Rinpoche day. Rinpoche often uses these teachings to answer frequently asked questions.  Also, he suggests topics that remind us to bring our minds home in the midst of our busy lives.</p>
                     </div>
                 </div>
@@ -287,10 +329,12 @@ get_header(vibe_get_header());
                         ?>
                         <div class="item <?php echo $i == 0 ? 'active' : '' ?>">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-6">
-                                    <div class="post-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>')"></div>
+                                <div class="col-xs-4 col-sm-6">
+                                    <div class="post-image" style="background-image: url('<?php the_post_thumbnail_url( 'full' ) ?>')">
+                                        <a href="<?php the_permalink(); ?>" class="bg-a-link"></a>
+                                    </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-6">
+                                <div class="col-xs-8 col-sm-6">
                                     <div class="post-content">
                                         <p class="date"><?php the_date(); ?></p>
                                         <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>

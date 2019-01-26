@@ -2,6 +2,10 @@ body, #content, section {
     background-color: $white !important;
 }
 
+html { font-size: 62.5%; } 
+body { font-size: 1.6rem; } /* =14px */
+h1   { font-size: 2.4rem; } /* =24px */
+
 h1, h2, h3, h4, h5, h6 {
     font-family: $heading !important;
 }
@@ -10,8 +14,17 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: inherit !important;
 }
 
-h2.h2 {
-    font-size: 30px;
+// h2.h2 {
+//     font-size: 30px;
+// }
+
+h2.section-header {
+    line-height: normal;
+    font-size: 2.8rem !important;
+
+    @media only screen and (min-width: 768px) {
+        font-size: 3.0rem !important;
+    }
 }
 
 p strong {
@@ -31,11 +44,18 @@ a, span, strong  {
 }
 
 a {
-
     &:hover {
         color: inherit !important;
         text-decoration: underline;
     }
+}
+
+a.bg-a-link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .gfield_label {
@@ -102,11 +122,16 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     background-color: transparent;
     border: 2px solid $primary-color;
     color: $primary-color;
-    font-size: 18px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding: 12px 35px;
     display: inline-block;
+    font-size: 13px;
+    padding: 4px 15px;
+
+    @media only screen and (min-width: 768px) {
+        padding: 12px 35px;
+        font-size: 18px;
+    }
 
     &:hover {
         color: $primary-color !important;
@@ -117,11 +142,16 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 .secondary-btn {
     background-color: $white;
     color: $primary-color;
-    font-size: 18px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    padding: 12px 35px;
     display: inline-block;
+    font-size: 13px;
+    padding: 4px 15px;
+
+    @media only screen and (min-width: 768px) {
+        padding: 12px 35px;
+        font-size: 18px;
+    }
 }
 
 .image-dropshadow {
@@ -209,7 +239,13 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 
     li {
         display: inline-block;
-        margin-right: 5px;
+        margin-left: 3px;
+        margin-right: 3px;
+
+        @media only screen and (min-width: 768px) {
+            margin-left: 5px;
+            margin-right: 5px;
+        } 
 
         button {
             text-indent: -99999px;
@@ -253,6 +289,13 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     &:after {
         content: none;
     }
+
+    &:hover:before {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        margin-top: -22px;
+    }
 }
 
 .slick-next {
@@ -270,5 +313,12 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 
     &:after {
         content: none;
+    }
+
+    &:hover:before {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        margin-top: -22px;
     }
 }
