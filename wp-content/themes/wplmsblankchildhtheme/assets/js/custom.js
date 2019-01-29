@@ -130,12 +130,27 @@
                 }
               }
           ]
-      });
+    });
+
+    $('.getting-started-carousel').on('init', function(slick) {
+        $( ".menu-item[data-index='0']" ).addClass('active');
+    });
+
+    $('.getting-started-carousel').slick({
+        dots: false,
+        infinite: true,
+        slidesToShow: 1,
+        arrows: false,
+        draggable: false,
+        adaptiveHeight: true
+    });
+
+
 
     // handle explore topic pagination desktop
     $( ".filter-item button" ).click(function() {
         var className = this.classList[0];
-        console.log(className);
+        //console.log(className);
         if ($(this).hasClass("active")) {
             $(this).removeClass("active");
         } else if (!$(this).hasClass("active")) {
@@ -159,6 +174,39 @@
     // search icon focus
     $('#new_searchicon').click(function(){
         setTimeout(function(){ $('#s').focus(); }, 500);        
+    });
+
+    // Getting start count category children
+    $(document).ready( function() {
+        $(".panel").each(function() {
+            var count = $( this ).children('.panel-collapse').children('.panel-body').children('.menu-item').length;
+            $( this ).children('.panel-heading').children('.panel-title').children('a').children('.cat-count').html(count);
+
+            //console.log($( this ).children('.panel-collapse')[0].classList[2]);
+            if ($( this ).children('.panel-collapse')[0].classList[2] === 'in') {
+                $( this ).children('.panel-heading').addClass('active-panel');
+            }
+        });
+    });
+
+    // handle getting started nav click
+    $( ".menu-item button" ).click(function() {
+        //console.log($(this).data('index'));
+        var index = $(this).data('index');
+        $('.getting-started-carousel').slick('slickGoTo', index);
+        $('.menu-item').removeClass("active");
+        $( ".menu-item[data-index="+index+"]" ).addClass('active');
+    });
+
+    // handle getting started nav toggle click
+    $( ".panel-title a" ).click(function() {
+        //console.log($(this)[0].classList.value);
+        if ($(this)[0].classList.value === '') {
+            $(this).parent('.panel-title').parent('.panel-heading').removeClass('active-panel');
+        } else if ($(this)[0].classList.value === 'collapsed') {
+            $('.panel-heading').removeClass('active-panel');
+            $(this).parent('.panel-title').parent('.panel-heading').addClass('active-panel');
+        }
     });
     
 })(jQuery);

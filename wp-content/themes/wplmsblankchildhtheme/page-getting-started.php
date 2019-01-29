@@ -4,6 +4,7 @@ get_header(vibe_get_header());
 
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
+$curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 'mindfulness', 'addiction' );
 
 
 ?>
@@ -23,8 +24,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="getting-started-menu">
                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                     <?php
-                        $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 'mindfulness', 'addiction' );
                         $catIndex = 0;
+                        $carouselIndex = 0;
                         foreach ( $curratedCategories as $cat ) :
                         $catIndex++;
                     ?>
@@ -32,7 +33,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                         <div class="panel-heading" role="tab" id="<?php echo $cat.'heading'; ?>">
                         <h4 class="panel-title">
                             <a class="<?php echo $catIndex == 1 ? '': 'collapsed'; ?>" role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo $cat; ?>" aria-expanded="true" aria-controls="<?php echo $cat; ?>">
-                            <?php echo $cat; ?> <span>3</span>
+                            <?php echo $cat; ?> <span class="cat-count"></span>
                             </a>
                         </h4>
                         </div>
@@ -52,15 +53,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                             foreach ( $lastposts as $post ) :
                             $catPostsIndex++;
                             setup_postdata( $post );
-                            $format = get_post_format() ? : 'Article';
-                            $category = get_the_category();
-                            $category_id = get_cat_ID( $category[0]->cat_name );
-                            $category_link = get_category_link( $category_id );
+                            
                         ?>
 
-                            <div class="menu-item <?php echo $catPostsIndex == 1 ? 'active': ''; ?>"><p><?php echo $catPostsIndex; ?>.</p><button class="<?php echo $cat.$catPostsIndex; ?>"><?php the_title() ?></button></div>
+                            <div class="menu-item" data-index="<?php echo $carouselIndex; ?>"><p><?php echo $catPostsIndex; ?>.</p><button class="<?php echo $cat.$catPostsIndex; ?>" data-index="<?php echo $carouselIndex; ?>"><?php the_title() ?></button><div class="format"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/<?php echo handlePostFormatIcon(); ?>" /></div></div>
                         
                         <?php 
+                            $carouselIndex++;
                             endforeach; 
                             wp_reset_postdata(); 
                         ?>
@@ -75,9 +74,42 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             </div>
         </div>
         <div class="col-sm-8 content-column">
-            <h3>Category</h3>
-            <h2>Title</h2>
-            <p class="excerpt">Excerpt</p>
+            <div class="getting-started-carousel">
+
+            <?php
+                $catIndex = 0;
+                foreach ( $curratedCategories as $cat ) :
+                $catIndex++;
+            ?>
+            <?php
+                $catPostsIndex = 0;
+                $args = array(
+                    'orderby' => 'post_date',
+                    'order' => 'DESC',
+                    'post_type' => 'post',
+                    'post_status' => 'publish',
+                    'tag_slug__and' => array( $cat, 'where-to-start' )
+                );
+                $lastposts = get_posts( $args );
+                foreach ( $lastposts as $post ) :
+                $catPostsIndex++;
+                setup_postdata( $post );
+                
+            ?>
+            <div class="post-container <?php echo $cat.$catPostsIndex; ?>">    
+                <h3 class="category"><?php echo $cat; ?></h3>
+                <h2 class="post-title"><?php  the_title() ?></h2>
+                <p class="excerpt"><?php the_content(); ?></p>
+            </div>
+            <?php 
+                endforeach; 
+                wp_reset_postdata(); 
+            ?>
+            <?php 
+                endforeach;
+            ?>
+                            
+            </div>
 
             <div class="row row-banner">
                 <div class="col-xs-12">

@@ -27,6 +27,17 @@ h2.section-header {
     }
 }
 
+h2.post-title {
+    line-height: normal;
+    font-size: 2.8rem !important;
+    color: $dark-font;
+    margin-top: 0;
+
+    @media only screen and (min-width: 768px) {
+        font-size: 3.0rem !important;
+    }
+}
+
 p strong {
     font-family: $semi-bold !important;
 }

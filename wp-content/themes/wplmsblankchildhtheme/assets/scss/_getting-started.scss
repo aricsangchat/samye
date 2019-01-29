@@ -30,9 +30,17 @@
                 display: block;
             }
 
+            @media only screen and (min-width: 1200px) {
+                padding-top: 68px;
+                padding-bottom: 50px;
+                border-right: 8px solid $secondary-color;
+            }
+
             .panel-title {
                 font-size: 24px;
+                line-height: 1em;
                 color: $white;
+                padding: 7px 0;
 
                 @media only screen and (min-width: 992px) {
                     font-size: 30px;
@@ -62,7 +70,7 @@
                         border-width: 8px 0 8px 8px;
                         border-color: transparent transparent transparent $white;
                         position: absolute;
-                        top: 14px;
+                        top: 8px;
                         right: 0;
                         transition-timing-function: ease;
                         transition: 0.2s;
@@ -87,7 +95,7 @@
                         border-width: 8px 8px 0 8px;
                         border-color: $secondary-color transparent transparent transparent;
                         position: absolute;
-                        top: 18px;
+                        top: 11px;
                         right: 0;
                         transition-timing-function: ease;
                         transition: 0.2s;
@@ -98,14 +106,14 @@
                     @media only screen and (min-width: 768px) {
                         font-size: 18px;
                         border-radius: 50%;
-                        width: 36px;
+                        width: 28px;
                         display: inline-block;
                         text-align: center;
                     } 
 
                     @media only screen and (min-width: 992px) {
                         font-size: 24px;
-                        width: 42px;
+                        width: 34px;
                     }
                 }
             }
@@ -131,6 +139,20 @@
                         padding-left: 20%;
                     }
                 }
+
+                .panel-heading.active-panel {
+                    @media only screen and (min-width: 1200px) {
+                        width: 105%;
+                    }
+
+                    a {
+                        &:after {
+                            @media only screen and (min-width: 1200px) {
+                                right: 25px;
+                            }
+                        }
+                    }
+                }
             }
 
             .panel-group .panel+.panel {
@@ -140,35 +162,91 @@
             .panel-body {
 
                 @media only screen and (min-width: 992px) {
-                    margin-left: 20%;
-                    border-left: 1px solid;
+                    margin-left: 10%;
+                    padding-left: 25px;
+                    border-left: 1px solid $secondary-color;
+                }
+
+                @media only screen and (min-width: 1200px) {
+                    margin-left: 15%;
+                    padding-left: 25px;
+                    border-left: 1px solid $secondary-color;
+                    padding-top: 25px;
+                    padding-bottom: 25px;
                 }
 
                 .menu-item {
                     display: table;
+                    margin-bottom: 10px;
+
+                    @media only screen and (min-width: 1200px) {
+                        margin-bottom: 15px;
+                    }
 
                     button {
                         background-color: transparent;
                         border: 0;
                         text-align: left;
                         display: table-cell;
+
+                        @media only screen and (min-width: 1200px) {
+                            font-size: 18px;
+                        }
+
+                        @media only screen and (min-width: 1440px) {
+                            font-size: 22px;
+                        }
+                    }
+
+                    .format {
+                        display: table-cell;
+                        width: 18px;
                     }
 
                     p {
                         display: table-cell;
                         font-family: $heading !important;
                         color: $white;
+
+                        @media only screen and (min-width: 1200px) {
+                            font-size: 18px;
+                        }
+
+                        @media only screen and (min-width: 1440px) {
+                            font-size: 22px;
+                        }
+                    }
+                    
+                    &:last-child {
+                        margin-bottom: 0px;
                     }
                 }
 
                 .menu-item.active {
+                    position: relative;
+
                     p {
                         color: $secondary-color;
                     }
 
                     button {
                         color: $secondary-color;
-                        font-family: $semi-bold !important;
+                        font-weight: bold;
+                    }
+
+                    &:before {
+                        content: '';
+                        display: inline-block;
+                        background-image: url('../images/icon-li-knot.png');
+                        height: 31px;
+                        width: 31px;
+                        background-size: contain;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        position: absolute;
+                        top: 50%;
+                        left: -41px;
+                        transform: translateY(-50%);
                     }
                 }
             }
@@ -177,9 +255,49 @@
 
     .content-column {
         @media only screen and (min-width: 768px) {
-            height: 100vh;
-            overflow: hidden;
-            overflow-y: scroll;
+            padding-right: 45px;
         }
+        @media only screen and (min-width: 992px) {
+            max-width: 715px;
+        }
+        @media only screen and (min-width: 1200px) {
+            padding-right: 0px;
+            padding-left: 45px;
+            padding-top: 65px;
+        }
+
+        .category {
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            color: $primary-color;
+            font-family: $body !important;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+
+            @media only screen and (min-width: 992px) {
+                font-size: 18px;
+
+            }
+        }
+
+        .post-title {
+            @media only screen and (min-width: 768px) {
+                margin-bottom: 15px;
+            }
+            @media only screen and (min-width: 992px) {
+                margin-bottom: 30px;
+            }
+            @media only screen and (min-width: 1200px) {
+                margin-bottom: 40px;
+            }
+            @media only screen and (min-width: 1440px) {
+                margin-bottom: 55px;
+            }
+        }
+
+        // .post-container {
+        //     position: absolute;
+        //     top: 0;
+        // }
     }
 }

@@ -140,4 +140,17 @@ function extra_category_fields( $tag ) {    //check for existing featured ID
 <?php
 }
 
+
+// handle post format icon 
+function handlePostFormatIcon() {
+    $format = get_post_format();
+    if ($format === 'audio') {
+        return 'icon-audio.png';
+    } else if ($format === 'video') {
+        return 'icon-video.png';
+    } else {
+        return 'icon-audio.png';
+    }
+}
+
 ?>
