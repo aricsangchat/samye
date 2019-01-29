@@ -1,0 +1,185 @@
+
+.getting-started-container {
+    position: relative;
+    top: -25px;
+
+    @media only screen and (min-width: 768px) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @media only screen and (min-width: 992px) {
+        top: -50px;
+    }
+
+    .menu-column {
+        @media only screen and (min-width: 768px) {
+            //height: 100vh;
+        }
+
+        .getting-started-menu {
+            display: none;
+            background-image: url('../images/bg-getting-started-menu.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+        
+            @media only screen and (min-width: 768px) {
+                display: block;
+            }
+
+            .panel-title {
+                font-size: 24px;
+                color: $white;
+
+                @media only screen and (min-width: 992px) {
+                    font-size: 30px;
+                }
+
+                a {
+                    color: $white;
+                    display: block;
+                    position: relative;
+
+                    span {
+                        color: $primary-color;
+                        border: 2px solid $white;
+                        background-color: $white;
+                    }
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 8px 0 8px 8px;
+                        border-color: transparent transparent transparent $white;
+                        position: absolute;
+                        top: 14px;
+                        right: 0;
+                        transition-timing-function: ease;
+                        transition: 0.2s;
+                    }
+                }
+
+                a.collapsed {
+                    color: $secondary-color !important;
+
+                    span {
+                        color: $secondary-color;
+                        border: 2px solid $secondary-color;
+                        background-color: transparent;
+                    }
+
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 0;
+                        height: 0;
+                        border-style: solid;
+                        border-width: 8px 8px 0 8px;
+                        border-color: $secondary-color transparent transparent transparent;
+                        position: absolute;
+                        top: 18px;
+                        right: 0;
+                        transition-timing-function: ease;
+                        transition: 0.2s;
+                    }
+                }
+
+                span {
+                    @media only screen and (min-width: 768px) {
+                        font-size: 18px;
+                        border-radius: 50%;
+                        width: 36px;
+                        display: inline-block;
+                        text-align: center;
+                    } 
+
+                    @media only screen and (min-width: 992px) {
+                        font-size: 24px;
+                        width: 42px;
+                    }
+                }
+            }
+
+            .panel-default>.panel-heading {
+                background-color: rgba(184, 48, 41, 0.8);;
+                border-radius: 0;
+                border: 0;
+            }
+
+            .panel-group .panel-heading+.panel-collapse>.panel-body {
+                border-top: 0;
+            }
+
+            .panel-group .panel {
+                border-radius: 0;
+                border: 0;
+                background-color: transparent;
+
+                .panel-heading {
+
+                    @media only screen and (min-width: 992px) {
+                        padding-left: 20%;
+                    }
+                }
+            }
+
+            .panel-group .panel+.panel {
+                margin-top: 1px;
+            }
+
+            .panel-body {
+
+                @media only screen and (min-width: 992px) {
+                    margin-left: 20%;
+                    border-left: 1px solid;
+                }
+
+                .menu-item {
+                    display: table;
+
+                    button {
+                        background-color: transparent;
+                        border: 0;
+                        text-align: left;
+                        display: table-cell;
+                    }
+
+                    p {
+                        display: table-cell;
+                        font-family: $heading !important;
+                        color: $white;
+                    }
+                }
+
+                .menu-item.active {
+                    p {
+                        color: $secondary-color;
+                    }
+
+                    button {
+                        color: $secondary-color;
+                        font-family: $semi-bold !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .content-column {
+        @media only screen and (min-width: 768px) {
+            height: 100vh;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+    }
+}
