@@ -40,7 +40,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                             'meta_value' =>'',
                             'post_type' => 'post',
                             'post_status' => 'publish',
-                            'suppress_filters' => true,
+                            'suppress_filters' => false,
                         );
                         $lastposts = get_posts( $wisdomArgs );
                         foreach ( $lastposts as $post ) :
@@ -95,7 +95,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                             'meta_value' =>'',
                             'post_type' => 'post',
                             'post_status' => 'publish',
-                            'suppress_filters' => true,
+                            'suppress_filters' => false,
                         );
                         $lastposts = get_posts( $wisdomArgs );
                         foreach ( $lastposts as $post ) :
@@ -150,7 +150,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                             'meta_value' =>'',
                             'post_type' => 'post',
                             'post_status' => 'publish',
-                            'suppress_filters' => true,
+                            'suppress_filters' => false,
                         );
                         $lastposts = get_posts( $wisdomArgs );
                         foreach ( $lastposts as $post ) :
@@ -205,7 +205,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                             'meta_value' =>'',
                             'post_type' => 'post',
                             'post_status' => 'publish',
-                            'suppress_filters' => true,
+                            'suppress_filters' => false,
                         );
                         $lastposts = get_posts( $wisdomArgs );
                         foreach ( $lastposts as $post ) :
@@ -303,7 +303,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                                         'meta_value' =>'',
                                         'post_type' => 'post',
                                         'post_status' => 'publish',
-                                        'suppress_filters' => true,
+                                        'suppress_filters' => false,
                                     );
                                     $lastposts = get_posts( $wisdomArgs );
                                     foreach ( $lastposts as $post ) :

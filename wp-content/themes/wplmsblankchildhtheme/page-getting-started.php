@@ -47,6 +47,7 @@ $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 
                                 'order' => 'DESC',
                                 'post_type' => 'post',
                                 'post_status' => 'publish',
+                                'suppress_filters' => false,
                                 'tag_slug__and' => array( $cat, 'where-to-start' )
                             );
                             $lastposts = get_posts( $args );
@@ -91,6 +92,7 @@ $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 
                                 'order' => 'DESC',
                                 'post_type' => 'post',
                                 'post_status' => 'publish',
+                                'suppress_filters' => false,
                                 'tag_slug__and' => array( $cat, 'where-to-start' )
                             );
                             $lastposts = get_posts( $args );
@@ -126,6 +128,7 @@ $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 
                     'order' => 'DESC',
                     'post_type' => 'post',
                     'post_status' => 'publish',
+                    'suppress_filters' => false,
                     'tag_slug__and' => array( $cat, 'where-to-start' )
                 );
                 $lastposts = get_posts( $args );
@@ -177,7 +180,7 @@ $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 
                         'meta_value' =>'',
                         'post_type' => 'course',
                         'post_status' => 'publish',
-                        'suppress_filters' => true
+                        'suppress_filters' => false,
                     );
                     $lastposts = get_posts( $args4 );
                     foreach ( $lastposts as $post ) :

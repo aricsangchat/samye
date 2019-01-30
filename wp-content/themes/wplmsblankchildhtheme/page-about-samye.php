@@ -135,7 +135,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     'meta_value' =>'',
                     'post_type' => 'instructors',
                     'post_status' => 'publish',
-                    'suppress_filters' => true,
+                    'suppress_filters' => false,
                 );
                 $lastposts = get_posts( $instructorArgs );
                 foreach ( $lastposts as $post ) :

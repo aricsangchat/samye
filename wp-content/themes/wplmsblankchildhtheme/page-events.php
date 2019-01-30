@@ -44,7 +44,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     'meta_value' =>'',
                     'post_type' => 'tribe_events',
                     'post_status' => 'publish',
-                    'suppress_filters' => true
+                    'suppress_filters' => false,
                 );
                 $lastposts = get_posts( $eventsArgs );
                 foreach ( $lastposts as $post ) :

@@ -128,6 +128,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                                     'category__in' => $categories[0]->term_id,
                                     'post_type' => array('post', 'grd-teaching'),
                                     'post_status' => 'publish',
+                                    'suppress_filters' => false,
                                 );
                                 $lastposts = get_posts( $relatedArgs );
                                 foreach ( $lastposts as $post ) :

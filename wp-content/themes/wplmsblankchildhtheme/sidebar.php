@@ -15,6 +15,7 @@
                 'order' => 'DESC',
                 'post_type' => 'course',
                 'post_status' => 'publish',
+                'suppress_filters' => false,
             );
             $lastposts = get_posts( $latestCoursesArgs );
             foreach ( $lastposts as $post ) :
@@ -49,6 +50,7 @@
                 'order' => 'DESC',
                 'post_type' => 'post',
                 'post_status' => 'publish',
+                'suppress_filters' => false,
             );
             $lastposts = get_posts( $latestPostArgs );
             foreach ( $lastposts as $post ) :

@@ -119,6 +119,7 @@ get_header(vibe_get_header());
                             'post_type' => 'post',
                             'posts_per_page' => 2,
                             'post_status' => 'publish',
+                            'suppress_filters' => false,
                             'tax_query' => array(
                                 array(
                                     'taxonomy' => 'post_format',
@@ -172,7 +173,7 @@ get_header(vibe_get_header());
                             'meta_value' =>'',
                             'post_type' => 'post',
                             'post_status' => 'publish',
-                            'suppress_filters' => true,
+                            'suppress_filters' => false,
                             'tax_query' => array(
                                 array(
                                     'taxonomy' => 'post_format',
@@ -380,7 +381,7 @@ get_header(vibe_get_header());
                                 'meta_value' =>'',
                                 'post_type' => 'post',
                                 'post_status' => 'publish',
-                                'suppress_filters' => true
+                                'suppress_filters' => false,
                             );
                             $lastposts = get_posts( $args4 );
                             $i = -1;
@@ -438,7 +439,7 @@ get_header(vibe_get_header());
                         'meta_value' =>'',
                         'post_type' => 'reflection_quotes',
                         'post_status' => 'publish',
-                        'suppress_filters' => true
+                        'suppress_filters' => false,
                     );
                     $lastposts = get_posts( $args5 );
                     foreach ( $lastposts as $post ) :
