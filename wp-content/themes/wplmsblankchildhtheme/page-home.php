@@ -86,7 +86,7 @@ get_header(vibe_get_header());
                         'meta_value' =>'',
                         'post_type' => 'course',
                         'post_status' => 'publish',
-                        'suppress_filters' => true
+                        'suppress_filters' => false
                     );
                     $lastposts = get_posts( $args1 );
                     foreach ( $lastposts as $post ) :
