@@ -65,7 +65,7 @@ get_header(vibe_get_header());
 
     ?>
 
-<div class="container latest-learning-resources">
+    <div class="container latest-learning-resources">
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="section-header">Latest Learning Resources</h2>
@@ -221,8 +221,6 @@ get_header(vibe_get_header());
         </div>
     </div>
 
-
-
     <div class="program-group-block">
         <div class="container">
             <div class="row">
@@ -279,10 +277,8 @@ get_header(vibe_get_header());
         </div>
     </div>
 
-
-
     <?php
-
+    wp_reset_postdata(); 
     // check if the flexible content field has rows of data
     if( have_rows('flexible_layout') ):
 
@@ -341,6 +337,16 @@ get_header(vibe_get_header());
     endif;
 
     ?>
+
+
+
+
+
+
+
+
+
+
 
 
 
