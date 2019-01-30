@@ -34,21 +34,21 @@ get_header(vibe_get_header());
 
                 endif;
 
-            elseif( get_row_layout() == '2_column_content_default' ): 
-                echo '<div class="container about-section">
-                <div class="row default-text-block">
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="about-section-text">
-                            <h2 class="section-header">'.get_sub_field('title').'</h2>
-                                '.get_sub_field('text_area').'
-                            <a class="primary-btn" href="'.get_sub_field('button_url').'">'.get_sub_field('button_text').'</a>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <div class="about-image image-dropshadow" style="background-image: url('. get_sub_field('image')['url'] .')"></div>
-                    </div>
-                </div>
-            </div>';
+            // elseif( get_row_layout() == '2_column_content_default' ): 
+            //     echo '<div class="container about-section">
+            //     <div class="row default-text-block">
+            //         <div class="col-xs-12 col-sm-6">
+            //             <div class="about-section-text">
+            //                 <h2 class="section-header">'.get_sub_field('title').'</h2>
+            //                     '.get_sub_field('text_area').'
+            //                 <a class="primary-btn" href="'.get_sub_field('button_url').'">'.get_sub_field('button_text').'</a>
+            //             </div>
+            //         </div>
+            //         <div class="col-xs-12 col-sm-6">
+            //             <div class="about-image image-dropshadow" style="background-image: url('. get_sub_field('image')['url'] .')"></div>
+            //         </div>
+            //     </div>
+            // </div>';
             elseif( get_row_layout() == 'download' ): 
 
                 $file = get_sub_field('file');
@@ -65,63 +65,7 @@ get_header(vibe_get_header());
 
     ?>
 
-    <div class="program-group-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6 col-study-programs">
-                    <h2 class="section-header">At home study programs</h2>
-                    <p>Enroll in one of our short-term or long-term study programs and receive guidance from authentic tibetan teachers. Follow your sincere aspiration and blablabla The standard chunk of Lorem Ipsum used since the 1500s.</p>
-                    <div class="row row-programs">
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="row row-programs-item">
-                                <div class="col-xs-4 col-sm-12">
-                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 17234 ); ?>"></a></div>
-                                </div>
-                                <div class="col-xs-8 col-sm-12">
-                                    <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="row row-programs-item">
-                                <div class="col-xs-4 col-sm-12">
-                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17055, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 17055 ); ?>"></a></div>
-                                </div>
-                                <div class="col-xs-8 col-sm-12">
-                                    <h3><a href="<?php echo get_permalink( 17055 ); ?>"><?php $post = get_post( 17055 ); echo $post->post_title;?></a></h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="row row-programs-item">
-                                <div class="col-xs-4 col-sm-12">
-                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 2585, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 2585 ); ?>"></a></div>
-                                </div>
-                                <div class="col-xs-8 col-sm-12">
-                                    <h3><a href="<?php echo get_permalink( 2585 ); ?>"><?php $post = get_post( 2585 ); echo $post->post_title;?></a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="button-wrapper">
-                        <a class="secondary-btn" href="/programs">Explore Programs</a>
-                    </div>
-
-                </div>
-                <div class="col-xs-12 col-sm-6 col-groups">
-                    <h2 class="section-header">Dharma Groups - Practice Together</h2>
-                    <p>Practicing together is a real blessing for all of us. Etc. The standard chunk of Lorem Ipsum used since the 1500s is reproduced.</p>
-                    <img class="icon-map" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-map.png" alt="dharma groups">
-                    <div class="button-wrapper">
-                        <a class="secondary-btn" href="/dharma-groups">Explore Groups</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container latest-learning-resources">
+<div class="container latest-learning-resources">
         <div class="row">
             <div class="col-xs-12">
                 <h2 class="section-header">Latest Learning Resources</h2>
@@ -276,6 +220,129 @@ get_header(vibe_get_header());
             </div>
         </div>
     </div>
+
+
+
+    <div class="program-group-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-study-programs">
+                    <h2 class="section-header">Looking for at home study programs?</h2>
+                    <p>Enroll in one of our short-term or long-term study programs and receive guidance from Tibetan & Western instructors.</p>
+                    <div class="row row-programs">
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="row row-programs-item">
+                                <div class="col-xs-4 col-sm-12">
+                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17234, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 17234 ); ?>"></a></div>
+                                </div>
+                                <div class="col-xs-8 col-sm-12">
+                                    <h3><a href="<?php echo get_permalink( 17234 ); ?>"><?php $post = get_post( 17234 ); echo $post->post_title;?></a></h3>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="row row-programs-item">
+                                <div class="col-xs-4 col-sm-12">
+                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 17055, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 17055 ); ?>"></a></div>
+                                </div>
+                                <div class="col-xs-8 col-sm-12">
+                                    <h3><a href="<?php echo get_permalink( 17055 ); ?>"><?php $post = get_post( 17055 ); echo $post->post_title;?></a></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <div class="row row-programs-item">
+                                <div class="col-xs-4 col-sm-12">
+                                    <div class="program-image" style="background-image: url(<?php echo get_the_post_thumbnail_url( 2585, 'full' )?>)"><a class="bg-a-link" href="<?php echo get_permalink( 2585 ); ?>"></a></div>
+                                </div>
+                                <div class="col-xs-8 col-sm-12">
+                                    <h3><a href="<?php echo get_permalink( 2585 ); ?>"><?php $post = get_post( 2585 ); echo $post->post_title;?></a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-wrapper">
+                        <a class="secondary-btn" href="/programs">Explore Programs</a>
+                    </div>
+
+                </div>
+                <div class="col-xs-12 col-sm-6 col-groups">
+                    <h2 class="section-header">Looking for Community & Dharma Groups?</h2>
+                    <p>Samye is more than just online Dharma teachings, we also have a global network of local groups & Dharma centers. Find out more about our community activities & groups.</p>
+                    <img class="icon-map" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-map.png" alt="dharma groups">
+                    <div class="button-wrapper">
+                        <a class="secondary-btn" href="/community">Explore the Community</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <?php
+
+    // check if the flexible content field has rows of data
+    if( have_rows('flexible_layout') ):
+
+        // loop through the rows of data
+        while ( have_rows('flexible_layout') ) : the_row();
+
+            if( get_row_layout() == 'hero_slider' ):
+                
+                // if( have_rows('hero_slide') ):
+                //     echo '    <div class="hero-slider">';
+                    
+                //     while ( have_rows('hero_slide') ) : the_row();
+                //         echo '<div class="item">
+                //         <div class="carousel-image" style="background-image: url('. get_sub_field('hero_image') .')">
+                //         </div>
+                //         <div class="hero-caption">
+                //         <h2 class="hero-header">'.get_sub_field('hero_title').'</h2>
+                //         <p>'.get_sub_field('hero_text_area').'</p>
+                //         <a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>
+                //         </div>
+                //         </div>';
+                        
+                //     endwhile;
+
+                //     echo '</div>';
+
+                // endif;
+
+            elseif( get_row_layout() == '2_column_content_default' ): 
+                echo '<div class="container about-section">
+                <div class="row default-text-block">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="about-section-text">
+                            <h2 class="section-header">'.get_sub_field('title').'</h2>
+                                '.get_sub_field('text_area').'
+                            <a class="primary-btn" href="'.get_sub_field('button_url').'">'.get_sub_field('button_text').'</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="about-image image-dropshadow" style="background-image: url('. get_sub_field('image')['url'] .')"></div>
+                    </div>
+                </div>
+            </div>';
+            elseif( get_row_layout() == 'download' ): 
+
+                $file = get_sub_field('file');
+
+            endif;
+
+        endwhile;
+
+    else :
+
+        // no layouts found
+
+    endif;
+
+    ?>
+
+
 
     <div class="home-banner">
         <div class="container">

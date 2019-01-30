@@ -5,7 +5,7 @@
         margin-bottom: 30px;
     }
 
-    h2.h2 {
+    h2.section-header {
         text-align: center;
         color: $dark-font;
         margin-top: 0;
@@ -118,7 +118,7 @@
     background-color: $primary-color;
 
     .post-carousel-header {
-        h2.h2 {
+        h2.section-header {
             color: $secondary-color;
         }
     
@@ -144,7 +144,7 @@
     background-color: $light-gray-bg;
 
     .post-carousel-header {
-        h2.h2 {
+        h2.section-header {
             color: $dark-font;
         }
     
@@ -187,7 +187,7 @@
         margin-right: auto;
         float: initial;
     }
-    h2.h2 {
+    h2.section-header {
         text-align: center;
         color: $dark-font;
         margin-top: 0;
@@ -285,7 +285,7 @@
 .social_sharing.all-posts {
     background-color: transparent;
 
-    h2.h2 {
+    h2.section-header {
         text-align: center;
         color: $dark-font;
         margin-top: 0;

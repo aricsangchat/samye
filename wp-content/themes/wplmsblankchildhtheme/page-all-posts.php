@@ -21,7 +21,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12">
 
                 <div class="post-carousel-header">
-                    <h2 class="h2">The Wisdom Blog</h2>
+                    <h2 class="section-header">The Wisdom Blog</h2>
                     <p>Vajras are very strong; this Sanskrit term contains two meanings: indestructible, and also a powerful thunderbolt. Think that because of this vajra fence, not even a single particle of air can go in or out. Vajras are very strong.</p>
                 </div>
 
@@ -76,7 +76,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12">
 
                 <div class="post-carousel-header">
-                    <h2 class="h2">Guru Rinpoche Day Teachings</h2>
+                    <h2 class="section-header">Guru Rinpoche Day Teachings</h2>
                     <p>Vajras are very strong; this Sanskrit term contains two meanings: indestructible, and also a powerful thunderbolt. Think that because of this vajra fence, not even a single particle of air can go in or out. Vajras are very strong.</p>
                 </div>
 
@@ -131,7 +131,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12">
 
                 <div class="post-carousel-header">
-                    <h2 class="h2">Basic Buddhist Knowledge</h2>
+                    <h2 class="section-header">Basic Buddhist Knowledge</h2>
                     <p>Vajras are very strong; this Sanskrit term contains two meanings: indestructible, and also a powerful thunderbolt. Think that because of this vajra fence, not even a single particle of air can go in or out. Vajras are very strong.</p>
                 </div>
 
@@ -186,7 +186,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12">
 
                 <div class="post-carousel-header">
-                    <h2 class="h2">Deepen Your Practice</h2>
+                    <h2 class="section-header">Deepen Your Practice</h2>
                     <p>Vajras are very strong; this Sanskrit term contains two meanings: indestructible, and also a powerful thunderbolt. Think that because of this vajra fence, not even a single particle of air can go in or out. Vajras are very strong.</p>
                 </div>
 
@@ -239,7 +239,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="h2">Explore by Topic</h2>
+                <h2 class="section-header">Explore by Topic</h2>
                 <div class="select-nav">
                     <select name="topic">
                         <?php
@@ -336,7 +336,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 </div>
 
 <div class="social_sharing all-posts">
-    <h2 class="h2">Share This Page</h3>
+    <h2 class="section-header">Share This Page</h3>
     <?php echo do_shortcode('[Sassy_Social_Share]') ?>  
 </div>
 
