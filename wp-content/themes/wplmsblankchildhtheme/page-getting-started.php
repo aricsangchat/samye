@@ -74,6 +74,44 @@ $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 
             </div>
         </div>
         <div class="col-sm-8 content-column">
+            <div class="getting-started-mobile-nav">
+                <h2 class="section-header">Change Topic/Article</h2>
+                <select>
+                    <?php
+                        $catIndex = 0;
+                        $carouselIndex = 0;
+                        foreach ( $curratedCategories as $cat ) :
+                        $catIndex++;
+                    ?>
+                    <optgroup label="<?php echo $cat; ?>">
+                        <?php
+                            $catPostsIndex = 0;
+                            $args = array(
+                                'orderby' => 'post_date',
+                                'order' => 'DESC',
+                                'post_type' => 'post',
+                                'post_status' => 'publish',
+                                'tag_slug__and' => array( $cat, 'where-to-start' )
+                            );
+                            $lastposts = get_posts( $args );
+                            foreach ( $lastposts as $post ) :
+                            $catPostsIndex++;
+                            setup_postdata( $post );
+                            
+                        ?>
+                        <option value="<?php echo $carouselIndex; ?>"><?php  the_title() ?></option>
+                        <?php
+                            $carouselIndex++;
+                            endforeach; 
+                            wp_reset_postdata(); 
+                        ?>
+                    </optgroup>
+                    <?php 
+                        endforeach;
+                    ?>
+                </select>
+            </div>
+
             <div class="getting-started-carousel">
 
             <?php

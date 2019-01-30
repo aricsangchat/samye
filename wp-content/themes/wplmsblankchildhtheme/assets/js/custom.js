@@ -198,6 +198,15 @@
         $( ".menu-item[data-index="+index+"]" ).addClass('active');
     });
 
+    // handle getting started topic change mobile
+    $( ".getting-started-mobile-nav select" )
+    .change(function () {
+        //console.log($( this ).val());
+        var index = $( this ).val();
+        $('.getting-started-carousel').slick('slickGoTo', index);
+    })
+    .change();
+
     // handle getting started nav toggle click
     $( ".panel-title a" ).click(function() {
         //console.log($(this)[0].classList.value);
@@ -207,6 +216,28 @@
             $('.panel-heading').removeClass('active-panel');
             $(this).parent('.panel-title').parent('.panel-heading').addClass('active-panel');
         }
+    });
+
+    // Track Scroll Direction
+    var lastScrollTop = 0;
+    $(window).scroll(function(event){
+        var st = $(this).scrollTop();
+        if (st > lastScrollTop){
+            // downscroll code
+            //setTimeout(function() {
+                $('.getting-started-mobile-nav').addClass('hide-nav');
+
+            //},500)
+
+        } else {
+            // upscroll code
+            //setTimeout(function() {
+                $('.getting-started-mobile-nav').removeClass('hide-nav');
+
+            //},500)
+
+        }
+        lastScrollTop = st;
     });
     
 })(jQuery);
