@@ -57,7 +57,7 @@
 
             if ( wp_remote_retrieve_response_code( $response2 ) != 200 || ( empty( wp_remote_retrieve_body( $response2 ) ) ) ){
                 // If not a 200, HTTP request failed.
-                return 'There was an error getting total count for Global Accumulations, please check back later.';
+                return 'Error, Please refresh.';
             }
 
             $sum = 0;
@@ -77,7 +77,7 @@
         // Check the response code.
         if ( wp_remote_retrieve_response_code( $response1 ) != 200 || ( empty( wp_remote_retrieve_body( $response1 ) ) ) ){
             // If not a 200, HTTP request failed.
-            return 'There was an error getting total count for Global Accumulations, please check back later.';
+            return 'Error, Please refresh.';
         }
         
         return number_format(array_sum($totalArr));
@@ -130,7 +130,7 @@
 
             if ( wp_remote_retrieve_response_code( $response2 ) != 200 || ( empty( wp_remote_retrieve_body( $response2 ) ) ) ){
                 // If not a 200, HTTP request failed.
-                return 'There was an error getting total count for Global Accumulations, please check back later.';
+                return 'Error, Please refresh.';
             }
 
             $sum = 0;
@@ -150,7 +150,7 @@
         // Check the response code.
         if ( wp_remote_retrieve_response_code( $response1 ) != 200 || ( empty( wp_remote_retrieve_body( $response1 ) ) ) ){
             // If not a 200, HTTP request failed.
-            return 'There was an error getting total count for Global Accumulations, please check back later.';
+            return 'Error, Please refresh.';
         }
 
         return number_format(array_sum($totalArr));

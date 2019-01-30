@@ -12,6 +12,22 @@
         top: -50px;
     }
 
+    .getting-started-carousel  {
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: 1440px) {
+            margin-bottom: 45px;
+        }
+    }
+
+    .row-banner {
+        margin-bottom: 15px;
+
+        @media only screen and (min-width: 1440px) {
+            margin-bottom: 45px;
+        }
+    }
+
     .getting-started-mobile-nav {  
         position: fixed;
         bottom: 0px;
@@ -316,7 +332,7 @@
             }
         }
 
-        .post-title {
+        .post-container .post-title {
             @media only screen and (min-width: 768px) {
                 margin-bottom: 15px;
             }
@@ -330,10 +346,89 @@
                 margin-bottom: 55px;
             }
         }
+    }
+}
 
-        // .post-container {
-        //     position: absolute;
-        //     top: 0;
-        // }
+.related-courses-section {
+    h2.section-header {
+        color: $dark-font;
+        margin-bottom: 20px;
+
+        @media only screen and (min-width: 1440px) {
+            margin-bottom: 45px;
+        }
+    }
+
+    h2.post-title {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @media only screen and (min-width: 768px) {
+            margin-bottom: 5px;
+        }
+
+        @media only screen and (min-width: 1440px) {
+            margin-bottom: 15px;
+        }
+    }
+
+    .excerpt {
+        display: none;
+
+        @media only screen and (min-width: 768px) {
+            display: block;
+        }
+
+        @media only screen and (min-width: 992px) {
+            margin-bottom: 25px;
+        }
+
+        @media only screen and (min-width: 1440px) {
+            margin-bottom: 35px;
+        }
+    }
+
+    .primary-btn {
+        display: none;
+
+        @media only screen and (min-width: 992px) {
+            display: initial;
+        }
+    }
+
+    .image {
+        width: 100%;
+        padding-top: 63.25%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .col-xs-4 {
+        padding-right: 0;
+
+        @media only screen and (min-width: 768px) {
+            margin-bottom: 15px;
+        }
+
+        @media only screen and (min-width: 1440px) {
+            margin-bottom: 25px;
+        }
+    }
+
+    .post-row {
+        margin-bottom: 20px;
+    }
+}
+
+#global > div.pusher > div.container-fluid.getting-started-container > div > div.col-sm-8.content-column > div.row.related-courses-section > div:nth-child(2) > div {
+    @media only screen and (min-width: 1440px) {
+        padding-right: 15px;
+    }
+}
+
+#global > div.pusher > div.container-fluid.getting-started-container > div > div.col-sm-8.content-column > div.row.related-courses-section > div:nth-child(3) > div {
+    @media only screen and (min-width: 1440px) {
+        padding-left: 15px;
     }
 }

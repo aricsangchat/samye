@@ -27,8 +27,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="title">A subtitle here</h2>
-                <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <h2 class="title">Connect with our Global Network</h2>
+                <!-- <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
             </div>
         </div>
     </div>
@@ -41,21 +41,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         </div>
     </div>
     <div class="row community-dharma-groups-facts">
-        <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="col-xs-12 col-sm-6 col-md-4">
             <h3 class="number">100</h3>
-            <p class="description">Total Members</p>
+            <p class="description">Monestaries & Nunaries</p>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <h3 class="number">100</h3>
-            <p class="description">Total Members</p>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <h3 class="number">50</h3>
+            <p class="description">Centers & Groups</p>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <h3 class="number">100</h3>
-            <p class="description">Total Members</p>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <h3 class="number">100</h3>
-            <p class="description">Total Members</p>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <h3 class="number">397</h3>
+            <p class="description">Students On Samye</p>
         </div>
     </div>
 </div>
@@ -66,13 +62,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <h2>Dharma Stream Groups</h2>
         </div>
         <div class="dharma-facts-col-1-description">
-            <p>Access precious Dharma wherever you live</p>
+            <p>Practice in a local group with regular video teachings from Phachok Rinpoche and senior instructors</p>
         </div>
         <div class="dharma-facts-col-1-bullets">
             <ul>
-                <li>Bullet</li>
-                <li>Bullet</li>
-                <li>Bullet</li>
+                <li>Programs include Radically Happy, Dawn of Dharma, Eightfold Path Mind-training & The Jewel Ornament of Liberation</li>
+                <li>Over 30 groups in 19 countries</li>
+                <li>Study, reflect & meditate in a supportive group setting</li>
             </ul>
         </div>
         <div class="button-wrapper">
@@ -82,12 +78,34 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     <div class="dharma-facts-col-2"></div>
 </section>
 
+<section id="community-dharma-facts">
+    <div class="dharma-facts-col-2"></div>
+    <div class="dharma-facts-col-1">
+        <div class="dharma-facts-col-1-title-wrapper">
+            <h2>Interested in Forming a Group?</h2>
+        </div>
+        <div class="dharma-facts-col-1-description">
+            <p>Form a new group in your area with a minimum of 3 people meeting twice a month</p>
+        </div>
+        <div class="dharma-facts-col-1-bullets">
+            <ul>
+                <li>Facilitator training & guidance</li>
+                <li>Practice texts & study notes for each session</li>
+                <li>Ongoing support & access to future udpates</li>
+            </ul>
+        </div>
+        <div class="button-wrapper">
+            <a class="secondary-btn" href="#">Apply Now</a>
+        </div>
+    </div>
+</section>
+
 <section id="community-news">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-8">
-                <h2 class="post-list-title">Sharing Our Experiences</h2>
-                <h3 class="post-list-subtitle">Our Community</h3>
+                <h2 class="post-list-title">Community Conversations</h2>
+                <!-- <h3 class="post-list-subtitle">Our Community</h3> -->
                 <?php
                     $communityArgs = array(
                         'numberposts' => 3,
@@ -144,14 +162,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="title">Join The Online Samye Platform</h2>
-                <h3 class="sub-title">Lorem ipsum dolor sit amet</h3>
+                <h2 class="title">Community Practice Programs</h2>
+                <h3 class="sub-title">6 Vajra Lines Supplication - Current Total: <?php echo do_shortcode( '[6VajraCount]' ); ?></h3>
                 <ul class="facts">
-                    <li>Follow one of our Online Dharma Programs lorem ipsum dolor sit amet</li>
-                    <li>Follow one of our Online Dharma Programs lorem ipsum dolor sit amet</li>
-                    <li>Follow one of our Online Dharma Programs lorem ipsum dolor sit amet</li>
+                    <li>Kyabgön Phakchok Rinpoche has asked his sangha as well as all who are inspired to take part to accumulate 10,000,000 (ten million) recitations of the Six Vajra Verse supplication yearly. </li>
                 </ul>
-                <a class="primary-btn" href="/signup">Join the Platform</a>
+                <h3 class="sub-title">Giant Cloud of Blessings Magnetizing Prayer - Current Total: <?php echo do_shortcode( '[CloudBlessingCount]' ); ?></h3>
+                <ul class="facts">
+                    <li>Rinpoche has requested that all his students take up the magnetizing practice entitled "Giant Cloud of Blessings" as part of their daily practice.  He would like us as a global sangha to accumulate 1 million of these prayers annually!</li>
+                </ul>
+                <a class="primary-btn" href="/global-accumulations/">Enter Your Accumulations</a>
             </div>
         </div>
     </div>

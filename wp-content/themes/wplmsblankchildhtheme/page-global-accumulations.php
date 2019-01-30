@@ -19,7 +19,7 @@ get_header(vibe_get_header());
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="accumulations-wrapper">
-                <h2>6 Vajra Lines</h2>
+                <h2>6 Vajra Lines Supplication</h2>
                 
                 <p class="accumulations-description">Kyabgön Phakchok Rinpoche has asked his sangha as well as all who are inspired to take part to accumulate 10,000,000 (ten million) recitations of the Six Vajra Verse supplication yearly.
                 <br /><br />This blessed supplication was revealed as a treasure by the great treasure revealer Chokgyur Dechen Lingpa in the 19th century. The first three lines are supplications to three forms of Guru Rinpoche, the fourth line is requesting Guru Rinpoche to grant blessings, the fifth line is requesting that all levels of obstacles may be removed, and the sixth line is requesting that all wishes may be spontaneously accomplished.<br /><br />
@@ -38,12 +38,16 @@ get_header(vibe_get_header());
                     <div class="button-wrapper">
                         <a class="primary-btn" href="/wp-login.php?redirect_to=6-vajra-lines-accumulations/">Login to Add Accumulations</a>
                     </div>
+                    <p class="or">OR</p>
+                    <div class="button-wrapper">
+                        <a class="primary-btn-inverted" href="/6-vajra-lines-accumulations/">Learn More</a>
+                    </div>
                 <?php endif; ?> 
             </div>
         </div>
         <div class="col-xs-12 col-sm-6">
             <div class="accumulations-wrapper">
-                <h2>Giant Cloud Blessings</h2>
+                <h2>Giant Cloud of Blessings Magnetizing Prayer</h2>
                 <p class="accumulations-description">"Learning how to work together as a global sangha to magnetize auspicious conditions for the resounding of the Dharma and the vast aspirations of the purest intent to be swiftly fulfilled." ~ Kyabgön Phakchok Rinpoche<br /><br />
                 Rinpoche has requested that all his students take up the magnetizing practice entitled "Giant Cloud of Blessings" as part of their daily practice.  He would like us as a global sangha to accumulate 1 million of these prayers annually!</p>
                 <p class="total-count">Total: <?php echo do_shortcode( '[CloudBlessingCount]' ); ?></p>
@@ -54,11 +58,15 @@ get_header(vibe_get_header());
                     <?php echo do_shortcode( '[gravityform id="40" title="false" description="false" ajax="false"]' ); ?>
                     <p class="or">OR</p>
                     <div class="button-wrapper">
-                        <a class="primary-btn-inverted" href="/giant-cloud-blessings-supplication-magnetize-appearance-existence">Enter Practice</a>
+                        <a class="primary-btn-inverted" href="/giant-cloud-blessings-supplication-magnetize-appearance-existence">Enter the Practice</a>
                     </div>
                 <?php else : ?>
                     <div class="button-wrapper">
                         <a class="primary-btn" href="/wp-login.php?redirect_to=giant-cloud-blessings-supplication-magnetize-appearance-existence/">Login to Add Accumulations</a>
+                    </div>
+                    <p class="or">OR</p>
+                    <div class="button-wrapper">
+                        <a class="primary-btn-inverted" href="/giant-cloud-blessings-supplication-magnetize-appearance-existence">Learn More</a>
                     </div>
                 <?php endif; ?>                
             </div>

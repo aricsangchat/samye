@@ -338,18 +338,6 @@ get_header(vibe_get_header());
 
     ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="home-banner">
         <div class="container">
             <div class="row">

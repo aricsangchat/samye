@@ -27,17 +27,11 @@ h2.section-header {
     }
 }
 
-// h2.post-title {
-//     line-height: normal;
-//     font-size: 1.8rem !important;
-//     //color: $dark-font;
-//     margin-top: 0;
-
-//     @media only screen and (min-width: 768px) {
-//         line-height: 24px;
-//         font-size: 1.8rem !important;
-//     }
-// }
+h2.post-title {
+    font-family: $body !important;
+    color: $gray-font;
+    font-weight: bold;
+}
 
 p strong {
     font-family: $semi-bold !important;
@@ -56,6 +50,8 @@ a, span, strong  {
 }
 
 a {
+    font-weight: inherit;
+    
     &:hover {
         color: inherit !important;
         text-decoration: underline;

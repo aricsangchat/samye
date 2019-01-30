@@ -159,6 +159,49 @@ $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 
                     </a>
                 </div>
             </div>
+
+            <div class="row related-courses-section">
+                <div class="col-xs-12">
+                    <h2 class="section-header">Find these articles helpfule? Then We recommend you check out these courses</h2>
+                </div>
+                <?php
+                    $args4 = array(
+                        'numberposts' => 2,
+                        'offset' => 0,
+                        'category_name' => '',
+                        'orderby' => 'post_date',
+                        'order' => 'DESC',
+                        'include' => array('17234','2585'),
+                        'exclude' => '',
+                        'meta_key' => '',
+                        'meta_value' =>'',
+                        'post_type' => 'course',
+                        'post_status' => 'publish',
+                        'suppress_filters' => true
+                    );
+                    $lastposts = get_posts( $args4 );
+                    foreach ( $lastposts as $post ) :
+                    setup_postdata( $post );
+                ?>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="row post-row">
+                        <div class="col-xs-4 col-sm-12">
+                            <div class="image" style="background-image: url('<?php the_post_thumbnail_url('full' ) ?>');"><a href="<?php the_permalink(); ?>" class="bg-a-link"></a></div>
+                        </div>
+                        <div class="col-xs-8 col-sm-12">
+                            <h2 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+                            <p class="excerpt"><?php echo excerpt('22'); ?></p>
+                            <p>
+                            <a class="primary-btn" href="<?php the_permalink(); ?>">Find Out More</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <?php 
+                    endforeach; 
+                    wp_reset_postdata(); 
+                ?>
+            </div>
         </div>
     </div>
 </div>
