@@ -422,14 +422,22 @@ get_header(vibe_get_header());
     <div class="container weekly-reflection">
         <div class="row">
             <div class="col-xs-12">
-                <h3>Weekly Reflections</h2>
+                <h3>Weekly Reflections </h2>
                 <?php
                     $currentWeekNumber = date('W');
+                    $currentWeekDayNumber = date('w');
+                    $offset = 0;
+
+                    if ($currentWeekDayNumber > 2) {
+                        $offset = $currentWeekNumber - 6 + 1;
+                    } else {
+                        $offset = $currentWeekNumber - 6;
+                    };
                 ?>
                 <?php
                     $args5 = array(
                         'numberposts' => 1,
-                        'offset' => $currentWeekNumber,
+                        'offset' => $offset - 1,
                         'category' => 0,
                         'orderby' => 'post_date',
                         'order' => 'DESC',
