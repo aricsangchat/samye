@@ -2,7 +2,7 @@
     <div class="sidebar-widget-about">
         <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/icon-logo.png);" alt="About Samye">
         <h3 class="sidebar-section-header">About Samye</h3>
-        <p>All Rinpoche's online activities are volunteer-based and rely on your kind funding to progress. Please consider making a donation.</p>
+        <p>Samye Institute includes both online and live teachings, instruction, retreats, and events derived from authentic Buddhist wisdom traditions. On the online platform individuals seeking answers as to how to live a meaningful life can explore how to work with their minds.</p>
         <a href="/about-samye">READ MORE</a>
     </div>
 

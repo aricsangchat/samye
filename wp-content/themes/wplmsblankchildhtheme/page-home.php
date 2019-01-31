@@ -23,9 +23,13 @@ get_header(vibe_get_header());
                         </div>
                         <div class="hero-caption">
                         <h2 class="hero-header">'.get_sub_field('hero_title').'</h2>
-                        <p>'.get_sub_field('hero_text_area').'</p>
-                        <a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>
-                        </div>
+                        <p>'.get_sub_field('hero_text_area').'</p>';
+                        
+                        if (get_sub_field('hero_button_text'))  {
+                            echo '<a class="primary-btn" href="'.get_sub_field('hero_button_url').'">'.get_sub_field('hero_button_text').'</a>';
+                        }
+                        
+                        echo '</div>
                         </div>';
                         
                     endwhile;
@@ -102,7 +106,7 @@ get_header(vibe_get_header());
                     <div class="col-xs-8 col-sm-12">
                         <h3 class="category"><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Additional Courses';  ?></a></h3>
                         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                        <p class="excerpt"><?php echo excerpt('22'); ?></p>
+                        <p class="excerpt"><?php echo excerpt('22', $post->ID); ?></p>
                     </div>
                 </div>
                 <?php 
@@ -148,7 +152,7 @@ get_header(vibe_get_header());
                             <div class="col-xs-8 col-sm-12">
                                 <h3 class="category"><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
                                 <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
-                                <p class="excerpt"><?php echo excerpt('22'); ?></p>
+                                <p class="excerpt"><?php echo excerpt('22', $post->ID); ?></p>
                             </div>
                         </div>
                     </div>
@@ -202,7 +206,7 @@ get_header(vibe_get_header());
                             <div class="col-xs-8 col-sm-12 col-md-6 col-lg-7">
                                 <h3 class="category"><a href="<?php echo $category_link ? $category_link : '#'; ?>"><?php  echo $category[0]->cat_name ? $category[0]->cat_name : 'Study & Practice';  ?></a></h3>
                                 <h2><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
-                                <p class="excerpt"><?php echo excerpt('12'); ?></p>
+                                <p class="excerpt"><?php echo excerpt('12', $post->ID); ?></p>
                             </div>
                         </div>
                     </div>

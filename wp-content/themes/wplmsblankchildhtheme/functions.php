@@ -29,9 +29,9 @@ function isacustom_excerpt_length($length) {
 }
 add_filter('excerpt_length', 'isacustom_excerpt_length', 100);
 
-function excerpt($num) {
+function excerpt($num, $id) {
     $limit = $num+1;
-    $excerpt = explode(' ', get_the_excerpt(), $limit);
+    $excerpt = explode(' ', get_the_excerpt($id), $limit);
     array_pop($excerpt);
     $excerpt = implode(" ",$excerpt)."...";
     return $excerpt;
@@ -152,5 +152,9 @@ function handlePostFormatIcon() {
         return 'icon-audio.png';
     }
 }
+
+
+
+
 
 ?>

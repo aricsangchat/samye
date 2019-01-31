@@ -79,9 +79,13 @@ a.bg-a-link {
     margin-top: 0 !important;
 }
 
-input[type=text], input[type=password], input[type=email], input[type=url], input[type=image], input[type=number], input[type=search], input[type=time], textarea {
-    border: 1px solid $light-gray-font;
+input[type=text], input[type=password], input[type=email], input[type=url], input[type=image], input[type=number], input[type=search], input[type=time], textarea, #buddypress input[type=text], select {
+    border: 1px solid $light-gray-font !important;
     padding: 10px 10px 7px !important;
+    color: $gray-font;
+}
+
+#buddypress .item-list-tabs .dir-search label:after {
     color: $gray-font;
 }
 
@@ -183,13 +187,14 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     h2 {
         text-align: center;
         color: $white;
-        font-size: 30px;
+        font-size: 2.8rem;
+        text-transform: uppercase;
         text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.36);
         -webkit-text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.36);
         -moz-text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.36);
         
         @media only screen and (min-width: 992px) {
-            font-size: 64px;
+            font-size: 6.4rem;
         }
     }
 

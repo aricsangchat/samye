@@ -144,7 +144,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <img src="<?php the_post_thumbnail_url( 'full' ) ?>" />
                 <h2 class="author"><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
-                <p class="bio"><?php echo excerpt('20'); ?></p>
+                <p class="bio"><?php echo excerpt('20', $post->ID); ?></p>
                 <a href="<?php the_permalink() ?>">Read More</a>
             </div>
             <?php 

@@ -4,7 +4,7 @@ get_header(vibe_get_header());
 
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-$curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 'mindfulness', 'addiction' );
+$curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 'mindfulness', 'kindness' );
 
 
 ?>
@@ -165,7 +165,7 @@ $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 
 
             <div class="row related-courses-section">
                 <div class="col-xs-12">
-                    <h2 class="section-header">Find these articles helpfule? Then We recommend you check out these courses</h2>
+                    <h2 class="section-header">Find these articles helpful? Check out these recommended at home study programs.</h2>
                 </div>
                 <?php
                     $args4 = array(
@@ -193,7 +193,7 @@ $curratedCategories = array('buddhism', 'meditation', 'emotions', 'compassion', 
                         </div>
                         <div class="col-xs-8 col-sm-12">
                             <h2 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                            <p class="excerpt"><?php echo excerpt('22'); ?></p>
+                            <div class="excerpt"><?php echo excerpt('22', $post->ID); ?></div>
                             <p>
                             <a class="primary-btn" href="<?php the_permalink(); ?>">Find Out More</a>
                             </p>
