@@ -88,12 +88,14 @@ $title=get_post_meta($id,'vibe_title',true);
 					<?php do_action( 'bp_after_directory_course_content' ); ?>
 
 				</form><!-- #course-directory-form -->
+
+				<div class="social_sharing course-directory">
+                    <h3>Share This Page</h3>
+                    <?php echo do_shortcode('[Sassy_Social_Share]') ?>  
+                </div>
 			</div>	
 			<div class="col-md-3 col-sm-4">
-				<?php
-					$sidebar = apply_filters('wplms_sidebar','buddypress',$id);
-	                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
-               	<?php endif; ?>
+				<?php get_template_part( 'sidebar' ); ?>
 			</div>
 		</div>	
 		<?php do_action( 'bp_after_directory_course' ); ?>

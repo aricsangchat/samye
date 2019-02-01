@@ -2,6 +2,12 @@ body, #content, section {
     background-color: $white !important;
 }
 
+#content {
+    @media only screen and (min-width: 768px) {
+        margin-bottom: 50px;
+    }
+}
+
 html { font-size: 62.5%; } 
 body { font-size: 1.6rem; } /* =14px */
 h1   { font-size: 2.4rem; } /* =24px */
@@ -116,7 +122,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     text-transform: uppercase;
     display: inline-block;
     font-size: 13px;
-    padding: 4px 15px;
+    padding: 4px 15px 4px;
 
     @media only screen and (min-width: 768px) {
         padding: 12px 35px;
@@ -138,7 +144,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     text-transform: uppercase;
     display: inline-block;
     font-size: 13px;
-    padding: 4px 15px;
+    padding: 4px 15px 4px;
 
     @media only screen and (min-width: 768px) {
         padding: 12px 35px;
@@ -158,7 +164,7 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
     text-transform: uppercase;
     display: inline-block;
     font-size: 13px;
-    padding: 4px 15px;
+    padding: 4px 15px 4px;
 
     @media only screen and (min-width: 768px) {
         padding: 12px 35px;
@@ -335,3 +341,51 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
         margin-top: -22px;
     }
 }
+
+// pagination 
+.archive .pagination {
+    margin-bottom: 50px;
+    display: flex;
+    flex-wrap: wrap;
+
+    span, a {
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        color: $dark-font;
+        border: 0px;
+        font-weight: normal;
+        padding: 8px 14px;
+        margin-bottom: 5px;
+    }
+
+    span:nth-child(1) {
+        display: none;
+    }
+
+    .current {
+        color: $white;
+    }
+}
+
+#pag-bottom.pagination  {
+    margin-bottom: 45px !important;
+
+    .pag-count {
+        display: none;
+    }
+
+    span, a {
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        color: $dark-font;
+        border: 0px;
+        font-weight: normal;
+        padding: 8px 14px;
+        margin-bottom: 5px;
+    }
+
+    .current {
+        color: $white;
+    }
+}
+

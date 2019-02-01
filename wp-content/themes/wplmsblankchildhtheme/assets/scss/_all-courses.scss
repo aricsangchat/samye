@@ -63,6 +63,14 @@
             }
         }
 
+        #course-personal {
+            a {
+                @media only screen and (min-width: 992px) {
+                    padding-bottom: 0;
+                }
+            }
+        }
+
         #course-personal, #course-instructor {
 
             
@@ -170,9 +178,28 @@
         border-top: 0 !important;
 
         .course_single_item {
+            .col-xs-4 {
+                @media only screen and (min-width: 1200px) {
+                    padding-right: 15px;
+                }
+
+                @media only screen and (min-width: 1440px) {
+                    padding-right: 30px;
+                }
+            }
+
+            .col-xs-8 {
+                @media only screen and (min-width: 1440px) {
+                    padding-right: 30px;
+                }
+            }
+
             .post-image {
                 width: 100%;
                 padding-top: 120%;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
             }
 
             .post-title {
@@ -198,10 +225,22 @@
                     letter-spacing: 0.04em;
                     color: $gray-font;
                     padding: 0;
+
+                    &:first-child {
+                        margin-right: 15px;
+                    }
                 }
             }
 
             .instructor-row {
+                margin-bottom: 10px;
+
+                .teacher {
+                    @media only screen and (min-width: 992px) {
+                        margin-right: 5px;
+                    }
+                }
+
                 li {
                     display: inline-block;
                     font-size: 16px;
@@ -213,9 +252,28 @@
                         border-radius: 50%;
                     }
                 }
+
+                .item-avatar img:hover {
+                    -webkit-transform: scale(1);
+                    transform: scale(1);
+                }
+
+                .item-avatar {
+                    display: none;
+
+                    @media only screen and (min-width: 992px) {
+                        display: block;
+                    }
+                }
             }
 
             .cost-row {
+                margin-bottom: 10px;
+
+                @media only screen and (min-width: 1200px) {
+                    margin-bottom: 20px;
+                }
+
                 li {
                     display: inline-block;
                     font-size: 16px;
@@ -231,6 +289,15 @@
                     }
                 }
             }
+
+            .primary-btn {
+                padding: 7px 15px 4px;
+                font-weight: normal;
+            }
         }
     }
+}
+
+.social_sharing.course-directory {
+    margin-bottom: 0;
 }

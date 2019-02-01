@@ -151,37 +151,6 @@
         }
     }
 
-    // .post-categories li a {
-    //     font-size: 14px;
-    //     letter-spacing: 0.04em;
-    //     color: $primary-color;
-    //     font-weight: normal;
-    // }
-
-    .pagination {
-        margin-bottom: 50px;
-        display: flex;
-        flex-wrap: wrap;
-
-        span, a {
-            font-size: 14px;
-            letter-spacing: 0.04em;
-            color: $dark-font;
-            border: 0px;
-            font-weight: normal;
-            padding: 8px 14px;
-            margin-bottom: 5px;
-        }
-
-        span:nth-child(1) {
-            display: none;
-        }
-
-        .current {
-            color: $white;
-        }
-    }
-
     .social_sharing {
         margin-bottom: 0px;
     }

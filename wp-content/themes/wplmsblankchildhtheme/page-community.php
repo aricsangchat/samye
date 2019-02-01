@@ -62,6 +62,29 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <h2>Dharma Stream Groups</h2>
         </div>
         <div class="dharma-facts-col-1-description">
+            <p>Access precious Dharma wherever you live</p>
+        </div>
+        <div class="dharma-facts-col-1-bullets">
+            <ul>
+                <li>Start a group of minimim 3 people in your city and start practicing together</li>
+                <li>Receive personalized online teachings directly from Phakchok Rinpoche in a forthnighly broadcast</li>
+                <li>Meditate together, support each other and discuss topics with people in your group</li>
+                <li>Access precious Dharma wherever you live</li>
+            </ul>
+        </div>
+        <div class="button-wrapper">
+            <a class="secondary-btn" href="/dharma-stream-groups">Learn More</a>
+        </div>
+    </div>
+    <div class="dharma-facts-col-2"></div>
+</section>
+
+<!-- <section id="community-dharma-facts">
+    <div class="dharma-facts-col-1">
+        <div class="dharma-facts-col-1-title-wrapper">
+            <h2>Dharma Stream Groups</h2>
+        </div>
+        <div class="dharma-facts-col-1-description">
             <p>Practice in a local group with regular video teachings from Phachok Rinpoche and senior instructors</p>
         </div>
         <div class="dharma-facts-col-1-bullets">
@@ -76,9 +99,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         </div>
     </div>
     <div class="dharma-facts-col-2"></div>
-</section>
+</section> -->
 
-<section id="community-dharma-facts">
+<!-- <section id="community-dharma-facts">
     <div class="dharma-facts-col-2"></div>
     <div class="dharma-facts-col-1">
         <div class="dharma-facts-col-1-title-wrapper">
@@ -98,7 +121,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <a class="secondary-btn" href="#">Apply Now</a>
         </div>
     </div>
-</section>
+</section> -->
 
 <section id="community-news">
     <div class="container">

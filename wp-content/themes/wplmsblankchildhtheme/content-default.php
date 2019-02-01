@@ -44,7 +44,7 @@ echo ' <div class="blogpost">
             </div>
             <h3><a href="'.get_permalink().'">'.get_the_title().'</a></h3>
             <p class="date">'.get_the_time('M j, Y').'</p>
-            <p>'.excerpt(40).'</p>
+            <p>'.excerpt(40, $post_id).'</p>
             <a href="'.get_permalink().'" class="link">'.__('Read More','vibe').'</a>
         </div>
     </div>';
