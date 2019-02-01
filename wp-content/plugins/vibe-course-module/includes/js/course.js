@@ -543,7 +543,6 @@ function bp_course_category_filter_cookie(){
 
     if (typeof category_filter_cookie !== "undefined" && (category_filter_cookie !== null) ) { 
         var category_filter = JSON.parse(category_filter_cookie);
-        console.log(category_filter);
         if(typeof category_filter != 'object'){
           return;
         }

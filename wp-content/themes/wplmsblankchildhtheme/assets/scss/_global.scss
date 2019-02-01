@@ -33,6 +33,20 @@ h2.section-header {
     }
 }
 
+h2.single-post-title {
+    line-height: normal;
+    font-size: 2.8rem !important;
+
+    @media only screen and (min-width: 768px) {
+        font-size: 3.0rem !important;
+    }
+}
+
+h3.content-section-header {
+    line-height: normal;
+    font-size: 2.4rem !important;
+}
+
 h2.post-title {
     font-family: $body !important;
     color: $gray-font;

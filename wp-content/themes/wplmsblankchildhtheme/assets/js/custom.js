@@ -239,5 +239,12 @@
         }
         lastScrollTop = st;
     });
+
+    // open first tab on curriculum accorion 
+    $(document).ready(function($){
+        setTimeout(function(){
+            $('body').find('.course_curriculum .course_section>td:first').trigger('click');
+        },1000);
+    });
     
 })(jQuery);
