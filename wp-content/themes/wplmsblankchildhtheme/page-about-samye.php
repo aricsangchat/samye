@@ -205,7 +205,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <?php
                 $instructorArgs3 = array(
                     'numberposts' => -1,
-                    'category_name' => 'contributing-authors',
                     'orderby' => 'post_date',
                     'order' => 'DESC',
                     'post_type' => 'instructors',
