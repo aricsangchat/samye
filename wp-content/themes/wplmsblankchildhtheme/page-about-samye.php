@@ -120,6 +120,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 <section id="teacher-bios">
     <h2 class="header"><?php $term = get_term( 1349 ); echo $term->name; ?></h2>
+    <p class="description"><?php echo $term->description; ?></p>
     <div class="container">
         <div class="row">
             <?php
@@ -159,6 +160,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 <section id="teacher-bios">
     <h2 class="header"><?php $term = get_term( 1352 ); echo $term->name; ?></h2>
+    <p class="description"><?php echo $term->description; ?></p>
     <div class="container">
         <div class="row">
             <?php
@@ -197,6 +199,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 <section id="teacher-bios">
     <h2 class="header"><?php $term = get_term( 1350 ); echo $term->name; ?></h2>
+    <p class="description"><?php echo $term->description; ?></p>
     <div class="container">
         <div class="row">
             <?php
