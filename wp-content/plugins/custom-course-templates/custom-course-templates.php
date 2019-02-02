@@ -48,7 +48,7 @@
 
                             <ul class="cost-row">
                                 <li><i class="fas fa-tag"></i> Course cost:</li>
-                                <li><?php bp_course_credits(); ?></li>
+                                <li><?php echo getCourseCost($post->ID); ?></li>
                             </ul>
 
                             <a class="primary-btn" href="<?php the_permalink() ?>">See More Details</a>

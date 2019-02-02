@@ -153,6 +153,20 @@ function handlePostFormatIcon() {
     }
 }
 
+function getCourseCost($id) {
+    //bp_course_credits(); 
+    $free_course = get_post_meta($id,'vibe_course_free',true);
+    //var_dump(get_post_meta($post->ID,'vibe_product',true));
+    $product_id = get_post_meta($id,'vibe_product',true);
+    $product = wc_get_product( $product_id );
+    if(vibe_validate($free_course)){
+       return "<span>FREE</span>";
+    } else if (is_object($product)) {
+        return '<span>'.$product->get_price_html().'</span>';
+
+    }
+}
+
 
 
 

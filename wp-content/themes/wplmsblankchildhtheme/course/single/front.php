@@ -15,8 +15,7 @@ global $post;
 $id= get_the_ID();
 
 do_action('wplms_course_before_front_main');
-
-
+$author = get_the_author();
 ?>
 
 <div class="single-course-key-learning-panel-wrapper">
@@ -94,18 +93,60 @@ do_action('wplms_before_course_description');
 	?>
 </div>
 
-<div class="single-course-instructor-wrapper">
-					
-</div>
-
-
 <?php
 do_action('wplms_after_course_description');
 ?>
+<?php
+	$instructorArgs = array(
+		'numberposts' => -1,
+		'offset' => 0,
+		'category' => 0,
+		'orderby' => 'post_date',
+		'order' => 'DESC',
+		'include' => '',
+		'exclude' => '',
+		'meta_key' => '',
+		'meta_value' =>'',
+		'post_type' => 'instructors',
+		'post_status' => 'publish',
+		'suppress_filters' => false,
+	);
+	$lastposts = get_posts( $instructorArgs );
+	foreach ( $lastposts as $post ) :
+	setup_postdata( $post );
+	$instructor = get_the_title();
+	if (strpos($author, $instructor) !== false) {
+
+?>
+	<div class="single-course-instructor-wrapper">
+		<h2 class="content-section-header">About the Instructor</h2>
+		<div class="row">
+			<div class="col-xs-4">
+				<img src="<?php the_post_thumbnail_url( 'full' ) ?>" />
+			</div>
+			<div class="col-xs-8">
+				<h3 class="panel-title"><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h3>
+				<p class="bio"><?php echo excerpt('20', $post->ID); ?></p>
+                <a class="primary-btn" href="<?php the_permalink() ?>">Read More</a>
+			</div>
+		</div>	
+	</div>
+<?php 
+	}
+	endforeach; 
+	wp_reset_postdata(); 
+?>
+
 
 <div class="course_reviews">
 <?php
 	 //comments_template('/course-review.php',true);
 ?>
 </div>
+
+<div class="social_sharing">
+	<h3>Share This Page</h3>
+	<?php echo do_shortcode('[Sassy_Social_Share]') ?>  
+</div>
+
 <?php
