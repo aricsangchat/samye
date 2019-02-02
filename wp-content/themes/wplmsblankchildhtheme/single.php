@@ -12,7 +12,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2><?php echo get_post_type(get_the_ID()) == "post" ? "Wisdom Blog" : get_post_type(get_the_ID()); ?></h2>
+                <h2><?php echo get_post_type(get_the_ID()) == "post" ? get_the_category()[0]->name : get_post_type(get_the_ID()); ?></h2>
             </div>
         </div>
     </div>
