@@ -125,12 +125,19 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <?php
                 $instructorArgs1 = array(
                     'numberposts' => -1,
-                    'category_name' => 'lamas-and-khenpos',
                     'orderby' => 'post_date',
                     'order' => 'DESC',
+                    'exclude' => array(28181),
                     'post_type' => 'instructors',
                     'post_status' => 'publish',
                     'suppress_filters' => false,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'instructor_category',
+                            'field' => 'term_id',
+                            'terms' => 1349,
+                        )
+                    )
                 );
                 $lastposts = get_posts( $instructorArgs1 );
                 foreach ( $lastposts as $post ) :
@@ -157,12 +164,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <?php
                 $instructorArgs2 = array(
                     'numberposts' => -1,
-                    'category_name' => 'western-instructors',
                     'orderby' => 'post_date',
                     'order' => 'DESC',
                     'post_type' => 'instructors',
                     'post_status' => 'publish',
                     'suppress_filters' => false,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'instructor_category',
+                            'field' => 'term_id',
+                            'terms' => 1352,
+                        )
+                    )
                 );
                 $lastposts = get_posts( $instructorArgs2 );
                 foreach ( $lastposts as $post ) :
@@ -195,6 +208,13 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     'post_type' => 'instructors',
                     'post_status' => 'publish',
                     'suppress_filters' => false,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'instructor_category',
+                            'field' => 'term_id',
+                            'terms' => 1350,
+                        )
+                    )
                 );
                 $lastposts = get_posts( $instructorArgs3 );
                 foreach ( $lastposts as $post ) :
