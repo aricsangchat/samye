@@ -119,11 +119,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 </section>
 
 <section id="teacher-bios">
-    <h2 class="header">Lamas & Khenpos</h2>
+    <h2 class="header"><?php echo get_cat_name( 1349 );?></h2>
     <div class="container">
         <div class="row">
             <?php
-                $instructorArgs = array(
+                $instructorArgs1 = array(
                     'numberposts' => -1,
                     'category_name' => 'lamas-and-khenpos',
                     'orderby' => 'post_date',
@@ -132,7 +132,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     'post_status' => 'publish',
                     'suppress_filters' => false,
                 );
-                $lastposts = get_posts( $instructorArgs );
+                $lastposts = get_posts( $instructorArgs1 );
                 foreach ( $lastposts as $post ) :
                 setup_postdata( $post );
             ?>
@@ -151,11 +151,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 </section>
 
 <section id="teacher-bios">
-    <h2 class="header">Senior Instructors</h2>
+    <h2 class="header"><?php echo get_cat_name( 1352 );?></h2>
     <div class="container">
         <div class="row">
             <?php
-                $instructorArgs = array(
+                $instructorArgs2 = array(
                     'numberposts' => -1,
                     'category_name' => 'western-instructors',
                     'orderby' => 'post_date',
@@ -164,7 +164,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     'post_status' => 'publish',
                     'suppress_filters' => false,
                 );
-                $lastposts = get_posts( $instructorArgs );
+                $lastposts = get_posts( $instructorArgs2 );
                 foreach ( $lastposts as $post ) :
                 setup_postdata( $post );
             ?>
@@ -183,11 +183,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 </section>
 
 <section id="teacher-bios">
-    <h2 class="header">Contributing Authors</h2>
+    <h2 class="header"><?php echo get_cat_name( 1350 );?></h2>
     <div class="container">
         <div class="row">
             <?php
-                $instructorArgs = array(
+                $instructorArgs3 = array(
                     'numberposts' => -1,
                     'category_name' => 'contributing-authors',
                     'orderby' => 'post_date',
@@ -196,7 +196,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     'post_status' => 'publish',
                     'suppress_filters' => false,
                 );
-                $lastposts = get_posts( $instructorArgs );
+                $lastposts = get_posts( $instructorArgs3 );
                 foreach ( $lastposts as $post ) :
                 setup_postdata( $post );
             ?>
