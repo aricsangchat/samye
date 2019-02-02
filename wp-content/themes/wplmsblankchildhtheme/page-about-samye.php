@@ -119,20 +119,79 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 </section>
 
 <section id="teacher-bios">
-    <h2 class="header">Teachers</h2>
+    <h2 class="header">Lamas & Khenpos</h2>
     <div class="container">
         <div class="row">
             <?php
                 $instructorArgs = array(
                     'numberposts' => -1,
-                    'offset' => 0,
-                    'category' => 0,
+                    'category_name' => 'lamas-and-khenpos',
                     'orderby' => 'post_date',
                     'order' => 'DESC',
-                    'include' => '',
-                    'exclude' => '',
-                    'meta_key' => '',
-                    'meta_value' =>'',
+                    'post_type' => 'instructors',
+                    'post_status' => 'publish',
+                    'suppress_filters' => false,
+                );
+                $lastposts = get_posts( $instructorArgs );
+                foreach ( $lastposts as $post ) :
+                setup_postdata( $post );
+            ?>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <img src="<?php the_post_thumbnail_url( 'full' ) ?>" />
+                <h2 class="author"><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
+                <p class="bio"><?php echo excerpt('20', $post->ID); ?></p>
+                <a href="<?php the_permalink() ?>">Read More</a>
+            </div>
+            <?php 
+                endforeach; 
+                wp_reset_postdata(); 
+            ?>
+        </div>
+    </div>
+</section>
+
+<section id="teacher-bios">
+    <h2 class="header">Senior Instructors</h2>
+    <div class="container">
+        <div class="row">
+            <?php
+                $instructorArgs = array(
+                    'numberposts' => -1,
+                    'category_name' => 'western-instructors',
+                    'orderby' => 'post_date',
+                    'order' => 'DESC',
+                    'post_type' => 'instructors',
+                    'post_status' => 'publish',
+                    'suppress_filters' => false,
+                );
+                $lastposts = get_posts( $instructorArgs );
+                foreach ( $lastposts as $post ) :
+                setup_postdata( $post );
+            ?>
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <img src="<?php the_post_thumbnail_url( 'full' ) ?>" />
+                <h2 class="author"><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
+                <p class="bio"><?php echo excerpt('20', $post->ID); ?></p>
+                <a href="<?php the_permalink() ?>">Read More</a>
+            </div>
+            <?php 
+                endforeach; 
+                wp_reset_postdata(); 
+            ?>
+        </div>
+    </div>
+</section>
+
+<section id="teacher-bios">
+    <h2 class="header">Contributing Authors</h2>
+    <div class="container">
+        <div class="row">
+            <?php
+                $instructorArgs = array(
+                    'numberposts' => -1,
+                    'category_name' => 'contributing-authors',
+                    'orderby' => 'post_date',
+                    'order' => 'DESC',
                     'post_type' => 'instructors',
                     'post_status' => 'publish',
                     'suppress_filters' => false,
