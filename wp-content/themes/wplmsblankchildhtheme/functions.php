@@ -159,13 +159,163 @@ function getCourseCost($id) {
     //var_dump(get_post_meta($post->ID,'vibe_product',true));
     $product_id = get_post_meta($id,'vibe_product',true);
     $product = wc_get_product( $product_id );
+    $is_open_price = get_post_meta( $product_id, '_wcj_product_open_price_enabled', true );
     if(vibe_validate($free_course)){
        return "<span>FREE</span>";
-    } else if (is_object($product)) {
+    } else if (is_object($product) && $is_open_price == 'no') {
+        //var_dump($product);
         return '<span>'.$product->get_price_html().'</span>';
 
+    } else if ($is_open_price == 'yes') {
+        return '<span>Donation Based</span>';
     }
 }
+
+// ADD DONATION BUTTON TO COURSE PAGE
+function meta_add_open_price_input_field_to_frontend($product_id) {
+    $the_product = wc_get_product($product_id);
+    $is_open_price = get_post_meta( $product_id, '_wcj_product_open_price_enabled', true );
+
+    if( isset($is_open_price) && $is_open_price == 'yes' ) {
+        // Title
+        $title = get_option( 'wcj_product_open_price_label_frontend', __( 'Name Your Price', 'woocommerce-jetpack' ) );
+        // Prices
+        $min_price     = get_post_meta( $the_product->id, '_' . 'wcj_product_open_price_min_price', true );
+        $max_price     = get_post_meta( $the_product->id, '_' . 'wcj_product_open_price_max_price', true );
+        $default_price = get_post_meta( $the_product->id, '_' . 'wcj_product_open_price_default_price', true );
+        // Input field
+        $value = ( isset( $_POST['wcj_open_price'] ) ) ? $_POST['wcj_open_price'] : $default_price;
+        $default_price_step = 1 / pow( 10, absint( get_option( 'woocommerce_price_num_decimals', 2 ) ) );
+        $custom_attributes = '';
+        $custom_attributes .= 'step="' . get_option( 'wcj_product_open_price_price_step', $default_price_step ) . '" ';
+        $custom_attributes .= ( '' == $min_price || 'no' === get_option( 'wcj_product_open_price_enable_js_validation', 'no' ) ) ? 'min="0" ' : 'min="' . $min_price . '" ';
+        $custom_attributes .= ( '' == $max_price || 'no' === get_option( 'wcj_product_open_price_enable_js_validation', 'no' ) ) ? ''         : 'max="' . $max_price . '" ';
+        $input_field = '<input '
+            . 'type="number" '
+            . 'class="text" '
+            . 'style="' . get_option( 'wcj_product_open_price_input_style', 'width:70px;text-align:center;' ). '" '
+            . 'name="wcj_open_price" '
+            . 'id="wcj_open_price" '
+            . 'placeholder="' . get_option( 'wcj_product_open_price_input_placeholder', '' ) . '" '
+            . 'value="' . $value . '" '
+            . $custom_attributes . '>';
+        // Currency symbol
+        $currency_symbol = get_woocommerce_currency_symbol();
+        // Replacing final values
+        $replacement_values = array(
+            '%frontend_label%'       => '$', // $title
+            '%open_price_input%'     => $input_field,
+            '%currency_symbol%'      => '', // $currency_symbol
+            '%min_price_simple%'     => $min_price,
+            '%max_price_simple%'     => $max_price,
+            '%default_price_simple%' => $default_price,
+            '%min_price%'            => wc_price( $min_price ),
+            '%max_price%'            => wc_price( $max_price ),
+            '%default_price%'        => wc_price( $default_price ),
+        );
+        return str_replace(
+            array_keys( $replacement_values ),
+            array_values( $replacement_values ),
+            get_option( 'wcj_product_open_price_frontend_template', '<label for="wcj_open_price">%frontend_label%</label>%currency_symbol% %open_price_input%' )
+        );
+    }
+}
+
+add_action( 'bp_before_course_body', 'meta_custom_wc_print_notices', 10 );
+function meta_custom_wc_print_notices() {
+    echo '<div class="woocommerce">';
+    wc_print_notices();
+    echo '</div>';
+}
+
+add_filter( 'wc_add_to_cart_message', 'meta_custom_wc_add_to_cart_message' );
+function meta_custom_wc_add_to_cart_message() {
+    echo '<style type="text/css">.page-id-1145 .woocommerce-message {display: none !important;}</style>';
+}
+
+add_filter( 'woocommerce_cart_item_name', 'meta_custom_woocommerce_cart_item_name', 10, 3 );
+function meta_custom_woocommerce_cart_item_name($html, $cart_item, $cart_item_key) {
+    if( !isset($cart_item['product_id']) ) {
+        return $html;
+    }
+        
+    $vcourses = vibe_sanitize( get_post_meta( $cart_item['product_id'], 'vibe_courses', false ) );
+    
+    if( empty($vcourses) || !isset($vcourses[0]) ) {
+        return $html;
+    }
+
+    return sprintf( '<a href="%s">%s </a>', esc_url( get_permalink($vcourses[0]) ), get_the_title($vcourses[0]) );
+}
+
+add_filter( 'woocommerce_order_item_name', 'meta_custom_woocommerce_order_item_name', 10, 3 );
+function meta_custom_woocommerce_order_item_name($html, $item, $is_visible) {
+    if( !isset($item['product_id']) || !is_page(array(1145, 1146)) || is_admin() ) {
+        return $html;
+    }
+        
+    $vcourses = vibe_sanitize( get_post_meta( $item['product_id'], 'vibe_courses', false ) );
+    
+    if( empty($vcourses) || !isset($vcourses[0]) ) {
+        return $html;
+    }
+
+    return sprintf( '<a href="%s">%s </a>', esc_url( get_permalink($vcourses[0]) ), get_the_title($vcourses[0]) );
+}
+
+add_filter( 'woocommerce_add_cart_item_data', 'meta_custom_woocommerce_add_cart_item_data', 10, 3 );
+function meta_custom_woocommerce_add_cart_item_data( $cart_item_data, $product_id, $variation_id ) {
+    $is_open_price = get_post_meta( $product_id, '_wcj_product_open_price_enabled', true );
+
+    if( isset($is_open_price) && $is_open_price == 'yes' ) {
+        foreach( WC()->cart->get_cart() as $cart_item_key => $values ) {
+            $_product = $values['data'];
+
+            if( $product_id == $_product->id ) {
+                WC()->cart->remove_cart_item( $cart_item_key );
+            }
+        }
+    }
+
+    return $cart_item_data;
+}
+
+add_filter( 'woocommerce_add_to_cart_redirect', 'meta_custom_woocommerce_add_to_cart_redirect' );
+function meta_custom_woocommerce_add_to_cart_redirect( $url ) {
+    if( !isset( $_REQUEST['add-to-cart'] ) || !is_numeric( $_REQUEST['add-to-cart'] ) ) {
+        return $url;
+    }
+    
+    $product_id = apply_filters( 'woocommerce_add_to_cart_product_id', absint($_REQUEST['add-to-cart'] ) );
+    $is_open_price = get_post_meta( $product_id, '_wcj_product_open_price_enabled', true );
+    
+    if( isset($is_open_price) && $is_open_price == 'yes' ) {
+        $url = wc_get_cart_url();
+    }
+    
+    return $url;
+}
+
+// add_filter( 'wplms_expired_course_button', 'meta_add_donation_button', 10, 2 );
+add_filter( 'wplms_take_course_button_html', 'meta_add_donation_button', 10, 2 );
+function meta_add_donation_button($html, $course_id) {
+    $product_id = get_post_meta( $course_id, 'vibe_product', true );
+    $is_open_price = get_post_meta( $product_id, '_wcj_product_open_price_enabled', true );
+
+    if( isset($is_open_price) && $is_open_price == 'yes' ) {
+
+        $field = '<form class="cart" method="post" enctype="multipart/form-data">';
+        $field .= meta_add_open_price_input_field_to_frontend($product_id);
+        $field .= '<input type="hidden" name="add-to-cart" value="' .$product_id. '"/>';
+        $field .= '<button type="submit" class="single_add_to_cart_button button course_button full">TAKE THIS COURSE</button>';
+        $field .= '</form>';
+
+        $html = $field;
+    }
+    
+    return $html;
+}
+// END ADD DONATION BUTTON TO COURSE PAGE
 
 
 
