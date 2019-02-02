@@ -82,15 +82,15 @@
 
     <div class="sidebar-widget-resources">
         <h2 class="section-header">Quick Links</h2>
-        <a href="#">Dharma Stream Groups</a>
-        <a href="#">Upcoming Events</a>
-        <a href="#">Global Accumulations</a>
-        <a href="#">Community News</a>
+        <a href="/dharma-stream">Dharma Stream Groups</a>
+        <a href="/events">Upcoming Events</a>
+        <a href="/global-accumulations">Global Accumulations</a>
+        <a href="/category/community">Community Blog</a>
     </div>
 
     <div class="sidebar-widget-facebook">
         <h2 class="section-header">See you on facebook</h2>
-        <div class="fb-page" data-href="https://www.facebook.com/samyeinstitute/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/samyeinstitute/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/samyeinstitute/">Samye Institute</a></blockquote></div>
+        <div class="fb-page" data-href="https://www.facebook.com/samyeinstitute/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/samyeinstitute/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/samyeinstitute/">Samye Institute</a></blockquote></div>
     </div>
 
     <div class="sidebar-widget-support">

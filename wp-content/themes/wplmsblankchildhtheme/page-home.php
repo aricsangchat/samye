@@ -230,7 +230,7 @@ get_header(vibe_get_header());
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-study-programs">
-                    <h2 class="section-header">Looking for at home study programs?</h2>
+                    <h2 class="section-header">Looking for home study programs?</h2>
                     <p>Enroll in one of our short-term or long-term study programs and receive guidance from Tibetan & Western instructors.</p>
                     <div class="row row-programs">
                         <div class="col-xs-12 col-sm-4">
