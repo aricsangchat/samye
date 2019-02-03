@@ -126,8 +126,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 <section id="community-news">
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-8">
-                <h2 class="post-list-title">Community Conversations</h2>
+            <div class="col-xs-12 col-sm-8">
+                <h2 class="section-header">Community Conversations</h2>
                 <!-- <h3 class="post-list-subtitle">Our Community</h3> -->
                 <?php
                     $communityArgs = array(
@@ -150,14 +150,18 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     setup_postdata( $post );
                 ?>
 
-                <div class="post-wrapper">
-                    <div class="post-image" style="background-image: url(<?php the_post_thumbnail_url( 'full' ) ?>)">
+                <div class="row post-wrapper">
+                    <div class="col-xs-4">
+                        <div class="post-image" style="background-image: url(<?php the_post_thumbnail_url( 'full' ) ?>)">
+                        </div>
                     </div>
-                    <div class="post-text">
-                        <h3 class="post-tags"><?php echo get_the_tag_list('',' | '); ?></h3>
-                        <h2 class="post-title"><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
-                        <h4 class="post-date"><?php the_date(); ?></h4>
-                        <p class="post-excerpt"><?php the_excerpt(); ?></p>
+                    <div class="col-xs-8">
+                        <div class="post-text">
+                            <h3 class="post-tags"><?php echo get_the_tag_list('',' | '); ?></h3>
+                            <h2 class="post-title"><a href="<?php the_permalink() ?>"><?php  the_title() ?></a></h2>
+                            <h4 class="post-date"><?php the_date(); ?></h4>
+                            <p class="post-excerpt"><?php echo excerpt(30, $post->ID); ?></p>
+                        </div>
                     </div>
                 </div>
 
@@ -166,11 +170,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     wp_reset_postdata(); 
                 ?>
             </div>
-            <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-sm-4">
                 <div class="dakini-day-sidebar-widget">
-                    <h2>Dakini Day Digest</h2>
+                    <h2 class="section-header">Dakini Day Digest</h2>
                     <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/dakini-day.png" alt="">
-                    <h4>The activities of Kyabgön Phakchok Rinpoche</h2>
+                    <h2 class="post-title">The activities of Kyabgön Phakchok Rinpoche</h2>
                     <p>The four mind changings form the foundation of the Vajrayāna path. When we commit to this path, we start by practicing the preliminary practices: the ngöndro. The four mind changings form the foundation of the Vajrayāna path. When we commit to this path, we start by practicing.</p>
                     <div class="button-wrapper">
                         <a class="primary-btn" href="http://dakiniday.samyeinstitute.org/">View Archive</a>
