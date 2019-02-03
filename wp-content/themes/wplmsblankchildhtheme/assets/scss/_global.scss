@@ -271,7 +271,9 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
 // Donation Form 
 #gform_fields_46 {
     #field_46_10 {
-        display: none;
+        height: 0;
+        opacity: 0;
+        margin: 0;
     }
 
     .gfield_label {

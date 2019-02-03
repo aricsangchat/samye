@@ -84,7 +84,7 @@
         <h2 class="section-header">Quick Links</h2>
         <a href="/dharma-stream">Dharma Stream Groups</a>
         <a href="/events">Upcoming Events</a>
-        <a href="/global-accumulations">Global Accumulations</a>
+        <a href="/community/global-accumulations">Global Accumulations</a>
         <a href="/category/community">Community Blog</a>
     </div>
 

@@ -1,5 +1,5 @@
 .community-dharma-groups {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 
     @media only screen and (min-width: 1200px) {
         margin-bottom: 60px;
@@ -8,7 +8,11 @@
     img {
         display: block;
         margin: 0 auto;
-        margin-bottom: 20px;
+        margin-bottom: 0;
+
+        @media only screen and (min-width: 768px) {
+            width: 70%;
+        }
 
         @media only screen and (min-width: 1200px) {
             margin-bottom: 30px;
@@ -40,6 +44,7 @@
             text-transform: uppercase;
             margin-top: 0;
             color: $dark-font;
+            margin-bottom: 0;
 
             @media only screen and (min-width: 992px) {
                 font-size: 18px;
@@ -57,16 +62,20 @@
 
     .dharma-facts-col-1 {
         background-color: $primary-color;
-        padding-bottom: 20px;
+        padding-bottom: 35px;
 
-        @media only screen and (min-width: 992px) {
+        @media only screen and (min-width: 768px) {
             display: inline-block;
             width: 50%;
-            padding-bottom: 30px;
         }
+
+        @media only screen and (min-width: 992px) {
+            padding-bottom: 40px;
+        }
+        
         @media only screen and (min-width: 1200px) {
             width: 55%;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
         .secondary-btn {
@@ -76,10 +85,10 @@
 
     .dharma-facts-col-1-title-wrapper {
         background-color: $secondary-color;
-        padding: 5px;
+        padding: 10px 0;
 
         @media only screen and (min-width: 992px) {
-            width: 60%;
+            width: 80%;
             margin: 0 auto;
             position: relative;
             top: -10px;
@@ -92,40 +101,42 @@
             padding-bottom: 10px;
         }
 
-        h2 {
+        .section-header {
             text-align: center;
             color: $primary-color;
             margin: 0;
 
-            @media only screen and (min-width: 768px) {
-                font-size: 36px;
-            }
-
-            @media only screen and (min-width: 992px) {
-                font-size: 24px;
-            }
-
             @media only screen and (min-width: 1200px) {
-                font-size: 36px;
+                font-size: 3.6rem !important;
             }
         }
     }
 
     .dharma-facts-col-1-description {
-        padding: 15px 15px 0;
+        padding: 35px 15px 0;
+
+        @media only screen and (min-width: 992px) {
+            padding: 25px 15px 0;
+        }
+
+        @media only screen and (min-width: 1200px) {
+            padding: 35px 15px 0;
+        }
 
         p {
             color: $white;
             font-family: $semi-bold !important;
             text-align: center;
+            font-size: 1.8rem;
 
             @media only screen and (min-width: 992px) {
-                font-size: 22px;
+                font-size: 2.2rem;
+                margin-bottom: 15px;
             }
 
             @media only screen and (min-width: 1200px) {
-                font-size: 30px;
-                margin-bottom: 15px;
+                font-size: 3.0rem;
+                margin-bottom: 20px;
             }
         }
     }
@@ -135,6 +146,11 @@
         max-width: 320px;
         margin: 0 auto;
 
+
+        @media only screen and (min-width: 992px) {
+            max-width: 440px;
+        }
+
         @media only screen and (min-width: 1200px) {
             margin-bottom: 10px;
         }
@@ -142,7 +158,8 @@
         ul {
             li {
                 color: $white;
-                margin-bottom: 5px;
+                margin-bottom: 15px;
+                display: table;
 
                 @media only screen and (min-width: 992px) {
                     font-size: 18px;   
@@ -154,26 +171,26 @@
 
                 &::before {
                     content: '';
-                    height: 20px;
+                    height: 100%;
                     width: 20px;
                     background-image: url('../images/icon-li-knot.png');
                     background-position: center;
                     background-size: contain;
                     background-repeat: no-repeat;
-                    display: inline-block;
+                    display: table-cell;
+                    vertical-align: middle;
                     position: relative;
-                    top: 5px;
-                    right: 3px;   
+                    right: 10px;
+                    top: -2px;
                     
                     @media only screen and (min-width: 992px) {
-                        right: 5px;   
+                        //right: 5px;   
                     }
 
                     @media only screen and (min-width: 1200px) {
-                        height: 28px;
                         width: 28px; 
-                        top: 6px;
-                        right: 10px;
+                        // top: 6px;
+                        // right: 10px;
                     }
                 }
             }
@@ -181,21 +198,28 @@
     }
 
     .dharma-facts-col-2 {
-        height: 180px;
+        padding-top: 56.25%;
         background-image: url('../images/indonesia-dharma-group.png');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
+        display: none;
 
-        @media only screen and (min-width: 992px) {
+        @media only screen and (min-width: 768px) {
             display: inline-block;
             width: 50%;
             float: right;
-            height: 301px;
+            padding-top: 0;
+            height: 507px;
         }
+
+        @media only screen and (min-width: 992px) {
+            height: 507px;
+        }
+        
         @media only screen and (min-width: 1200px) {
             width: 45%;
-            height: 403px;
+            //height: 403px;
 
         }
     }
@@ -381,7 +405,7 @@
     }
 
     @media only screen and (min-width: 1200px) {
-        padding: 50px 0 55px;
+        padding: 50px 0 65px;
     }
 
     .title {
@@ -407,6 +431,7 @@
 
     .facts {
         margin-bottom: 30px;
+        max-width: 720px;
 
         li {
             color: $white;
@@ -718,13 +743,14 @@
 .text-section {
     margin-bottom: 5px;
 
-    .title {
+    .section-header {
         text-align: center;
-        font-size: 24px;
+        //font-size: 24px;
         color: $dark-font;
+        margin-top: 0;
 
-        @media only screen and (min-width: 768px) {
-            font-size: 36px;
+        @media only screen and (min-width: 992px) {
+            margin-bottom: 35px;
         }
     }
 

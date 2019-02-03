@@ -40,7 +40,7 @@ $event_day       = tribe_get_start_date( $post, false, 'd' );
 			<div class="event-info">
 				<p class="category"><?php echo get_the_tag_list('',' | '); ?></p>
 				<h2 class="event-title"><a href="<?php echo esc_url( tribe_get_event_link() ); ?>"><?php the_title(); ?></a></h2>
-				<p class="excerpt"><?php echo excerpt(40) ?></p>
+				<p class="excerpt"><?php echo excerpt(40, $post->ID) ?></p>
 				<p class="location"><span>Location: </span><?php
 				$address_delimiter = empty( $venue_address ) ? ' ' : ', ';
 

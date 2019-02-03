@@ -27,7 +27,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h2 class="title">Connect with our Global Network</h2>
+                <h2 class="section-header">Connect with our Global Network</h2>
                 <!-- <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> -->
             </div>
         </div>
@@ -41,15 +41,15 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         </div>
     </div>
     <div class="row community-dharma-groups-facts">
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-6 col-sm-4 col-md-4">
             <h3 class="number">100</h3>
             <p class="description">Monestaries & Nunaries</p>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-6 col-sm-4 col-md-4">
             <h3 class="number">50</h3>
             <p class="description">Centers & Groups</p>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="col-xs-6 col-sm-4 col-md-4">
             <h3 class="number">397</h3>
             <p class="description">Students On Samye</p>
         </div>
@@ -59,7 +59,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 <section id="community-dharma-facts">
     <div class="dharma-facts-col-1">
         <div class="dharma-facts-col-1-title-wrapper">
-            <h2>Dharma Stream Groups</h2>
+            <h2 class="section-header">Dharma Stream Groups</h2>
         </div>
         <div class="dharma-facts-col-1-description">
             <p>Access precious Dharma wherever you live</p>
