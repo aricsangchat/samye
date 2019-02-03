@@ -170,7 +170,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 </div>
 
                 <div class="view-all">
-                    <a href="/tag/where-to-start">View All</a>
+                    <a href="/category/radically-happy">View All</a>
                 </div>
             </div>
         </div>
@@ -224,7 +224,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 </div>
 
                 <div class="view-all">
-                    <a href="/tag/deepen-practice">View All</a>
+                    <a href="/category/wellness">View All</a>
                 </div>
             </div>
         </div>
