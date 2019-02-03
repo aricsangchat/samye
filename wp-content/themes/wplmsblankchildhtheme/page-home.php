@@ -220,7 +220,7 @@ get_header(vibe_get_header());
         <div class="row">
             <div class="col-xs-12">
                 <div class="button-wrapper">
-                    <a class="primary-btn" href="/study-practice">View All</a>
+                    <a class="primary-btn" href="/study-blogs">View All</a>
                 </div>
             </div>
         </div>
@@ -266,7 +266,7 @@ get_header(vibe_get_header());
                         </div>
                     </div>
                     <div class="button-wrapper">
-                        <a class="secondary-btn" href="/programs">Explore Programs</a>
+                        <a class="secondary-btn" href="/all-courses">Explore Programs</a>
                     </div>
 
                 </div>
@@ -416,7 +416,7 @@ get_header(vibe_get_header());
                         ?>
                     </div>
                     <div class="button-wrapper">
-                        <a class="secondary-btn" href="/guru-rinpoche-day-teachings">See All Teachings</a>
+                        <a class="secondary-btn" href="/category/guru-rinpoche-day">See All Teachings</a>
                     </div>
                 </div>
             </div>

@@ -47,7 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
                 <h4>Quick Links</h4>
                 <ul>
                     <li><a href="/global-accumulations">Global Accumulations</a></li>
-                    <li><a href="/forums">Discussion Groups</a></li>
+                    <li><a href="/groups">Discussion Groups</a></li>
                     <li><a href="/faq">FAQ</a></li>
                     <li><a href="/contact-us/">Contact Us</a></li>
                     <li><a href="/privacy-policy/">Privacy Policy</a></li>
