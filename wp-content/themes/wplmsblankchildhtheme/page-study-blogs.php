@@ -21,8 +21,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12">
 
                 <div class="post-carousel-header">
-                    <h2 class="section-header">The Wisdom Blog</h2>
-                    <p>Vajras are very strong; this Sanskrit term contains two meanings: indestructible, and also a powerful thunderbolt. Think that because of this vajra fence, not even a single particle of air can go in or out. Vajras are very strong.</p>
+                    <h2 class="section-header"><?php $term = get_term( 316 ); echo $term->name; ?></h2>
+                    <p><?php echo $term->description; ?></p>
                 </div>
 
                 <div class="post-carousel">
@@ -30,8 +30,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                         $wisdomArgs = array(
                             'numberposts' => 12,
                             'offset' => 0,
-                            'category' => 0,
-                            'category_name' => 'wisdom',
+                            'category' => 316,
                             'orderby' => 'post_date',
                             'order' => 'DESC',
                             'include' => '',
@@ -76,8 +75,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12">
 
                 <div class="post-carousel-header">
-                    <h2 class="section-header">Guru Rinpoche Day Teachings</h2>
-                    <p>Vajras are very strong; this Sanskrit term contains two meanings: indestructible, and also a powerful thunderbolt. Think that because of this vajra fence, not even a single particle of air can go in or out. Vajras are very strong.</p>
+                <h2 class="section-header"><?php $term = get_term( 1197 ); echo $term->name; ?></h2>
+                    <p><?php echo $term->description; ?></p>
                 </div>
 
                 <div class="post-carousel">
@@ -85,8 +84,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                         $wisdomArgs = array(
                             'numberposts' => 12,
                             'offset' => 0,
-                            'category' => 0,
-                            'category_name' => 'guru-rinpoche-day',
+                            'category' => 1197,
                             'orderby' => 'post_date',
                             'order' => 'DESC',
                             'include' => '',
@@ -131,8 +129,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12">
 
                 <div class="post-carousel-header">
-                    <h2 class="section-header">Basic Buddhist Knowledge</h2>
-                    <p>Vajras are very strong; this Sanskrit term contains two meanings: indestructible, and also a powerful thunderbolt. Think that because of this vajra fence, not even a single particle of air can go in or out. Vajras are very strong.</p>
+                <h2 class="section-header"><?php $term = get_term( 989 ); echo $term->name; ?></h2>
+                    <p><?php echo $term->description; ?></p>
                 </div>
 
                 <div class="post-carousel">
@@ -140,8 +138,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                         $wisdomArgs = array(
                             'numberposts' => 12,
                             'offset' => 0,
-                            'category' => 0,
-                            'tag' => 'where-to-start',
+                            'category' => 989,
                             'orderby' => 'post_date',
                             'order' => 'DESC',
                             'include' => '',
@@ -186,8 +183,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-xs-12">
 
                 <div class="post-carousel-header">
-                    <h2 class="section-header">Deepen Your Practice</h2>
-                    <p>Vajras are very strong; this Sanskrit term contains two meanings: indestructible, and also a powerful thunderbolt. Think that because of this vajra fence, not even a single particle of air can go in or out. Vajras are very strong.</p>
+                <h2 class="section-header"><?php $term = get_term( 1153 ); echo $term->name; ?></h2>
+                    <p><?php echo $term->description; ?></p>
                 </div>
 
                 <div class="post-carousel">
@@ -195,8 +192,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                         $wisdomArgs = array(
                             'numberposts' => 12,
                             'offset' => 0,
-                            'category' => 0,
-                            'tag_slug__in' => array('vajrayana', 'mahayana'),
+                            'category' => 1153,
                             'orderby' => 'post_date',
                             'order' => 'DESC',
                             'include' => '',
