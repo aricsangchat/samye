@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: Accumulation Counter
- * Plugin URI: http://www.samye.org
+ * Plugin URI: https://www.samyeinstitute.org
  * Description: [6VajraCount] & [CloudBlessingCount] Shortcode for Total count for global accumalations.
  * Version: 1.0
  * Author: Aric Sangchat
- * Author URI: http://www.samye.org
+ * Author URI: https://www.samyeinstitute.org
  */
 
     defined( 'ABSPATH' ) or die( 'No script kiddies please!' );

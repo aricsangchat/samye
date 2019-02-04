@@ -3,7 +3,7 @@ global $post;
 get_header(vibe_get_header());
 ?>
 
-<section id="content">
+<section>
     <?php
 
     // check if the flexible content field has rows of data
@@ -426,7 +426,7 @@ get_header(vibe_get_header());
     <div class="container weekly-reflection">
         <div class="row">
             <div class="col-xs-12">
-                <h3>Weekly Reflections </h2>
+                <h2 class="section-header">Weekly Reflections</h2>
                 <?php
                     $currentWeekNumber = date('W');
                     $currentWeekDayNumber = date('w');
@@ -458,9 +458,15 @@ get_header(vibe_get_header());
                     setup_postdata( $post );
                 ?>
 
-                <p id="weekly-reflection"><?php the_field('quote'); ?></p>
-                <h4 id="author"><?php the_field('author'); ?></h2>
-
+                <p class="reflection"><?php the_field('quote'); ?></p>
+                <h4 class="reflection-author"><?php the_field('author'); ?></h4>
+                <?php 
+                if (the_field('translator')) {
+                ?>
+                    <p class="reflection-translator">Translated by: <?php the_field('translator'); ?></p>
+                <?php 
+                }
+                ?>
                 <?php 
                     endforeach; 
                     wp_reset_postdata(); 
