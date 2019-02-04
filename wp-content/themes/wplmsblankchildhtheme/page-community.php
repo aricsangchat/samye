@@ -37,21 +37,27 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 <div class="container community-dharma-groups">
     <div class="row">
         <div class="col-xs-12">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/community-dharma-map.png" alt="">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/community-map.png" alt="">
         </div>
     </div>
     <div class="row community-dharma-groups-facts">
         <div class="col-xs-6 col-sm-4 col-md-4">
-            <h3 class="number">100</h3>
-            <p class="description">Monestaries & Nunaries</p>
+            <div class="number-wrapper">
+                <h3 class="number">57</h3>
+            </div>
+            <p class="description">Monestaries &<br />Nunaries</p>
         </div>
         <div class="col-xs-6 col-sm-4 col-md-4">
-            <h3 class="number">50</h3>
-            <p class="description">Centers & Groups</p>
+            <div class="number-wrapper">
+                <h3 class="number">100</h3>
+            </div>
+            <p class="description">Centers &<br />Groups</p>
         </div>
         <div class="col-xs-6 col-sm-4 col-md-4">
-            <h3 class="number">397</h3>
-            <p class="description">Students On Samye</p>
+            <div class="number-wrapper">
+                <h3 class="number">1200</h3>
+            </div>
+            <p class="description">Students On<br />Samye</p>
         </div>
     </div>
 </div>

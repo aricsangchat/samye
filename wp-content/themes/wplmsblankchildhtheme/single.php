@@ -9,11 +9,11 @@ $featuredImage = '';
 if (get_field( "taxonomy_image", "category_".get_the_category()[0]->term_id )) {
     $featuredImage = get_field( "taxonomy_image", "category_".get_the_category()[0]->term_id );
 } else {
-    $featuredImage = get_stylesheet_directory_uri()."/assets/images/bg-page-title.png)";
+    $featuredImage = get_stylesheet_directory_uri()."/assets/images/bg-page-title.png";
 }
 ?>
 
-<section id="page-title" style="background-image: url(<?php echo $featuredImage; ?>">
+<section id="page-title" style="background-image: url('<?php echo $featuredImage; ?>')">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
